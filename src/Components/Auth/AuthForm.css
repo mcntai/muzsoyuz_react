@@ -1,0 +1,110 @@
+/* Middle part */
+
+.form  {
+  width: 322px;
+  height: 265px;
+  border: 1px solid #C4C4C4;
+  border-radius: 10px;
+  margin-top: 68px;
+  padding-bottom: 20px;
+}
+
+.shadow {
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+.form__header {
+  display: flex;
+  justify-content: space-between;
+  width: 290px;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #AEAAAA;
+  padding-top: 71px;
+  margin-bottom: 18px;
+}
+
+.form__header a {
+  text-decoration: none;
+}
+
+.form__header__register, .form__header__login {
+  color: #000000;
+  border-bottom: 2px solid #6384EB;
+  padding-bottom: 10px;
+
+}
+
+.form__form {
+  width: 290px;
+}
+
+.input-email, 
+.input-password, 
+.input-confirm-password {
+  width: 290px;
+  height: 40px;
+  border: 1px solid #6A6A6A;
+  border-radius: 16px;
+  margin-bottom: 15px;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: lowercase;
+  color: #DADADA;
+}
+
+.focus:focus {
+  outline: none;
+}
+
+.input-email::placeholder, 
+.input-password::placeholder, 
+.input-confirm-password::placeholder {
+  opacity: 0.5;
+}
+
+.input-email {
+  background-image: url('../../Assets/img/email-icon.png');
+}
+
+.input-password, .input-confirm-password {
+  background-image: url('../../Assets/img/password-icon.png');
+}
+
+.form__form-login-text {
+  width: 290px;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 15px;
+  padding-top: 10px;
+  padding-bottom: 25px;
+}
+
+.remember-login {
+  width: 15px;
+  height: 15px;
+}
+
+.form__form-login-text p {
+  margin-left: -50px;
+  color: #6A6A6A;
+}
+
+.form__form-login-text a {
+  text-decoration: none;
+  color: #6A6A6A;
+}
+
+.input-submit {
+  width: 46px;
+  height: 46px;
+  border-radius: 50px;
+  background-image: url('../../Assets/img/arrow-icon.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #6384EB;
+  border: #6384EB;
+  position: relative;
+}

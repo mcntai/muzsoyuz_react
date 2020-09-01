@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Common clases */
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.montserrat-normal {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.input-icon-position {
+  background-position: 6% 50%;
+  background-repeat: no-repeat;
+  padding-left: 59px;
+}
+
+/* Top part */
+.wrapper {
+  width: 375px;
+  height: 812px;
+  background: #FFFFFF;
+}
+
+.header {
+  width: 189px;
+  height: 192px;
+}
+
+.header__logo {
+  padding-top: 66px;
+}
+
+.header__slogan {
+  text-align: center;
+  letter-spacing: 0.245em;
+  color: #6A6A6A;
+  padding-top: 34px;
+}
+
+.header__slogan .slogan-music {
+  font-size: 50px;
+  line-height: 50px;
+  text-transform: uppercase;
+  font-family: 'SovMod';
+}
