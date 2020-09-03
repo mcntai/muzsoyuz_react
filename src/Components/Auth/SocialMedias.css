@@ -1,6 +1,6 @@
 /* Bottom part */
 
-.social_medias {
+.social-medias {
   width: 290px;
   padding-top: 68px;
   padding-bottom: 45px;
@@ -48,3 +48,8 @@
   border:1px solid #6A6A6A;
   color: #6A6A6A;
 }
+
+.links-btn {
+  cursor: pointer;
+}
+

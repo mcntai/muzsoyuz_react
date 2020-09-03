@@ -27,13 +27,17 @@
 
 .form__header a {
   text-decoration: none;
+  color: #AEAAAA;
 }
 
 .form__header__register, .form__header__login {
-  color: #000000;
+  color: #AEAAAA;
   border-bottom: 2px solid #6384EB;
   padding-bottom: 10px;
+}
 
+.form__header__register a:visited, .form__header__login a:visited {
+  color: #000000;
 }
 
 .form__form {
@@ -51,7 +55,6 @@
   font-size: 12px;
   line-height: 15px;
   text-transform: lowercase;
-  color: #DADADA;
 }
 
 .focus:focus {
