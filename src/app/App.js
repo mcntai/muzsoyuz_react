@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Auth from '../Pages/Auth';
+import Main from '../Pages/Main';
 
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
@@ -15,10 +16,11 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="wraper">
+        <div className="wrapper">
           <Switch>
             <Route exact path="/register" render={()=><Auth type="reg" />} />
             <Route exact path="/login" render={()=><Auth type="login" />} />
+            <Route exact path="/main" component={Main} />
           </Switch>
         </div>
       </BrowserRouter> 

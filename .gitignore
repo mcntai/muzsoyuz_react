@@ -6,7 +6,7 @@
 .pnp.js
 .package-lock.json
 .README.md
-debug.log
+.debug.log
 
 # testing
 /coverage

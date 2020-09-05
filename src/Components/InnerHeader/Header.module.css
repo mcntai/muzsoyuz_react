@@ -1,0 +1,8 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header img {
+  margin: 23px 16px;
+}

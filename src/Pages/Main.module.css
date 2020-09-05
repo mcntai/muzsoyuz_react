@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 375px;
+  height: 812px;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 82px;
+  background: #FFFFFF;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainRow {
+  height: 19px;
+  background: #DBF3FF;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  height: 82px;
+}
+
+.footer img {
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.footer div {
+  padding: 14px 20px 11px 20px;
+
+}
+
+.footer a {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #6A6A6A;
+  text-decoration: none;
+}
+
+.offerJob img {
+  margin: 0 auto 12.2px;
+}
+

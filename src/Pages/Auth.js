@@ -18,7 +18,7 @@ class Auth extends React.Component {
 
   render() {
     return (
-        <div className="wraper flex-col">
+        <div className="wrapper flex-col">
           <div className="header flex-col">
             <img src={logo} alt="Logo" className="header__logo" />
             <div className="header__slogan montserrat-normal">
