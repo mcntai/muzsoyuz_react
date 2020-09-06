@@ -1,5 +1,5 @@
 import React from 'react';
-import './SocialMedias.css';
+import s from './SocialMedias.module.css';
 
 
 class SocialMedias extends React.Component {
@@ -10,17 +10,15 @@ class SocialMedias extends React.Component {
 
     this.drawRegSocialBtns = this.drawRegSocialBtns.bind(this);
     this.drawLoginSocialBtns = this.drawLoginSocialBtns.bind(this);
-    this.facebookHandler = this.facebookHandler.bind(this);
-    this.googleHandler = this.googleHandler.bind(this);
   }
 
   drawRegSocialBtns() {
     return (
-    <div className="social_medias flex-col">
-      <div className="social-medias__text montserrat-normal">или зарегистрироваться с помощью</div>
-      <div className="social-medias__icons">
-        <a href="http://localhost:9000/oauth/facebook"><input type="button" className="social-medias__icons__fb icons-styles montserrat-normal focus links-btn" value="Facebook" /></a>
-        <a href="http://localhost:9000/oauth/google"><input type="button" className="social-medias__icons__google icons-styles montserrat-normal focus links-btn" value="Google" /></a>
+    <div className={s.socialMedias}>
+      <p className={s.authWith}>или зарегистрироваться с помощью</p>
+      <div className={s.socialIcons}>
+        <a href="http://localhost:9000/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook" /></a>
+        <a href="http://localhost:9000/oauth/google"><input type="button" className={s.googleIcon} value="Google" /></a>
       </div>
     </div>
     );
@@ -29,29 +27,20 @@ class SocialMedias extends React.Component {
 
   drawLoginSocialBtns() {
     return (
-    <div className="social-medias flex-col">
-      <div className="social-medias__text montserrat-normal">или войти с помощью</div>
-      <div className="social-medias__icons">
-        <a href="http://localhost:9000/oauth/facebook"><input type="button" className="social-medias__icons__fb icons-styles montserrat-normal focus links-btn" value="Facebook" /></a>
-        <a href="http://localhost:9000/oauth/google"><input type="button" className="social-medias__icons__google icons-styles montserrat-normal focus links-btn" value="Google" /></a>
+    <div className={s.socialMedias}>
+      <p className={s.authWith}>или войти с помощью</p>
+      <div className={s.socialIcons}>
+        <a href="http://localhost:9000/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook" /></a>
+        <a href="http://localhost:9000/oauth/google"><input type="button" className={s.googleIcon} value="Google" /></a>
       </div>
     </div>
     );
   }
 
-  async facebookHandler() {
-    alert('Facebook')
-  }
-
-  async googleHandler() {
-    alert('Google')
-  }
-
-
   render() {
     const formType = this.state.type;
     return (
-      <div className="socialmedias">
+      <div>
         {
           formType === 'reg'
           ? this.drawRegSocialBtns()

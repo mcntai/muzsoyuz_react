@@ -6,7 +6,6 @@
 
 .wrapper {
   width: 375px;
-  height: 812px;
   background: #FFFFFF;
   display: flex;
   flex-direction: column;

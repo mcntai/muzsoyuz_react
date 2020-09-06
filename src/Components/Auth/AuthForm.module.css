@@ -1,0 +1,164 @@
+/*Common classes*/
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.focus:focus {
+  outline: none;
+}
+
+.inputIconPosition {
+  background-position: 6% 50%;
+  background-repeat: no-repeat;
+  padding-left: 59px;
+}
+
+.authForm {
+  composes: flexCol;
+  width: 322px;
+  border: 1px solid #C4C4C4;
+  border-radius: 10px;
+  margin-top: 55px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Middle part */
+
+.authFormReg {
+  composes: authForm;
+  height: 265px;
+}
+
+.authFormLog {
+  composes: authForm;
+  height: 248px;
+}
+
+.header {
+  composes: montserrat;
+  display: flex;
+  justify-content: space-between;
+  width: 290px;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #AEAAAA;
+  margin-top: 31px;
+}
+
+.header a {
+  text-decoration: none;
+  color: #AEAAAA;
+}
+
+.register, .login {
+  color: #AEAAAA;
+  border-bottom: 2px solid #6384EB;
+  padding-bottom: 7px;
+}
+
+.register:visited, .login:visited {
+  color: #000000;
+}
+
+.form {
+  composes: flexCol;
+  width: 290px;
+  padding-top: 21px;
+}
+
+.inputEmail,
+.inputPassword {
+  composes: focus inputIconPosition montserrat;
+  width: 290px;
+  height: 40px;
+  border: 1px solid #6A6A6A;
+  border-radius: 16px;
+  margin-bottom: 15px;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: lowercase;
+}
+
+.inputConfirmPassword {
+  composes: focus inputIconPosition montserrat;
+  width: 290px;
+  height: 40px;
+  border: 1px solid #6A6A6A;
+  border-radius: 16px;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: lowercase;
+}
+
+.inputEmail::placeholder,
+.inputPassword::placeholder,
+.inputConfirmPassword::placeholder {
+  opacity: 0.5;
+}
+
+.inputEmail {
+  background-image: url('../../Assets/img/email-icon.png');
+}
+
+.inputPassword, .inputConfirmPassword {
+  background-image: url('../../Assets/img/password-icon.png');
+}
+
+.rememberAndForgot {
+  composes: montserrat;
+  width: 290px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 15px;
+  padding-top: 9px;
+}
+
+.rememberMe {
+  width: 15px;
+  height: 15px;
+}
+
+.rememberAndForgot p {
+  margin-left: -50px;
+  color: #6A6A6A;
+}
+
+.rememberAndForgot a {
+  text-decoration: none;
+  color: #6A6A6A;
+}
+
+.inputSubmit {
+  composes: focus;
+  width: 46px;
+  height: 46px;
+  border-radius: 50px;
+  background-image: url('../../Assets/img/arrow-icon.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #6384EB;
+  border: #6384EB;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+  position: relative;
+  top: 14px;
+}
+
+
+
+

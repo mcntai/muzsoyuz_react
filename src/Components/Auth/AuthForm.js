@@ -1,5 +1,5 @@
 import React from 'react';
-import './AuthForm.css';
+import s from './AuthForm.module.css';
 
 
 class AuthForm extends React.Component {
@@ -26,21 +26,16 @@ class AuthForm extends React.Component {
 
   drawRegForm() {
     return (
-      <div className="form flex-col shadow">
-        <div className="form__header montserrat-normal">
-          <div><a href="/login">Вход</a></div>
-          <div className="form__header__register"><a href="/register">Регистрация</a></div>
+      <div className={s.authFormReg}>
+        <div className={s.header}>
+          <a href="/login">Вход</a>
+          <a href="/register" className={s.register}>Регистрация</a>
         </div>
-        <form action="" className="form__form flex-col">
-          <input type="email" placeholder="email"
-                 className="input-email montserrat-normal input-icon-position focus" value={this.state.email}
-                 onChange={this.handleEmailChange}/>
-          <input type="password" placeholder="password" className="input-password montserrat-normal input-icon-position focus"
-                 value={this.state.password} onChange={this.handlePasswordChange}/>
-          <input type="password" placeholder="confirm password"
-                 className="input-confirm-password montserrat-normal input-icon-position focus"
-                 value={this.state.confirmPassword} onChange={this.handleConfirmPasswordChange}/>
-          <div className="btn-background"><input type="submit" className="input-submit focus" value='' onClick={(e)=>this.handleSubmit.call(this, e, 'register')}/></div>
+        <form action="" className={s.form}>
+          <input type="email" placeholder="email" className={s.inputEmail} value={this.state.email} onChange={this.handleEmailChange} />
+          <input type="password" placeholder="password" className={s.inputPassword} value={this.state.password} onChange={this.handlePasswordChange} />
+          <input type="password" placeholder="confirm password" className={s.inputConfirmPassword} value={this.state.confirmPassword} onChange={this.handleConfirmPasswordChange} />
+          <input type="submit" className={s.inputSubmit} value='' onClick={(e) => this.handleSubmit.call(this, e, 'register')} />
         </form>
       </div>
     );
@@ -48,24 +43,19 @@ class AuthForm extends React.Component {
 
   drawLoginForm() {
     return (
-      <div className="form flex-col shadow">
-        <div className="form__header montserrat-normal">
-          <div className="form__header__login"><a href="/login">Вход</a></div>
-          <div><a href="/register">Регистрация</a></div>
+      <div className={s.authFormLog}>
+        <div className={s.header}>
+          <a href="/login" className={s.login}>Вход</a>
+          <a href="/register">Регистрация</a>
         </div>
-        <form action="" className="form__form flex-col">
-          <input type="email" placeholder="email"
-                 className="input-email montserrat-normal input-icon-position focus" value={this.state.email}
-                 onChange={this.handleEmailChange}/>
-          <input type="password" placeholder="password"
-                 className="input-password montserrat-normal input-icon-position focus"
-                 value={this.state.password} onChange={this.handlePasswordChange}/>
-          <div className="form__form-login-text flex-col montserrat-normal">
-            <input type="checkbox" className="remember-login"/><p>запомнить меня</p>
-            <a href="#">Забыли Пароль?</a>
+        <form action="" className={s.form}>
+          <input type="email" placeholder="email" className={s.inputEmail} value={this.state.email} onChange={this.handleEmailChange} />
+          <input type="password" placeholder="password" className={s.inputPassword} value={this.state.password} onChange={this.handlePasswordChange} />
+          <div className={s.rememberAndForgot}>
+            <input type="checkbox" className={s.rememberMe}/><p>запомнить меня</p>
+            <a href="/">Забыли Пароль?</a>
           </div>
-          <div className="btn-background"><input type="submit" className="input-submit focus" value=''
-                                                 onClick={(e)=>this.handleSubmit.call(this, e, 'login')}/></div>
+          <input type="submit" className={s.inputSubmit} value='' onClick={(e) => this.handleSubmit.call(this, e, 'login')} />
         </form>
       </div>
     );
@@ -106,7 +96,6 @@ class AuthForm extends React.Component {
     }
   }
 
-
   async handleSubmit(e, route) {
     e.preventDefault();
 
@@ -129,7 +118,7 @@ class AuthForm extends React.Component {
 
       const response = await fetch(`http://localhost:9000/api/v1/auth/${route}`, {
         method: 'POST',
-        body: JSON.stringify({ email: this.state.email, password: this.state.password }),
+        body: JSON.stringify({email: this.state.email, password: this.state.password}),
         headers: {
           'Content-Type': 'application/json'
         }
@@ -145,7 +134,7 @@ class AuthForm extends React.Component {
   render() {
     const formType = this.state.type;
     return (
-      <div className="authform" onLoad={this.drawForm}>
+      <div>
         {
           formType === 'reg'
             ? this.drawRegForm()

@@ -1,0 +1,79 @@
+/*Common classes*/
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.focus:focus {
+  outline: none;
+}
+
+.iconsStyles {
+  width: 135px;
+  height: 35px;
+  background-position: 20% 50%;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  padding-left: 20px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Bottom part */
+
+.socialMedias {
+  composes: flexCol;
+  width: 290px;
+}
+
+.socialMedias p {
+  padding-top: 38px;
+}
+
+.authWith {
+  composes: montserrat;
+  font-size: 12px;
+  line-height: 15px;
+  color: #6A6A6A;
+}
+
+.socialIcons {
+  width: 290px;
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 0 45px 0;
+}
+
+.facebookIcon {
+  composes: focus iconsStyles montserrat cursor;
+  background: url('../../Assets/img/fb-icon.png') #3B5999 no-repeat 20% 50%;
+  border: #3B5999;
+  color: #FFFFFF;
+}
+
+.googleIcon {
+  composes: focus iconsStyles montserrat cursor;
+  background: url('../../Assets/img/google-icon.png') #FFFFFF no-repeat 20% 50%;
+  border:1px solid #6A6A6A;
+  color: #6A6A6A;
+}
+
+
+

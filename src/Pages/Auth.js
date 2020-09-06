@@ -1,5 +1,5 @@
 import React from 'react';
-import './Auth.css';
+import s from './Auth.module.css';
 import logo from '../Assets/img/logo.png';
 import AuthForm from '../Components/Auth/AuthForm';
 import SocialMedias from '../Components/Auth/SocialMedias';
@@ -18,12 +18,10 @@ class Auth extends React.Component {
 
   render() {
     return (
-        <div className="wrapper flex-col">
-          <div className="header flex-col">
-            <img src={logo} alt="Logo" className="header__logo" />
-            <div className="header__slogan montserrat-normal">
-              <span className="slogan-music">Muz</span> Soyuz
-            </div>
+        <div className={s.wrapper}>
+          <div className={s.header}>
+            <img src={logo} alt="Logo" className={s.logo} />
+              <p className={s.brandName}><span className={s.muz}>Muz</span> soyuz</p>
           </div>
           <AuthForm type={this.state.type} />
           <SocialMedias type={this.state.type} />
