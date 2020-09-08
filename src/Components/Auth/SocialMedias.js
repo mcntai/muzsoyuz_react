@@ -17,8 +17,8 @@ class SocialMedias extends React.Component {
     <div className={s.socialMedias}>
       <p className={s.authWith}>или зарегистрироваться с помощью</p>
       <div className={s.socialIcons}>
-        <a href="http://localhost:9000/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook" /></a>
-        <a href="http://localhost:9000/oauth/google"><input type="button" className={s.googleIcon} value="Google" /></a>
+        <a href="http://localhost:9000/api/v1/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook" /></a>
+        <a href="http://localhost:9000/api/v1/oauth/google"><input type="button" className={s.googleIcon} value="Google" /></a>
       </div>
     </div>
     );
@@ -30,8 +30,8 @@ class SocialMedias extends React.Component {
     <div className={s.socialMedias}>
       <p className={s.authWith}>или войти с помощью</p>
       <div className={s.socialIcons}>
-        <a href="http://localhost:9000/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook" /></a>
-        <a href="http://localhost:9000/oauth/google"><input type="button" className={s.googleIcon} value="Google" /></a>
+        <a href="http://localhost:9000/api/v1/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook" /></a>
+        <a href="http://localhost:9000/api/v1/oauth/google"><input type="button" className={s.googleIcon} value="Google" /></a>
       </div>
     </div>
     );
