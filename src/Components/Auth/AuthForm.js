@@ -15,13 +15,10 @@ class AuthForm extends React.Component {
       confirmPasswordValidity: false
     }
 
-    this.drawRegForm = this.drawRegForm.bind(this);
-    this.drawLoginForm = this.drawLoginForm.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.authHandler = this.authHandler.bind(this);
   }
 
   drawRegForm() {

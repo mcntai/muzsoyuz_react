@@ -8,8 +8,6 @@ class SocialMedias extends React.Component {
     this.state = {
       type: props.type
     }
-
-    this.drawAuthSocialBtns = this.drawAuthSocialBtns.bind(this);
   }
 
   drawAuthSocialBtns(word) {
