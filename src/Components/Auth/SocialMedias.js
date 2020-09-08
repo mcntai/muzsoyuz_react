@@ -6,32 +6,19 @@ class SocialMedias extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      type: props.type
     }
 
-    this.drawRegSocialBtns = this.drawRegSocialBtns.bind(this);
-    this.drawLoginSocialBtns = this.drawLoginSocialBtns.bind(this);
+    this.drawAuthSocialBtns = this.drawAuthSocialBtns.bind(this);
   }
 
-  drawRegSocialBtns() {
+  drawAuthSocialBtns(word) {
     return (
     <div className={s.socialMedias}>
-      <p className={s.authWith}>или зарегистрироваться с помощью</p>
+      <p className={s.authWith}>или {word} с помощью</p>
       <div className={s.socialIcons}>
-        <a href="http://localhost:9000/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook" /></a>
-        <a href="http://localhost:9000/oauth/google"><input type="button" className={s.googleIcon} value="Google" /></a>
-      </div>
-    </div>
-    );
-  }
-
-
-  drawLoginSocialBtns() {
-    return (
-    <div className={s.socialMedias}>
-      <p className={s.authWith}>или войти с помощью</p>
-      <div className={s.socialIcons}>
-        <a href="http://localhost:9000/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook" /></a>
-        <a href="http://localhost:9000/oauth/google"><input type="button" className={s.googleIcon} value="Google" /></a>
+        <a href="http://localhost:9000/api/v1/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook" /></a>
+        <a href="http://localhost:9000/api/v1/oauth/google"><input type="button" className={s.googleIcon} value="Google" /></a>
       </div>
     </div>
     );
@@ -42,9 +29,7 @@ class SocialMedias extends React.Component {
     return (
       <div>
         {
-          formType === 'reg'
-          ? this.drawRegSocialBtns()
-          : this.drawLoginSocialBtns()
+          this.drawAuthSocialBtns(formType === 'reg' ? 'зарегистрироваться' : 'войти')
         }
       </div>
     );
