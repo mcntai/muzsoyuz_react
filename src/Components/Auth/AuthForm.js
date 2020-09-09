@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './AuthForm.module.css';
+import { assert } from '../../errors';
 
 
 class AuthForm extends React.Component {
@@ -19,6 +20,13 @@ class AuthForm extends React.Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  #FORM_TYPE_MAP = {
+    reg: this.drawRegForm.bind(this),
+    login: this.drawLoginForm.bind(this),
+    oauthFacebook: this.oauthHandled.bind(this, 'facebook'),
+    oauthGoogle: this.oauthHandled.bind(this, 'google'),
   }
 
   drawRegForm() {
@@ -82,30 +90,30 @@ class AuthForm extends React.Component {
   }
 
   async authHandler(response) {
-    if (response.ok) {
-      let result = await response.json();
+    assert(response.ok, response.statusText)
 
-      localStorage.setItem('token', result.token);
-      console.log(result)
-    }
-    else {
-      alert("Ошибка: " + response.status);
-    }
+    const { token } = await response.json();
+
+    localStorage.setItem('token', token);
+
+    alert(JSON.stringify({ token }))
+  }
+
+  oauthHandled(provider) {
+    const path = window.location.href.replace(`http://localhost:3000/oauth/${provider}/callback`, '')
+
+    fetch(`http://localhost:9000/api/v1/oauth/${provider}/callback/${path}`)
+      .then(this.authHandler)
+      .catch(console.error)
   }
 
   async handleSubmit(e, route) {
     e.preventDefault();
 
-    const assertArguments = (condition, message) => {
-      if (!condition) {
-        throw new Error(message)
-      }
-    }
-
     const assertRegister = state => {
-      assertArguments(state.emailValidity, 'Проверьте ваш имейл')
-      assertArguments(state.passwordValidity, 'Проверьте ваш пароль')
-      assertArguments(state.confirmPasswordValidity, 'Пароль не сходится')
+      assert(state.emailValidity, 'Проверьте ваш имейл')
+      assert(state.passwordValidity, 'Проверьте ваш пароль')
+      assert(state.confirmPasswordValidity, 'Пароль не сходится')
     }
 
     try {
@@ -129,13 +137,10 @@ class AuthForm extends React.Component {
 
 
   render() {
-    const formType = this.state.type;
     return (
       <div>
         {
-          formType === 'reg'
-            ? this.drawRegForm()
-            : this.drawLoginForm()
+          this.#FORM_TYPE_MAP[this.state.type]()
         }
       </div>
     );

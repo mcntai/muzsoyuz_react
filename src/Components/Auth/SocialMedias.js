@@ -10,24 +10,35 @@ class SocialMedias extends React.Component {
     }
   }
 
-  drawAuthSocialBtns(word) {
+  #FORM_TYPE_MAP = {
+    reg: 'зарегистрироваться',
+    login: 'войти',
+    oauth: null,
+  }
+
+  getLinks() {
     return (
-    <div className={s.socialMedias}>
-      <p className={s.authWith}>или {word} с помощью</p>
       <div className={s.socialIcons}>
         <a href="http://localhost:9000/api/v1/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook" /></a>
         <a href="http://localhost:9000/api/v1/oauth/google"><input type="button" className={s.googleIcon} value="Google" /></a>
       </div>
+    )
+  }
+
+  drawAuthSocialBtns(word) {
+    return (
+    <div className={s.socialMedias}>
+      <p className={s.authWith}>{word && `или ${word} с помощью`}</p>
+      {word && this.getLinks()}
     </div>
     );
   }
 
   render() {
-    const formType = this.state.type;
     return (
       <div>
         {
-          this.drawAuthSocialBtns(formType === 'reg' ? 'зарегистрироваться' : 'войти')
+          this.drawAuthSocialBtns(this.#FORM_TYPE_MAP[this.state.type])
         }
       </div>
     );
