@@ -13,7 +13,6 @@ class SocialMedias extends React.Component {
   #FORM_TYPE_MAP = {
     reg: 'зарегистрироваться',
     login: 'войти',
-    oauth: null,
   }
 
   getLinks() {
