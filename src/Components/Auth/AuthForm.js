@@ -25,8 +25,8 @@ class AuthForm extends React.Component {
   #FORM_TYPE_MAP = {
     reg: this.drawRegForm.bind(this),
     login: this.drawLoginForm.bind(this),
-    oauthFacebook: this.oauthHandled.bind(this, 'facebook'),
-    oauthGoogle: this.oauthHandled.bind(this, 'google'),
+    oauthFacebook: this.oauthCallback.bind(this, 'facebook'),
+    oauthGoogle: this.oauthCallback.bind(this, 'google'),
   }
 
   drawRegForm() {
@@ -99,7 +99,7 @@ class AuthForm extends React.Component {
     alert(JSON.stringify({ token }))
   }
 
-  oauthHandled(provider) {
+  oauthCallback(provider) {
     const path = window.location.href.replace(`http://localhost:3000/oauth/${provider}/callback`, '')
 
     fetch(`http://localhost:9000/api/v1/oauth/${provider}/callback/${path}`)
