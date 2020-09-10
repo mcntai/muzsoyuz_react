@@ -13,15 +13,53 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      isLoggedIn: false,
+      token: localStorage.getItem('token')
     }
   }
+
+
+  // async authHandler(response) {
+  //   if (response.ok) {
+  //     let result = await response.json();
+  //
+  //     this.setState({isLoggedIn: true});
+  //
+  //     console.log(result);
+  //   }
+  //   else {
+  //     alert("Ошибка: " + response.status);
+  //   }
+  // }
+  //
+  // async isLoggedIn() {
+  //   try {
+  //     const response = await fetch("http://localhost:9000/api/v1/user/profile", {
+  //       method: 'GET',
+  //       headers: {
+  //         'Authorization': `Bearer ${this.state.token}`,
+  //         'Content-Type': 'application/json'
+  //       }
+  //     });
+  //
+  //     await this.authHandler(response)
+  //   }
+  //   catch (e) {
+  //     console.error(e)
+  //   }
+  // }
+  //
+  // componentDidMount() {
+  //   this.isLoggedIn().catch(console.error)
+  // }
 
   render() {
     return (
       <div className={s.wrapper}>
         <header className={s.header}>
-          { localStorage.getItem('token') && <Header /> }
+          {
+            this.state.isLoggedIn && <Header />
+          }
         </header>
         <main className={s.main}>
           <img src={slogan} alt="slogan"/>

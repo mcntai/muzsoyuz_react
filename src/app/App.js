@@ -9,7 +9,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      
     }
   }
 
@@ -20,10 +19,12 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/register" render={()=><Auth type="reg" />} />
             <Route exact path="/login" render={()=><Auth type="login" />} />
+            <Route exact path="/oauth/facebook/callback" render={()=><Auth type="oauthFacebook" />} />
+            <Route exact path="/oauth/google/callback" render={()=><Auth type="oauthGoogle" />} />
             <Route exact path="/main" component={Main} />
           </Switch>
         </div>
-      </BrowserRouter> 
+      </BrowserRouter>
     );
   }
 }

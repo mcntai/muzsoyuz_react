@@ -6,45 +6,38 @@ class SocialMedias extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      type: props.type
     }
-
-    this.drawRegSocialBtns = this.drawRegSocialBtns.bind(this);
-    this.drawLoginSocialBtns = this.drawLoginSocialBtns.bind(this);
   }
 
-  drawRegSocialBtns() {
-    return (
-    <div className={s.socialMedias}>
-      <p className={s.authWith}>или зарегистрироваться с помощью</p>
-      <div className={s.socialIcons}>
-        <a href="http://localhost:9000/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook" /></a>
-        <a href="http://localhost:9000/oauth/google"><input type="button" className={s.googleIcon} value="Google" /></a>
-      </div>
-    </div>
-    );
+  #FORM_TYPE_MAP = {
+    reg: 'зарегистрироваться',
+    login: 'войти',
   }
 
+  getLinks() {
+    return (
+      <div className={s.socialIcons}>
+        <a href="http://localhost:9000/api/v1/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook" /></a>
+        <a href="http://localhost:9000/api/v1/oauth/google"><input type="button" className={s.googleIcon} value="Google" /></a>
+      </div>
+    )
+  }
 
-  drawLoginSocialBtns() {
+  drawAuthSocialBtns(word) {
     return (
     <div className={s.socialMedias}>
-      <p className={s.authWith}>или войти с помощью</p>
-      <div className={s.socialIcons}>
-        <a href="http://localhost:9000/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook" /></a>
-        <a href="http://localhost:9000/oauth/google"><input type="button" className={s.googleIcon} value="Google" /></a>
-      </div>
+      <p className={s.authWith}>{word && `или ${word} с помощью`}</p>
+      {word && this.getLinks()}
     </div>
     );
   }
 
   render() {
-    const formType = this.state.type;
     return (
       <div>
         {
-          formType === 'reg'
-          ? this.drawRegSocialBtns()
-          : this.drawLoginSocialBtns()
+          this.drawAuthSocialBtns(this.#FORM_TYPE_MAP[this.state.type])
         }
       </div>
     );
