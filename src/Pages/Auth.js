@@ -25,6 +25,7 @@ class Auth extends React.Component {
           </div>
           <AuthForm type={this.state.type} />
           <SocialMedias type={this.state.type} />
+          <p></p>
         </div>
     );
   }
