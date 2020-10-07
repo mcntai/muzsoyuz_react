@@ -2,6 +2,7 @@ import React from 'react';
 import s from './App.module.css';
 import Auth from '../Pages/Auth';
 import Main from '../Pages/Main';
+import SocialMediaOauth from '../Pages/SocialMediaOauth';
 import {connect} from 'react-redux';
 import { fetchDataIfLoggedIn } from '../actions/getProfileActions';
 
@@ -20,8 +21,12 @@ const getData = () => {
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchDataIfLoggedIn(getData));
+    if(localStorage.getItem('token')) {
+      this.props.dispatch(fetchDataIfLoggedIn(getData));
+    }
   }
+  
+  
 
 
   render() {
@@ -31,8 +36,8 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/register" render={()=><Auth type="reg" />} />
             <Route exact path="/login" render={()=><Auth type="login" />} />
-            <Route exact path="/oauth/facebook/callback" render={()=><Main type="facebook" />} />
-            <Route exact path="/oauth/google/callback" render={()=><Main type="google" />} />
+            <Route exact path="/oauth/facebook/callback" render={()=><SocialMediaOauth type="facebook" />} />
+            <Route exact path="/oauth/google/callback" render={()=><SocialMediaOauth type="google" />} />
             <Route exact path="/main" component={Main} />
           </Switch>
         </div>

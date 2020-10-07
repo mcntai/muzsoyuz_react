@@ -3,8 +3,6 @@ export const fetchDataIfLoggedIn = (fetch) => {
 		dispatch(fetchLoginStatusBegin());
 		try {
 			let response = await fetch()
-			
-			// let json = await response.json()
 
 			if (response.statusText === 'OK') {
 				dispatch(fetchLoginStatusSuccess())

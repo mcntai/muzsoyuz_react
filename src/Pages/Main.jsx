@@ -7,7 +7,6 @@ import findJob from '../Assets/img/findJob.png';
 import mainPage from '../Assets/img/mainPage.png';
 import offerJob from '../Assets/img/offerJob.png';
 import {connect} from 'react-redux';
-import { oauthCallback } from '../actions/oauthActions';
 import preloader from '../Assets/img/preloader.gif'
 
 const mapStateToProps = state => {
@@ -21,9 +20,6 @@ const mapStateToProps = state => {
 
 
 class Main extends React.Component {
-	componentDidMount() {
-		// oauthCallback(this.props.type);
-	}
 	
 	drawPage() {
 		return (
