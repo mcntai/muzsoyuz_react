@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './AuthForm.module.css';
-import { assert } from '../../errors';
 import { handleAuthSubmit } from '../../actions/asyncAuthActions'
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
