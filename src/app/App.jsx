@@ -6,39 +6,33 @@ import SocialMediaOauth from '../Pages/SocialMediaOauth';
 import {connect} from 'react-redux';
 import { fetchDataIfLoggedIn } from '../actions/getProfileActions';
 
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {BrowserRouter, Route, Switch, Link} from 'react-router-dom'
 
-
-const getData = () => {
-  return fetch('http://localhost:9000/api/v1/user/profile', {
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      'Content-Type': 'application/json'
-    }
-  })
+const mapStateToProps = state => {
+  return {
+    currentRoute: state.pageReducer.currentRoute,
+    prevRoute: state.pageReducer.prevRoute
+  }
 }
 
 class App extends React.Component {
-  componentDidMount() {
-    if(localStorage.getItem('token')) {
-      this.props.dispatch(fetchDataIfLoggedIn(getData));
+  componentDidUpdate() {
+    if (this.props.currentRoute !== this.props.prevRoute) {
+      this.props.dispatch(fetchDataIfLoggedIn());
     }
   }
   
   
-
-
   render() {
     return (
       <BrowserRouter>
         <div className={s.wrapper}>
           <Switch>
-            <Route exact path="/register" render={()=><Auth type="reg" />} />
-            <Route exact path="/login" render={()=><Auth type="login" />} />
+            <Route exact path="/register" component={(props)=><Auth type="register" {...props} />} />
+            <Route exact path="/login" component={(props)=><Auth type="login" {...props} />} />
             <Route exact path="/oauth/facebook/callback" render={()=><SocialMediaOauth type="facebook" />} />
             <Route exact path="/oauth/google/callback" render={()=><SocialMediaOauth type="google" />} />
-            <Route exact path="/main" component={Main} />
+            <Route exact path="/" component={Main} />
           </Switch>
         </div>
       </BrowserRouter>
@@ -46,4 +40,4 @@ class App extends React.Component {
   }
 }
 
-export default connect(undefined)(App);
+export default connect(mapStateToProps)(App);

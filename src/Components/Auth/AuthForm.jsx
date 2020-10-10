@@ -2,7 +2,7 @@ import React from 'react';
 import s from './AuthForm.module.css';
 import { handleAuthSubmit } from '../../actions/asyncAuthActions'
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import AuthNavLinks from '../common/AuthNavLinks';
 
 
 const mapStateToProps = state => {
@@ -53,6 +53,12 @@ const mapDispatchToProps = dispatch => {
 				type: 'CONFIRM_PASSWORD_VALIDATE',
 				payload: password === confirmPassword
 			})
+		},
+		authPageRoute: () => {
+			dispatch({
+				type: 'AUTH_PAGE',
+				currentRoute: window.location.href.replace('http://localhost:3000/', '')
+			})
 		}
 	}
 }
@@ -64,20 +70,21 @@ class AuthForm extends React.Component {
       type: props.type
     }
   }
-
-  #FORM_TYPE_MAP = {
-    reg: this.drawRegForm.bind(this),
-    login: this.drawLoginForm.bind(this),
-
+  
+  componentDidMount() {
+    this.props.authPageRoute()
   }
+	
+	// #FORM_TYPE_MAP = {
+  //   register: this.drawRegForm.bind(this),
+  //   login: this.drawLoginForm.bind(this),
+	//
+  // }
 
   drawRegForm() {
     return (
       <div className={s.authFormReg}>
-        <div className={s.header}>
-          <NavLink to="/login">Вход</NavLink>
-          <NavLink to="/register" className={s.register}>Регистрация</NavLink>
-        </div>
+	      <AuthNavLinks />
         <form action="" className={s.form}>
           <input type="email" placeholder="email" className={s.inputEmail} value={this.props.email} onChange={(e) => this.props.handleEmailChange(e)} onBlur={() => this.props.handleEmailValidation(this.props.email)} />
           <input type="password" placeholder="password" className={s.inputPassword} value={this.props.password} onChange={(e) => this.props.handlePasswordChange(e)} onBlur={() => this.props.handlePasswordValidation(this.props.password)} />
@@ -91,10 +98,7 @@ class AuthForm extends React.Component {
   drawLoginForm() {
     return (
       <div className={s.authFormLog}>
-        <div className={s.header}>
-	        <NavLink to="/login" className={s.login}>Вход</NavLink>
-	        <NavLink to="/register">Регистрация</NavLink>
-        </div>
+	      <AuthNavLinks />
         <form action="" className={s.form}>
           <input type="email" placeholder="email" className={s.inputEmail} value={this.props.email} onChange={(e) => this.props.handleEmailChange(e)} onBlur={() => this.props.handleEmailValidation(this.props.email)} />
           <input type="password" placeholder="password" className={s.inputPassword} value={this.props.password} onChange={(e) => this.props.handlePasswordChange(e)} onBlur={() => this.props.handlePasswordValidation(this.props.password)} />
@@ -110,10 +114,12 @@ class AuthForm extends React.Component {
   
   render() {
     return (
-      <div>
-        {
-          this.#FORM_TYPE_MAP[this.state.type]()
-        }
+	    <div>
+		    {
+		    	this.state.type === 'register'
+			    ? this.drawRegForm()
+				  : this.drawLoginForm()
+		    }
       </div>
     );
   }

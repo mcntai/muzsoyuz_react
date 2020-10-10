@@ -17,9 +17,21 @@ const mapStateToProps = state => {
 	}
 }
 
-
+const mapDispatchToProps = dispatch => {
+	return {
+		mainPageRoute: () => {
+			dispatch({
+				type: 'MAIN_PAGE',
+				currentRoute: 'main'
+			})
+		}
+	}
+}
 
 class Main extends React.Component {
+	componentDidMount() {
+		this.props.mainPageRoute()
+	}
 	
 	drawPage() {
 		return (
@@ -62,4 +74,4 @@ class Main extends React.Component {
 	}
 }
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

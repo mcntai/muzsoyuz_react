@@ -7,7 +7,7 @@ const initialState = {
 	passwordValidity: false,
 	confirmPassword: '',
 	confirmPasswordValidity: false,
-	socialMediaAuthorized: undefined,
+	socialMediaAuthorized: null,
 	socialMediaError: ''
 }
 

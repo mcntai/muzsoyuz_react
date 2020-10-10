@@ -25,8 +25,8 @@ const oauthCallback = (provider) => {
 
 			dispatch(fetchOauthStatusSuccess());
 		}
-		catch(response) {
-			dispatch(fetchOauthStatusFailure(response.statusText))
+		catch(error) {
+			dispatch(fetchOauthStatusFailure(error.message))
 		}
 	}
 }
@@ -48,19 +48,22 @@ class SocialMediaOauth extends React.Component {
 		this.props.dispatch(oauthCallback(this.props.type))
 	}
 	
+	handleRedirect() {
+		if (this.props.socialMediaAuthorized)	{
+			return <Redirect to='/' />
+		}
+		else if (!!this.props.socialMediaAuthorized) {
+			return <Redirect to ='/login' />
+		}
+		else {
+			return null
+		}
+	}
+	
 	render() {
 		return (
 			<div>
-				{
-					this.props.socialMediaAuthorized === true
-					? <Redirect to='/main' />
-					: null
-				}
-				{
-					this.props.socialMediaAuthorized === false
-						? <Redirect to='/login' />
-						: null
-				}
+				{this.handleRedirect()}
 			</div>
 		);
 	}
