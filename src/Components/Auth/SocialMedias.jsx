@@ -18,8 +18,8 @@ class SocialMedias extends React.Component {
   getLinks() {
     return (
       <div className={s.socialIcons}>
-        <a href="http://localhost:9000/api/v1/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook" /></a>
-        <a href="http://localhost:9000/api/v1/oauth/google"><input type="button" className={s.googleIcon} value="Google" /></a>
+        <a href="http://localhost:9000/api/v1/auth/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook" /></a>
+        <a href="http://localhost:9000/api/v1/auth/oauth/google"><input type="button" className={s.googleIcon} value="Google" /></a>
       </div>
     )
   }

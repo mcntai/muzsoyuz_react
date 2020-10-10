@@ -1,65 +1,41 @@
 import React from "react";
 import {connect} from 'react-redux';
-import {assert} from "../errors";
-import {Redirect} from "react-router";
+import {BasicAuth} from "./BasicAuth";
 
-const mapStateToProps = state => {
-	return {
-		socialMediaAuthorized: state.authReducer.socialMediaAuthorized
-	}
-}
+const mapStateToProps = state => ({
+	authorized: state.authReducer.authorized
+})
 
-const oauthCallback = (provider) => {
-	return async dispatch => {
-		try {
-			const query = new URL(window.location.href);
-			const response = await fetch(`http://localhost:9000/api/v1/oauth/${provider}/callback/${query.search}`);
-
-			assert(response.ok, response.statusText);
-
-			const { token } = await response.json();
-
-			localStorage.setItem('token', token);
-
-			alert(JSON.stringify({ token }));
-
-			dispatch(fetchOauthStatusSuccess());
-		}
-		catch(error) {
-			dispatch(fetchOauthStatusFailure(error.message))
-		}
-	}
-}
-
-
-const fetchOauthStatusSuccess = () => ({
-	type: 'FETCH_OAUTH_STATUS_SUCCESS',
+const fetchAuthStatusSuccess = () => ({
+	type: 'FETCH_AUTH_STATUS_SUCCESS',
 	payload: true
 })
 
-const fetchOauthStatusFailure = (error) => ({
-	type: 'FETCH_OAUTH_STATUS_FAILURE',
+const fetchAuthStatusFailure = (error) => ({
+	type: 'FETCH_AUTH_STATUS_FAILURE',
 	payload: {error}
 })
 
-
-class SocialMediaOauth extends React.Component {
+class SocialMediaOauth extends BasicAuth {
 	componentDidMount() {
-		this.props.dispatch(oauthCallback(this.props.type))
+		this.props.dispatch(this.oauthCallback(this.props.type))
 	}
-	
-	handleRedirect() {
-		if (this.props.socialMediaAuthorized)	{
-			return <Redirect to='/' />
-		}
-		else if (!!this.props.socialMediaAuthorized) {
-			return <Redirect to ='/login' />
-		}
-		else {
-			return null
+
+	oauthCallback(provider) {
+		return async dispatch => {
+			try {
+				const query = new URL(window.location.href);
+				const response = await fetch(`http://localhost:9000/api/v1/auth/oauth/${provider}/callback/${query.search}`);
+
+				await this.setToken(response)
+
+				dispatch(fetchAuthStatusSuccess())
+			} catch(error) {
+				dispatch(fetchAuthStatusFailure(error.message))
+			}
 		}
 	}
-	
+
 	render() {
 		return (
 			<div>
