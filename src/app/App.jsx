@@ -6,7 +6,7 @@ import SocialMediaOauth from '../Pages/SocialMediaOauth';
 import {connect} from 'react-redux';
 import { fetchDataIfLoggedIn } from '../actions/getProfileActions';
 
-import {BrowserRouter, Route, Switch, Link} from 'react-router-dom'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 const mapStateToProps = state => {
   return {
@@ -21,8 +21,8 @@ class App extends React.Component {
       this.props.dispatch(fetchDataIfLoggedIn());
     }
   }
-  
-  
+
+
   render() {
     return (
       <BrowserRouter>

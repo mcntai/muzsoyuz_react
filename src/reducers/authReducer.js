@@ -7,8 +7,8 @@ const initialState = {
 	passwordValidity: false,
 	confirmPassword: '',
 	confirmPasswordValidity: false,
-	socialMediaAuthorized: null,
-	socialMediaError: ''
+	authorized: undefined,
+	authError: ''
 }
 
 const authReducer = (state = initialState, action) => {
@@ -32,12 +32,12 @@ const authReducer = (state = initialState, action) => {
 			case 'CONFIRM_PASSWORD_VALIDATE':
 				draft.confirmPasswordValidity = action.payload
 				break
-			case 'FETCH_OAUTH_STATUS_SUCCESS':
-				draft.socialMediaAuthorized = action.payload
+			case 'FETCH_AUTH_STATUS_SUCCESS':
+				draft.authorized = action.payload
 				break
-			case 'FETCH_OAUTH_STATUS_FAILURE':
-				draft.socialMediaAuthorized = false
-				draft.socialMediaError = action.payload
+			case 'FETCH_AUTH_STATUS_FAILURE':
+				draft.authorized = false
+				draft.authError = action.payload
 				break
 			default:
 				return state
