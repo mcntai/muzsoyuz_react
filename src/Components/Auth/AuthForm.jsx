@@ -1,19 +1,20 @@
-import React from 'react';
-import s from './AuthForm.module.css';
-import {connect} from 'react-redux';
-import AuthNavLinks from '../common/AuthNavLinks';
-import {assert} from "../../errors";
-import {BasicAuth} from "../../Pages/BasicAuth";
+import React from 'react'
+import s from './AuthForm.module.css'
+import { connect } from 'react-redux'
+import AuthNavLinks from '../common/AuthNavLinks'
+import { assert } from "../../errors"
+import BasicAuth from "../../Pages/BasicAuth"
+
 
 const mapStateToProps = state => {
   return {
-    email: state.authReducer.email,
     authorized: state.authReducer.authorized,
+    email: state.authReducer.email,
     emailValidity: state.authReducer.emailValidity,
     password: state.authReducer.password,
     passwordValidity: state.authReducer.passwordValidity,
     confirmPassword: state.authReducer.confirmPassword,
-    confirmPasswordValidity: state.authReducer.confirmPasswordValidity
+    confirmPasswordValidity: state.authReducer.confirmPasswordValidity,
   }
 }
 
@@ -21,64 +22,64 @@ const mapDispatchToProps = dispatch => ({
   handleEmailChange: (e) => {
     dispatch({
       type: 'EMAIL_CHANGE',
-      payload: e.target.value
+      payload: e.target.value,
     })
   },
   handleEmailValidation: (email) => {
     dispatch({
       type: 'EMAIL_VALIDATE',
-      payload: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)
+      payload: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email),
     })
   },
   handlePasswordChange: (e) => {
     dispatch({
       type: 'PASSWORD_CHANGE',
-      payload: e.target.value
+      payload: e.target.value,
     })
   },
   handlePasswordValidation: (password) => {
     dispatch({
       type: 'PASSWORD_VALIDATE',
-      payload: /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password)
+      payload: /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password),
     })
   },
   handleConfirmPasswordChange: (e) => {
     dispatch({
       type: 'CONFIRM_PASSWORD_CHANGE',
-      payload: e.target.value
+      payload: e.target.value,
     })
   },
   handleConfirmPasswordValidation: (password, confirmPassword) => {
     dispatch({
       type: 'CONFIRM_PASSWORD_VALIDATE',
-      payload: password === confirmPassword
+      payload: password === confirmPassword,
     })
   },
   authPageRoute: () => {
     dispatch({
       type: 'AUTH_PAGE',
-      currentRoute: window.location.href.replace('http://localhost:3000/', '')
+      currentRoute: window.location.href.replace('http://localhost:3000/', ''),
     })
   },
   fetchAuthStatusSuccess: () => {
     dispatch({
       type: 'FETCH_AUTH_STATUS_SUCCESS',
-      payload: true
+      payload: true,
     })
   },
   fetchAuthStatusFailure: (error) => {
     dispatch({
       type: 'FETCH_AUTH_STATUS_FAILURE',
-      payload: {error}
+      payload: { error },
     })
-  }
+  },
 })
 
 class AuthForm extends BasicAuth {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      type: props.type
+      type: props.type,
     }
   }
 
@@ -87,31 +88,31 @@ class AuthForm extends BasicAuth {
   }
 
   assertAuth(props, route) {
-    assert(props.emailValidity, 'Проверьте ваш имейл');
-    assert(props.passwordValidity, 'Проверьте ваш пароль');
+    assert(this.props.emailValidity, 'Проверьте ваш имейл')
+    assert(this.props.passwordValidity, 'Проверьте ваш пароль')
 
     if (route === 'register') {
-      assert(props.confirmPasswordValidity, 'Пароль не сходится');
+      assert(this.props.confirmPasswordValidity, 'Пароль не сходится')
     }
   }
 
   async handleAuthSubmit(e, route) {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
       this.assertAuth(this.props, route)
 
       const response = await fetch(`http://localhost:9000/api/v1/auth/${route}`, {
         method: 'POST',
-        body: JSON.stringify({email: this.props.email, password: this.props.password}),
-        headers: {'Content-Type': 'application/json'}
-      });
+        body: JSON.stringify({ email: this.props.email, password: this.props.password }),
+        headers: { 'Content-Type': 'application/json' },
+      })
 
       await this.setToken(response)
 
       this.props.fetchAuthStatusSuccess()
     } catch (error) {
-      console.error(error.message);
+      console.error(error.message)
 
       this.props.fetchAuthStatusFailure(error.message)
     }
@@ -135,7 +136,7 @@ class AuthForm extends BasicAuth {
                  onClick={(e) => this.handleAuthSubmit.call(this, e, 'register')}/>
         </form>
       </div>
-    );
+    )
   }
 
   drawLoginForm() {
@@ -157,7 +158,7 @@ class AuthForm extends BasicAuth {
                  onClick={(e) => this.handleAuthSubmit.call(this, e, 'login')}/>
         </form>
       </div>
-    );
+    )
   }
 
   render() {
@@ -172,8 +173,8 @@ class AuthForm extends BasicAuth {
           this.handleRedirect()
         }
       </div>
-    );
+    )
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthForm);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthForm)

@@ -1,6 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .header img {
@@ -19,3 +20,9 @@
   bottom: 40%;
   right: 50%;
 }
+
+.loginButton {
+  background: #fcd303;
+  padding: 10px 20px;
+}
+
