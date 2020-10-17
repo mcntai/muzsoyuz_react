@@ -23,23 +23,14 @@ class App extends React.Component {
     }
   }
 
-  renderLogAuth() {
-    return <Auth type={"login"}/>
-  }
-
-  renderRegAuth() {
-    return <Auth type={"register"}/>
-  }
-
-
   render() {
     return (
       <Router>
         <div className={s.wrapper}>
           <Switch>
             <Route exact path="/" component={Main}/>
-            <Route path="/login" component={this.renderLogAuth}/>
-            <Route path="/register" component={this.renderRegAuth}/>
+            <Route path="/login" render={() => <Auth type="login" />}/>
+            <Route path="/register" render={() => <Auth type="register" />}/>
             <Route path="/oauth/facebook/callback" component={() => <SocialMediaOauth type="facebook"/>}/>
             <Route path="/oauth/google/callback" component={() => <SocialMediaOauth type="google"/>}/>
             <Route path="/profile" component={Profile} />

@@ -6,12 +6,6 @@ import SocialMedias from '../Components/Auth/SocialMedias'
 
 
 class Auth extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      type: props.type,
-    }
-  }
 
   render() {
     return (
@@ -20,8 +14,8 @@ class Auth extends React.Component {
           <img src={logo} alt="Logo" className={s.logo}/>
           <p className={s.brandName}><span className={s.muz}>Muz</span> soyuz</p>
         </div>
-        <AuthForm type={this.state.type}/>
-        <SocialMedias type={this.state.type}/>
+        <AuthForm type={this.props.type}/>
+        <SocialMedias type={this.props.type}/>
       </div>
     )
   }

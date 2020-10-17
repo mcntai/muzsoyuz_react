@@ -3,12 +3,6 @@ import s from './SocialMedias.module.css'
 
 
 class SocialMedias extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      type: props.type,
-    }
-  }
 
   #FORM_TYPE_MAP = {
     register: 'зарегистрироваться',
@@ -27,8 +21,10 @@ class SocialMedias extends React.Component {
   drawAuthSocialBtns(word) {
     return (
       <div className={s.socialMedias}>
-        <p className={s.authWith}>{word && `или ${word} с помощью`}</p>
-        {word && this.getLinks()}
+        <p className={s.authWith}>{`или ${word} с помощью`}</p>
+        {
+          this.getLinks()
+        }
       </div>
     )
   }
@@ -37,7 +33,7 @@ class SocialMedias extends React.Component {
     return (
       <div>
         {
-          this.drawAuthSocialBtns(this.#FORM_TYPE_MAP[this.state.type])
+          this.drawAuthSocialBtns(this.#FORM_TYPE_MAP[this.props.type])
         }
       </div>
     )

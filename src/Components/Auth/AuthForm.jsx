@@ -55,10 +55,10 @@ const mapDispatchToProps = dispatch => ({
       payload: password === confirmPassword,
     })
   },
-  authPageRoute: () => {
+  authPageRoute: (type) => {
     dispatch({
       type: 'AUTH_PAGE',
-      currentRoute: window.location.href.replace('http://localhost:3000/', ''),
+      currentRoute: type,
     })
   },
   fetchAuthStatusSuccess: () => {
@@ -76,15 +76,14 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class AuthForm extends BasicAuth {
-  constructor(props) {
-    super(props)
-    this.state = {
-      type: props.type,
-    }
+  componentDidMount() {
+    this.props.authPageRoute(this.props.type)
   }
 
-  componentDidMount() {
-    this.props.authPageRoute()
+  componentDidUpdate(prevProps) {
+    if (this.props.type !== prevProps.type) {
+      this.props.authPageRoute(this.props.type)
+    }
   }
 
   assertAuth(props, route) {
@@ -165,7 +164,7 @@ class AuthForm extends BasicAuth {
     return (
       <div>
         {
-          this.state.type === 'register'
+          this.props.type === 'register'
             ? this.drawRegForm()
             : this.drawLoginForm()
         }
