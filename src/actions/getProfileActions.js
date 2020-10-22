@@ -7,7 +7,7 @@ export const fetchDataIfLoggedIn = () => {
       const response = await Request.get('/user/profile')
         .setToken()
 
-      if (response.statusCode < 400) {
+      if (!response.statusCode || response.statusCode < 400) {
         dispatch(fetchLoginStatusSuccess())
       } else {
         dispatch(fetchLoginStatusFailure(response.message))
