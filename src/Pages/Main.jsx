@@ -1,11 +1,9 @@
 import React from 'react'
 import s from './Main.module.css'
-import Header from '../Components/InnerHeader/Header'
+import Header from '../Components/common/Header'
+import Footer from '../Components/common/Footer'
 import slogan from '../Assets/img/slogan.png'
 import background from '../Assets/img/background.png'
-import findJob from '../Assets/img/findJob.png'
-import mainPage from '../Assets/img/mainPage.png'
-import offerJob from '../Assets/img/offerJob.png'
 import { connect } from 'react-redux'
 import preloader from '../Assets/img/preloader.gif'
 
@@ -43,17 +41,7 @@ class Main extends React.Component {
           <img src={background} alt="background"/>
           <div className={s.mainRow}></div>
         </main>
-        <div className={s.footer}>
-          <div>
-            <a href="/find-job"><img src={findJob} alt="find-job-icon"/>Найти работу</a>
-          </div>
-          <div>
-            <a href="/"><img src={mainPage} alt="main page icon"/>Главная</a>
-          </div>
-          <div className={s.offerJob}>
-            <a href="/offer-job"><img src={offerJob} alt="offer-job-icon"/>Предложить</a>
-          </div>
-        </div>
+        <Footer />
       </div>
     )
   }

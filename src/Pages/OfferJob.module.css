@@ -1,0 +1,144 @@
+/*Common classes*/
+
+.inputIconPosition {
+  background-position: 6% 50%;
+  background-repeat: no-repeat;
+  padding-left: 59px;
+}
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.headerWrapper div {
+  width: 331px;
+  margin: 0 auto;
+}
+
+.headerWrapper div img {
+  margin: 23px 0;
+}
+
+/*Main classes*/
+
+.form {
+  composes: montserrat;
+  width: 331px;
+  padding-bottom: 17px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+  margin: 0 auto;
+}
+
+.form p {
+  padding: 17.83px 0 0 23px;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.note {
+  composes: montserrat;
+  font-size: 10px;
+  line-height: 12px;
+  color: #6A6A6A;
+  margin-bottom: 5px;
+}
+
+.form input {
+  display: block;
+  margin: 25.47px auto 0;
+  width: 302px;
+  height: 40px;
+  border: 1px solid #6A6A6A;
+  border-radius: 16px;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.role {
+  display: block;
+  margin: 25.47px auto 0;
+  width: 302px;
+  height: 40px;
+  border: 1px solid #6A6A6A;
+  border-radius: 16px;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.form input:focus {
+  outline: none;
+}
+
+.role:focus {
+  outline: none;
+}
+
+.form input::placeholder {
+  opacity: 0.5;
+}
+
+.title {
+  composes: inputIconPosition;
+  background-image: url('../Assets/img/title-icon.png');
+}
+
+.date {
+  composes: inputIconPosition;
+  background-image: url('../Assets/img/calendar-icon.png');
+}
+
+.address {
+  composes: inputIconPosition;
+  background-image: url('../Assets/img/location-icon.png');
+}
+
+.sets {
+  composes: inputIconPosition;
+  background-image: url('../Assets/img/sets-icon.png');
+}
+
+.salary {
+  composes: inputIconPosition;
+  background-image: url('../Assets/img/moneyhand-icon.png');
+}
+
+.info {
+  composes: inputIconPosition;
+  background-image: url('../Assets/img/info-icon.png');
+}
+
+.phone {
+  composes: inputIconPosition;
+  background-image: url('../Assets/img/phone-icon.png');
+}
+
+.submit {
+  width: 46px;
+  height: 46px;
+  border-radius: 50px;
+  background-image: url('../Assets/img/arrow-icon.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #6384EB;
+  border: #6384EB;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.submit:focus {
+  outline: none;
+}
+
+.footerWrapper div {
+  padding-top: 0;
+  margin: -10px 0 7px 0;
+  /*position: fixed;*/
+  /*bottom: 0;*/
+}
