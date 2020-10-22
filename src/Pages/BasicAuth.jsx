@@ -7,9 +7,9 @@ class BasicAuth extends React.Component {
   async setToken(response) {
     assert(response.status !== 400, JSON.stringify(response))
 
-    localStorage.setItem('token', response.token)
+      localStorage.setItem('token', response.token)
 
-    alert(JSON.stringify({ token: response.token }))
+      alert(JSON.stringify({ token: response.token }))
   }
 
   handleRedirect() {
