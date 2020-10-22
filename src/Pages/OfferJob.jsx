@@ -2,20 +2,20 @@ import React from 'react'
 import s from './OfferJob.module.css'
 import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
-
+import {Request} from '../utils/request'
 
 class OfferJob extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: '',
-      role: '',
-      date: '',
-      address: '',
-      sets: '',
-      salary: '',
+      title         : '',
+      role          : '',
+      date          : '',
+      address       : '',
+      sets          : '',
+      salary        : '',
       additionalInfo: '',
-      phone: '',
+      phone         : '',
     }
   }
 
@@ -53,29 +53,22 @@ class OfferJob extends React.Component {
 
   async handleSubmit() {
     try {
-      const response = await fetch('http://localhost:9000/api/v1/feed', {
-        method: 'POST',
-        body: JSON.stringify({
-          feedType: 'musicalReplacement',
-          date: this.state.date.replace(/(\d{2})\.(\d{2})\.(\d{4})/, '$3-$2-$1'),
-          address: this.state.address,
-          amount: this.state.salary,
-          musicalSets: this.state.sets,
-          title: this.state.title,
-          musicalInstrument: this.state.role,
-        }),
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
-          'Content-Type': 'application/json',
-        },
+      const response = await Request.post('/feed', {
+        feedType: 'musicalReplacement',
+        date    : this.state.date.replace(/(\d{2})\.(\d{2})\.(\d{4})/, '$3-$2-$1'),
+        address : this.state.address,
+        salary  : this.state.salary,
+        sets    : this.state.sets,
+        title   : this.state.title,
+        role    : this.state.role,
       })
-      const json = await response.json()
-      console.log(json)
+        .setToken()
+
+      console.log(response)
     } catch (error) {
       console.error(error)
     }
   }
-
 
   render() {
     return (
@@ -88,8 +81,9 @@ class OfferJob extends React.Component {
           <input type='text' placeholder='введите заголовок' className={s.title} value={this.state.title}
                  onChange={this.handleTitleInput.bind(this)}/>
           <p>Роль</p>
-          <select placeholder='кто вам нужен?' className={s.role} value={this.state.role} onChange={this.handleRoleSelect.bind(this)}>
-            <option defaultValue='drums'>Барабанщик</option>
+          <select placeholder='кто вам нужен?' className={s.role} value={this.state.role}
+                  onChange={this.handleRoleSelect.bind(this)}>
+            <option value='drums'>Барабанщик</option>
             <option value='bas'>Басист</option>
             <option value='guitar'>Гитарист</option>
             <option value='voice'>Вокалист</option>
@@ -98,12 +92,14 @@ class OfferJob extends React.Component {
             <option value='piano'>Клавишные</option>
           </select>
           <p>Дата</p>
-          <input type='text' placeholder='дд.мм.гггг' className={s.date} value={this.state.date} onChange={this.handleDateInput.bind(this)}/>
+          <input type='text' placeholder='дд.мм.гггг' className={s.date} value={this.state.date}
+                 onChange={this.handleDateInput.bind(this)}/>
           <p>Адрес</p>
           <input type='text' placeholder='введите адрес' className={s.address} value={this.state.address}
                  onChange={this.handleAddressInput.bind(this)}/>
           <p>Количество сетов</p>
-          <input type='number' placeholder='например, 3' className={s.sets} value={this.state.sets} onChange={this.handleSetsInput.bind(this)}/>
+          <input type='number' placeholder='например, 3' className={s.sets} value={this.state.sets}
+                 onChange={this.handleSetsInput.bind(this)}/>
           <p>Гонорар, Грн</p>
           <input type='number' placeholder='гонорар за работу' className={s.salary} value={this.state.salary}
                  onChange={this.handleSalaryInput.bind(this)}/>
@@ -111,7 +107,8 @@ class OfferJob extends React.Component {
           <input type='text' placeholder='важные детали' className={s.info} value={this.state.additionalInfo}
                  onChange={this.handleAdditionalInfo.bind(this)}/>
           <p>Контактный телефон*</p>
-          <input type='text' placeholder='+38 (0--) --- -- --' className={s.phone} value={this.state.phone} onChange={this.handlePhone.bind(this)}/>
+          <input type='text' placeholder='+38 (0--) --- -- --' className={s.phone} value={this.state.phone}
+                 onChange={this.handlePhone.bind(this)}/>
           <p className={s.note}>* - обязательное поле</p>
         </form>
         <button className={s.submit} onClick={this.handleSubmit.bind(this)}/>

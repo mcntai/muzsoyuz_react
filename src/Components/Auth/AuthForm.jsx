@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import AuthNavLinks from '../common/AuthNavLinks'
 import { assert } from "../../errors"
 import BasicAuth from "../../Pages/BasicAuth"
+import { Request } from "../../utils/request"
 
 
 const mapStateToProps = state => {
@@ -95,10 +96,9 @@ class AuthForm extends BasicAuth {
     try {
       this.assertAuth(this.state, route)
 
-      const response = await fetch(`http://localhost:9000/api/v1/auth/${route}`, {
-        method: 'POST',
-        body: JSON.stringify({ email: this.state.email, password: this.state.password }),
-        headers: { 'Content-Type': 'application/json' },
+      const response = await Request.post(`/auth/${route}`, {
+        email   : this.state.email,
+        password: this.state.password,
       })
 
       await this.setToken(response)

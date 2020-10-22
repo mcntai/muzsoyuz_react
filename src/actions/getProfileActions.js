@@ -1,39 +1,34 @@
-export const fetchDataIfLoggedIn = () => {
-	return async dispatch => {
-		dispatch(fetchLoginStatusBegin());
-		try {
-			let response = await fetch('http://localhost:9000/api/v1/user/profile', {
-				method: 'GET',
-				headers: {
-					'Authorization': `Bearer ${localStorage.getItem('token')}`,
-					'Content-Type': 'application/json'
-				}
-			})
+import {Request} from '../utils/request'
 
-			if (response.statusText === 'OK') {
-				dispatch(fetchLoginStatusSuccess())
-			}
-			else {
-				dispatch(fetchLoginStatusFailure(response.statusText))
-			}
-		}
-		catch (response) {
-			dispatch(fetchLoginStatusFailure(response.statusText))
-		}
-	}
+export const fetchDataIfLoggedIn = () => {
+  return async dispatch => {
+    dispatch(fetchLoginStatusBegin())
+    try {
+      const response = await Request.get('/user/profile')
+        .setToken()
+
+      if (response.statusCode < 400) {
+        dispatch(fetchLoginStatusSuccess())
+      } else {
+        dispatch(fetchLoginStatusFailure(response.message))
+      }
+    } catch (error) {
+      dispatch(fetchLoginStatusFailure(error.message))
+    }
+  }
 }
 
 
 const fetchLoginStatusBegin = () => ({
-	type: 'FETCH_LOGIN_STATUS_BEGIN'
+  type: 'FETCH_LOGIN_STATUS_BEGIN'
 })
 
 const fetchLoginStatusSuccess = () => ({
-	type: 'FETCH_LOGIN_STATUS_SUCCESS',
-	payload: true
+  type   : 'FETCH_LOGIN_STATUS_SUCCESS',
+  payload: true
 })
 
 const fetchLoginStatusFailure = error => ({
-	type: 'FETCH_LOGIN_STATUS_FAILURE',
-	payload: {error}
+  type   : 'FETCH_LOGIN_STATUS_FAILURE',
+  payload: { error }
 })
