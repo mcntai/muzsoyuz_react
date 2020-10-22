@@ -14,42 +14,6 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  handleEmailChange: (e) => {
-    dispatch({
-      type: 'EMAIL_CHANGE',
-      payload: e.target.value,
-    })
-  },
-  handleEmailValidation: (email) => {
-    dispatch({
-      type: 'EMAIL_VALIDATE',
-      payload: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email),
-    })
-  },
-  handlePasswordChange: (e) => {
-    dispatch({
-      type: 'PASSWORD_CHANGE',
-      payload: e.target.value,
-    })
-  },
-  handlePasswordValidation: (password) => {
-    dispatch({
-      type: 'PASSWORD_VALIDATE',
-      payload: /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password),
-    })
-  },
-  handleConfirmPasswordChange: (e) => {
-    dispatch({
-      type: 'CONFIRM_PASSWORD_CHANGE',
-      payload: e.target.value,
-    })
-  },
-  handleConfirmPasswordValidation: (password, confirmPassword) => {
-    dispatch({
-      type: 'CONFIRM_PASSWORD_VALIDATE',
-      payload: password === confirmPassword,
-    })
-  },
   authPageRoute: (type) => {
     dispatch({
       type: 'AUTH_PAGE',
