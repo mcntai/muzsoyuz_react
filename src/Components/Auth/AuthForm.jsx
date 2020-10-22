@@ -1,75 +1,76 @@
 import React from 'react'
 import s from './AuthForm.module.css'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import AuthNavLinks from '../common/AuthNavLinks'
-import { assert } from "../../errors"
+import {assert} from "../../errors"
 import BasicAuth from "../../Pages/BasicAuth"
+import {Request} from "../../utils/request"
 
 
 const mapStateToProps = state => {
   return {
-    authorized: state.authReducer.authorized,
-    email: state.authReducer.email,
-    emailValidity: state.authReducer.emailValidity,
-    password: state.authReducer.password,
-    passwordValidity: state.authReducer.passwordValidity,
-    confirmPassword: state.authReducer.confirmPassword,
+    authorized             : state.authReducer.authorized,
+    email                  : state.authReducer.email,
+    emailValidity          : state.authReducer.emailValidity,
+    password               : state.authReducer.password,
+    passwordValidity       : state.authReducer.passwordValidity,
+    confirmPassword        : state.authReducer.confirmPassword,
     confirmPasswordValidity: state.authReducer.confirmPasswordValidity,
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  handleEmailChange: (e) => {
+  handleEmailChange              : (e) => {
     dispatch({
-      type: 'EMAIL_CHANGE',
+      type   : 'EMAIL_CHANGE',
       payload: e.target.value,
     })
   },
-  handleEmailValidation: (email) => {
+  handleEmailValidation          : (email) => {
     dispatch({
-      type: 'EMAIL_VALIDATE',
+      type   : 'EMAIL_VALIDATE',
       payload: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email),
     })
   },
-  handlePasswordChange: (e) => {
+  handlePasswordChange           : (e) => {
     dispatch({
-      type: 'PASSWORD_CHANGE',
+      type   : 'PASSWORD_CHANGE',
       payload: e.target.value,
     })
   },
-  handlePasswordValidation: (password) => {
+  handlePasswordValidation       : (password) => {
     dispatch({
-      type: 'PASSWORD_VALIDATE',
+      type   : 'PASSWORD_VALIDATE',
       payload: /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password),
     })
   },
-  handleConfirmPasswordChange: (e) => {
+  handleConfirmPasswordChange    : (e) => {
     dispatch({
-      type: 'CONFIRM_PASSWORD_CHANGE',
+      type   : 'CONFIRM_PASSWORD_CHANGE',
       payload: e.target.value,
     })
   },
   handleConfirmPasswordValidation: (password, confirmPassword) => {
     dispatch({
-      type: 'CONFIRM_PASSWORD_VALIDATE',
+      type   : 'CONFIRM_PASSWORD_VALIDATE',
       payload: password === confirmPassword,
     })
   },
-  authPageRoute: (type) => {
+  authPageRoute                  : (type) => {
     dispatch({
-      type: 'AUTH_PAGE',
+      type        : 'AUTH_PAGE',
       currentRoute: type,
     })
   },
-  fetchAuthStatusSuccess: () => {
+  fetchAuthStatusSuccess         : () => {
     dispatch({
-      type: 'FETCH_AUTH_STATUS_SUCCESS',
+      type   : 'FETCH_AUTH_STATUS_SUCCESS',
       payload: true,
     })
   },
-  fetchAuthStatusFailure: (error) => {
+  fetchAuthStatusFailure         : (error) => {
     dispatch({
-      type: 'FETCH_AUTH_STATUS_FAILURE',
+      type   : 'FETCH_AUTH_STATUS_FAILURE',
       payload: { error },
     })
   },
@@ -101,11 +102,11 @@ class AuthForm extends BasicAuth {
     try {
       this.assertAuth(this.props, route)
 
-      const response = await fetch(`http://localhost:9000/api/v1/auth/${route}`, {
-        method: 'POST',
-        body: JSON.stringify({ email: this.props.email, password: this.props.password }),
-        headers: { 'Content-Type': 'application/json' },
+      const response = await Request.post(`/auth/${route}`, {
+        email   : this.props.email,
+        password: this.props.password,
       })
+
 
       await this.setToken(response)
 

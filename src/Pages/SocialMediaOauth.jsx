@@ -1,5 +1,6 @@
 import React from "react"
 import { connect } from 'react-redux'
+import { Request } from '../utils/request'
 import BasicAuth from "./BasicAuth"
 
 
@@ -26,7 +27,8 @@ class SocialMediaOauth extends BasicAuth {
     return async dispatch => {
       try {
         const query = new URL(window.location.href)
-        const response = await fetch(`http://localhost:9000/api/v1/auth/oauth/${provider}/callback/${query.search}`)
+
+        const response = await Request.get(`/auth/oauth/${provider}/callback/${query.search}`)
 
         await this.setToken(response)
 

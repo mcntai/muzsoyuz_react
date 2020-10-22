@@ -1,14 +1,14 @@
 import React from 'react'
-import s from './FindJob.module.css'
 import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
+import {Request} from '../utils/request'
 
 class FindJob extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       fetchFinished: false,
-      fetchedData: [],
+      fetchedData  : [],
     }
   }
 
@@ -33,14 +33,26 @@ class FindJob extends React.Component {
 
   async getAllJobOffers() {
     try {
-      const response = await fetch('http://localhost:9000/api/v1/feed?feedType=musicalReplacement&props=id,title,date,musicalInstrument,salary')
-      const json = await response.json()
-
-      console.log(json)
+      const response = await Request.get('/feed')
+        .query({
+          feedType: 'musicalReplacement',
+          props   : [
+            'id',
+            'title',
+            'date',
+            'role',
+            'salary',
+          ],
+        })
+        .setToken()
 
       this.setState({ fetchFinished: true })
 
-      this.setState({ fetchedData: json || [] })
+      if (response.status !== 400) {
+        this.setState({ fetchedData: response })
+      } else {
+        throw new Error(response.message)
+      }
     } catch (error) {
       console.error(error.message)
     }
@@ -64,7 +76,7 @@ class FindJob extends React.Component {
             ? this.renderJobOffers(this.state.fetchedData)
             : null
         }
-        <Footer />
+        <Footer/>
       </div>
     )
   }

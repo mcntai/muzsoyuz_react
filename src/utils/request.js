@@ -1,0 +1,96 @@
+import {config} from '../config'
+
+const METHODS = {
+  GET   : 'GET',
+  POST  : 'POST',
+  PUT   : 'PUT',
+  DELETE: 'DELETE',
+  PATCH : 'PATCH',
+}
+
+export class Request {
+  constructor({ url, method, headers, body }) {
+    this.method = method
+    this.url = config.getApiPath() + url
+    this.headers = headers || {}
+    this.body = body
+  }
+
+  setHeaders(headers) {
+    this.headers = {
+      ...this.headers,
+      ...headers,
+    }
+
+    return this
+  }
+
+  query(query) {
+    this.url += Object.keys(query).reduce(
+      (acc, param, i, arr) => {
+        const value = Array.isArray(query[param]) ? query[param].join(',') : query[param]
+
+        acc += `${param}=${value}`
+
+        i !== arr.length - 1 && (acc += '&')
+
+        return acc
+      }, '?'
+    )
+
+    return this
+  }
+
+  setToken() {
+    this.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`
+
+    return this
+  }
+
+  static get(url) {
+    return new this({ url, method: METHODS.GET })
+  }
+
+  static post(url, body) {
+    return new this({ url, body, method: METHODS.POST })
+  }
+
+  static put(url, body) {
+    return new this({ url, body, method: METHODS.PUT })
+  }
+
+  static delete(url) {
+    return new this({ url, method: METHODS.DELETE })
+  }
+
+  static patch(url, body) {
+    return new this({ url, body, method: METHODS.PATCH })
+  }
+
+  then(successHandler, errorHandler) {
+    this.promise = this.promise || this.execute()
+
+    return this.promise.then(successHandler, errorHandler)
+  }
+
+  catch(errorHandler) {
+    this.promise = this.promise || this.execute()
+
+    return this.promise.catch(errorHandler)
+  }
+
+  async execute() {
+    const requestOptions = {
+      method : this.method,
+      headers: this.headers,
+    }
+
+    if (this.body) {
+      requestOptions.body = JSON.stringify(this.body)
+      requestOptions.headers['Content-Type'] = 'application/json'
+    }
+
+    return fetch(this.url, requestOptions)
+      .then(response => response.json())
+  }
+}
