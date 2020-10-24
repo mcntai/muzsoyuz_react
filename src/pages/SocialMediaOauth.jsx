@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from 'react-redux'
-import { Request } from '../utils/request'
+import { MuzSoyuzRequest } from '../muzsoyuz-request'
 import BasicAuth from "./BasicAuth"
 
 
@@ -28,9 +28,9 @@ class SocialMediaOauth extends BasicAuth {
       try {
         const query = new URL(window.location.href)
 
-        const response = await Request.get(`/auth/oauth/${provider}/callback/${query.search}`)
+        const response = await MuzSoyuzRequest.get(`/auth/oauth/${provider}/callback/${query.search}`)
 
-        await this.setToken(response)
+        await this.setTokenToLocalStorage(response)
 
         dispatch(fetchAuthStatusSuccess())
       } catch (error) {

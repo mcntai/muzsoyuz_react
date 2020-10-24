@@ -2,7 +2,7 @@ import React from 'react'
 import s from './OfferJob.module.css'
 import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
-import {Request} from '../utils/request'
+import {MuzSoyuzRequest} from '../muzsoyuz-request'
 
 class OfferJob extends React.Component {
   constructor(props) {
@@ -53,7 +53,7 @@ class OfferJob extends React.Component {
 
   async handleSubmit() {
     try {
-      const response = await Request.post('/feed', {
+      const response = await MuzSoyuzRequest.post('/feed', {
         feedType: 'musicalReplacement',
         date    : this.state.date.replace(/(\d{2})\.(\d{2})\.(\d{4})/, '$3-$2-$1'),
         address : this.state.address,
@@ -62,7 +62,7 @@ class OfferJob extends React.Component {
         title   : this.state.title,
         role    : this.state.role,
       })
-        .setToken()
+        .sendToken()
 
       console.log(response)
     } catch (error) {

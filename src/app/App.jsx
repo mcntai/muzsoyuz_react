@@ -1,11 +1,11 @@
 import React from 'react'
 import s from './App.module.css'
-import Auth from '../Pages/Auth'
-import Main from '../Pages/Main'
-import SocialMediaOauth from '../Pages/SocialMediaOauth'
-import Profile from '../Pages/Profile'
-import OfferJob from "../Pages/OfferJob"
-import FindJob from "../Pages/FindJob"
+import Auth from '../pages/Auth'
+import Main from '../pages/Main'
+import SocialMediaOauth from '../pages/SocialMediaOauth'
+import Profile from '../pages/Profile'
+import OfferJob from "../pages/OfferJob"
+import FindJob from "../pages/FindJob"
 import { connect } from 'react-redux'
 import { fetchDataIfLoggedIn } from '../actions/getProfileActions'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'

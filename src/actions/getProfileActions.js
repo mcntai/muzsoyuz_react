@@ -1,11 +1,11 @@
-import {Request} from '../utils/request'
+import { MuzSoyuzRequest } from '../muzsoyuz-request'
 
 export const fetchDataIfLoggedIn = () => {
   return async dispatch => {
     dispatch(fetchLoginStatusBegin())
     try {
-      const response = await Request.get('/user/profile')
-        .setToken()
+      const response = await MuzSoyuzRequest.get('/user/profile')
+        .sendToken()
 
       if (!response.statusCode || response.statusCode < 400) {
         dispatch(fetchLoginStatusSuccess())
@@ -20,15 +20,15 @@ export const fetchDataIfLoggedIn = () => {
 
 
 const fetchLoginStatusBegin = () => ({
-  type: 'FETCH_LOGIN_STATUS_BEGIN'
+  type: 'FETCH_LOGIN_STATUS_BEGIN',
 })
 
 const fetchLoginStatusSuccess = () => ({
-  type   : 'FETCH_LOGIN_STATUS_SUCCESS',
-  payload: true
+  type: 'FETCH_LOGIN_STATUS_SUCCESS',
+  payload: true,
 })
 
 const fetchLoginStatusFailure = error => ({
-  type   : 'FETCH_LOGIN_STATUS_FAILURE',
-  payload: { error }
+  type: 'FETCH_LOGIN_STATUS_FAILURE',
+  payload: { error },
 })

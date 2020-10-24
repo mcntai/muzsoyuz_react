@@ -35,14 +35,8 @@ export class Request {
         i !== arr.length - 1 && (acc += '&')
 
         return acc
-      }, '?'
+      }, this.url.includes('?') ? '&' : '?'
     )
-
-    return this
-  }
-
-  setToken() {
-    this.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`
 
     return this
   }
@@ -80,6 +74,7 @@ export class Request {
   }
 
   async execute() {
+    console.log(this.url)
     const requestOptions = {
       method : this.method,
       headers: this.headers,
