@@ -2,7 +2,7 @@ import React from 'react'
 import s from './Main.module.css'
 import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
-import slogan from '../Assets/img/slogan.png'
+import logo from '../Assets/img/logo.png'
 import background from '../Assets/img/background.png'
 import { connect } from 'react-redux'
 import preloader from '../Assets/img/preloader.gif'
@@ -37,11 +37,11 @@ class Main extends React.Component {
       <div>
         <Header/>
         <main className={s.main}>
-          <img src={slogan} alt="slogan"/>
+          <div className={s.logo}><img src={logo}/></div>
           <img src={background} alt="background"/>
-          <div className={s.mainRow}></div>
+          <div className={s.mainRow}/>
         </main>
-        <Footer />
+        <Footer/>
       </div>
     )
   }
@@ -51,7 +51,7 @@ class Main extends React.Component {
       <div className={s.wrapper}>
         {
           this.props.loading
-            ? <div><img alt="preloader" src={preloader}/></div>
+            ? <div className={s.preLoader}><img alt="preloader" src={preloader} /></div>
             : this.drawPage()
         }
       </div>

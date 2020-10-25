@@ -15,7 +15,7 @@
 }
 
 .headerWrapper div {
-  width: 331px;
+  width: 343px;
   margin: 0 auto;
 }
 
@@ -27,7 +27,7 @@
 
 .form {
   composes: montserrat;
-  width: 331px;
+  width: 343px;
   padding-bottom: 17px;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
   margin: 0 auto;
@@ -86,6 +86,12 @@
   background-image: url('../Assets/img/title-icon.png');
 }
 
+.role {
+  composes: inputIconPosition;
+  background-image: url('../Assets/img/role-icon.png');
+  color: #DADADA;
+}
+
 .date {
   composes: inputIconPosition;
   background-image: url('../Assets/img/calendar-icon.png');
@@ -136,9 +142,12 @@
   outline: none;
 }
 
-.footerWrapper div {
-  padding-top: 0;
-  margin: -10px 0 7px 0;
-  /*position: fixed;*/
-  /*bottom: 0;*/
+.footerWrapper {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  background: #FFFFFF;
+  width: 375px;
+  margin: 0 auto;
+  padding-bottom: 6px;
 }

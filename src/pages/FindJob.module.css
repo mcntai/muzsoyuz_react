@@ -38,7 +38,7 @@
 }
 
 .sortFilterButtons button {
-  width: 139px;
+  width: 169px;
   height: 32px;
   background: #CBF6FF;
   border: 1px solid #CBF6FF;
@@ -93,10 +93,13 @@
   font-size: 15px;
   line-height: 18.29px;
   color: #000000;
+  padding: 0 2px;
 }
 
 .jobDate {
   composes: jobTitle;
+  width: 40px;
+  height: 40px;
 }
 
 .jobSalary {
@@ -116,5 +119,6 @@
   background: #FFFFFF;
   width: 375px;
   margin: 0 auto;
+  padding-bottom: 6px;
 }
 

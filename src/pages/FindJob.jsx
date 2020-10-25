@@ -20,15 +20,18 @@ class FindJob extends React.Component {
         {
           data && this.state.fetchedData.map(item => {
             const date = new Date(item.date)
+
             let month = date.toLocaleString('default', { month: 'short' })
             month = month.charAt(0).toUpperCase() + month.slice(1, month.length - 1)
+
+            const salary = item.salary.slice(0, -3)
 
             return <li key={item.id} className={s.list}>
               <div className={s.jobOfferWrapper}>
                 <img src={item.imageURL} alt='Job offer'/>
                 <div>
                   <p className={s.jobTitle}>{item.title}</p>
-                  <p className={s.jobSalary}>Оплата: {item.salary},Грн</p>
+                  <p className={s.jobSalary}>Оплата: {salary}, Грн</p>
                 </div>
                 <p className={s.jobDate}>{date.getDate()} {month}</p>
               </div>

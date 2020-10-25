@@ -21,7 +21,23 @@
   flex-direction: column;
 }
 
+.logo {
+  height: 146px;
+  background: #DBF3FF;
+  text-align: center;
+}
+
+.logo img {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .mainRow {
   height: 19px;
   background: #DBF3FF;
+}
+
+.preLoader {
+  margin: 50% auto;
 }

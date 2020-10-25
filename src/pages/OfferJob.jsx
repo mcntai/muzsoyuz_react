@@ -2,20 +2,19 @@ import React from 'react'
 import s from './OfferJob.module.css'
 import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
-import {MuzSoyuzRequest} from '../muzsoyuz-request'
+import { MuzSoyuzRequest } from '../muzsoyuz-request'
 
 class OfferJob extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title         : '',
-      role          : 'drums',
-      date          : '',
-      address       : '',
-      sets          : '',
-      salary        : '',
-      additionalInfo: '',
-      phone         : '',
+      title: '',
+      role: 'drums',
+      date: '',
+      address: '',
+      sets: '',
+      salary: '',
+      phone: '',
     }
   }
 
@@ -43,10 +42,6 @@ class OfferJob extends React.Component {
     this.setState({ salary: parseInt(e.target.value) })
   }
 
-  handleAdditionalInfo(e) {
-    this.setState({ additionalInfo: e.target.value })
-  }
-
   handlePhone(e) {
     this.setState({ phone: e.target.value })
   }
@@ -55,12 +50,12 @@ class OfferJob extends React.Component {
     try {
       const response = await MuzSoyuzRequest.post('/job', {
         jobType: 'musicalReplacement',
-        date    : this.state.date.replace(/(\d{2})\.(\d{2})\.(\d{4})/, '$3-$2-$1'),
-        address : this.state.address,
-        salary  : this.state.salary,
-        sets    : this.state.sets,
-        title   : this.state.title,
-        role    : this.state.role,
+        date: this.state.date.replace(/(\d{2})\.(\d{2})\.(\d{4})/, '$3-$2-$1'),
+        address: this.state.address,
+        salary: this.state.salary,
+        sets: this.state.sets,
+        title: this.state.title,
+        role: this.state.role,
       })
         .sendToken()
 
@@ -84,12 +79,13 @@ class OfferJob extends React.Component {
           <select placeholder='кто вам нужен?' className={s.role} defaultValue='drums'
                   onChange={this.handleRoleSelect.bind(this)}>
             <option value='drums'>Барабанщик</option>
+            <option value='pandora'>Бандурист</option>
             <option value='bas'>Басист</option>
             <option value='guitar'>Гитарист</option>
             <option value='voice'>Вокалист</option>
             <option value='sax'>Саксофонист</option>
             <option value='trumpet'>Трубач</option>
-            <option value='piano'>Клавишные</option>
+            <option value='violin'>Скрипач</option>
           </select>
           <p>Дата</p>
           <input type='text' placeholder='дд.мм.гггг' className={s.date} value={this.state.date}
@@ -103,13 +99,9 @@ class OfferJob extends React.Component {
           <p>Гонорар, Грн</p>
           <input type='number' placeholder='гонорар за работу' className={s.salary} value={this.state.salary}
                  onChange={this.handleSalaryInput.bind(this)}/>
-          {/*<p>Дополнительная информация*</p>*/}
-          {/*<input type='text' placeholder='важные детали' className={s.info} value={this.state.additionalInfo}*/}
-          {/*       onChange={this.handleAdditionalInfo.bind(this)}/>*/}
-          <p>Контактный телефон*</p>
+          <p>Контактный телефон</p>
           <input type='text' placeholder='+38 (0--) --- -- --' className={s.phone} value={this.state.phone}
                  onChange={this.handlePhone.bind(this)}/>
-          <p className={s.note}>* - обязательное поле</p>
         </form>
         <button className={s.submit} onClick={this.handleSubmit.bind(this)}/>
         <div className={s.footerWrapper}>
