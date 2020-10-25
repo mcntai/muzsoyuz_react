@@ -1,8 +1,8 @@
 /* Common classes */
-
-.findJobWrapper {
-  width: 343px;
-  margin: 0 auto;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .montserrat {
@@ -13,6 +13,11 @@
 }
 
 /* Main styles */
+
+.headerWrapper {
+  width: 343px;
+  margin: 0 auto;
+}
 
 .headerWrapper div img {
   margin: 23px 0;
@@ -25,13 +30,14 @@
   font-weight: bold;
 }
 
-.sortFilterBtns {
+.sortFilterButtons {
+  width: 343px;
+  margin: 12px auto 0;
   display: flex;
   justify-content: space-between;
-  margin-top: 12px;
 }
 
-.sortFilterBtns button {
+.sortFilterButtons button {
   width: 139px;
   height: 32px;
   background: #CBF6FF;
@@ -45,13 +51,13 @@
   cursor: pointer;
 }
 
-.sortFilterBtns button:focus {
+.sortFilterButtons button:focus {
   outline: none;
 }
 
 /* Styles for Job Offers*/
 
-.listWrapper {
+.jobsWrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,8 +79,42 @@
 }
 
 .jobOfferWrapper {
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  overflow: hidden;
+  padding: 10px 20px;
 }
+
+.jobTitle {
+  composes: montserrat;
+  font-size: 15px;
+  line-height: 18.29px;
+  color: #000000;
+}
+
+.jobDate {
+  composes: jobTitle;
+}
+
+.jobSalary {
+  composes: montserrat;
+  font-size: 11px;
+  line-height: 13.4px;
+  color: #828282;
+  margin-top: 10px;
+}
+
+/* Footer classes */
+
+.footerWrapper {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  background: #FFFFFF;
+  width: 375px;
+  margin: 0 auto;
+}
+

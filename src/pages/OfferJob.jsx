@@ -9,7 +9,7 @@ class OfferJob extends React.Component {
     super(props)
     this.state = {
       title         : '',
-      role          : '',
+      role          : 'drums',
       date          : '',
       address       : '',
       sets          : '',
@@ -53,8 +53,8 @@ class OfferJob extends React.Component {
 
   async handleSubmit() {
     try {
-      const response = await MuzSoyuzRequest.post('/feed', {
-        feedType: 'musicalReplacement',
+      const response = await MuzSoyuzRequest.post('/job', {
+        jobType: 'musicalReplacement',
         date    : this.state.date.replace(/(\d{2})\.(\d{2})\.(\d{4})/, '$3-$2-$1'),
         address : this.state.address,
         salary  : this.state.salary,
@@ -81,7 +81,7 @@ class OfferJob extends React.Component {
           <input type='text' placeholder='введите заголовок' className={s.title} value={this.state.title}
                  onChange={this.handleTitleInput.bind(this)}/>
           <p>Роль</p>
-          <select placeholder='кто вам нужен?' className={s.role} value={this.state.role}
+          <select placeholder='кто вам нужен?' className={s.role} defaultValue='drums'
                   onChange={this.handleRoleSelect.bind(this)}>
             <option value='drums'>Барабанщик</option>
             <option value='bas'>Басист</option>
@@ -103,9 +103,9 @@ class OfferJob extends React.Component {
           <p>Гонорар, Грн</p>
           <input type='number' placeholder='гонорар за работу' className={s.salary} value={this.state.salary}
                  onChange={this.handleSalaryInput.bind(this)}/>
-          <p>Дополнительная информация*</p>
-          <input type='text' placeholder='важные детали' className={s.info} value={this.state.additionalInfo}
-                 onChange={this.handleAdditionalInfo.bind(this)}/>
+          {/*<p>Дополнительная информация*</p>*/}
+          {/*<input type='text' placeholder='важные детали' className={s.info} value={this.state.additionalInfo}*/}
+          {/*       onChange={this.handleAdditionalInfo.bind(this)}/>*/}
           <p>Контактный телефон*</p>
           <input type='text' placeholder='+38 (0--) --- -- --' className={s.phone} value={this.state.phone}
                  onChange={this.handlePhone.bind(this)}/>

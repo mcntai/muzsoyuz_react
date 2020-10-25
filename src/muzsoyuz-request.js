@@ -7,14 +7,12 @@ export class MuzSoyuzRequest extends Request {
     return this
   }
 
-  static getFeed(type) {
-    return this.get('/feed')
-      .query({ feedType: type })
+  static getJobOffers(jobType) {
+    return this.get('/job')
+      .query({ jobType })
   }
 
   props(array) {
     return this.query({ props: array })
   }
-
-
 }

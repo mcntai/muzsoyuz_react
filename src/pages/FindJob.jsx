@@ -16,19 +16,21 @@ class FindJob extends React.Component {
 
   renderJobOffers(data) {
     return (
-      <div className={s.listWrapper}>
+      <div className={s.jobsWrapper}>
         {
           data && this.state.fetchedData.map(item => {
             const date = new Date(item.date)
+            let month = date.toLocaleString('default', { month: 'short' })
+            month = month.charAt(0).toUpperCase() + month.slice(1, month.length - 1)
 
             return <li key={item.id} className={s.list}>
               <div className={s.jobOfferWrapper}>
-                <img className={s.listImage} src={img} alt='Job offer'/>
-                <div className={s.listTextWrapper}>
-                  <h3 className={s.listTitle}>{item.title}</h3>
-                  <p className={s.listSalary}>Оплата: {item.salary},Грн</p>
+                <img src={item.imageURL} alt='Job offer'/>
+                <div>
+                  <p className={s.jobTitle}>{item.title}</p>
+                  <p className={s.jobSalary}>Оплата: {item.salary},Грн</p>
                 </div>
-                <p className={s.listDate}>{date.getDate()}.{date.getMonth() + 1}</p>
+                <p className={s.jobDate}>{date.getDate()} {month}</p>
               </div>
             </li>
           })
@@ -39,47 +41,50 @@ class FindJob extends React.Component {
 
 
   async getAllJobOffers() {
-    try {
-      const response = await MuzSoyuzRequest.getFeed('musicalReplacement')
-        .props([
-          'id',
-          'title',
-          'date',
-          'role',
-          'salary',
-        ])
-      console.log(response)
-      this.setState({ fetchFinished: true })
+    const response = await MuzSoyuzRequest.getJobOffers('musicalReplacement')
+      .props([
+        'id',
+        'title',
+        'date',
+        'role',
+        'salary',
+        'imageURL',
+        'address',
+        'addressGeoCoded',
+      ])
+    console.log(response)
+    this.setState({ fetchFinished: true })
 
-      if (response.status !== 400) {
-        this.setState({ fetchedData: response })
-      } else {
-        throw new Error(response.message)
-      }
-    } catch (error) {
-      console.error(error.message)
+    if (response.status !== 400) {
+      this.setState({ fetchedData: response })
+    } else {
+      // noinspection ExceptionCaughtLocallyJS
+      throw new Error(response.message)
     }
   }
 
-  async componentDidMount() {
-    await this.getAllJobOffers()
+  componentDidMount() {
+    this.getAllJobOffers()
+      .catch(error => console.error(error.message))
   }
 
   render() {
     return (
-      <div className={s.findJobWrapper}>
+      <div>
         <div className={s.headerWrapper}>
-        <Header/>
+          <Header/>
         </div>
         <p className={s.jobSearch}>Поиск работы</p>
-        <div className={s.sortFilterBtns}>
+        <div className={s.sortFilterButtons}>
           <button>Сортировать</button>
           <button>Фильтр</button>
         </div>
         {
           this.state.fetchFinished && this.renderJobOffers(this.state.fetchedData)
         }
-        <Footer/>
+        <div className={s.footerWrapper}>
+          <Footer/>
+        </div>
       </div>
     )
   }
