@@ -48,7 +48,7 @@ class OfferJob extends React.Component {
 
   async handleSubmit() {
     try {
-      const response = await MuzSoyuzRequest.post('/job', {
+      const response = await MuzSoyuzRequest.makeJobOffer({
         jobType: 'musicalReplacement',
         date: this.state.date.replace(/(\d{2})\.(\d{2})\.(\d{4})/, '$3-$2-$1'),
         address: this.state.address,
@@ -57,7 +57,7 @@ class OfferJob extends React.Component {
         title: this.state.title,
         role: this.state.role,
       })
-        .sendToken()
+      .sendToken()
 
       console.log(response)
     } catch (error) {

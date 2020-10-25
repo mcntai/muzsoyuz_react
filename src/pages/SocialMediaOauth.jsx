@@ -28,7 +28,7 @@ class SocialMediaOauth extends BasicAuth {
       try {
         const query = new URL(window.location.href)
 
-        const response = await MuzSoyuzRequest.get(`/auth/oauth/${provider}/callback/${query.search}`)
+        const response = await MuzSoyuzRequest.getTokenAfterSocialOauth(provider, query.search)
 
         await this.setTokenToLocalStorage(response)
 
