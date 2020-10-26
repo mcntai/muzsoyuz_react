@@ -1,14 +1,14 @@
-.header {
+.headerLoggedIn {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.header img {
+.headerLoggedIn img {
   margin: 23px 16px;
 }
 
-.header a {
+.headerLoggedIn a {
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -21,8 +21,18 @@
   right: 50%;
 }
 
+.headerLoggedOut {
+  height: 82px;
+  width: 343px;
+  margin: 0 auto
+}
+
 .loginButton {
+  display: inline-block;
   background: #fcd303;
   padding: 10px 20px;
+  margin: 20px 0 22px 250px;
+  text-decoration: none;
+  color: #000000;
 }
 

@@ -4,10 +4,9 @@ import { assert } from "../errors"
 
 
 class BasicAuth extends React.Component {
-  async setToken(response) {
-    response = await response.json()
-
-    assert(response.status !== 400, JSON.stringify(response))
+  async setTokenToLocalStorage(response) {
+    console.log(response)
+    assert(!response.statusCode || response.statusCode < 400, response.message)
 
     localStorage.setItem('token', response.token)
 

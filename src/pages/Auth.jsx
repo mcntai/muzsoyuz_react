@@ -1,8 +1,9 @@
 import React from 'react'
 import s from './Auth.module.css'
-import logo from '../Assets/img/logo.png'
+import logoDrums from '../Assets/img/logo_with_drums.png'
 import AuthForm from '../Components/Auth/AuthForm'
 import SocialMedias from '../Components/Auth/SocialMedias'
+import { NavLink } from 'react-router-dom'
 
 
 class Auth extends React.Component {
@@ -10,9 +11,8 @@ class Auth extends React.Component {
   render() {
     return (
       <div className={s.wrapper}>
-        <div className={s.header}>
-          <img src={logo} alt="Logo" className={s.logo}/>
-          <p className={s.brandName}><span className={s.muz}>Muz</span> soyuz</p>
+        <div>
+          <NavLink to='/'><img src={logoDrums} alt="Logo"/></NavLink>
         </div>
         <AuthForm type={this.props.type}/>
         <SocialMedias type={this.props.type}/>
