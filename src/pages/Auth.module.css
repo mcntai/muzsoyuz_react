@@ -29,14 +29,6 @@
   background: #FFFFFF;
 }
 
-.header {
-  width: 189px;
-}
-
-.logo {
-  padding-top: 64px;
-}
-
 .brandName {
   composes: montserrat;
   text-align: center;
