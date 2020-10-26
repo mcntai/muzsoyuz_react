@@ -3,13 +3,22 @@ import s from './OfferJob.module.css'
 import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
 import { MuzSoyuzRequest } from '../muzsoyuz-request'
+import {connect} from 'react-redux'
+import preloader from "../Assets/img/preloader.gif"
+
+
+const mapStateToProps = state => {
+  return {
+    loading: state.getProfileReducer.loading,
+  }
+}
 
 class OfferJob extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       title: '',
-      role: 'drums',
+      role: '',
       date: '',
       address: '',
       sets: '',
@@ -42,10 +51,6 @@ class OfferJob extends React.Component {
     this.setState({ salary: parseInt(e.target.value) })
   }
 
-  handlePhone(e) {
-    this.setState({ phone: e.target.value })
-  }
-
   async handleSubmit() {
     try {
       const response = await MuzSoyuzRequest.makeJobOffer({
@@ -57,7 +62,6 @@ class OfferJob extends React.Component {
         title: this.state.title,
         role: this.state.role,
       })
-      .sendToken()
 
       console.log(response)
     } catch (error) {
@@ -65,8 +69,8 @@ class OfferJob extends React.Component {
     }
   }
 
-  render() {
-    return (
+  renderPage() {
+    return(
       <div>
         <div className={s.headerWrapper}>
           <Header/>
@@ -76,8 +80,9 @@ class OfferJob extends React.Component {
           <input type='text' placeholder='введите заголовок' className={s.title} value={this.state.title}
                  onChange={this.handleTitleInput.bind(this)}/>
           <p>Роль</p>
-          <select placeholder='кто вам нужен?' className={s.role} defaultValue='drums'
+          <select required className={s.role} defaultValue='default'
                   onChange={this.handleRoleSelect.bind(this)}>
+            <option value=''>Кто вам нужен?</option>
             <option value='drums'>Барабанщик</option>
             <option value='pandora'>Бандурист</option>
             <option value='bas'>Басист</option>
@@ -99,9 +104,6 @@ class OfferJob extends React.Component {
           <p>Гонорар, Грн</p>
           <input type='number' placeholder='гонорар за работу' className={s.salary} value={this.state.salary}
                  onChange={this.handleSalaryInput.bind(this)}/>
-          <p>Контактный телефон</p>
-          <input type='text' placeholder='+38 (0--) --- -- --' className={s.phone} value={this.state.phone}
-                 onChange={this.handlePhone.bind(this)}/>
         </form>
         <button className={s.submit} onClick={this.handleSubmit.bind(this)}/>
         <div className={s.footerWrapper}>
@@ -110,6 +112,18 @@ class OfferJob extends React.Component {
       </div>
     )
   }
+
+  render() {
+    return (
+      <div>
+        {
+          this.props.loading
+          ? <div className={s.preLoader}><img alt="preloader" src={preloader} /></div>
+          : this.renderPage()
+        }
+      </div>
+    )
+  }
 }
 
-export default OfferJob
+export default connect(mapStateToProps)(OfferJob)

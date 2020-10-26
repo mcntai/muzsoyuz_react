@@ -4,6 +4,15 @@ import img from '../Assets/img/drums.png'
 import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
 import { MuzSoyuzRequest } from '../muzsoyuz-request'
+import { connect } from 'react-redux'
+import preloader from "../Assets/img/preloader.gif"
+
+
+const mapStateToProps = state => {
+  return {
+    loading: state.getProfileReducer.loading,
+  }
+}
 
 class FindJob extends React.Component {
   constructor(props) {
@@ -41,8 +50,7 @@ class FindJob extends React.Component {
       </div>
     )
   }
-
-
+  
   async getAllJobOffers() {
     const response = await MuzSoyuzRequest.getJobOffers('musicalReplacement')
       .props([
@@ -71,7 +79,7 @@ class FindJob extends React.Component {
       .catch(error => console.error(error.message))
   }
 
-  render() {
+  renderPage() {
     return (
       <div>
         <div className={s.headerWrapper}>
@@ -91,6 +99,18 @@ class FindJob extends React.Component {
       </div>
     )
   }
+
+  render() {
+    return (
+      <div>
+        {
+          this.props.loading
+            ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
+            : this.renderPage()
+        }
+      </div>
+    )
+  }
 }
 
-export default FindJob
+export default connect(mapStateToProps)(FindJob)

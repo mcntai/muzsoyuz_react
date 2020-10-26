@@ -67,6 +67,15 @@
   border-radius: 16px;
   font-size: 12px;
   line-height: 15px;
+  position: relative;
+}
+
+.role option {
+  color: #000000;
+}
+
+.role:invalid {
+  color: #DADADA;
 }
 
 .form input:focus {
@@ -89,7 +98,6 @@
 .role {
   composes: inputIconPosition;
   background-image: url('../Assets/img/role-icon.png');
-  color: #DADADA;
 }
 
 .date {
@@ -110,16 +118,6 @@
 .salary {
   composes: inputIconPosition;
   background-image: url('../Assets/img/moneyhand-icon.png');
-}
-
-.info {
-  composes: inputIconPosition;
-  background-image: url('../Assets/img/info-icon.png');
-}
-
-.phone {
-  composes: inputIconPosition;
-  background-image: url('../Assets/img/phone-icon.png');
 }
 
 .submit {
@@ -150,4 +148,12 @@
   width: 375px;
   margin: 0 auto;
   padding-bottom: 6px;
+}
+
+/* Preloader Styles */
+
+.preLoader {
+  width: 64px;
+  height: 64px;
+  margin: 50% auto;
 }

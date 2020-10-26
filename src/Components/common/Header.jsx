@@ -21,14 +21,31 @@ class Header extends React.Component {
     }
   }
 
+  renderHeaderLoggedIn() {
+    return(
+      <div className={s.headerLoggedIn}>
+        <NavLink to="/chat"><img src={chat} alt="chat-icon"/><span className={s.chatCounter}>{this.state.chatCount}</span></NavLink>
+        <NavLink to="/profile"><img src={profile} alt="profile-icon"/></NavLink>
+      </div>
+    )
+  }
+
+  renderHeaderLoggedOut() {
+    return(
+      <div className={s.headerLoggedOut}>
+        <NavLink to="/login" className={s.loginButton}>Войти</NavLink>
+      </div>
+    )
+  }
+
   render() {
     return (
-      <div className={s.header}>
-        <NavLink to="/chat"><img src={chat} alt="chat-icon"/><span className={s.chatCounter}>{this.state.chatCount}</span></NavLink>
+      // <div className={s.header}>
+      <div>
         {
           this.props.isLoggedIn
-          ? <NavLink to="/profile"><img src={profile} alt="profile-icon"/></NavLink>
-          : <NavLink to="/login" className={s.loginButton}>Войти</NavLink>
+          ? this.renderHeaderLoggedIn()
+          : this.renderHeaderLoggedOut()
         }
       </div>
     )

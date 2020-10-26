@@ -4,8 +4,7 @@ export const fetchDataIfLoggedIn = () => {
   return async dispatch => {
     dispatch(fetchLoginStatusBegin())
     try {
-      const response = await MuzSoyuzRequest.get('/user/profile')
-        .sendToken()
+      const response = await MuzSoyuzRequest.getUserProfile()
 
       if (!response.statusCode || response.statusCode < 400) {
         dispatch(fetchLoginStatusSuccess())
@@ -17,7 +16,6 @@ export const fetchDataIfLoggedIn = () => {
     }
   }
 }
-
 
 const fetchLoginStatusBegin = () => ({
   type: 'FETCH_LOGIN_STATUS_BEGIN',

@@ -7,6 +7,11 @@ export class MuzSoyuzRequest extends Request {
     return this
   }
 
+  static getUserProfile() {
+    return this.get('/user/profile')
+      .sendToken()
+  }
+
   static makeAuthentication(route, body) {
     return this.post(`/auth/${route}`, this.body = body)
   }
@@ -17,6 +22,7 @@ export class MuzSoyuzRequest extends Request {
 
   static makeJobOffer(body) {
     return this.post('/job', this.body = body)
+      .sendToken()
   }
 
   static getJobOffers(jobType) {

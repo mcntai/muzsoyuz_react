@@ -11,8 +11,6 @@ import preloader from '../Assets/img/preloader.gif'
 const mapStateToProps = state => {
   return {
     loading: state.getProfileReducer.loading,
-    error: state.getProfileReducer.error,
-    isLoggedIn: state.getProfileReducer.isLoggedIn,
   }
 }
 
@@ -32,7 +30,7 @@ class Main extends React.Component {
     this.props.mainPageRoute()
   }
 
-  drawPage() {
+  renderPage() {
     return (
       <div>
         <Header/>
@@ -52,7 +50,7 @@ class Main extends React.Component {
         {
           this.props.loading
             ? <div className={s.preLoader}><img alt="preloader" src={preloader} /></div>
-            : this.drawPage()
+            : this.renderPage()
         }
       </div>
     )

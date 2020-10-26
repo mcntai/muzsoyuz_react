@@ -122,3 +122,11 @@
   padding-bottom: 6px;
 }
 
+/* Preloader Styles */
+
+.preLoader {
+  width: 64px;
+  height: 64px;
+  margin: 50% auto;
+}
+
