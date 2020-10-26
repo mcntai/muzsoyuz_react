@@ -50,7 +50,7 @@ class FindJob extends React.Component {
       </div>
     )
   }
-  
+
   async getAllJobOffers() {
     const response = await MuzSoyuzRequest.getJobOffers('musicalReplacement')
       .props([
