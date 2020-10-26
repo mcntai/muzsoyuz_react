@@ -96,7 +96,7 @@ class AuthForm extends BasicAuth {
     try {
       this.assertAuth(this.state, route)
 
-      const response = await MuzSoyuzRequest.post(`/auth/${route}`, {
+      const response = await MuzSoyuzRequest.makeAuthentication(route, {
         email: this.state.email,
         password: this.state.password,
       })
@@ -104,7 +104,7 @@ class AuthForm extends BasicAuth {
       await this.setTokenToLocalStorage(response)
 
       this.props.fetchAuthStatusSuccess()
-    } catch (error) {
+    } catch(error) {
       console.error(error.message)
 
       this.props.fetchAuthStatusFailure(error.message)
