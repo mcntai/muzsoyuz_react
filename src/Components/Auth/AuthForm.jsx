@@ -3,7 +3,7 @@ import s from './AuthForm.module.css'
 import { connect } from 'react-redux'
 import AuthNavLinks from '../common/AuthNavLinks'
 import { assert } from "../../errors"
-import BasicAuth from "../../pages/BasicAuth"
+import BasicAuth from "../../Pages/BasicAuth"
 import { MuzSoyuzRequest } from "../../muzsoyuz-request"
 
 
