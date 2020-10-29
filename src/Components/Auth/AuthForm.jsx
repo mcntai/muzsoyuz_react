@@ -23,13 +23,13 @@ const mapDispatchToProps = dispatch => ({
   fetchAuthStatusSuccess: () => {
     dispatch({
       type: 'FETCH_AUTH_STATUS_SUCCESS',
-      payload: true,
+      authorized: true,
     })
   },
   fetchAuthStatusFailure: (error) => {
     dispatch({
       type: 'FETCH_AUTH_STATUS_FAILURE',
-      payload: { error },
+      authError: { error },
     })
   },
 })
@@ -62,7 +62,7 @@ class AuthForm extends BasicAuth {
   }
 
   handleEmailValidation(email) {
-    this.setState({ emailValidity: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email) })
+    this.setState({ emailValidity: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email) })
   }
 
   handlePasswordChange(e) {
@@ -70,7 +70,7 @@ class AuthForm extends BasicAuth {
   }
 
   handlePasswordValidation(password) {
-    this.setState({ passwordValidity: /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password) })
+    this.setState({ passwordValidity: /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[a-z]).*$/.test(password) })
   }
 
   handleConfirmPasswordChange(e) {
@@ -82,11 +82,11 @@ class AuthForm extends BasicAuth {
   }
 
   assertAuth(props, route) {
-    assert(this.state.emailValidity, 'Проверьте ваш имейл')
-    assert(this.state.passwordValidity, 'Проверьте ваш пароль')
+    assert(this.state.emailValidity, 'Имейл должен содержать не менее 4 символов')
+    assert(this.state.passwordValidity, 'Пароль должен быть не короче 8 символов и содержать цифру.')
 
     if (route === 'register') {
-      assert(this.state.confirmPasswordValidity, 'Пароль не сходится')
+      assert(this.state.confirmPasswordValidity, 'Повторно введенный пароль не сходится')
     }
   }
 
@@ -101,11 +101,16 @@ class AuthForm extends BasicAuth {
         password: this.state.password,
       })
 
-      await this.setTokenToLocalStorage(response)
+      if (response.token) {
+        await this.setTokenToLocalStorage(response)
 
-      this.props.fetchAuthStatusSuccess()
-    } catch(error) {
-      console.error(error.message)
+        this.props.fetchAuthStatusSuccess()
+      } else {
+        // noinspection ExceptionCaughtLocallyJS
+        throw new Error(response.message)
+      }
+    } catch (error) {
+      alert(error.message)
 
       this.props.fetchAuthStatusFailure(error.message)
     }

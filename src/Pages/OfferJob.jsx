@@ -3,13 +3,15 @@ import s from './OfferJob.module.css'
 import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
 import { MuzSoyuzRequest } from '../muzsoyuz-request'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
+import { Redirect } from "react-router"
 import preloader from "../Assets/img/preloader.gif"
 
 
 const mapStateToProps = state => {
   return {
     loading: state.getProfileReducer.loading,
+    isLoggedIn: state.getProfileReducer.isLoggedIn,
   }
 }
 
@@ -70,7 +72,7 @@ class OfferJob extends React.Component {
   }
 
   renderPage() {
-    return(
+    return (
       <div>
         <div className={s.headerWrapper}>
           <Header/>
@@ -116,10 +118,13 @@ class OfferJob extends React.Component {
   render() {
     return (
       <div>
+        {/*{*/}
+        {/*  !this.props.isLoggedIn && <Redirect to='/login'/>*/}
+        {/*}*/}
         {
           this.props.loading
-          ? <div className={s.preLoader}><img alt="preloader" src={preloader} /></div>
-          : this.renderPage()
+            ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
+            : this.renderPage()
         }
       </div>
     )

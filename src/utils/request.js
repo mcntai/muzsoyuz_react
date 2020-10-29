@@ -74,7 +74,6 @@ export class Request {
   }
 
   async execute() {
-    console.log(this.url)
     const requestOptions = {
       method : this.method,
       headers: this.headers,
@@ -86,6 +85,8 @@ export class Request {
     }
 
     return fetch(this.url, requestOptions)
-      .then(response => response.json())
+      .then(response => {
+        return response.json()
+      })
   }
 }

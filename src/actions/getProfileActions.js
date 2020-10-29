@@ -23,7 +23,7 @@ const fetchLoginStatusBegin = () => ({
 
 const fetchLoginStatusSuccess = () => ({
   type: 'FETCH_LOGIN_STATUS_SUCCESS',
-  payload: true,
+  isLoggedIn: true,
 })
 
 const fetchLoginStatusFailure = error => ({

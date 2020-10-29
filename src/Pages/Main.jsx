@@ -35,7 +35,7 @@ class Main extends React.Component {
       <div>
         <Header/>
         <main className={s.main}>
-          <div className={s.logo}><img src={logo}/></div>
+          <div className={s.logo}><img src={logo} alt='logo'/></div>
           <img src={background} alt="background"/>
           <div className={s.mainRow}/>
         </main>

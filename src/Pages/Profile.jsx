@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 
 const handleLogoutRedux = () => ({
   type: 'LOGOUT',
-  payload: false,
+  isLoggedIn: false,
 })
 
 class Profile extends React.Component {

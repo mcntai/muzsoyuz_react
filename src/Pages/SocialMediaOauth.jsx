@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 
 const fetchAuthStatusSuccess = () => ({
   type: 'FETCH_AUTH_STATUS_SUCCESS',
-  payload: true,
+  authorized: true,
 })
 
 const fetchAuthStatusFailure = (error) => ({

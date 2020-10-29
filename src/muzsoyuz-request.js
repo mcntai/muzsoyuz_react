@@ -13,7 +13,7 @@ export class MuzSoyuzRequest extends Request {
   }
 
   static makeAuthentication(route, body) {
-    return this.post(`/auth/${route}`, this.body = body)
+    return this.post(`/auth/${route}`, body)
   }
 
   static getTokenAfterSocialOauth(provider, query) {
@@ -21,7 +21,7 @@ export class MuzSoyuzRequest extends Request {
   }
 
   static makeJobOffer(body) {
-    return this.post('/job', this.body = body)
+    return this.post('/job', body)
       .sendToken()
   }
 

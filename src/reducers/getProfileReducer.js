@@ -15,14 +15,14 @@ const getProfileReducer = (state = initialState, action) => {
         break
       case 'FETCH_LOGIN_STATUS_SUCCESS':
         draft.loading = false
-        draft.isLoggedIn = action.payload
+        draft.isLoggedIn = action.isLoggedIn
         break
       case 'FETCH_LOGIN_STATUS_FAILURE':
         draft.loading = false
         draft.error = action.payload.error
         break
       case 'LOGOUT':
-        draft.isLoggedIn = action.payload
+        draft.isLoggedIn = action.isLoggedIn
         break
       default:
         return state

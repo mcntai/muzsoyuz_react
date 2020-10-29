@@ -19,8 +19,16 @@ const mapStateToProps = state => {
 }
 
 class App extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(fetchDataIfLoggedIn())
+  constructor(props) {
+    super(props)
+  }
+
+  async componentDidMount() {
+    await this.props
+    const url = this.props.currentRoute
+    if (url !== 'login' && url !== 'register') {
+      this.props.dispatch(fetchDataIfLoggedIn())
+    }
   }
 
   componentDidUpdate() {
