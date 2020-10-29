@@ -118,9 +118,9 @@ class OfferJob extends React.Component {
   render() {
     return (
       <div>
-        {/*{*/}
-        {/*  !this.props.isLoggedIn && <Redirect to='/login'/>*/}
-        {/*}*/}
+        {
+          !this.props.isLoggedIn && <Redirect to='/login'/>
+        }
         {
           this.props.loading
             ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
