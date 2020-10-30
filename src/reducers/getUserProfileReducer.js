@@ -6,7 +6,7 @@ const initialState = {
   isLoggedIn: false,
 }
 
-const getProfileReducer = (state = initialState, action) => {
+const getUserProfileReducer = (state = initialState, action) => {
   return produce(state, draft => {
     switch (action.type) {
       case 'FETCH_LOGIN_STATUS_BEGIN':
@@ -30,4 +30,4 @@ const getProfileReducer = (state = initialState, action) => {
   })
 }
 
-export default getProfileReducer
+export default getUserProfileReducer

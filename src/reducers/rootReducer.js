@@ -1,7 +1,7 @@
 import { combineReducers } from "redux"
-import getProfileReducer from './getProfileReducer'
-import authReducer from './authReducer'
-import pageReducer from "./pageReducer"
+import getUserProfileReducer from './getUserProfileReducer'
+import authStatusReducer from './authStatusReducer'
+import checkRouteReducer from "./checkRouteReducer"
 
 
-export default combineReducers({ getProfileReducer, authReducer, pageReducer })
+export default combineReducers({ getProfileReducer: getUserProfileReducer, authReducer: authStatusReducer, pageReducer: checkRouteReducer })

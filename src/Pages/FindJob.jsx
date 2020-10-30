@@ -14,6 +14,17 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    findJobRoute: () => {
+      dispatch({
+        type: 'FIND_JOB',
+        currentRoute: 'find-job'
+      })
+    }
+  }
+}
+
 class FindJob extends React.Component {
   constructor(props) {
     super(props)
@@ -77,6 +88,8 @@ class FindJob extends React.Component {
   componentDidMount() {
     this.getAllJobOffers()
       .catch(error => console.error(error.message))
+
+    this.props.findJobRoute()
   }
 
   renderPage() {
@@ -113,4 +126,4 @@ class FindJob extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(FindJob)
+export default connect(mapStateToProps, mapDispatchToProps)(FindJob)

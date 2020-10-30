@@ -5,7 +5,7 @@ const initialState = {
   authError: '',
 }
 
-const authReducer = (state = initialState, action) => {
+const authStatusReducer = (state = initialState, action) => {
   return produce(state, draft => {
     switch (action.type) {
       case 'FETCH_AUTH_STATUS_SUCCESS':
@@ -24,4 +24,4 @@ const authReducer = (state = initialState, action) => {
   })
 }
 
-export default authReducer
+export default authStatusReducer

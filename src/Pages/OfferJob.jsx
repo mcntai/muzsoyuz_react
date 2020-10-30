@@ -15,6 +15,17 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    offerJobRoute: () => {
+      dispatch({
+        type: 'OFFER_JOB',
+        currentRoute: 'offer-job'
+      })
+    },
+  }
+}
+
 class OfferJob extends React.Component {
   constructor(props) {
     super(props)
@@ -27,6 +38,10 @@ class OfferJob extends React.Component {
       salary: '',
       phone: '',
     }
+  }
+
+  componentDidMount() {
+    this.props.offerJobRoute()
   }
 
   handleTitleInput(e) {
@@ -131,4 +146,4 @@ class OfferJob extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(OfferJob)
+export default connect(mapStateToProps, mapDispatchToProps)(OfferJob)

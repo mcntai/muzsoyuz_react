@@ -5,7 +5,7 @@ const initialState = {
   prevRoute: '',
 }
 
-const pageReducer = (state = initialState, action) => {
+const checkRouteReducer = (state = initialState, action) => {
   return produce(state, draft => {
     switch (action.type) {
       case 'MAIN_PAGE':
@@ -16,10 +16,18 @@ const pageReducer = (state = initialState, action) => {
         draft.currentRoute = action.currentRoute
         draft.prevRoute = state.currentRoute
         break
+      case 'OFFER_JOB':
+        draft.currentRoute = action.currentRoute
+        draft.prevRoute = state.currentRoute
+        break
+      case 'FIND_JOB':
+        draft.currentRoute = action.currentRoute
+        draft.prevRoute = state.currentRoute
+        break
       default:
         return state
     }
   })
 }
 
-export default pageReducer
+export default checkRouteReducer

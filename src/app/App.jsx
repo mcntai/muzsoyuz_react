@@ -19,10 +19,6 @@ const mapStateToProps = state => {
 }
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   async componentDidMount() {
     await this.props
     const url = this.props.currentRoute
