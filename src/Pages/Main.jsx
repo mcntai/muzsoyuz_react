@@ -49,7 +49,7 @@ class Main extends React.Component {
       <div className={s.wrapper}>
         {
           this.props.loading
-            ? <div className={s.preLoader}><img alt="preloader" src={preloader} /></div>
+            ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
             : this.renderPage()
         }
       </div>
