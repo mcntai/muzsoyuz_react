@@ -6,11 +6,8 @@ export const fetchDataIfLoggedIn = () => {
     try {
       const response = await MuzSoyuzRequest.getUserProfile()
 
-      if (!response.statusCode || response.statusCode < 400) {
-        dispatch(fetchLoginStatusSuccess())
-      } else {
-        dispatch(fetchLoginStatusFailure(response.message))
-      }
+      // TODO: need to save user.id to redux or state or ls
+      dispatch(fetchLoginStatusSuccess())
     } catch (error) {
       dispatch(fetchLoginStatusFailure(error.message))
     }

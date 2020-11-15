@@ -1,4 +1,5 @@
 import {config} from '../config'
+import { ResponseError } from '../errors'
 
 const METHODS = {
   GET   : 'GET',
@@ -73,10 +74,34 @@ export class Request {
     return this.promise.catch(errorHandler)
   }
 
+  async getError(response) {
+    try {
+      if (response.status === 502) {
+        return 'No connection with server'
+      }
+
+      const responseBody = await response.json()
+
+      return responseBody || `Code: ${response.status}, Message: (${response.statusText})`
+    } catch {
+      return response
+    }
+  }
+
+  async checkStatus(response) {
+    if (response.status >= 200 && response.status < 300) {
+      return response
+    }
+
+    const error = await this.getError(response)
+
+    return Promise.reject(new ResponseError(error, response))
+  }
+
   async execute() {
     console.log(this.url)
     const requestOptions = {
-      method : this.method,
+      method: this.method,
       headers: this.headers,
     }
 
@@ -85,7 +110,10 @@ export class Request {
       requestOptions.headers['Content-Type'] = 'application/json'
     }
 
-    return fetch(this.url, requestOptions)
-      .then(response => response.json())
+    const response = await fetch(this.url, requestOptions)
+
+    await this.checkStatus(response)
+
+    return response.json()
   }
 }

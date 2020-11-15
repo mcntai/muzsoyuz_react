@@ -1,6 +1,8 @@
 import React from 'react'
+import { config } from '../../config'
 import s from './SocialMedias.module.css'
 
+const appPath = config.getApiPath()
 
 class SocialMedias extends React.Component {
 
@@ -12,8 +14,8 @@ class SocialMedias extends React.Component {
   getLinks() {
     return (
       <div className={s.socialIcons}>
-        <a href="http://localhost:9000/api/v1/auth/oauth/facebook"><input type="button" className={s.facebookIcon} value="Facebook"/></a>
-        <a href="http://localhost:9000/api/v1/auth/oauth/google"><input type="button" className={s.googleIcon} value="Google"/></a>
+        <a href={appPath + '/auth/oauth/facebook'}><input type="button" className={s.facebookIcon} value="Facebook"/></a>
+        <a href={appPath + '/auth/oauth/google'}><input type="button" className={s.googleIcon} value="Google"/></a>
       </div>
     )
   }

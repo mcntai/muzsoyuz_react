@@ -62,6 +62,7 @@ class FindJob extends React.Component {
         'imageURL',
         'address',
         'addressGeoCoded',
+          'sdsdsdsd'
       ])
     console.log(response)
     this.setState({ fetchFinished: true })
