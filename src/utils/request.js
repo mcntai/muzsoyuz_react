@@ -1,5 +1,4 @@
 import {config} from '../config'
-import { ResponseError } from '../errors'
 
 const METHODS = {
   GET   : 'GET',
@@ -8,6 +7,19 @@ const METHODS = {
   DELETE: 'DELETE',
   PATCH : 'PATCH',
 }
+
+class ResponseError extends Error {
+  constructor(error, response) {
+    super()
+
+    this.error = error
+    this.status = error.status
+    this.message = error.message || error
+    this.response = response
+    this.headers = this.response && this.response.headers
+  }
+}
+
 
 export class Request {
   constructor({ url, method, headers, body }) {
@@ -74,34 +86,41 @@ export class Request {
     return this.promise.catch(errorHandler)
   }
 
-  async getError(response) {
+  getError(response) {
     try {
       if (response.status === 502) {
         return 'No connection with server'
       }
 
-      const responseBody = await response.json()
-
-      return responseBody || `Code: ${response.status}, Message: (${response.statusText})`
+      return response || `Code: ${response.status}, Message: (${response.statusText})`
     } catch {
       return response
     }
   }
 
-  async checkStatus(response) {
-    if (response.status >= 200 && response.status < 300) {
+  isSucceededStatus(response) {
+    const isValidStatus = response.status >= 200 && response.status < 300
+
+    return response instanceof Response
+      ? isValidStatus
+      : !response.status || isValidStatus
+  }
+
+  checkStatus(response) {
+    if (this.isSucceededStatus(response)) {
       return response
     }
 
-    const error = await this.getError(response)
+    const error = this.getError(response)
 
     return Promise.reject(new ResponseError(error, response))
   }
 
   async execute() {
     console.log(this.url)
+
     const requestOptions = {
-      method: this.method,
+      method : this.method,
       headers: this.headers,
     }
 
@@ -110,10 +129,8 @@ export class Request {
       requestOptions.headers['Content-Type'] = 'application/json'
     }
 
-    const response = await fetch(this.url, requestOptions)
-
-    await this.checkStatus(response)
-
-    return response.json()
+    return fetch(this.url, requestOptions)
+      .then(this.checkStatus.bind(this))
+      .then(response => response.json())
   }
 }

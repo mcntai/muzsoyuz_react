@@ -3,8 +3,8 @@ import s from './FindJob.module.css'
 import img from '../Assets/img/drums.png'
 import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
-import { MuzSoyuzRequest } from '../muzsoyuz-request'
-import { connect } from 'react-redux'
+import {MuzSoyuzRequest} from '../muzsoyuz-request'
+import {connect} from 'react-redux'
 import preloader from "../Assets/img/preloader.gif"
 
 
@@ -19,7 +19,7 @@ class FindJob extends React.Component {
     super(props)
     this.state = {
       fetchFinished: false,
-      fetchedData: [],
+      fetchedData  : [],
     }
   }
 
@@ -62,22 +62,18 @@ class FindJob extends React.Component {
         'imageURL',
         'address',
         'addressGeoCoded',
-          'sdsdsdsd'
       ])
-    console.log(response)
-    this.setState({ fetchFinished: true })
 
-    if (response.status !== 400) {
-      this.setState({ fetchedData: response })
-    } else {
-      // noinspection ExceptionCaughtLocallyJS
-      throw new Error(response.message)
-    }
+    console.log(response)
+
+    this.setState({ fetchFinished: true })
+    this.setState({ fetchedData: response })
   }
 
   componentDidMount() {
-    this.getAllJobOffers()
-      .catch(error => console.error(error.message))
+    this.getAllJobOffers().catch(error => {
+      alert(error.message)
+    })
   }
 
   renderPage() {
