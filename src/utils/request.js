@@ -99,11 +99,7 @@ export class Request {
   }
 
   isSucceededStatus(response) {
-    const isValidStatus = response.status >= 200 && response.status < 300
-
-    return response instanceof Response
-      ? isValidStatus
-      : !response.status || isValidStatus
+    return response.status >= 200 && response.status < 300
   }
 
   checkStatus(response) {

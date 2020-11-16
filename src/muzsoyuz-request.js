@@ -34,6 +34,10 @@ export class MuzSoyuzRequest extends Request {
     return this.query({ props: array })
   }
 
+  isSucceededStatus(response) {
+    return !response.status || super.isSucceededStatus(response)
+  }
+
   async execute() {
     return super.execute()
       .then(this.checkStatus.bind(this))
