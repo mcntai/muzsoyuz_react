@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.getProfileReducer.isLoggedIn,
+    authorized: state.authReducer.authorized
   }
 }
 
@@ -22,16 +22,17 @@ class Header extends React.Component {
   }
 
   renderHeaderLoggedIn() {
-    return(
+    return (
       <div className={s.headerLoggedIn}>
-        <NavLink to="/chat"><img src={chat} alt="chat-icon"/><span className={s.chatCounter}>{this.state.chatCount}</span></NavLink>
+        <NavLink to="/chat"><img src={chat} alt="chat-icon"/><span
+          className={s.chatCounter}>{this.state.chatCount}</span></NavLink>
         <NavLink to="/profile"><img src={profile} alt="profile-icon"/></NavLink>
       </div>
     )
   }
 
   renderHeaderLoggedOut() {
-    return(
+    return (
       <div className={s.headerLoggedOut}>
         <NavLink to="/login" className={s.loginButton}>Войти</NavLink>
       </div>
@@ -40,10 +41,9 @@ class Header extends React.Component {
 
   render() {
     return (
-      // <div className={s.header}>
       <div>
         {
-          this.props.isLoggedIn
+          this.props.authorized
           ? this.renderHeaderLoggedIn()
           : this.renderHeaderLoggedOut()
         }

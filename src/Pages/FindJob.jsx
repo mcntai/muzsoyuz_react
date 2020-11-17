@@ -5,23 +5,13 @@ import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
 import { MuzSoyuzRequest } from '../muzsoyuz-request'
 import { connect } from 'react-redux'
-import preloader from "../Assets/img/preloader.gif"
+import preloader from '../Assets/img/preloader.gif'
+import { pageRoute } from '../actions/routingActions'
 
 
 const mapStateToProps = state => {
   return {
-    loading: state.getProfileReducer.loading,
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    findJobRoute: () => {
-      dispatch({
-        type: 'FIND_JOB',
-        currentRoute: 'find-job'
-      })
-    }
+    loading: state.authReducer.loading,
   }
 }
 
@@ -77,7 +67,7 @@ class FindJob extends React.Component {
     console.log(response)
     this.setState({ fetchFinished: true })
 
-    if (response.status !== 400) {
+    if(response.status !== 400) {
       this.setState({ fetchedData: response })
     } else {
       // noinspection ExceptionCaughtLocallyJS
@@ -89,7 +79,7 @@ class FindJob extends React.Component {
     this.getAllJobOffers()
       .catch(error => console.error(error.message))
 
-    this.props.findJobRoute()
+    this.props.dispatch(pageRoute('FIND_JOB', 'find-job'))
   }
 
   renderPage() {
@@ -118,12 +108,12 @@ class FindJob extends React.Component {
       <div>
         {
           this.props.loading
-            ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
-            : this.renderPage()
+          ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
+          : this.renderPage()
         }
       </div>
     )
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FindJob)
+export default connect(mapStateToProps)(FindJob)

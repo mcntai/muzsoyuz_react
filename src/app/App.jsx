@@ -4,8 +4,8 @@ import Auth from '../Pages/Auth'
 import Main from '../Pages/Main'
 import SocialMediaOauth from '../Pages/SocialMediaOauth'
 import Profile from '../Pages/Profile'
-import OfferJob from "../Pages/OfferJob"
-import FindJob from "../Pages/FindJob"
+import OfferJob from '../Pages/OfferJob'
+import FindJob from '../Pages/FindJob'
 import { connect } from 'react-redux'
 import { fetchDataIfLoggedIn } from '../actions/getProfileActions'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -19,16 +19,8 @@ const mapStateToProps = state => {
 }
 
 class App extends React.Component {
-  async componentDidMount() {
-    await this.props
-    const url = this.props.currentRoute
-    if (url !== 'login' && url !== 'register') {
-      this.props.dispatch(fetchDataIfLoggedIn())
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.props.currentRoute !== this.props.prevRoute && localStorage.getItem('token') !== null) {
+  componentDidMount() {
+    if(localStorage.getItem('token') !== null) {
       this.props.dispatch(fetchDataIfLoggedIn())
     }
   }

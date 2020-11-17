@@ -1,32 +1,34 @@
 import { MuzSoyuzRequest } from '../muzsoyuz-request'
 
+
 export const fetchDataIfLoggedIn = () => {
   return async dispatch => {
-    dispatch(fetchLoginStatusBegin())
+    dispatch(fetchAuthStatusBegin())
     try {
       const response = await MuzSoyuzRequest.getUserProfile()
 
-      if (!response.statusCode || response.statusCode < 400) {
-        dispatch(fetchLoginStatusSuccess())
+      if(!response.statusCode || response.statusCode < 400) {
+        dispatch(fetchAuthStatusSuccess())
       } else {
-        dispatch(fetchLoginStatusFailure(response.message))
+        dispatch(fetchAuthStatusFailure(response.message))
       }
-    } catch (error) {
-      dispatch(fetchLoginStatusFailure(error.message))
+    }
+    catch(error) {
+      dispatch(fetchAuthStatusFailure(error.message))
     }
   }
 }
 
-const fetchLoginStatusBegin = () => ({
-  type: 'FETCH_LOGIN_STATUS_BEGIN',
+const fetchAuthStatusBegin = () => ({
+  type: 'FETCH_AUTH_STATUS_BEGIN',
 })
 
-const fetchLoginStatusSuccess = () => ({
-  type: 'FETCH_LOGIN_STATUS_SUCCESS',
-  isLoggedIn: true,
+export const fetchAuthStatusSuccess = () => ({
+  type: 'FETCH_AUTH_STATUS_SUCCESS',
+  authorized: true,
 })
 
-const fetchLoginStatusFailure = error => ({
-  type: 'FETCH_LOGIN_STATUS_FAILURE',
-  payload: { error },
+export const fetchAuthStatusFailure = (error) => ({
+  type: 'FETCH_AUTH_STATUS_FAILURE',
+  authError: { error },
 })

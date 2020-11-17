@@ -1,5 +1,5 @@
 class Config {
-  #SERVER_HOST = 'http://localhost:9000'
+  #SERVER_HOST = 'https://muzsoyuz.herokuapp.com'
   #API_PREFIX = '/api/v1'
 
   getApiPath() {

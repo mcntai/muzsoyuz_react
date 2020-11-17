@@ -1,6 +1,7 @@
 import React from 'react'
-import s from "../Auth/AuthForm.module.css"
-import { NavLink } from "react-router-dom"
+import s from '../Auth/AuthForm.module.css'
+import { NavLink } from 'react-router-dom'
+
 
 class AuthNavLinks extends React.Component {
 

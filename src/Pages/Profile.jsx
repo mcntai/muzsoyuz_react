@@ -6,25 +6,25 @@ import { connect } from 'react-redux'
 
 const handleLogoutRedux = () => ({
   type: 'LOGOUT',
-  isLoggedIn: false,
 })
 
 class Profile extends React.Component {
 
   handleLogOut(dispatch) {
-      try {
-        localStorage.removeItem('token')
+    try {
+      localStorage.removeItem('token')
 
-        dispatch(handleLogoutRedux())
-      } catch (error) {
-        console.error(error.message)
-      }
+      dispatch(handleLogoutRedux())
     }
+    catch(error) {
+      console.error(error.message)
+    }
+  }
 
   render() {
     return (
       <div>
-        <NavLink to="" className={s.logoutButton} onClick={()=> this.props.dispatch(this.handleLogOut)}>Выйти</NavLink>
+        <NavLink to="" className={s.logoutButton} onClick={() => this.props.dispatch(this.handleLogOut)}>Выйти</NavLink>
       </div>
     )
   }

@@ -5,6 +5,9 @@ import AuthNavLinks from '../common/AuthNavLinks'
 import { assert } from "../../errors"
 import BasicAuth from "../../Pages/BasicAuth"
 import { MuzSoyuzRequest } from "../../muzsoyuz-request"
+import { fetchAuthStatusSuccess } from '../../actions/getProfileActions'
+import { fetchAuthStatusFailure } from '../../actions/getProfileActions'
+import { authPageRoute } from '../../actions/routingActions'
 
 
 const mapStateToProps = state => {
@@ -12,27 +15,6 @@ const mapStateToProps = state => {
     authorized: state.authReducer.authorized,
   }
 }
-
-const mapDispatchToProps = dispatch => ({
-  authPageRoute: (type) => {
-    dispatch({
-      type: 'AUTH_PAGE',
-      currentRoute: type,
-    })
-  },
-  fetchAuthStatusSuccess: () => {
-    dispatch({
-      type: 'FETCH_AUTH_STATUS_SUCCESS',
-      authorized: true,
-    })
-  },
-  fetchAuthStatusFailure: (error) => {
-    dispatch({
-      type: 'FETCH_AUTH_STATUS_FAILURE',
-      authError: { error },
-    })
-  },
-})
 
 class AuthForm extends BasicAuth {
   constructor(props) {
@@ -48,12 +30,12 @@ class AuthForm extends BasicAuth {
   }
 
   componentDidMount() {
-    this.props.authPageRoute(this.props.type)
+    this.props.dispatch(authPageRoute(this.props.type))
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.type !== prevProps.type) {
-      this.props.authPageRoute(this.props.type)
+      this.props.dispatch(authPageRoute(this.props.type))
     }
   }
 
@@ -104,7 +86,7 @@ class AuthForm extends BasicAuth {
       if (response.token) {
         await this.setTokenToLocalStorage(response)
 
-        this.props.fetchAuthStatusSuccess()
+        this.props.dispatch(fetchAuthStatusSuccess())
       } else {
         // noinspection ExceptionCaughtLocallyJS
         throw new Error(response.message)
@@ -112,7 +94,7 @@ class AuthForm extends BasicAuth {
     } catch (error) {
       alert(error.message)
 
-      this.props.fetchAuthStatusFailure(error.message)
+      this.props.dispatch(fetchAuthStatusFailure(error.message))
     }
   }
 
@@ -175,4 +157,4 @@ class AuthForm extends BasicAuth {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthForm)
+export default connect(mapStateToProps)(AuthForm)

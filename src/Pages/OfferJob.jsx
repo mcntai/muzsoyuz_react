@@ -6,23 +6,13 @@ import { MuzSoyuzRequest } from '../muzsoyuz-request'
 import { connect } from 'react-redux'
 import { Redirect } from "react-router"
 import preloader from "../Assets/img/preloader.gif"
+import { pageRoute } from '../actions/routingActions'
 
 
 const mapStateToProps = state => {
   return {
-    loading: state.getProfileReducer.loading,
-    isLoggedIn: state.getProfileReducer.isLoggedIn,
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    offerJobRoute: () => {
-      dispatch({
-        type: 'OFFER_JOB',
-        currentRoute: 'offer-job'
-      })
-    },
+    loading: state.authReducer.loading,
+    authorized: state.authReducer.authorized,
   }
 }
 
@@ -41,7 +31,7 @@ class OfferJob extends React.Component {
   }
 
   componentDidMount() {
-    this.props.offerJobRoute()
+    this.props.dispatch(pageRoute('OFFER_JOB', 'offer-job'))
   }
 
   handleTitleInput(e) {
@@ -134,7 +124,7 @@ class OfferJob extends React.Component {
     return (
       <div>
         {
-          !this.props.isLoggedIn && <Redirect to='/login'/>
+          !this.props.authorized && <Redirect to='/login'/>
         }
         {
           this.props.loading
@@ -146,4 +136,4 @@ class OfferJob extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(OfferJob)
+export default connect(mapStateToProps)(OfferJob)

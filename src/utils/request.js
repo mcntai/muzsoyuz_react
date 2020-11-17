@@ -1,11 +1,12 @@
-import {config} from '../config'
+import { config } from '../config'
+
 
 const METHODS = {
-  GET   : 'GET',
-  POST  : 'POST',
-  PUT   : 'PUT',
+  GET: 'GET',
+  POST: 'POST',
+  PUT: 'PUT',
   DELETE: 'DELETE',
-  PATCH : 'PATCH',
+  PATCH: 'PATCH',
 }
 
 export class Request {
@@ -75,11 +76,11 @@ export class Request {
 
   async execute() {
     const requestOptions = {
-      method : this.method,
+      method: this.method,
       headers: this.headers,
     }
 
-    if (this.body) {
+    if(this.body) {
       requestOptions.body = JSON.stringify(this.body)
       requestOptions.headers['Content-Type'] = 'application/json'
     }

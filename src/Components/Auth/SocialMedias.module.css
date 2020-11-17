@@ -71,7 +71,7 @@
 .googleIcon {
   composes: focus iconsStyles montserrat cursor;
   background: url('../../Assets/img/google-icon.png') #FFFFFF no-repeat 20% 50%;
-  border:1px solid #6A6A6A;
+  border: 1px solid #6A6A6A;
   color: #6A6A6A;
 }
 
