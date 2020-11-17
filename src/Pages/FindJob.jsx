@@ -3,14 +3,15 @@ import s from './FindJob.module.css'
 import img from '../Assets/img/drums.png'
 import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
-import {MuzSoyuzRequest} from '../muzsoyuz-request'
-import {connect} from 'react-redux'
-import preloader from "../Assets/img/preloader.gif"
+import { MuzSoyuzRequest } from '../muzsoyuz-request'
+import { connect } from 'react-redux'
+import preloader from '../Assets/img/preloader.gif'
+import { pageRoute } from '../actions/routingActions'
 
 
 const mapStateToProps = state => {
   return {
-    loading: state.getProfileReducer.loading,
+    loading: state.authReducer.loading,
   }
 }
 
@@ -19,7 +20,7 @@ class FindJob extends React.Component {
     super(props)
     this.state = {
       fetchFinished: false,
-      fetchedData  : [],
+      fetchedData: [],
     }
   }
 
@@ -74,6 +75,8 @@ class FindJob extends React.Component {
     this.getAllJobOffers().catch(error => {
       alert(error.message)
     })
+
+    this.props.dispatch(pageRoute('FIND_JOB', 'find-job'))
   }
 
   renderPage() {
@@ -102,8 +105,8 @@ class FindJob extends React.Component {
       <div>
         {
           this.props.loading
-            ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
-            : this.renderPage()
+          ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
+          : this.renderPage()
         }
       </div>
     )

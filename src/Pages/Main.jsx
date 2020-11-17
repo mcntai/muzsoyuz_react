@@ -6,28 +6,18 @@ import logo from '../Assets/img/logo.png'
 import background from '../Assets/img/background.png'
 import { connect } from 'react-redux'
 import preloader from '../Assets/img/preloader.gif'
+import { pageRoute } from '../actions/routingActions'
 
 
 const mapStateToProps = state => {
   return {
-    loading: state.getProfileReducer.loading,
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    mainPageRoute: () => {
-      dispatch({
-        type: 'MAIN_PAGE',
-        currentRoute: 'main',
-      })
-    },
+    loading: state.authReducer.loading,
   }
 }
 
 class Main extends React.Component {
   componentDidMount() {
-    this.props.mainPageRoute()
+    this.props.dispatch(pageRoute('MAIN_PAGE', 'main'))
   }
 
   renderPage() {
@@ -57,4 +47,4 @@ class Main extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main)
+export default connect(mapStateToProps)(Main)

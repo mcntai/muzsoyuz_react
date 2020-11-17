@@ -2,6 +2,8 @@ import React from "react"
 import { connect } from 'react-redux'
 import { MuzSoyuzRequest } from '../muzsoyuz-request'
 import BasicAuth from "./BasicAuth"
+// import { fetchAuthStatusSuccess } from '../actions/getProfileActions'
+// import { fetchAuthStatusFailure } from '../actions/getProfileActions'
 
 
 const mapStateToProps = state => ({
@@ -10,13 +12,14 @@ const mapStateToProps = state => ({
 
 const fetchAuthStatusSuccess = () => ({
   type: 'FETCH_AUTH_STATUS_SUCCESS',
-  payload: true,
+  authorized: true,
 })
 
 const fetchAuthStatusFailure = (error) => ({
   type: 'FETCH_AUTH_STATUS_FAILURE',
   payload: { error },
 })
+
 
 class SocialMediaOauth extends BasicAuth {
   componentDidMount() {
@@ -33,6 +36,7 @@ class SocialMediaOauth extends BasicAuth {
         await this.setTokenToLocalStorage(response)
 
         dispatch(fetchAuthStatusSuccess())
+
       } catch (error) {
         dispatch(fetchAuthStatusFailure(error.message))
       }

@@ -5,6 +5,9 @@ import AuthNavLinks from '../common/AuthNavLinks'
 import { assert } from "../../errors"
 import BasicAuth from "../../Pages/BasicAuth"
 import { MuzSoyuzRequest } from "../../muzsoyuz-request"
+import { fetchAuthStatusSuccess } from '../../actions/getProfileActions'
+import { fetchAuthStatusFailure } from '../../actions/getProfileActions'
+import { authPageRoute } from '../../actions/routingActions'
 
 
 const mapStateToProps = state => {
@@ -12,27 +15,6 @@ const mapStateToProps = state => {
     authorized: state.authReducer.authorized,
   }
 }
-
-const mapDispatchToProps = dispatch => ({
-  authPageRoute: (type) => {
-    dispatch({
-      type: 'AUTH_PAGE',
-      currentRoute: type,
-    })
-  },
-  fetchAuthStatusSuccess: () => {
-    dispatch({
-      type: 'FETCH_AUTH_STATUS_SUCCESS',
-      payload: true,
-    })
-  },
-  fetchAuthStatusFailure: (error) => {
-    dispatch({
-      type: 'FETCH_AUTH_STATUS_FAILURE',
-      payload: { error },
-    })
-  },
-})
 
 class AuthForm extends BasicAuth {
   constructor(props) {
@@ -48,12 +30,12 @@ class AuthForm extends BasicAuth {
   }
 
   componentDidMount() {
-    this.props.authPageRoute(this.props.type)
+    this.props.dispatch(authPageRoute(this.props.type))
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.type !== prevProps.type) {
-      this.props.authPageRoute(this.props.type)
+      this.props.dispatch(authPageRoute(this.props.type))
     }
   }
 
@@ -62,7 +44,7 @@ class AuthForm extends BasicAuth {
   }
 
   handleEmailValidation(email) {
-    this.setState({ emailValidity: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email) })
+    this.setState({ emailValidity: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email) })
   }
 
   handlePasswordChange(e) {
@@ -70,7 +52,7 @@ class AuthForm extends BasicAuth {
   }
 
   handlePasswordValidation(password) {
-    this.setState({ passwordValidity: /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password) })
+    this.setState({ passwordValidity: /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[a-z]).*$/.test(password) })
   }
 
   handleConfirmPasswordChange(e) {
@@ -82,11 +64,11 @@ class AuthForm extends BasicAuth {
   }
 
   assertAuth(props, route) {
-    assert(this.state.emailValidity, 'Проверьте ваш имейл')
-    assert(this.state.passwordValidity, 'Проверьте ваш пароль')
+    assert(this.state.emailValidity, 'Имейл должен содержать не менее 4 символов')
+    assert(this.state.passwordValidity, 'Пароль должен быть не короче 8 символов и содержать цифру.')
 
     if (route === 'register') {
-      assert(this.state.confirmPasswordValidity, 'Пароль не сходится')
+      assert(this.state.confirmPasswordValidity, 'Повторно введенный пароль не сходится')
     }
   }
 
@@ -101,13 +83,18 @@ class AuthForm extends BasicAuth {
         password: this.state.password,
       })
 
-      await this.setTokenToLocalStorage(response)
+      if (response.token) {
+        await this.setTokenToLocalStorage(response)
 
-      this.props.fetchAuthStatusSuccess()
-    } catch(error) {
-      console.error(error.message)
+        this.props.dispatch(fetchAuthStatusSuccess())
+      } else {
+        // noinspection ExceptionCaughtLocallyJS
+        throw new Error(response.message)
+      }
+    } catch (error) {
+      alert(error.message)
 
-      this.props.fetchAuthStatusFailure(error.message)
+      this.props.dispatch(fetchAuthStatusFailure(error.message))
     }
   }
 
@@ -170,4 +157,4 @@ class AuthForm extends BasicAuth {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthForm)
+export default connect(mapStateToProps)(AuthForm)

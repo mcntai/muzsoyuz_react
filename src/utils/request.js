@@ -1,11 +1,12 @@
-import {config} from '../config'
+import { config } from '../config'
+
 
 const METHODS = {
-  GET   : 'GET',
-  POST  : 'POST',
-  PUT   : 'PUT',
+  GET: 'GET',
+  POST: 'POST',
+  PUT: 'PUT',
   DELETE: 'DELETE',
-  PATCH : 'PATCH',
+  PATCH: 'PATCH',
 }
 
 class ResponseError extends Error {

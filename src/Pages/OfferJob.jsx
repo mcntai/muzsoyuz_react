@@ -3,13 +3,16 @@ import s from './OfferJob.module.css'
 import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
 import { MuzSoyuzRequest } from '../muzsoyuz-request'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
+import { Redirect } from "react-router"
 import preloader from "../Assets/img/preloader.gif"
+import { pageRoute } from '../actions/routingActions'
 
 
 const mapStateToProps = state => {
   return {
-    loading: state.getProfileReducer.loading,
+    loading: state.authReducer.loading,
+    authorized: state.authReducer.authorized,
   }
 }
 
@@ -25,6 +28,10 @@ class OfferJob extends React.Component {
       salary: '',
       phone: '',
     }
+  }
+
+  componentDidMount() {
+    this.props.dispatch(pageRoute('OFFER_JOB', 'offer-job'))
   }
 
   handleTitleInput(e) {
@@ -70,7 +77,7 @@ class OfferJob extends React.Component {
   }
 
   renderPage() {
-    return(
+    return (
       <div>
         <div className={s.headerWrapper}>
           <Header/>
@@ -117,9 +124,12 @@ class OfferJob extends React.Component {
     return (
       <div>
         {
+          !this.props.authorized && <Redirect to='/login'/>
+        }
+        {
           this.props.loading
-          ? <div className={s.preLoader}><img alt="preloader" src={preloader} /></div>
-          : this.renderPage()
+            ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
+            : this.renderPage()
         }
       </div>
     )

@@ -1,18 +1,27 @@
 import produce from 'immer'
 
+
 const initialState = {
   currentRoute: '',
   prevRoute: '',
 }
 
-const pageReducer = (state = initialState, action) => {
+const checkRouteReducer = (state = initialState, action) => {
   return produce(state, draft => {
-    switch (action.type) {
+    switch(action.type) {
       case 'MAIN_PAGE':
         draft.currentRoute = action.currentRoute
         draft.prevRoute = state.currentRoute
         break
       case 'AUTH_PAGE':
+        draft.currentRoute = action.currentRoute
+        draft.prevRoute = state.currentRoute
+        break
+      case 'OFFER_JOB':
+        draft.currentRoute = action.currentRoute
+        draft.prevRoute = state.currentRoute
+        break
+      case 'FIND_JOB':
         draft.currentRoute = action.currentRoute
         draft.prevRoute = state.currentRoute
         break
@@ -22,4 +31,4 @@ const pageReducer = (state = initialState, action) => {
   })
 }
 
-export default pageReducer
+export default checkRouteReducer
