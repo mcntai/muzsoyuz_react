@@ -1,5 +1,5 @@
 export const authPageRoute = (type) => ({
-  type: 'AUTH_PAGE',
+  type        : 'AUTH_PAGE',
   currentRoute: type,
 })
 

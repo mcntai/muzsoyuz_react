@@ -20,7 +20,7 @@ class FindJob extends React.Component {
     super(props)
     this.state = {
       fetchFinished: false,
-      fetchedData: [],
+      fetchedData  : [],
     }
   }
 
@@ -63,6 +63,7 @@ class FindJob extends React.Component {
         'imageURL',
         'address',
         'addressGeoCoded',
+        'userId',
       ])
 
     console.log(response)

@@ -9,7 +9,8 @@ export const fetchDataIfLoggedIn = () => {
 
       // TODO: need to save user.id to redux or state or ls
       dispatch(fetchAuthStatusSuccess())
-    } catch (error) {
+    }
+    catch (error) {
       dispatch(fetchAuthStatusFailure(error.message))
     }
   }
@@ -20,11 +21,11 @@ const fetchAuthStatusBegin = () => ({
 })
 
 export const fetchAuthStatusSuccess = () => ({
-  type: 'FETCH_AUTH_STATUS_SUCCESS',
+  type      : 'FETCH_AUTH_STATUS_SUCCESS',
   authorized: true,
 })
 
 export const fetchAuthStatusFailure = (error) => ({
-  type: 'FETCH_AUTH_STATUS_FAILURE',
+  type     : 'FETCH_AUTH_STATUS_FAILURE',
   authError: { error },
 })

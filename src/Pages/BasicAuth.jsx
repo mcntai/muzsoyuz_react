@@ -11,9 +11,9 @@ class BasicAuth extends React.Component {
   }
 
   handleRedirect() {
-    if(this.props.authorized) {
+    if (this.props.authorized) {
       return <Redirect to='/'/>
-    } else if(typeof this.props.authorized !== 'undefined') {
+    } else if (typeof this.props.authorized !== 'undefined') {
       return <Redirect to='/login'/>
     }
   }

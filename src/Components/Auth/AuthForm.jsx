@@ -2,9 +2,9 @@ import React from 'react'
 import s from './AuthForm.module.css'
 import { connect } from 'react-redux'
 import AuthNavLinks from '../common/AuthNavLinks'
-import { assert } from "../../errors"
-import BasicAuth from "../../Pages/BasicAuth"
-import { MuzSoyuzRequest } from "../../muzsoyuz-request"
+import { assert } from '../../errors'
+import BasicAuth from '../../Pages/BasicAuth'
+import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import { fetchAuthStatusSuccess } from '../../actions/getProfileActions'
 import { fetchAuthStatusFailure } from '../../actions/getProfileActions'
 import { authPageRoute } from '../../actions/routingActions'
@@ -20,11 +20,11 @@ class AuthForm extends BasicAuth {
   constructor(props) {
     super(props)
     this.state = {
-      email: '',
-      emailValidity: false,
-      password: '',
-      passwordValidity: false,
-      confirmPassword: '',
+      email                  : '',
+      emailValidity          : false,
+      password               : '',
+      passwordValidity       : false,
+      confirmPassword        : '',
       confirmPasswordValidity: false,
     }
   }
@@ -79,7 +79,7 @@ class AuthForm extends BasicAuth {
       this.assertAuth(this.state, route)
 
       const response = await MuzSoyuzRequest.makeAuthentication(route, {
-        email: this.state.email,
+        email   : this.state.email,
         password: this.state.password,
       })
 
@@ -91,7 +91,8 @@ class AuthForm extends BasicAuth {
         // noinspection ExceptionCaughtLocallyJS
         throw new Error(response.message)
       }
-    } catch (error) {
+    }
+    catch (error) {
       alert(error.message)
 
       this.props.dispatch(fetchAuthStatusFailure(error.message))
@@ -146,8 +147,8 @@ class AuthForm extends BasicAuth {
       <div>
         {
           this.props.type === 'register'
-            ? this.drawRegForm()
-            : this.drawLoginForm()
+          ? this.drawRegForm()
+          : this.drawLoginForm()
         }
         {
           this.handleRedirect()

@@ -2,14 +2,14 @@ import produce from 'immer'
 
 
 const initialState = {
-  loading: false,
+  loading   : false,
   authorized: undefined,
-  authError: null,
+  authError : null,
 }
 
 const authStatusReducer = (state = initialState, action) => {
   return produce(state, draft => {
-    switch(action.type) {
+    switch (action.type) {
       case 'FETCH_AUTH_STATUS_BEGIN':
         draft.loading = true
         draft.authError = null

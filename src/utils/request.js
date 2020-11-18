@@ -2,11 +2,11 @@ import { config } from '../config'
 
 
 const METHODS = {
-  GET: 'GET',
-  POST: 'POST',
-  PUT: 'PUT',
+  GET   : 'GET',
+  POST  : 'POST',
+  PUT   : 'PUT',
   DELETE: 'DELETE',
-  PATCH: 'PATCH',
+  PATCH : 'PATCH',
 }
 
 class ResponseError extends Error {
@@ -56,23 +56,41 @@ export class Request {
   }
 
   static get(url) {
-    return new this({ url, method: METHODS.GET })
+    return new this({
+      url,
+      method: METHODS.GET
+    })
   }
 
   static post(url, body) {
-    return new this({ url, body, method: METHODS.POST })
+    return new this({
+      url,
+      body,
+      method: METHODS.POST
+    })
   }
 
   static put(url, body) {
-    return new this({ url, body, method: METHODS.PUT })
+    return new this({
+      url,
+      body,
+      method: METHODS.PUT
+    })
   }
 
   static delete(url) {
-    return new this({ url, method: METHODS.DELETE })
+    return new this({
+      url,
+      method: METHODS.DELETE
+    })
   }
 
   static patch(url, body) {
-    return new this({ url, body, method: METHODS.PATCH })
+    return new this({
+      url,
+      body,
+      method: METHODS.PATCH
+    })
   }
 
   then(successHandler, errorHandler) {
@@ -88,15 +106,11 @@ export class Request {
   }
 
   getError(response) {
-    try {
-      if (response.status === 502) {
-        return 'No connection with server'
-      }
-
-      return response || `Code: ${response.status}, Message: (${response.statusText})`
-    } catch {
-      return response
+    if (response.status === 502) {
+      return 'No connection with server'
     }
+
+    return response || `Code: ${response.status}, Message: (${response.statusText})`
   }
 
   isSucceededStatus(response) {

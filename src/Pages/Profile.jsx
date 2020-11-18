@@ -16,8 +16,8 @@ class Profile extends React.Component {
 
       dispatch(handleLogoutRedux())
     }
-    catch(error) {
-      console.error(error.message)
+    catch (error) {
+      alert(error.message)
     }
   }
 

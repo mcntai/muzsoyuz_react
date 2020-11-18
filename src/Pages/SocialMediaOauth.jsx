@@ -1,7 +1,7 @@
-import React from "react"
+import React from 'react'
 import { connect } from 'react-redux'
 import { MuzSoyuzRequest } from '../muzsoyuz-request'
-import BasicAuth from "./BasicAuth"
+import BasicAuth from './BasicAuth'
 // import { fetchAuthStatusSuccess } from '../actions/getProfileActions'
 // import { fetchAuthStatusFailure } from '../actions/getProfileActions'
 
@@ -11,12 +11,12 @@ const mapStateToProps = state => ({
 })
 
 const fetchAuthStatusSuccess = () => ({
-  type: 'FETCH_AUTH_STATUS_SUCCESS',
+  type      : 'FETCH_AUTH_STATUS_SUCCESS',
   authorized: true,
 })
 
 const fetchAuthStatusFailure = (error) => ({
-  type: 'FETCH_AUTH_STATUS_FAILURE',
+  type   : 'FETCH_AUTH_STATUS_FAILURE',
   payload: { error },
 })
 
@@ -37,8 +37,10 @@ class SocialMediaOauth extends BasicAuth {
 
         dispatch(fetchAuthStatusSuccess())
 
-      } catch (error) {
+      }
+      catch (error) {
         dispatch(fetchAuthStatusFailure(error.message))
+        alert(error.message)
       }
     }
   }

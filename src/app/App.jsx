@@ -14,13 +14,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 const mapStateToProps = state => {
   return {
     currentRoute: state.pageReducer.currentRoute,
-    prevRoute: state.pageReducer.prevRoute,
+    prevRoute   : state.pageReducer.prevRoute,
   }
 }
 
 class App extends React.Component {
   componentDidMount() {
-    if(localStorage.getItem('token') !== null) {
+    if (localStorage.getItem('token') !== null) {
       this.props.dispatch(fetchDataIfLoggedIn())
     }
   }

@@ -4,14 +4,14 @@ import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
 import { MuzSoyuzRequest } from '../muzsoyuz-request'
 import { connect } from 'react-redux'
-import { Redirect } from "react-router"
-import preloader from "../Assets/img/preloader.gif"
+import { Redirect } from 'react-router'
+import preloader from '../Assets/img/preloader.gif'
 import { pageRoute } from '../actions/routingActions'
 
 
 const mapStateToProps = state => {
   return {
-    loading: state.authReducer.loading,
+    loading   : state.authReducer.loading,
     authorized: state.authReducer.authorized,
   }
 }
@@ -20,13 +20,13 @@ class OfferJob extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: '',
-      role: '',
-      date: '',
+      title  : '',
+      role   : '',
+      date   : '',
       address: '',
-      sets: '',
-      salary: '',
-      phone: '',
+      sets   : '',
+      salary : '',
+      phone  : '',
     }
   }
 
@@ -62,17 +62,18 @@ class OfferJob extends React.Component {
     try {
       const response = await MuzSoyuzRequest.makeJobOffer({
         jobType: 'musicalReplacement',
-        date: this.state.date.replace(/(\d{2})\.(\d{2})\.(\d{4})/, '$3-$2-$1'),
+        date   : this.state.date.replace(/(\d{2})\.(\d{2})\.(\d{4})/, '$3-$2-$1'),
         address: this.state.address,
-        salary: this.state.salary,
-        sets: this.state.sets,
-        title: this.state.title,
-        role: this.state.role,
+        salary : this.state.salary,
+        sets   : this.state.sets,
+        title  : this.state.title,
+        role   : this.state.role,
       })
 
       console.log(response)
-    } catch (error) {
-      console.error(error)
+    }
+    catch (error) {
+      alert(error.message)
     }
   }
 
@@ -128,8 +129,8 @@ class OfferJob extends React.Component {
         }
         {
           this.props.loading
-            ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
-            : this.renderPage()
+          ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
+          : this.renderPage()
         }
       </div>
     )

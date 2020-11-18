@@ -3,12 +3,12 @@ import produce from 'immer'
 
 const initialState = {
   currentRoute: '',
-  prevRoute: '',
+  prevRoute   : '',
 }
 
 const checkRouteReducer = (state = initialState, action) => {
   return produce(state, draft => {
-    switch(action.type) {
+    switch (action.type) {
       case 'MAIN_PAGE':
         draft.currentRoute = action.currentRoute
         draft.prevRoute = state.currentRoute
