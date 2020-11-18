@@ -8,6 +8,11 @@ export class MuzSoyuzRequest extends Request {
     return this
   }
 
+  static validateToken() {
+    return this.get('/user/validateToken')
+      .sendToken()
+  }
+
   static getUserProfile() {
     return this.get('/user/profile')
       .sendToken()

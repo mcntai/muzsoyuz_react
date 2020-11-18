@@ -8,6 +8,8 @@ import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import { fetchAuthStatusSuccess } from '../../actions/getProfileActions'
 import { fetchAuthStatusFailure } from '../../actions/getProfileActions'
 import { authPageRoute } from '../../actions/routingActions'
+import * as swal from '../common/Alerts'
+// import swal from '@sweetalert/with-react'
 
 
 const mapStateToProps = state => {
@@ -83,17 +85,12 @@ class AuthForm extends BasicAuth {
         password: this.state.password,
       })
 
-      if (response.token) {
-        await this.setTokenToLocalStorage(response)
+      await this.setTokenToLocalStorage(response)
 
-        this.props.dispatch(fetchAuthStatusSuccess())
-      } else {
-        // noinspection ExceptionCaughtLocallyJS
-        throw new Error(response.message)
-      }
+      this.props.dispatch(fetchAuthStatusSuccess())
     }
     catch (error) {
-      alert(error.message)
+      swal.unauthorized(error.message, 'OOps')
 
       this.props.dispatch(fetchAuthStatusFailure(error.message))
     }

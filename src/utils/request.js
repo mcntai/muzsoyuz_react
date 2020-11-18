@@ -15,7 +15,7 @@ class ResponseError extends Error {
 
     this.error = error
     this.status = error.status
-    this.message = error.message || error
+    this.message = error.message || error.statusText || error
     this.response = response
     this.headers = this.response && this.response.headers
   }

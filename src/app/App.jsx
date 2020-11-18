@@ -20,7 +20,7 @@ const mapStateToProps = state => {
 
 class App extends React.Component {
   componentDidMount() {
-    if (localStorage.getItem('token') !== null) {
+    if (localStorage.getItem('token')) {
       this.props.dispatch(fetchDataIfLoggedIn())
     }
   }

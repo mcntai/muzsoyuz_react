@@ -6,8 +6,10 @@ export const fetchDataIfLoggedIn = () => {
     dispatch(fetchAuthStatusBegin())
     try {
       const response = await MuzSoyuzRequest.getUserProfile()
+        // .props(['id'])
 
       // TODO: need to save user.id to redux or state or ls
+
       dispatch(fetchAuthStatusSuccess())
     }
     catch (error) {

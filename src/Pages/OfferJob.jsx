@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import preloader from '../Assets/img/preloader.gif'
 import { pageRoute } from '../actions/routingActions'
+import * as swal from '../Components/common/Alerts'
 
 
 const mapStateToProps = state => {
@@ -71,6 +72,7 @@ class OfferJob extends React.Component {
       })
 
       console.log(response)
+      swal.success('Заебись создал', 'НАХ')
     }
     catch (error) {
       alert(error.message)
