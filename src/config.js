@@ -1,5 +1,5 @@
 class Config {
-  #SERVER_HOST = process.env.REACT_APP_ENV === 'PROD'
+  #SERVER_HOST = process.env.REACT_APP_ENV === 'DEV'
     ? process.env.REACT_APP_LOCAL_HOST
     : process.env.REACT_APP_PRODUCTION_HOST
 
