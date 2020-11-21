@@ -33,10 +33,9 @@ class SocialMediaOauth extends BasicAuth {
 
         const response = await MuzSoyuzRequest.getTokenAfterSocialOauth(provider, query.search)
 
-        await this.setTokenToLocalStorage(response)
+        await this.setDataToLocalStorage(response)
 
         dispatch(fetchAuthStatusSuccess())
-
       }
       catch (error) {
         dispatch(fetchAuthStatusFailure(error.message))

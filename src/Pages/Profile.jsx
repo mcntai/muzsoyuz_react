@@ -13,6 +13,7 @@ class Profile extends React.Component {
   handleLogOut(dispatch) {
     try {
       localStorage.removeItem('token')
+      localStorage.removeItem('userId')
 
       dispatch(handleLogoutRedux())
     }

@@ -4,10 +4,11 @@ import { assert } from '../errors'
 
 
 class BasicAuth extends React.Component {
-  async setTokenToLocalStorage(response) {
+  async setDataToLocalStorage(response) {
     assert(!response.statusCode || response.statusCode < 400, response.message)
 
     localStorage.setItem('token', response.token)
+    localStorage.setItem('userId', response.profile.id)
   }
 
   handleRedirect() {

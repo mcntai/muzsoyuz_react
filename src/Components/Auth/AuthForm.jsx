@@ -9,7 +9,6 @@ import { fetchAuthStatusSuccess } from '../../actions/getProfileActions'
 import { fetchAuthStatusFailure } from '../../actions/getProfileActions'
 import { authPageRoute } from '../../actions/routingActions'
 import * as swal from '../common/Alerts'
-// import swal from '@sweetalert/with-react'
 
 
 const mapStateToProps = state => {
@@ -85,12 +84,13 @@ class AuthForm extends BasicAuth {
         password: this.state.password,
       })
 
-      await this.setTokenToLocalStorage(response)
+      console.log(response)
+      await this.setDataToLocalStorage(response)
 
       this.props.dispatch(fetchAuthStatusSuccess())
     }
     catch (error) {
-      swal.unauthorized(error.message, 'OOps')
+      swal.unauthorized(error.message, 'Упс!')
 
       this.props.dispatch(fetchAuthStatusFailure(error.message))
     }
