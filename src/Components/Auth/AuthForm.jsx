@@ -108,6 +108,7 @@ class AuthForm extends BasicAuth {
             onChange={this.handlePasswordChange.bind(this)}
             onBlur={(e) => this.validateInput(e, 'passwordErr')}
           />
+          <span className={s.textErr}>{this.state.confirmErr}</span>
           <input
             type="password"
             placeholder="підтвердіть пароль"
@@ -116,7 +117,6 @@ class AuthForm extends BasicAuth {
             onChange={this.handleConfirmPasswordChange.bind(this)}
             onBlur={(e) => this.validateInput(e, 'confirmErr')}
           />
-          <span className={s.textErr}>{this.state.confirmErr}</span>
           <input
             type="submit"
             className={s.inputSubmit}
@@ -133,6 +133,7 @@ class AuthForm extends BasicAuth {
       <div className={s.authFormLog}>
         <AuthNavLinks/>
         <form action="" className={s.form}>
+          <span className={s.textErr}>{this.state.emailErr}</span>
           <input
             type="email"
             placeholder="імейл"
@@ -141,7 +142,7 @@ class AuthForm extends BasicAuth {
             onChange={this.handleEmailChange.bind(this)}
             onBlur={(e) => this.validateInput(e, 'emailErr')}
           />
-          <span className={s.textErr}>{this.state.emailErr}</span>
+          <span className={s.textErr}>{this.state.passwordErr}</span>
           <input
             type="password"
             placeholder="пароль"
@@ -150,7 +151,6 @@ class AuthForm extends BasicAuth {
             onChange={this.handlePasswordChange.bind(this)}
             onBlur={(e) => this.validateInput(e, 'passwordErr')}
           />
-          <span className={s.textErr}>{this.state.passwordErr}</span>
           <div className={s.rememberAndForgot}>
             <input
               type="checkbox"

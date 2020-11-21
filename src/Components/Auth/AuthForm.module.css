@@ -93,21 +93,6 @@
   position: relative;
 }
 
-/*.form:nth-child(0) {*/
-/*  justify-content: left;*/
-/*  color: green;*/
-/*}*/
-
-/*.form:nth-child(2) {*/
-/*  justify-content: left;*/
-/*  color: orange;*/
-/*}*/
-
-/*.form:nth-child(4) {*/
-/*  justify-content: left;*/
-/*  color: yellow;*/
-/*}*/
-
 .inputEmail,
 .inputPassword {
   composes: focus inputIconPosition montserrat;
