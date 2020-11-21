@@ -1,4 +1,3 @@
-
 class ArgumentsError extends Error {
   constructor(message) {
     super(message)
@@ -13,7 +12,7 @@ const argumentAssert = (condition, message) => {
   }
 }
 
-const MapOfferJobValidation = {
+const mapOfferJobValidation = {
   titleErr  : value => {
     argumentAssert(value.length > 10, 'Мінімум 10 символів')
     argumentAssert(value.length <= 250, 'Максимум 250 символів')
@@ -31,10 +30,23 @@ const MapOfferJobValidation = {
   salaryErr : value => {
     argumentAssert(!isNaN(value), 'Введіть число')
     argumentAssert(value > 0, 'Поставте трохи більшу зпшку')
+  },
+}
+
+const mapAuthValidation = {
+  emailErr: value => {
+    argumentAssert(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value), 'некоректний імейл')
+  },
+  passwordErr: value => {
+    argumentAssert(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[a-z]).*$/.test(value), 'мінімум 8 символів включаючи цифру')
+  },
+  confirmErr: (prevValue, curValue) => {
+    argumentAssert(prevValue === curValue, 'повторно введений пароль не співпадає')
   }
 }
 
 module.exports = {
   argumentAssert,
-  MapOfferJobValidation,
+  mapOfferJobValidation: mapOfferJobValidation,
+  mapAuthValidation    : mapAuthValidation
 }

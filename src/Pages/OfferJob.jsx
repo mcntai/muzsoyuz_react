@@ -8,7 +8,7 @@ import { Redirect } from 'react-router'
 import preloader from '../Assets/img/preloader.gif'
 import { pageRoute } from '../actions/routingActions'
 import * as swal from '../Components/common/Alerts'
-import { MapOfferJobValidation } from '../errors/index'
+import { mapOfferJobValidation } from '../errors/index'
 
 
 const mapStateToProps = state => {
@@ -33,7 +33,7 @@ class OfferJob extends React.Component {
       dateErr   : '',
       addressErr: '',
       setsErr   : '',
-      salaryErr : ''
+      salaryErr : '',
     }
   }
 
@@ -53,7 +53,7 @@ class OfferJob extends React.Component {
     let value = e.target.value
 
     try {
-      MapOfferJobValidation[name](value)
+      mapOfferJobValidation[name](value)
       this.setState({ [name]: '' })
     }
     catch (e) {
@@ -64,7 +64,7 @@ class OfferJob extends React.Component {
 
   async handleSubmit() {
     try {
-      const response = await MuzSoyuzRequest.makeJobOffer({
+      await MuzSoyuzRequest.makeJobOffer({
         jobType: 'musicalReplacement',
         date   : this.state.date.replace(/(\d{2})\.(\d{2})\.(\d{4})/, '$3-$2-$1'),
         address: this.state.address,
@@ -76,8 +76,8 @@ class OfferJob extends React.Component {
 
       swal.success('Оголошення створено', 'Ура!')
     }
-    catch (error) {
-      console.log(error)
+    catch (e) {
+      return this.setState({ serverErr: e.message })
     }
   }
 

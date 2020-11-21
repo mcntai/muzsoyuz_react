@@ -2,7 +2,7 @@ import React from 'react'
 import s from './AuthForm.module.css'
 import { connect } from 'react-redux'
 import AuthNavLinks from '../common/AuthNavLinks'
-import { argumentAssert } from '../../errors'
+import { mapAuthValidation } from '../../errors'
 import BasicAuth from '../../Pages/BasicAuth'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import { fetchAuthStatusSuccess } from '../../actions/getProfileActions'
@@ -21,12 +21,12 @@ class AuthForm extends BasicAuth {
   constructor(props) {
     super(props)
     this.state = {
-      email                  : '',
-      emailValidity          : false,
-      password               : '',
-      passwordValidity       : false,
-      confirmPassword        : '',
-      confirmPasswordValidity: false,
+      email          : '',
+      password       : '',
+      confirmPassword: '',
+      emailErr       : '',
+      passwordErr    : '',
+      confirmErr     : '',
     }
   }
 
@@ -44,32 +44,23 @@ class AuthForm extends BasicAuth {
     this.setState({ email: e.target.value })
   }
 
-  handleEmailValidation(email) {
-    this.setState({ emailValidity: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email) })
-  }
-
   handlePasswordChange(e) {
     this.setState({ password: e.target.value })
-  }
-
-  handlePasswordValidation(password) {
-    this.setState({ passwordValidity: /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[a-z]).*$/.test(password) })
   }
 
   handleConfirmPasswordChange(e) {
     this.setState({ confirmPassword: e.target.value })
   }
 
-  handleConfirmPasswordValidation(password, confirmPassword) {
-    this.setState({ confirmPasswordValidity: password === confirmPassword })
-  }
+  validateInput(e, name) {
+    let value = e.target.value
 
-  assertAuth(props, route) {
-    argumentAssert(this.state.emailValidity, 'Мінімум 4 символа')
-    argumentAssert(this.state.passwordValidity, 'Мінімум 8 символів включаючи цифру')
-
-    if (route === 'register') {
-      argumentAssert(this.state.confirmPasswordValidity, 'Повторно введений пароль не співпадає')
+    try {
+      mapAuthValidation[name](value)
+      this.setState({ [name]: '' })
+    }
+    catch (e) {
+      this.setState({ [name]: e.message })
     }
   }
 
@@ -77,8 +68,6 @@ class AuthForm extends BasicAuth {
     e.preventDefault()
 
     try {
-      this.assertAuth(this.state, route)
-
       const response = await MuzSoyuzRequest.makeAuthentication(route, {
         email   : this.state.email,
         password: this.state.password,
@@ -101,17 +90,39 @@ class AuthForm extends BasicAuth {
       <div className={s.authFormReg}>
         <AuthNavLinks/>
         <form action="" className={s.form}>
-          <input type="email" placeholder="імейл" className={s.inputEmail} value={this.state.email}
-                 onChange={this.handleEmailChange.bind(this)}
-                 onBlur={this.handleEmailValidation.bind(this, this.state.email)}/>
-          <input type="password" placeholder="пароль" className={s.inputPassword} value={this.state.password}
-                 onChange={this.handlePasswordChange.bind(this)}
-                 onBlur={this.handlePasswordValidation.bind(this, this.state.password)}/>
-          <input type="password" placeholder="підтвердіть пароль" className={s.inputConfirmPassword}
-                 value={this.state.confirmPassword} onChange={this.handleConfirmPasswordChange.bind(this)}
-                 onBlur={this.handleConfirmPasswordValidation.bind(this, this.state.password, this.state.confirmPassword)}/>
-          <input type="submit" className={s.inputSubmit} value=''
-                 onClick={(e) => this.handleAuthSubmit.call(this, e, 'register')}/>
+          <span className={s.textErr}>{this.state.emailErr}</span>
+          <input
+            type="email"
+            placeholder="імейл"
+            className={s.inputEmail}
+            value={this.state.email}
+            onChange={this.handleEmailChange.bind(this)}
+            onBlur={(e) => this.validateInput(e, 'emailErr')}
+          />
+          <span className={s.textErr}>{this.state.passwordErr}</span>
+          <input
+            type="password"
+            placeholder="пароль"
+            className={s.inputPassword}
+            value={this.state.password}
+            onChange={this.handlePasswordChange.bind(this)}
+            onBlur={(e) => this.validateInput(e, 'passwordErr')}
+          />
+          <input
+            type="password"
+            placeholder="підтвердіть пароль"
+            className={s.inputConfirmPassword}
+            value={this.state.confirmPassword}
+            onChange={this.handleConfirmPasswordChange.bind(this)}
+            onBlur={(e) => this.validateInput(e, 'confirmErr')}
+          />
+          <span className={s.textErr}>{this.state.confirmErr}</span>
+          <input
+            type="submit"
+            className={s.inputSubmit}
+            value=''
+            onClick={(e) => this.handleAuthSubmit.call(this, e, 'register')}
+          />
         </form>
       </div>
     )
@@ -122,18 +133,41 @@ class AuthForm extends BasicAuth {
       <div className={s.authFormLog}>
         <AuthNavLinks/>
         <form action="" className={s.form}>
-          <input type="email" placeholder="імейл" className={s.inputEmail} value={this.state.email}
-                 onChange={this.handleEmailChange.bind(this)}
-                 onBlur={this.handleEmailValidation.bind(this, this.state.email)}/>
-          <input type="password" placeholder="пароль" className={s.inputPassword} value={this.state.password}
-                 onChange={this.handlePasswordChange.bind(this)}
-                 onBlur={this.handlePasswordValidation.bind(this, this.state.password)}/>
+          <input
+            type="email"
+            placeholder="імейл"
+            className={s.inputEmail}
+            value={this.state.email}
+            onChange={this.handleEmailChange.bind(this)}
+            onBlur={(e) => this.validateInput(e, 'emailErr')}
+          />
+          <span className={s.textErr}>{this.state.emailErr}</span>
+          <input
+            type="password"
+            placeholder="пароль"
+            className={s.inputPassword}
+            value={this.state.password}
+            onChange={this.handlePasswordChange.bind(this)}
+            onBlur={(e) => this.validateInput(e, 'passwordErr')}
+          />
+          <span className={s.textErr}>{this.state.passwordErr}</span>
           <div className={s.rememberAndForgot}>
-            <input type="checkbox" className={s.rememberMe}/><p>запам'ятати мене</p>
-            <a href="/">Забули Пароль?</a>
+            <input
+              type="checkbox"
+              className={s.rememberMe}
+            />
+            <p>
+              запам'ятати мене
+            </p>
+            <a href="/">
+              Забули Пароль?
+            </a>
           </div>
-          <input type="submit" className={s.inputSubmit} value=''
-                 onClick={(e) => this.handleAuthSubmit.call(this, e, 'login')}/>
+          <input
+            type="submit"
+            className={s.inputSubmit}
+            value=''
+            onClick={(e) => this.handleAuthSubmit.call(this, e, 'login')}/>
         </form>
       </div>
     )
