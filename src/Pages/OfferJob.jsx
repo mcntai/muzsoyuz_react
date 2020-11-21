@@ -8,7 +8,7 @@ import { Redirect } from 'react-router'
 import preloader from '../Assets/img/preloader.gif'
 import { pageRoute } from '../actions/routingActions'
 import * as swal from '../Components/common/Alerts'
-import { assert } from '../errors/index'
+import { MapOfferJobValidation } from '../errors/index'
 
 
 const mapStateToProps = state => {
@@ -17,28 +17,6 @@ const mapStateToProps = state => {
     authorized: state.authReducer.authorized,
   }
 }
-
-const MAP_VALIDATION = {
-  titleErr     : value => {
-    assert(value.length > 10, 'Мінімум 10 символів')
-    assert(value.length <= 250, 'Максимум 250 символів')
-  },
-  dateErr   : value => {
-    assert(/(\d{2})\.(\d{2})\.(\d{4})/.test(value), 'Введіть дату в форматі ДД-ММ-РРРР')
-  },
-  addressErr: value => {
-    assert(value.length < 250, 'Максимум 250 символів')
-  },
-  setsErr   : value => {
-    assert(!isNaN(value), 'Введіть число')
-    assert(value > 0 && value < 6, 'Оберіть між 1 і 5 сетами')
-  },
-  salaryErr : value => {
-    assert(!isNaN(value), 'Введіть число')
-    assert(value > 0, 'Поставте трохи більшу зпшку')
-  }
-}
-
 
 class OfferJob extends React.Component {
   constructor(props) {
@@ -75,7 +53,7 @@ class OfferJob extends React.Component {
     let value = e.target.value
 
     try {
-      MAP_VALIDATION[name](value)
+      MapOfferJobValidation[name](value)
       this.setState({ [name]: '' })
     }
     catch (e) {
@@ -96,7 +74,7 @@ class OfferJob extends React.Component {
         role   : this.state.role,
       })
 
-      swal.success('Объявление создано', 'Ура!')
+      swal.success('Оголошення створено', 'Ура!')
     }
     catch (error) {
       console.log(error)
@@ -110,11 +88,11 @@ class OfferJob extends React.Component {
           <Header/>
         </div>
         <form action="" className={s.form}>
-          <p>Заголовок объявления</p>
+          <p>Заголовок оголошення</p>
           <input
             type='text'
             name='title'
-            placeholder='введите заголовок'
+            placeholder='введіть заголовок'
             className={s.title}
             value={this.state.title}
             onChange={this.handleChangeStr.bind(this)}
@@ -128,13 +106,13 @@ class OfferJob extends React.Component {
             defaultValue='default'
             onChange={this.handleChangeStr.bind(this)}
           >
-            <option value=''>Кто вам нужен?</option>
+            <option value=''>Хто вам потрібен?</option>
             <option value='drums'>Барабанщик</option>
             <option value='pandora'>Бандурист</option>
             <option value='bas'>Басист</option>
-            <option value='guitar'>Гитарист</option>
-            <option value='voice'>Вокалист</option>
-            <option value='sax'>Саксофонист</option>
+            <option value='guitar'>Гітарист</option>
+            <option value='voice'>Вокаліст</option>
+            <option value='sax'>Саксофоніст</option>
             <option value='trumpet'>Трубач</option>
             <option value='violin'>Скрипач</option>
           </select>
@@ -142,29 +120,29 @@ class OfferJob extends React.Component {
           <input
             type='text'
             name='date'
-            placeholder='дд.мм.гггг'
+            placeholder='дд.мм.рррр'
             className={s.date}
             value={this.state.date}
             onChange={this.handleChangeStr.bind(this)}
             onBlur={(e) => this.validateInput(e, 'dateErr')}
           />
           <span className={s.textErr}>{this.state.dateErr}</span>
-          <p>Адрес</p>
+          <p>Адреса</p>
           <input
             type='text'
             name='address'
-            placeholder='введите адрес'
+            placeholder='введіть адресу'
             className={s.address}
             value={this.state.address}
             onChange={this.handleChangeStr.bind(this)}
             onBlur={(e) => this.validateInput(e, 'addressErr')}
           />
           <span className={s.textErr}>{this.state.addressErr}</span>
-          <p>Количество сетов</p>
+          <p>Кількість сетів</p>
           <input
             type='number'
             name='sets'
-            placeholder='например, 3'
+            placeholder='наприклад, 3'
             className={s.sets}
             value={this.state.sets}
             onChange={this.handleChangeNum.bind(this)}
@@ -175,7 +153,7 @@ class OfferJob extends React.Component {
           <input
             type='number'
             name='salary'
-            placeholder='гонорар за работу'
+            placeholder='гонорар за роботу'
             className={s.salary}
             value={this.state.salary}
             onChange={this.handleChangeNum.bind(this)}

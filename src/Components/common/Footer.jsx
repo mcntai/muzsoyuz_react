@@ -12,13 +12,13 @@ class Footer extends React.Component {
     return (
       <div className={s.footer}>
         <div>
-          <NavLink to="/find-job"><img src={findJob} alt="find-job-icon"/>Найти работу</NavLink>
+          <NavLink to="/find-job"><img src={findJob} alt="find-job-icon"/>Знайти роботу</NavLink>
         </div>
         <div>
-          <NavLink to="/"><img src={mainPage} alt="main page icon"/>Главная</NavLink>
+          <NavLink to="/"><img src={mainPage} alt="main page icon"/>Головна</NavLink>
         </div>
         <div className={s.offerJob}>
-          <NavLink to="/offer-job"><img src={offerJob} alt="offer-job-icon"/>Предложить</NavLink>
+          <NavLink to="/offer-job"><img src={offerJob} alt="offer-job-icon"/>Запропонувати</NavLink>
         </div>
       </div>
     )

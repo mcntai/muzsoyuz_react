@@ -8,16 +8,27 @@ const appPath = config.getApiPath()
 class SocialMedias extends React.Component {
 
   #FORM_TYPE_MAP = {
-    register: 'зарегистрироваться',
-    login   : 'войти',
+    register: 'зареєструватись',
+    login   : 'ввійти',
   }
 
   getLinks() {
     return (
       <div className={s.socialIcons}>
-        <a href={appPath + '/auth/oauth/facebook'}><input type="button" className={s.facebookIcon}
-                                                          value="Facebook"/></a>
-        <a href={appPath + '/auth/oauth/google'}><input type="button" className={s.googleIcon} value="Google"/></a>
+        <a href={appPath + '/auth/oauth/facebook'}>
+          <input
+            type="button"
+            className={s.facebookIcon}
+            value="Facebook"
+          />
+        </a>
+        <a href={appPath + '/auth/oauth/google'}>
+          <input
+            type="button"
+            className={s.googleIcon}
+            value="Google"
+          />
+        </a>
       </div>
     )
   }
@@ -25,7 +36,7 @@ class SocialMedias extends React.Component {
   drawAuthSocialBtns(word) {
     return (
       <div className={s.socialMedias}>
-        <p className={s.authWith}>{`или ${word} с помощью`}</p>
+        <p className={s.authWith}>{`або ${word} через`}</p>
         {
           this.getLinks()
         }

@@ -78,6 +78,10 @@
   margin-top: 17px;
 }
 
+.list:last-child {
+  margin-bottom: 100px;
+}
+
 .jobOfferWrapper {
   height: 80px;
   display: flex;

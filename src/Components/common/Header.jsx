@@ -34,7 +34,7 @@ class Header extends React.Component {
   renderHeaderLoggedOut() {
     return (
       <div className={s.headerLoggedOut}>
-        <NavLink to="/login" className={s.loginButton}>Войти</NavLink>
+        <NavLink to="/login" className={s.loginButton}>Ввійти</NavLink>
       </div>
     )
   }

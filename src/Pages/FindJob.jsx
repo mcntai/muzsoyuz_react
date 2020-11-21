@@ -86,10 +86,10 @@ class FindJob extends React.Component {
         <div className={s.headerWrapper}>
           <Header/>
         </div>
-        <p className={s.jobSearch}>Поиск работы</p>
+        <p className={s.jobSearch}>Пошук роботи</p>
         <div className={s.sortFilterButtons}>
-          <button>Сортировать</button>
-          <button>Фильтр</button>
+          <button>Сортувати</button>
+          <button>Фільтр</button>
         </div>
         {
           this.state.fetchFinished && this.renderJobOffers(this.state.fetchedData)
