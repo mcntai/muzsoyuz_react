@@ -8,7 +8,7 @@ import { Redirect } from 'react-router'
 import preloader from '../Assets/img/preloader.gif'
 import { pageRoute } from '../actions/routingActions'
 import * as swal from '../Components/common/Alerts'
-import { mapOfferJobValidation } from '../errors/index'
+import { jobOfferValidator } from '../validators/index'
 
 
 const mapStateToProps = state => {
@@ -53,7 +53,7 @@ class OfferJob extends React.Component {
     let value = e.target.value
 
     try {
-      mapOfferJobValidation[name](value)
+      jobOfferValidator(name, value)
       this.setState({ [name]: '' })
     }
     catch (e) {
@@ -77,7 +77,13 @@ class OfferJob extends React.Component {
       swal.success('Оголошення створено', 'Ура!')
     }
     catch (e) {
-      return this.setState({ serverErr: e.message })
+      if (e.message !== 'Invalid Arguments Error') {
+        this.setState({ serverErr: e.message })
+        swal.undefinedErr(e.message, 'Хммм')
+      } else {
+        swal.serverErr('Некоректні параметри в запиті', 'Зверніться до адміна')
+      }
+
     }
   }
 

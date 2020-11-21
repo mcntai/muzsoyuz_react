@@ -128,8 +128,6 @@ export class Request {
   }
 
   async execute() {
-    console.log(this.url)
-
     const requestOptions = {
       method : this.method,
       headers: this.headers,

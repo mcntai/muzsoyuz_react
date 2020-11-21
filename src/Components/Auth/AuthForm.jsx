@@ -2,7 +2,7 @@ import React from 'react'
 import s from './AuthForm.module.css'
 import { connect } from 'react-redux'
 import AuthNavLinks from '../common/AuthNavLinks'
-import { mapAuthValidation } from '../../errors'
+import { authValidator } from '../../validators'
 import BasicAuth from '../../Pages/BasicAuth'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import { fetchAuthStatusSuccess } from '../../actions/getProfileActions'
@@ -40,23 +40,15 @@ class AuthForm extends BasicAuth {
     }
   }
 
-  handleEmailChange(e) {
-    this.setState({ email: e.target.value })
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value })
   }
 
-  handlePasswordChange(e) {
-    this.setState({ password: e.target.value })
-  }
-
-  handleConfirmPasswordChange(e) {
-    this.setState({ confirmPassword: e.target.value })
-  }
-
-  validateInput(e, name) {
+  validateInput(e, name, prevValue) {
     let value = e.target.value
 
     try {
-      mapAuthValidation[name](value)
+      authValidator(name, value, prevValue)
       this.setState({ [name]: '' })
     }
     catch (e) {
@@ -73,15 +65,18 @@ class AuthForm extends BasicAuth {
         password: this.state.password,
       })
 
-      console.log(response)
       await this.setDataToLocalStorage(response)
 
       this.props.dispatch(fetchAuthStatusSuccess())
     }
-    catch (error) {
-      swal.unauthorized(error.message, 'Упс!')
+    catch (e) {
+      if (e.message === 'Unauthorized') {
+        swal.unauthorized(e.message, 'Упс!')
+      } else {
+        swal.undefinedErr(e.message, 'Хммм')
+      }
 
-      this.props.dispatch(fetchAuthStatusFailure(error.message))
+      this.props.dispatch(fetchAuthStatusFailure(e.message))
     }
   }
 
@@ -93,29 +88,32 @@ class AuthForm extends BasicAuth {
           <span className={s.textErr}>{this.state.emailErr}</span>
           <input
             type="email"
+            name="email"
             placeholder="імейл"
             className={s.inputEmail}
             value={this.state.email}
-            onChange={this.handleEmailChange.bind(this)}
+            onChange={this.handleChange.bind(this)}
             onBlur={(e) => this.validateInput(e, 'emailErr')}
           />
           <span className={s.textErr}>{this.state.passwordErr}</span>
           <input
             type="password"
+            name="password"
             placeholder="пароль"
             className={s.inputPassword}
             value={this.state.password}
-            onChange={this.handlePasswordChange.bind(this)}
+            onChange={this.handleChange.bind(this)}
             onBlur={(e) => this.validateInput(e, 'passwordErr')}
           />
           <span className={s.textErr}>{this.state.confirmErr}</span>
           <input
             type="password"
+            name="confirmPassword"
             placeholder="підтвердіть пароль"
             className={s.inputConfirmPassword}
             value={this.state.confirmPassword}
-            onChange={this.handleConfirmPasswordChange.bind(this)}
-            onBlur={(e) => this.validateInput(e, 'confirmErr')}
+            onChange={this.handleChange.bind(this)}
+            onBlur={(e) => this.validateInput(e, 'confirmErr', this.state.password)}
           />
           <input
             type="submit"
@@ -136,19 +134,21 @@ class AuthForm extends BasicAuth {
           <span className={s.textErr}>{this.state.emailErr}</span>
           <input
             type="email"
+            name="email"
             placeholder="імейл"
             className={s.inputEmail}
             value={this.state.email}
-            onChange={this.handleEmailChange.bind(this)}
+            onChange={this.handleChange.bind(this)}
             onBlur={(e) => this.validateInput(e, 'emailErr')}
           />
           <span className={s.textErr}>{this.state.passwordErr}</span>
           <input
             type="password"
+            name="password"
             placeholder="пароль"
             className={s.inputPassword}
             value={this.state.password}
-            onChange={this.handlePasswordChange.bind(this)}
+            onChange={this.handleChange.bind(this)}
             onBlur={(e) => this.validateInput(e, 'passwordErr')}
           />
           <div className={s.rememberAndForgot}>

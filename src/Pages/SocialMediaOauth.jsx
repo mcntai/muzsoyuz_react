@@ -2,8 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { MuzSoyuzRequest } from '../muzsoyuz-request'
 import BasicAuth from './BasicAuth'
-// import { fetchAuthStatusSuccess } from '../actions/getProfileActions'
-// import { fetchAuthStatusFailure } from '../actions/getProfileActions'
+import * as swal from '../Components/common/Alerts'
 
 
 const mapStateToProps = state => ({
@@ -37,9 +36,14 @@ class SocialMediaOauth extends BasicAuth {
 
         dispatch(fetchAuthStatusSuccess())
       }
-      catch (error) {
-        dispatch(fetchAuthStatusFailure(error.message))
-        alert(error.message)
+      catch (e) {
+        if (e.message === 'Unauthorized') {
+          swal.unauthorized(e.message, 'Упс!')
+        } else {
+          swal.undefinedErr(e.message, 'Хммм')
+        }
+
+        dispatch(fetchAuthStatusFailure(e.message))
       }
     }
   }

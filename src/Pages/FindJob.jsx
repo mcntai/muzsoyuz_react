@@ -7,6 +7,7 @@ import { MuzSoyuzRequest } from '../muzsoyuz-request'
 import { connect } from 'react-redux'
 import preloader from '../Assets/img/preloader.gif'
 import { pageRoute } from '../actions/routingActions'
+import * as swal from '../Components/common/Alerts'
 
 
 const mapStateToProps = state => {
@@ -53,23 +54,31 @@ class FindJob extends React.Component {
   }
 
   async getAllJobOffers() {
-    const response = await MuzSoyuzRequest.getJobOffers('musicalReplacement')
-      .props([
-        'id',
-        'title',
-        'date',
-        'role',
-        'salary',
-        'imageURL',
-        'address',
-        'addressGeoCoded',
-        'userId',
-      ])
+    try {
+      const response = await MuzSoyuzRequest.getJobOffers('musicalReplacement')
+        .props([
+          'id',
+          'title',
+          'date',
+          'role',
+          'salary',
+          'imageURL',
+          'address',
+          'addressGeoCoded',
+          'userId',
+        ])
 
-    console.log(response)
+      console.log(response)
 
-    this.setState({ fetchFinished: true })
-    this.setState({ fetchedData: response })
+      this.setState({ fetchFinished: true })
+      this.setState({ fetchedData: response })
+    }
+    catch (e) {
+      if (e.message === 'Bad Request Exception') {
+        swal.badRequest( 'Повідомте адміну в телеграм @maxshei', 'Тип юзера невизначений')
+      }
+    }
+
   }
 
   componentDidMount() {

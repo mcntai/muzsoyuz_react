@@ -36,27 +36,22 @@
 }
 
 .textErr {
-  color: red;
+  color: #fd4343;
   text-align: left;
   font-size: 11px;
-  position: relative;
-  right: 25px;
-}
-
-.textErr:nth-child(1) {
-  right: 75px;
+  align-self: flex-start;
+  padding-left: 15px;
+  margin-bottom: 6px;
 }
 
 /* Middle part */
 
 .authFormReg {
   composes: authForm;
-  height: 265px;
 }
 
 .authFormLog {
   composes: authForm;
-  height: 248px;
 }
 
 .header {
@@ -90,7 +85,6 @@
   composes: flexCol;
   width: 290px;
   padding-top: 21px;
-  position: relative;
 }
 
 .inputEmail,
@@ -100,7 +94,7 @@
   height: 40px;
   border: 1px solid #6A6A6A;
   border-radius: 16px;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
   font-size: 12px;
   line-height: 15px;
 }
@@ -168,7 +162,7 @@
   border: #6384EB;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
   position: relative;
-  top: 14px;
+  top: 22px;
   cursor: pointer;
 }
 
