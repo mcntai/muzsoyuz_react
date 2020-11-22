@@ -12,43 +12,30 @@ const mapStateToProps = state => {
 }
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      chatCount: '',
-    }
-  }
 
-  renderHeader() {
+  userAuthorized() {
     return (
-      <div className={s.headerLoggedIn}>
+      <div className={s.profile}>
         <NavLink to="/profile"><img src={profile} alt="profile-icon"/></NavLink>
       </div>
     )
   }
 
-  // renderHeaderLoggedIn() {
-  //   return (
-  //     <div className={s.headerLoggedIn}>
-  //       <NavLink to="/profile"><img src={profile} alt="profile-icon"/></NavLink>
-  //     </div>
-  //   )
-  // }
-  //
-  // renderHeaderLoggedOut() {
-  //   return (
-  //     <div className={s.headerLoggedOut}>
-  //       {/*<NavLink to="/login" className={s.loginButton}>Ввійти</NavLink>*/}
-  //       <NavLink to="/profile"><img src={profile} alt="profile-icon"/></NavLink>
-  //     </div>
-  //   )
-  // }
+  userUnAuthorized() {
+    return (
+      <div className={s.profile}>
+        <NavLink to="/login"><img src={profile} alt="profile-icon"/></NavLink>
+      </div>
+    )
+  }
 
   render() {
     return (
       <div>
         {
-          this.renderHeader()
+          this.props.authorized
+          ? this.userAuthorized()
+          : this.userUnAuthorized()
         }
       </div>
     )

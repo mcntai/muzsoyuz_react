@@ -1,40 +1,32 @@
 import React from 'react'
 import s from './Profile.module.css'
-import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { pageRoute } from '../../actions/routingActions'
+import {NavLink} from 'react-router-dom'
 import HeaderInternalButtons from '../common/HeaderInternalButtons'
 import AboutMe from './AboutMe'
 
 
 const mapStateToProps = state => {
   return {
-    authorized: state.authReducer.authorized
+    authorized: state.authReducer.authorized,
+    prevRoute: state.pageReducer.prevRoute
   }
 }
 
-const handleLogoutRedux = () => ({
-  type: 'LOGOUT',
-})
-
 class Profile extends React.Component {
 
-  // handleLogOut(dispatch) {
-  //   try {
-  //     localStorage.removeItem('token')
-  //     localStorage.removeItem('userId')
-  //
-  //     dispatch(handleLogoutRedux())
-  //   }
-  //   catch (error) {
-  //     alert(error.message)
-  //   }
-  // }
+  componentDidMount() {
+    this.props.dispatch(pageRoute('PROFILE', 'profile'))
+  }
 
   userAuthorized() {
+    const backBtn = this.props.prevRoute
+
     return (
       <div className={s.profileWrapper}>
         <div className={s.profileHeader}>
-          <span className={s.back}>&lt;</span>
+          <NavLink to={backBtn} className={s.backBtn}>&lt;</NavLink>
           <span className={s.profile}>Профіль</span>
         </div>
         <div className={s.headerButtons}>
@@ -46,35 +38,11 @@ class Profile extends React.Component {
     )
   }
 
-  userUnAuthorized() {
-    return (
-      <div className={s.headerLoggedIn}>
-        <NavLink to="/login" className={s.loginButton}>Ввійти</NavLink>
-      </div>
-    )
-  }
-
-  // userAuthorized() {
-  //   return (
-  //     <div className={s.headerLoggedOut}>
-  //       <NavLink
-  //         to=""
-  //         className={s.logoutButton}
-  //         onClick={() => this.props.dispatch(this.handleLogOut)}
-  //       >
-  //         Выйти
-  //       </NavLink>
-  //     </div>
-  //   )
-  // }
-
   render() {
     return (
       <div>
         {
-          this.props.authorized
-          ? this.userAuthorized()
-          : this.userUnAuthorized()
+          this.props.authorized && this.userAuthorized()
         }
       </div>
     )

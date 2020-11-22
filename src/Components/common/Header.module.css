@@ -1,32 +1,10 @@
-.headerLoggedIn {
+.profile {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-.headerLoggedIn img {
+.profile img {
   margin: 23px 16px;
-}
-
-.headerLoggedIn a {
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  color: #6A6A6A;
-}
-
-.headerLoggedOut {
-  height: 82px;
-  width: 343px;
-  margin: 0 auto
-}
-
-.loginButton {
-  display: inline-block;
-  background: #fcd303;
-  padding: 10px 20px;
-  margin: 20px 0 22px 250px;
-  text-decoration: none;
-  color: #000000;
 }
 

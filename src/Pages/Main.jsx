@@ -17,7 +17,7 @@ const mapStateToProps = state => {
 
 class Main extends React.Component {
   componentDidMount() {
-    this.props.dispatch(pageRoute('MAIN_PAGE', 'main'))
+    this.props.dispatch(pageRoute('MAIN_PAGE', '/'))
   }
 
   renderPage() {

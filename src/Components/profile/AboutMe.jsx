@@ -1,9 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import s from './AboutMe.module.css'
 import user from '../../Assets/img/user.png'
 import { NavLink } from 'react-router-dom'
-import * as HandleLogOut from './Logout'
+import Logout from './Logout'
 
 
 const AboutMe = () => {
@@ -30,16 +29,10 @@ const AboutMe = () => {
         >
           Редагувати
         </NavLink>
-        <NavLink
-          to=""
-          className={[s.btn, s.logout].join(' ')}
-          onClick={() => HandleLogOut()}
-        >
-          Вийти
-        </NavLink>
+        <Logout/>
       </div>
     </div>
   )
 }
 
-export default connect(undefined)(AboutMe)
+export default AboutMe

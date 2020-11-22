@@ -1,46 +1,3 @@
-.logoutButton {
-  text-decoration: none;
-  background: #fcd303;
-  padding: 10px 20px;
-  color: red;
-  text-align: center;
-  display: block;
-  margin: 50% auto;
-  font-size: 36px;
-}
-
-.loginButton {
-  display: inline-block;
-  background: #fcd303;
-  padding: 10px 20px;
-  margin: 20px 0 22px 250px;
-  text-decoration: none;
-  color: #000000;
-}
-
-.headerLoggedIn {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.headerLoggedIn img {
-  margin: 23px 16px;
-}
-
-.headerLoggedIn a {
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  color: #6A6A6A;
-}
-
-.headerLoggedOut {
-  height: 82px;
-  width: 343px;
-  margin: 0 auto
-}
-
 .profileWrapper {
   width: 375px;
   display: flex;
@@ -51,7 +8,15 @@
 .profileHeader {
   width: 343px;
   display: flex;
-  margin-top: 31px;
+  margin-top: 30px;
+}
+
+.backBtn {
+  text-decoration: none;
+  color: #000000;
+  font-size: 20px;
+  display: inline-block;
+  transform: translateY(-25%);
 }
 
 .profile {
