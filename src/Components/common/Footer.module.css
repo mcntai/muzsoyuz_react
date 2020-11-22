@@ -2,17 +2,12 @@
   display: flex;
   justify-content: space-around;
   white-space: nowrap;
-  padding-top: 14px;
+  padding-top: 20px;
 }
-
 
 .footer img {
   display: block;
   margin: 0 auto 10px;
-}
-
-.footer div:nth-child(2) img {
-  margin: 0 auto 12px;
 }
 
 .footer a {
@@ -21,10 +16,6 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
-  color: #6A6A6A;
+  color: #262D33;
   text-decoration: none;
-}
-
-.offerJob img {
-  margin: 0 auto 12.2px;
 }

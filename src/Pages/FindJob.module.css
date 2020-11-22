@@ -30,31 +30,6 @@
   font-weight: bold;
 }
 
-.sortFilterButtons {
-  width: 343px;
-  margin: 12px auto 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.sortFilterButtons button {
-  width: 169px;
-  height: 32px;
-  background: #CBF6FF;
-  border: 1px solid #CBF6FF;
-  border-radius: 12px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  color: #4E4E4E;
-  font-size: 12px;
-  line-height: 14.63px;
-  cursor: pointer;
-}
-
-.sortFilterButtons button:focus {
-  outline: none;
-}
-
 /* Styles for Job Offers*/
 
 .jobsWrapper {

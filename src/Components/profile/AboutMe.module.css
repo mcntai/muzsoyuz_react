@@ -1,0 +1,105 @@
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.iconPosition {
+  background-position: 6% 50%;
+  background-repeat: no-repeat;
+  padding-left: 59px;
+}
+
+.aboutMeWrapper {
+  width: 345px;
+}
+
+.name {
+  composes: montserrat;
+  display: flex;
+  margin-top: 16.5px;
+}
+
+.name img {
+  padding-left: 29px;
+}
+
+.nameRole {
+  margin-left: 17px;
+}
+
+.nameRole span {
+  transform: translateY(-50%);
+}
+
+.role {
+  composes: montserrat;
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 11px;
+  line-height: 12px;
+  color: #6A6A6A;
+}
+
+.row {
+  width: 343px;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 16.5px;
+}
+
+.contacts {
+  composes: montserrat;
+  display: flex;
+  flex-direction: column;
+}
+
+.contacts span {
+  transform: translateY(50%);
+}
+
+.phoneCode {
+  color: #6A6A6A;
+  composes: iconPosition;
+  background-image: url('../../Assets/img/phone.svg');
+  padding-left: 60px;
+  background-position: 10%;
+}
+
+.phoneNumber {
+  color: #262D33;
+}
+
+.email {
+  color: #262D33;
+  composes: iconPosition;
+  background-image: url('../../Assets/img/envelope.svg');
+  padding-left: 60px;
+  background-position: 10%;
+}
+
+.buttons {
+  text-align: center;
+}
+
+.btn {
+  composes: montserrat;
+  font-size: 14px;
+  font-weight: 400;
+  width: 302px;
+  border: 1px solid #262D33;
+  border-radius: 16px;
+  padding: 13px 0;
+  background: #FFFFFF;
+  outline: none;
+}
+
+.edit {
+  margin-top: 60px;
+}
+
+.logout {
+  margin-top: 18px;
+  color: #6A6A6A;
+}

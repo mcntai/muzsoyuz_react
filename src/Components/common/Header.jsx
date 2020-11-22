@@ -1,7 +1,6 @@
 import React from 'react'
 import s from './Header.module.css'
 import profile from '../../Assets/img/profile.png'
-import chat from '../../Assets/img/chat.png'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -12,7 +11,6 @@ const mapStateToProps = state => {
   }
 }
 
-
 class Header extends React.Component {
   constructor(props) {
     super(props)
@@ -21,31 +19,36 @@ class Header extends React.Component {
     }
   }
 
-  renderHeaderLoggedIn() {
+  renderHeader() {
     return (
       <div className={s.headerLoggedIn}>
-        <NavLink to="/chat"><img src={chat} alt="chat-icon"/><span
-          className={s.chatCounter}>{this.state.chatCount}</span></NavLink>
         <NavLink to="/profile"><img src={profile} alt="profile-icon"/></NavLink>
       </div>
     )
   }
 
-  renderHeaderLoggedOut() {
-    return (
-      <div className={s.headerLoggedOut}>
-        <NavLink to="/login" className={s.loginButton}>Ввійти</NavLink>
-      </div>
-    )
-  }
+  // renderHeaderLoggedIn() {
+  //   return (
+  //     <div className={s.headerLoggedIn}>
+  //       <NavLink to="/profile"><img src={profile} alt="profile-icon"/></NavLink>
+  //     </div>
+  //   )
+  // }
+  //
+  // renderHeaderLoggedOut() {
+  //   return (
+  //     <div className={s.headerLoggedOut}>
+  //       {/*<NavLink to="/login" className={s.loginButton}>Ввійти</NavLink>*/}
+  //       <NavLink to="/profile"><img src={profile} alt="profile-icon"/></NavLink>
+  //     </div>
+  //   )
+  // }
 
   render() {
     return (
       <div>
         {
-          this.props.authorized
-          ? this.renderHeaderLoggedIn()
-          : this.renderHeaderLoggedOut()
+          this.renderHeader()
         }
       </div>
     )

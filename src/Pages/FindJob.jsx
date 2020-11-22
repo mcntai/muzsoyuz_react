@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import preloader from '../Assets/img/preloader.gif'
 import { pageRoute } from '../actions/routingActions'
 import * as swal from '../Components/common/Alerts'
-
+import HeaderInternalButtons from '../Components/common/HeaderInternalButtons'
 
 const mapStateToProps = state => {
   return {
@@ -96,10 +96,7 @@ class FindJob extends React.Component {
           <Header/>
         </div>
         <p className={s.jobSearch}>Пошук роботи</p>
-        <div className={s.sortFilterButtons}>
-          <button>Сортувати</button>
-          <button>Фільтр</button>
-        </div>
+        <HeaderInternalButtons first="Сортувати" second="Фільтр " />
         {
           this.state.fetchFinished && this.renderJobOffers(this.state.fetchedData)
         }

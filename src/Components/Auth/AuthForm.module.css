@@ -124,32 +124,6 @@
   background-image: url('../../Assets/img/password-icon.png');
 }
 
-.rememberAndForgot {
-  composes: montserrat;
-  width: 290px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: 12px;
-  line-height: 15px;
-  padding-top: 9px;
-}
-
-.rememberMe {
-  width: 15px;
-  height: 15px;
-}
-
-.rememberAndForgot p {
-  margin-left: -50px;
-  color: #6A6A6A;
-}
-
-.rememberAndForgot a {
-  text-decoration: none;
-  color: #6A6A6A;
-}
-
 .inputSubmit {
   composes: focus;
   width: 46px;

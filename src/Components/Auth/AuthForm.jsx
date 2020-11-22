@@ -151,18 +151,6 @@ class AuthForm extends BasicAuth {
             onChange={this.handleChange.bind(this)}
             onBlur={(e) => this.validateInput(e, 'passwordErr')}
           />
-          <div className={s.rememberAndForgot}>
-            <input
-              type="checkbox"
-              className={s.rememberMe}
-            />
-            <p>
-              запам'ятати мене
-            </p>
-            <a href="/">
-              Забули Пароль?
-            </a>
-          </div>
           <input
             type="submit"
             className={s.inputSubmit}

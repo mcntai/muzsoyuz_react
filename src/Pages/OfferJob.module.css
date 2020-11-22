@@ -12,6 +12,7 @@
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
+  color: #262D33;
 }
 
 .headerWrapper div {
@@ -41,7 +42,7 @@
 }
 
 .form p {
-  padding: 15px 0 0 23px;
+  padding: 15px 0 0 12px;
   white-space: nowrap;
   text-transform: uppercase;
 }

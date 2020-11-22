@@ -5,7 +5,7 @@ import { Redirect } from 'react-router'
 class BasicAuth extends React.Component {
   async setDataToLocalStorage(response) {
     localStorage.setItem('token', response.token)
-    localStorage.setItem('userId', response.profile.id)
+    // localStorage.setItem('userId', response.profile.id)
   }
 
   handleRedirect() {
