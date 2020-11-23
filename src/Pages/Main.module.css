@@ -38,6 +38,10 @@
   background: #DBF3FF;
 }
 
+.footer {
+  margin-top: 20px;
+}
+
 .preLoader {
   width: 64px;
   height: 64px;

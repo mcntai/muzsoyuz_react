@@ -36,15 +36,20 @@
 .form {
   composes: montserrat;
   width: 343px;
-  padding-bottom: 17px;
+  padding: 20px 0 40px 0;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
   margin: 0 auto;
 }
 
 .form p {
-  padding: 15px 0 0 12px;
+  padding-left: 20px;
+  margin-top: 30px;
   white-space: nowrap;
   text-transform: uppercase;
+}
+
+.form p:nth-child(1) {
+  margin-top: 0;
 }
 
 .note {
@@ -57,7 +62,7 @@
 
 .form input {
   display: block;
-  margin: 15px auto 0;
+  margin: 12px auto 0;
   width: 302px;
   height: 40px;
   border: 1px solid #6A6A6A;
@@ -66,9 +71,26 @@
   line-height: 15px;
 }
 
+.datePicker {
+  display: block;
+  margin: 0 auto;
+  width: 302px;
+  height: 40px;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.datePicker input {
+  display: block;
+  background-position: 6% 50%;
+  background-repeat: no-repeat;
+  padding-left: 59px;
+  background-image: url('../Assets/img/calendar-icon.svg');
+}
+
 .role {
   display: block;
-  margin: 15px auto 0;
+  margin: 12px auto 0;
   width: 302px;
   height: 40px;
   border: 1px solid #6A6A6A;
@@ -100,39 +122,39 @@
 
 .title {
   composes: inputIconPosition;
-  background-image: url('../Assets/img/title-icon.png');
+  background-image: url('../Assets/img/title-icon.svg');
 }
 
 .role {
   composes: inputIconPosition;
-  background-image: url('../Assets/img/role-icon.png');
+  background-image: url('../Assets/img/role-icon.svg');
 }
 
 .date {
   composes: inputIconPosition;
-  background-image: url('../Assets/img/calendar-icon.png');
+  background-image: url('../Assets/img/calendar-icon.svg');
 }
 
 .address {
   composes: inputIconPosition;
-  background-image: url('../Assets/img/location-icon.png');
+  background-image: url('../Assets/img/location-icon.svg');
 }
 
 .sets {
   composes: inputIconPosition;
-  background-image: url('../Assets/img/sets-icon.png');
+  background-image: url('../Assets/img/sets-icon.svg');
 }
 
 .salary {
   composes: inputIconPosition;
-  background-image: url('../Assets/img/moneyhand-icon.png');
+  background-image: url('../Assets/img/moneyhand-icon.svg');
 }
 
 .submit {
   width: 46px;
   height: 46px;
   border-radius: 50px;
-  background-image: url('../Assets/img/arrow-icon.png');
+  background-image: url('../Assets/img/arrow-icon.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-color: #6384EB;

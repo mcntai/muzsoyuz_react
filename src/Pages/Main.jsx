@@ -2,8 +2,8 @@ import React from 'react'
 import s from './Main.module.css'
 import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
-import logo from '../Assets/img/logo.png'
-import background from '../Assets/img/background.png'
+import logo from '../Assets/img/logo.svg'
+import background from '../Assets/img/background.svg'
 import { connect } from 'react-redux'
 import preloader from '../Assets/img/preloader.gif'
 import { pageRoute } from '../actions/routingActions'
@@ -29,7 +29,9 @@ class Main extends React.Component {
           <img src={background} alt="background"/>
           <div className={s.mainRow}/>
         </main>
+        <div className={s.footer}>
         <Footer/>
+        </div>
       </div>
     )
   }

@@ -117,11 +117,11 @@
 }
 
 .inputEmail {
-  background-image: url('../../Assets/img/email-icon.png');
+  background-image: url('../../Assets/img/email-icon.svg');
 }
 
 .inputPassword, .inputConfirmPassword {
-  background-image: url('../../Assets/img/password-icon.png');
+  background-image: url('../../Assets/img/password-icon.svg');
 }
 
 .inputSubmit {
@@ -129,7 +129,7 @@
   width: 46px;
   height: 46px;
   border-radius: 50px;
-  background-image: url('../../Assets/img/arrow-icon.png');
+  background-image: url('../../Assets/img/arrow-icon.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-color: #6384EB;

@@ -1,8 +1,8 @@
 import React from 'react'
 import s from './Footer.module.css'
-import findJob from '../../Assets/img/findJob.png'
-import mainPage from '../../Assets/img/mainPage.png'
-import offerJob from '../../Assets/img/offerJob.png'
+import findJob from '../../Assets/img/findJob.svg'
+import mainPage from '../../Assets/img/mainPage.svg'
+import offerJob from '../../Assets/img/offerJob.svg'
 import { NavLink } from 'react-router-dom'
 
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import s from './AboutMe.module.css'
-import user from '../../Assets/img/user.png'
+import user from '../../Assets/img/user.svg'
 import { NavLink } from 'react-router-dom'
 import Logout from './Logout'
 

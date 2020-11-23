@@ -1,6 +1,5 @@
 import React from 'react'
 import s from './FindJob.module.css'
-import img from '../Assets/img/drums.png'
 import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
 import { MuzSoyuzRequest } from '../muzsoyuz-request'

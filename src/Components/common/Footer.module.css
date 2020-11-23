@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-around;
   white-space: nowrap;
-  padding-top: 20px;
 }
 
 .footer img {

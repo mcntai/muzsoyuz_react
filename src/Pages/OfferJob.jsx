@@ -5,6 +5,7 @@ import Footer from '../Components/common/Footer'
 import { MuzSoyuzRequest } from '../muzsoyuz-request'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
+import { Example } from "../Components/DatePicker"
 import preloader from '../Assets/img/preloader.gif'
 import { pageRoute } from '../actions/routingActions'
 import * as swal from '../Components/common/Alerts'
@@ -123,15 +124,9 @@ class OfferJob extends React.Component {
             <option value='violin'>Скрипач</option>
           </select>
           <p>Дата</p>
-          <input
-            type='text'
-            name='date'
-            placeholder='дд.мм.рррр'
-            className={s.date}
-            value={this.state.date}
-            onChange={this.handleChangeStr.bind(this)}
-            onBlur={(e) => this.validateInput(e, 'dateErr')}
-          />
+          <div className={s.datePicker}>
+          <Example/>
+          </div>
           <span className={s.textErr}>{this.state.dateErr}</span>
           <p>Адреса</p>
           <input
