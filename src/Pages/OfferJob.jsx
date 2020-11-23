@@ -125,7 +125,16 @@ class OfferJob extends React.Component {
           </select>
           <p>Дата</p>
           <div className={s.datePicker}>
-          <Example/>
+          {/*<Example/>*/}
+            <input
+              type='date'
+              name='date'
+              placeholder='введіть дату'
+              className={s.date}
+              value={this.state.date}
+              onChange={this.handleChangeStr.bind(this)}
+              onBlur={(e) => this.validateInput(e, 'dateErr')}
+            />
           </div>
           <span className={s.textErr}>{this.state.dateErr}</span>
           <p>Адреса</p>
