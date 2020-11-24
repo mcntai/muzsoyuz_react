@@ -1,4 +1,15 @@
 /*Common classes*/
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #BDBDBD;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+  color: #BDBDBD;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: #BDBDBD;
+}
 
 .inputIconPosition {
   background-position: 6% 50%;
@@ -71,23 +82,6 @@
   line-height: 15px;
 }
 
-.datePicker {
-  display: block;
-  margin: 0 auto;
-  width: 302px;
-  height: 40px;
-  font-size: 12px;
-  line-height: 15px;
-}
-
-.datePicker input {
-  display: block;
-  background-position: 6% 50%;
-  background-repeat: no-repeat;
-  padding-left: 59px;
-  background-image: url('../Assets/img/calendar-icon.svg');
-}
-
 .role {
   display: block;
   margin: 12px auto 0;
@@ -98,6 +92,7 @@
   font-size: 12px;
   line-height: 15px;
   position: relative;
+  background-color: #ffffff;
 }
 
 .role option {
@@ -105,7 +100,7 @@
 }
 
 .role:invalid {
-  color: #DADADA;
+  color: #BDBDBD;
 }
 
 .form input:focus {
@@ -114,10 +109,6 @@
 
 .role:focus {
   outline: none;
-}
-
-.form input::placeholder {
-  opacity: 0.5;
 }
 
 .title {
@@ -133,6 +124,8 @@
 .date {
   composes: inputIconPosition;
   background-image: url('../Assets/img/calendar-icon.svg');
+  background-color: #FFFFFF;
+  padding-top: 12px;
 }
 
 .address {

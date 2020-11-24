@@ -5,6 +5,7 @@ import Footer from '../Components/common/Footer'
 import { MuzSoyuzRequest } from '../muzsoyuz-request'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
+import moment from 'moment'
 import preloader from '../Assets/img/preloader.gif'
 import { pageRoute } from '../actions/routingActions'
 import * as swal from '../Components/common/Alerts'
@@ -39,10 +40,10 @@ class OfferJob extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(pageRoute('OFFER_JOB', 'offer-job'))
+    this.setState({date: moment().format("YYYY-MM-DD")})
   }
 
   handleChangeStr(e) {
-    console.log(e.target.value)
     this.setState({ [e.target.name]: e.target.value })
   }
 
@@ -114,7 +115,7 @@ class OfferJob extends React.Component {
             defaultValue='default'
             onChange={this.handleChangeStr.bind(this)}
           >
-            <option value=''>Хто вам потрібен?</option>
+            <option value=''>хто вам потрібен?</option>
             <option value='drums'>Барабанщик</option>
             <option value='pandora'>Бандурист</option>
             <option value='bas'>Басист</option>
@@ -128,7 +129,6 @@ class OfferJob extends React.Component {
             <input
               type='date'
               name='date'
-              placeholder='введіть дату'
               className={s.date}
               value={this.state.date}
               onChange={this.handleChangeStr.bind(this)}
@@ -180,7 +180,7 @@ class OfferJob extends React.Component {
     return (
       <div>
         {
-          !this.props.authorized && <Redirect to='/login'/>
+          // !this.props.authorized && <Redirect to='/login'/>
         }
         {
           this.props.loading
