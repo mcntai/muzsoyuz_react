@@ -31,13 +31,14 @@ export class MuzSoyuzRequest extends Request {
       .sendToken()
   }
 
-  static getJobOffers(jobType) {
-    return this.get('/job')
-      .query({ jobType })
+  static getJobOffers(params) {
+    return this.post('/job/find', params)
   }
 
   props(array) {
-    return this.query({ props: array })
+    this.body.props = array
+
+    return this
   }
 
   isSucceededStatus(response) {

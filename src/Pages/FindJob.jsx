@@ -9,6 +9,7 @@ import { pageRoute } from '../actions/routingActions'
 import * as swal from '../Components/common/Alerts'
 import HeaderInternalButtons from '../Components/common/HeaderInternalButtons'
 
+
 const mapStateToProps = state => {
   return {
     loading: state.authReducer.loading,
@@ -54,7 +55,13 @@ class FindJob extends React.Component {
 
   async getAllJobOffers() {
     try {
-      const response = await MuzSoyuzRequest.getJobOffers('musicalReplacement')
+      const response = await MuzSoyuzRequest.getJobOffers({
+        jobType: 'musicalReplacement',
+        orderBy: 'created ASC',
+        offset : 0,
+        limit  : 100,
+        role   : ['drums'],
+      })
         .props([
           'id',
           'title',
@@ -74,7 +81,7 @@ class FindJob extends React.Component {
     }
     catch (e) {
       if (e.message === 'Bad Request Exception') {
-        swal.badRequest( 'Повідомте адміну в телеграм @maxshei', 'Тип юзера невизначений')
+        swal.badRequest('Повідомте адміну в телеграм @maxshei', 'Тип юзера невизначений')
       }
     }
 
@@ -95,7 +102,12 @@ class FindJob extends React.Component {
           <Header/>
         </div>
         <p className={s.jobSearch}>Пошук роботи</p>
-        <HeaderInternalButtons first="Сортувати" second="Фільтр " />
+        <HeaderInternalButtons
+          firstText="Сортувати"
+          firstRoute='/find-job-sort'
+          secondText="Фільтр"
+          secondRoute='/find-job-filter'
+        />
         {
           this.state.fetchFinished && this.renderJobOffers(this.state.fetchedData)
         }

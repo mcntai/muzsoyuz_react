@@ -27,7 +27,7 @@ export class Request {
     this.method = method
     this.url = config.getApiPath() + url
     this.headers = headers || {}
-    this.body = body
+    this.body = body || {}
   }
 
   setHeaders(headers) {
@@ -135,7 +135,7 @@ export class Request {
       headers: this.headers,
     }
 
-    if (this.body) {
+    if (Object.keys(this.body).length) {
       requestOptions.body = JSON.stringify(this.body)
       requestOptions.headers['Content-Type'] = 'application/json'
     }

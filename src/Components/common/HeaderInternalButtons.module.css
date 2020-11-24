@@ -5,20 +5,27 @@
   justify-content: space-between;
 }
 
-.sortFilterButtons button {
+.btn {
   width: 169px;
   height: 32px;
-  background: #CBF6FF;
-  border: 1px solid #CBF6FF;
+  background: #DADADA;
+  border: 1px solid #DADADA;
   border-radius: 12px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
-  color: #4E4E4E;
+  color: #262D33;
   font-size: 12px;
-  line-height: 14.63px;
-  cursor: pointer;
+  line-height: 15px;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 8px;
 }
 
-.sortFilterButtons button:focus {
+.btn:focus {
   outline: none;
+}
+
+.active {
+  background-color: #CBF6FF;
+  border: 1px solid #CBF6FF;
 }

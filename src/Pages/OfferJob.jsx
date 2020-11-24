@@ -97,6 +97,19 @@ class OfferJob extends React.Component {
           <Header/>
         </div>
         <form action="" className={s.form}>
+          {/*<p>Тестовий</p>*/}
+          {/*<div className={s.inputWrapper}>*/}
+          {/*  <div className={s.iconTitle}/>*/}
+          {/*  <input*/}
+          {/*    type='text'*/}
+          {/*    name='title'*/}
+          {/*    placeholder='введіть заголовок'*/}
+          {/*    className={s.txt}*/}
+          {/*    value={this.state.title}*/}
+          {/*    onChange={this.handleChangeStr.bind(this)}*/}
+          {/*    onBlur={(e) => this.validateInput(e, 'titleErr')}*/}
+          {/*  />*/}
+          {/*</div>*/}
           <p>Заголовок оголошення</p>
           <input
             type='text'
@@ -130,7 +143,7 @@ class OfferJob extends React.Component {
               type='date'
               name='date'
               className={s.date}
-              value={this.state.date}
+              // value={this.state.date}
               onChange={this.handleChangeStr.bind(this)}
             />
           <span className={s.textErr}>{this.state.dateErr}</span>
@@ -156,7 +169,7 @@ class OfferJob extends React.Component {
             onBlur={(e) => this.validateInput(e, 'setsErr')}
           />
           <span className={s.textErr}>{this.state.setsErr}</span>
-          <p>Гонорар, Грн</p>
+          <p>Гонорар, грн</p>
           <input
             type='number'
             name='salary'
