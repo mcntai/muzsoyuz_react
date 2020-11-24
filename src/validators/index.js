@@ -6,9 +6,6 @@ const JobOfferMap = {
     argumentAssert(value.length > 10, 'мінімум 10 символів')
     argumentAssert(value.length <= 250, 'максимум 250 символів')
   },
-  dateErr   : value => {
-    argumentAssert(/(\d{2})\.(\d{2})\.(\d{4})/.test(value), 'введіть дату в форматі ДД-ММ-РРРР')
-  },
   addressErr: value => {
     argumentAssert(value.length < 250, 'максимум 250 символів')
   },
