@@ -106,3 +106,16 @@
   margin-top: 18px;
   color: #6A6A6A;
 }
+
+/*.aboutMeWrapper input {*/
+/*  border: none;*/
+/*}*/
+
+.inp {
+  composes: montserrat;
+  border: none;
+}
+
+/*.name {*/
+/*  background-image: url('../');*/
+/*}*/

@@ -35,6 +35,11 @@ export class MuzSoyuzRequest extends Request {
     return this.post('/job/find', params)
   }
 
+  static makeProfileUpdate(changes) {
+    return this.patch('/user/profile/', changes)
+      .sendToken()
+  }
+
   props(array) {
     this.body.props = array
 
