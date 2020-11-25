@@ -1,4 +1,4 @@
-import { config } from '../config'
+import {config} from '../config'
 
 
 const METHODS = {
@@ -13,7 +13,7 @@ class ResponseError extends Error {
   constructor(error) {
     super()
 
-    this.error = error?.response
+    this.error = (error && error.response )|| error
     this.status = this.error?.status
     this.message = this.error?.message || error?.statusText
     this.headers = this.response?.headers
@@ -104,26 +104,28 @@ export class Request {
     return this.promise.catch(errorHandler)
   }
 
-  getError(response) {
+  async getError(response) {
     if (response.status === 502) {
       return 'No connection with server'
     }
 
-    return response || `Code: ${response.status}, Message: (${response.statusText})`
+    return response instanceof Response
+      ? response.json()
+      : response
   }
 
   isSucceededStatus(response) {
     return response.status >= 200 && response.status < 300
   }
 
-  checkStatus(response) {
+  async checkStatus(response) {
     if (this.isSucceededStatus(response)) {
       return response
     }
 
-    const error = this.getError(response)
+    const error = await this.getError(response)
 
-    return Promise.reject(new ResponseError(error, response))
+    return Promise.reject(new ResponseError(error))
   }
 
   async execute() {
