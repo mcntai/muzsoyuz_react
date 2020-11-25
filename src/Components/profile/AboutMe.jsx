@@ -20,6 +20,12 @@ class AboutMe extends React.Component {
     }
   }
 
+  componentDidMount() {
+    const { id, name, role, phone, email } = this.props.user
+
+    this.setState({ id, name, role, phone, email, })
+  }
+
   componentDidUpdate(prevProps) {
     const { id, name, role, phone, email } = this.props.user
 
