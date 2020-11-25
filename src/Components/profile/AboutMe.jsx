@@ -4,6 +4,7 @@ import avatar from '../../Assets/img/avatar.svg'
 import Logout from './Logout'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import * as swalAlert from '../common/Alerts'
+import { pickChanges } from '../../utils/object'
 
 
 class AboutMe extends React.Component {
@@ -40,36 +41,26 @@ class AboutMe extends React.Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  pickChanges(prevObj, curObj) {
-    const newObj = {}
-
-    for (let key in prevObj) {
-
-      if (prevObj[key] !== curObj[key]) {
-        newObj[key] = curObj[key]
-      }
-    }
-    return newObj
-  }
-
   async submitChanges() {
     const togglePencil = this.state.togglePencil === '' ? s.togglePencil : ''
     const hideSaveBtn = this.state.hideSaveBtn === '' ? s.hideSaveBtn : ''
     const hideEditBtn = this.state.hideEditBtn === '' ? s.hideEditBtn : ''
 
+    const changes = pickChanges(
+      this.props.user,
+      this.state,
+      ['name', 'role', 'phone', 'email'],
+    )
 
-    try {
-      const response = await MuzSoyuzRequest.makeProfileUpdate({
-        name : this.state.name,
-        role : this.state.role,
-        phone: this.state.phone,
-        email: this.state.email,
-      })
+    if (Object.keys(changes).length) {
+      try {
+        const response = await MuzSoyuzRequest.makeProfileUpdate(changes)
 
-      console.log(response)
-    }
-    catch (e) {
-      swalAlert.error(e.message, 'Сталася помилка при оновленні профілю')
+        console.log(response)
+      }
+      catch (e) {
+        swalAlert.error(e.message, 'Сталася помилка при оновленні профілю')
+      }
     }
 
     this.setState({ hideSaveBtn, hideEditBtn, togglePencil })
@@ -93,14 +84,14 @@ class AboutMe extends React.Component {
               type='text'
               name='name'
               className={[s.name, s.inp, this.state.togglePencil].join(' ')}
-              value={this.state.name || ''}
+              value={this.state.name || "Ваше ім'я"}
               onChange={this.changeInput.bind(this)}
             />
             <input
               type='text'
               name='role'
               className={[s.role, s.inp, s.roleIcon, this.state.togglePencil].join(' ')}
-              value={this.state.role || ''}
+              value={this.state.role || 'Чим займаєтесь?'}
               onChange={this.changeInput.bind(this)}
             />
           </div>
@@ -113,7 +104,7 @@ class AboutMe extends React.Component {
             type='text'
             name='phone'
             className={[s.phoneNumber, s.inp, this.state.togglePencil].join(' ')}
-            value={this.state.phone || ''}
+            value={this.state.phone || 'Ваш номер телефону'}
             onChange={this.changeInput.bind(this)}
           />
         </span>
