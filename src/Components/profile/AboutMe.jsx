@@ -1,7 +1,6 @@
 import React from 'react'
 import s from './AboutMe.module.css'
 import avatar from '../../Assets/img/avatar.svg'
-import { NavLink } from 'react-router-dom'
 import Logout from './Logout'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import * as swalAlert from '../common/Alerts'
@@ -11,41 +10,54 @@ class AboutMe extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      id    : '',
-      name  : '',
-      role  : '',
-      phone : '',
-      email : '',
-      toggle: '',
+      id          : '',
+      name        : '',
+      role        : '',
+      phone       : '',
+      email       : '',
+      togglePencil: '',
+      showEditBtn : '',
+      hideSaveBtn : s.hideSaveBtn,
+      hideEditBtn : ''
     }
   }
 
   componentDidMount() {
     const { id, name, role, phone, email } = this.props.user
 
-    this.setState({ id, name, role, phone, email, })
+    this.setState({ id, name, role, phone, email })
   }
 
   componentDidUpdate(prevProps) {
     const { id, name, role, phone, email } = this.props.user
 
-    if (
-      prevProps.user.id !== id ||
-      prevProps.user.email !== email ||
-      prevProps.user.name !== name ||
-      prevProps.user.role !== role ||
-      prevProps.user.phone !== phone
-    ) {
+    if (prevProps.user !== this.props.user) {
       this.setState({ id, name, role, phone, email, })
     }
-
   }
 
   changeInput(e) {
     this.setState({ [e.target.name]: e.target.value })
   }
 
+  pickChanges(prevObj, curObj) {
+    const newObj = {}
+
+    for (let key in prevObj) {
+
+      if (prevObj[key] !== curObj[key]) {
+        newObj[key] = curObj[key]
+      }
+    }
+    return newObj
+  }
+
   async submitChanges() {
+    const togglePencil = this.state.togglePencil === '' ? s.togglePencil : ''
+    const hideSaveBtn = this.state.hideSaveBtn === '' ? s.hideSaveBtn : ''
+    const hideEditBtn = this.state.hideEditBtn === '' ? s.hideEditBtn : ''
+
+
     try {
       const response = await MuzSoyuzRequest.makeProfileUpdate({
         name : this.state.name,
@@ -59,12 +71,16 @@ class AboutMe extends React.Component {
     catch (e) {
       swalAlert.error(e.message, 'Сталася помилка при оновленні профілю')
     }
+
+    this.setState({ hideSaveBtn, hideEditBtn, togglePencil })
   }
 
   editData() {
-    const css = this.state.toggle === '' ? s.toggle : ''
+    const togglePencil = this.state.togglePencil === '' ? s.togglePencil : ''
+    const hideSaveBtn = this.state.hideSaveBtn === '' ? s.hideSaveBtn : ''
+    const hideEditBtn = this.state.hideEditBtn === '' ? s.hideEditBtn : ''
 
-    this.setState({ toggle: css })
+    this.setState({ togglePencil, hideSaveBtn, hideEditBtn })
   }
 
   render() {
@@ -76,14 +92,14 @@ class AboutMe extends React.Component {
             <input
               type='text'
               name='name'
-              className={[s.name, s.inp, this.state.toggle].join(' ')}
+              className={[s.name, s.inp, this.state.togglePencil].join(' ')}
               value={this.state.name || ''}
               onChange={this.changeInput.bind(this)}
             />
             <input
               type='text'
               name='role'
-              className={[s.role, s.inp, this.state.toggle].join(' ')}
+              className={[s.role, s.inp, s.roleIcon, this.state.togglePencil].join(' ')}
               value={this.state.role || ''}
               onChange={this.changeInput.bind(this)}
             />
@@ -96,30 +112,34 @@ class AboutMe extends React.Component {
           <input
             type='text'
             name='phone'
-            className={[s.phoneNumber, s.inp, this.state.toggle].join(' ')}
+            className={[s.phoneNumber, s.inp, this.state.togglePencil].join(' ')}
             value={this.state.phone || ''}
             onChange={this.changeInput.bind(this)}
           />
         </span>
           <div className={s.row}/>
+          <span className={s.emailIcon}>
           <input
             type='email'
             name='email'
-            className={[s.email, s.inp, this.state.toggle].join(' ')}
+            className={[s.email, s.inp, this.state.togglePencil].join(' ')}
             value={this.state.email || ''}
             onChange={this.changeInput.bind(this)}
           />
+          </span>
           <div className={s.row}/>
         </div>
         <div className={s.buttons}>
-          <button onClick={this.submitChanges.bind(this)}>ЗБЕРЕГТИ</button>
-          <button onClick={this.editData.bind(this)}>Edit</button>
-          <NavLink
-            to="/edit"
-            className={[s.btn, s.edit].join(' ')}
-          >
+          <button
+            className={[s.btn, s.saveBtn, this.state.hideSaveBtn].join(' ')}
+            onClick={this.submitChanges.bind(this)}>
+            Зберегти
+          </button>
+          <button
+            className={[s.btn, this.state.hideEditBtn].join(' ')}
+            onClick={this.editData.bind(this)}>
             Редагувати
-          </NavLink>
+          </button>
           <Logout/>
         </div>
       </div>

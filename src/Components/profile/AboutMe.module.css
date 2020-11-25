@@ -7,7 +7,7 @@
 }
 
 .iconPosition {
-  background-position: 6% 50%;
+  background-position: 10% 50%;
   background-repeat: no-repeat;
   padding-left: 59px;
 }
@@ -30,7 +30,7 @@
   margin-left: 17px;
 }
 
-.nameRole span {
+.nameRole input {
   transform: translateY(-50%);
 }
 
@@ -41,6 +41,10 @@
   font-size: 11px;
   line-height: 12px;
   color: #6A6A6A;
+}
+
+.roleIcon {
+  height: 16px;
 }
 
 .row {
@@ -64,19 +68,17 @@
   composes: iconPosition;
   background-image: url('../../Assets/img/phone.svg');
   padding-left: 60px;
-  background-position: 10%;
 }
 
 .phoneNumber {
   color: #262D33;
 }
 
-.email {
+.emailIcon {
   color: #262D33;
   composes: iconPosition;
   background-image: url('../../Assets/img/envelope.svg');
   padding-left: 60px;
-  background-position: 10%;
 }
 
 .buttons {
@@ -85,7 +87,6 @@
 
 .btn {
   composes: montserrat;
-  display: inline-block;
   font-size: 14px;
   font-weight: 400;
   width: 302px;
@@ -96,9 +97,6 @@
   outline: none;
   text-decoration: none;
   color: #000000;
-}
-
-.edit {
   margin-top: 60px;
 }
 
@@ -107,17 +105,32 @@
   color: #6A6A6A;
 }
 
-/*.aboutMeWrapper input {*/
-/*  border: none;*/
-/*}*/
-
 .inp {
   composes: montserrat;
   border: none;
+  width: 200px;
 }
 
-.toggle {
+.email {
+  width: 233px;
+}
+
+.togglePencil {
   background-image: url("../../Assets/img/pencil.svg");
   background-position: 100%;
   background-repeat: no-repeat;
 }
+
+.saveBtn {
+  background: #CBF6FF;
+  border: 1px solid #CBF6FF;
+}
+
+.hideSaveBtn {
+  display: none;
+}
+
+.hideEditBtn {
+  display: none;
+}
+
