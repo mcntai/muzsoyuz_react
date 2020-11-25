@@ -11,11 +11,12 @@ class AboutMe extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      id   : '',
-      name : '',
-      role : '',
-      phone: '',
-      email: '',
+      id    : '',
+      name  : '',
+      role  : '',
+      phone : '',
+      email : '',
+      toggle: '',
     }
   }
 
@@ -50,8 +51,14 @@ class AboutMe extends React.Component {
     }
   }
 
-  render() {
+  editData() {
+    const css = this.state.toggle === '' ? s.toggle : ''
 
+    this.setState({ toggle: css })
+  }
+
+  render() {
+    console.log(this.state.toggle)
     return (
       <div className={s.aboutMeWrapper}>
         <div className={s.name}>
@@ -60,14 +67,14 @@ class AboutMe extends React.Component {
             <input
               type='text'
               name='name'
-              className={[s.name, s.inp].join(' ')}
+              className={[s.name, s.inp, this.state.toggle].join(' ')}
               value={this.state.name}
               onChange={this.changeInput.bind(this)}
             />
             <input
               type='text'
               name='role'
-              className={[s.role, s.inp].join(' ')}
+              className={[s.role, s.inp, this.state.toggle].join(' ')}
               value={this.state.role}
               onChange={this.changeInput.bind(this)}
             />
@@ -76,11 +83,11 @@ class AboutMe extends React.Component {
         <div className={s.row}/>
         <div className={s.contacts}>
         <span className={s.phoneCode}>
-          +380
+          +380&nbsp;
           <input
             type='number'
             name='phone'
-            className={[s.phoneNumber, s.inp].join(' ')}
+            className={[s.phoneNumber, s.inp, this.state.toggle].join(' ')}
             value={this.state.phone}
             onChange={this.changeInput.bind(this)}
           />
@@ -89,7 +96,7 @@ class AboutMe extends React.Component {
           <input
             type='email'
             name='email'
-            className={[s.email, s.inp].join(' ')}
+            className={[s.email, s.inp, this.state.toggle].join(' ')}
             value={this.state.email}
             onChange={this.changeInput.bind(this)}
           />
@@ -97,6 +104,7 @@ class AboutMe extends React.Component {
         </div>
         <div className={s.buttons}>
           <button onClick={this.submitChanges.bind(this)}>ЗБЕРЕГТИ</button>
+          <button onClick={this.editData.bind(this)}>Edit</button>
           <NavLink
             to="/edit"
             className={[s.btn, s.edit].join(' ')}

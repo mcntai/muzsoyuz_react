@@ -116,6 +116,8 @@
   border: none;
 }
 
-/*.name {*/
-/*  background-image: url('../');*/
-/*}*/
+.toggle {
+  background-image: url("../../Assets/img/pencil.svg");
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
