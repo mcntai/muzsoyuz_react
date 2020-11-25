@@ -1,5 +1,4 @@
-import { Request } from './utils/request'
-
+import {Request} from './utils/request'
 
 export class MuzSoyuzRequest extends Request {
   sendToken() {
@@ -53,5 +52,12 @@ export class MuzSoyuzRequest extends Request {
   async execute() {
     return super.execute()
       .then(this.checkStatus.bind(this))
+      .catch(e => {
+        e.message = Array.isArray(e.message)
+          ? e.message.join(', ')
+          : e.message
+
+        throw e
+      })
   }
 }

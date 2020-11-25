@@ -4,6 +4,7 @@ import avatar from '../../Assets/img/avatar.svg'
 import { NavLink } from 'react-router-dom'
 import Logout from './Logout'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
+import * as swalAlert from '../common/Alerts'
 
 
 class AboutMe extends React.Component {
@@ -45,7 +46,7 @@ class AboutMe extends React.Component {
       console.log(response)
     }
     catch (e) {
-      alert(e.message)
+      swalAlert.error(e.message, 'Сталася помилка при оновленні профілю')
     }
   }
 

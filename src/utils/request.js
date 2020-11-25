@@ -10,14 +10,13 @@ const METHODS = {
 }
 
 class ResponseError extends Error {
-  constructor(error, response) {
+  constructor(error) {
     super()
 
-    this.error = error
-    this.status = error.status
-    this.message = error.message || error.statusText || error
-    this.response = response
-    this.headers = this.response && this.response.headers
+    this.error = error?.response
+    this.status = this.error.status
+    this.message = this.error?.message || error.statusText
+    this.headers = this.response?.headers
   }
 }
 
