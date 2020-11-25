@@ -20,16 +20,20 @@ class AboutMe extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.setState({
-      id   : this.props.user.id,
-      name : this.props.user.name,
-      role : this.props.user.role,
-      phone: this.props.user.phone,
-      email: this.props.user.email,
-    })
-  }
+  componentDidUpdate(prevProps) {
+    const { id, name, role, phone, email } = this.props.user
 
+    if (
+      prevProps.user.id !== id ||
+      prevProps.user.email !== email ||
+      prevProps.user.name !== name ||
+      prevProps.user.role !== role ||
+      prevProps.user.phone !== phone
+    ) {
+      this.setState({ id, name, role, phone, email, })
+    }
+
+  }
 
   changeInput(e) {
     this.setState({ [e.target.name]: e.target.value })
@@ -58,7 +62,6 @@ class AboutMe extends React.Component {
   }
 
   render() {
-    console.log(this.state.toggle)
     return (
       <div className={s.aboutMeWrapper}>
         <div className={s.name}>
@@ -68,14 +71,14 @@ class AboutMe extends React.Component {
               type='text'
               name='name'
               className={[s.name, s.inp, this.state.toggle].join(' ')}
-              value={this.state.name}
+              value={this.state.name || ''}
               onChange={this.changeInput.bind(this)}
             />
             <input
               type='text'
               name='role'
               className={[s.role, s.inp, this.state.toggle].join(' ')}
-              value={this.state.role}
+              value={this.state.role || ''}
               onChange={this.changeInput.bind(this)}
             />
           </div>
@@ -85,10 +88,10 @@ class AboutMe extends React.Component {
         <span className={s.phoneCode}>
           +380&nbsp;
           <input
-            type='number'
+            type='text'
             name='phone'
             className={[s.phoneNumber, s.inp, this.state.toggle].join(' ')}
-            value={this.state.phone}
+            value={this.state.phone || ''}
             onChange={this.changeInput.bind(this)}
           />
         </span>
@@ -97,7 +100,7 @@ class AboutMe extends React.Component {
             type='email'
             name='email'
             className={[s.email, s.inp, this.state.toggle].join(' ')}
-            value={this.state.email}
+            value={this.state.email || ''}
             onChange={this.changeInput.bind(this)}
           />
           <div className={s.row}/>
