@@ -21,10 +21,10 @@
 
 .backBtn {
   text-decoration: none;
-  color: #000000;
+  color: #262D33;
   font-size: 20px;
   display: inline-block;
-  transform: translateY(-25%);
+  transform: translateY(-15%);
 }
 
 .profile {

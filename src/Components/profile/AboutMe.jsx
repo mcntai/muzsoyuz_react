@@ -16,24 +16,26 @@ class AboutMe extends React.Component {
       role        : '',
       phone       : '',
       email       : '',
+      imageURL    : '',
       togglePencil: '',
       showEditBtn : '',
       hideSaveBtn : s.hideSaveBtn,
-      hideEditBtn : ''
+      hideEditBtn : '',
+      disabled    : true,
     }
   }
 
   componentDidMount() {
-    const { id, name, role, phone, email } = this.props.user
+    const { id, name, role, phone, email, imageURL } = this.props.user
 
-    this.setState({ id, name, role, phone, email })
+    this.setState({ id, name, role, phone, email, imageURL })
   }
 
   componentDidUpdate(prevProps) {
-    const { id, name, role, phone, email } = this.props.user
+    const { id, name, role, phone, email, imageURL } = this.props.user
 
     if (prevProps.user !== this.props.user) {
-      this.setState({ id, name, role, phone, email, })
+      this.setState({ id, name, role, phone, email, imageURL })
     }
   }
 
@@ -49,7 +51,7 @@ class AboutMe extends React.Component {
     const changes = pickChanges(
       this.props.user,
       this.state,
-      ['name', 'role', 'phone', 'email'],
+      ['name', 'role', 'phone', 'email', 'imageUrl'],
     )
 
     if (Object.keys(changes).length) {
@@ -63,7 +65,7 @@ class AboutMe extends React.Component {
       }
     }
 
-    this.setState({ hideSaveBtn, hideEditBtn, togglePencil })
+    this.setState({ hideSaveBtn, hideEditBtn, togglePencil, disabled: true })
   }
 
   editData() {
@@ -71,27 +73,33 @@ class AboutMe extends React.Component {
     const hideSaveBtn = this.state.hideSaveBtn === '' ? s.hideSaveBtn : ''
     const hideEditBtn = this.state.hideEditBtn === '' ? s.hideEditBtn : ''
 
-    this.setState({ togglePencil, hideSaveBtn, hideEditBtn })
+    this.setState({ togglePencil, hideSaveBtn, hideEditBtn, disabled: false })
   }
 
   render() {
+    const disabled = this.state.disabled
+
     return (
       <div className={s.aboutMeWrapper}>
         <div className={s.name}>
-          <div><img src={avatar} alt="avatar"/></div>
+          <div className={s.imgWrapper}><img src={this.state.imageURL || avatar} alt="avatar"/></div>
           <div className={s.nameRole}>
             <input
               type='text'
               name='name'
               className={[s.name, s.inp, this.state.togglePencil].join(' ')}
-              value={this.state.name || "Ваше ім'я"}
+              value={this.state.name || ''}
+              placeholder="Ваше ім'я"
+              disabled={disabled}
               onChange={this.changeInput.bind(this)}
             />
             <input
               type='text'
               name='role'
               className={[s.role, s.inp, s.roleIcon, this.state.togglePencil].join(' ')}
-              value={this.state.role || 'Чим займаєтесь?'}
+              value={this.state.role || ''}
+              placeholder="Чим ви займаєтесь?"
+              disabled={disabled}
               onChange={this.changeInput.bind(this)}
             />
           </div>
@@ -104,7 +112,9 @@ class AboutMe extends React.Component {
             type='text'
             name='phone'
             className={[s.phoneNumber, s.inp, this.state.togglePencil].join(' ')}
-            value={this.state.phone || 'Ваш номер телефону'}
+            value={this.state.phone || ''}
+            placeholder="XX-XXX-XX-XX"
+            disabled={disabled}
             onChange={this.changeInput.bind(this)}
           />
         </span>
@@ -114,7 +124,8 @@ class AboutMe extends React.Component {
             type='email'
             name='email'
             className={[s.email, s.inp, this.state.togglePencil].join(' ')}
-            value={this.state.email || ''}
+            defaultValue={this.state.email || ''}
+            disabled={disabled}
             onChange={this.changeInput.bind(this)}
           />
           </span>

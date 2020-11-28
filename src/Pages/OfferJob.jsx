@@ -1,15 +1,15 @@
 import React from 'react'
-import s from './OfferJob.module.css'
-import Header from '../Components/common/Header'
-import Footer from '../Components/common/Footer'
-import { MuzSoyuzRequest } from '../muzsoyuz-request'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import moment from 'moment'
-import preloader from '../Assets/img/preloader.gif'
+import { MuzSoyuzRequest } from '../muzsoyuz-request'
 import { pageRoute } from '../actions/routingActions'
-import * as swal from '../Components/common/Alerts'
 import { jobOfferValidator } from '../validators/index'
+import * as swal from '../Components/common/Alerts'
+import Header from '../Components/common/Header'
+import Footer from '../Components/common/Footer'
+import preloader from '../Assets/img/preloader.gif'
+import s from './OfferJob.module.css'
 
 
 const mapStateToProps = state => {
@@ -40,7 +40,7 @@ class OfferJob extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(pageRoute('OFFER_JOB', 'offer-job'))
-    this.setState({date: moment().format("YYYY-MM-DD")})
+    this.setState({ date: moment().format('YYYY-MM-DD') })
   }
 
   handleChangeStr(e) {
@@ -86,7 +86,6 @@ class OfferJob extends React.Component {
         console.log(e.message)
         swal.serverErr('Ви щось пропустили', 'Перевірте форму')
       }
-
     }
   }
 
@@ -97,19 +96,6 @@ class OfferJob extends React.Component {
           <Header/>
         </div>
         <form action="" className={s.form}>
-          {/*<p>Тестовий</p>*/}
-          {/*<div className={s.inputWrapper}>*/}
-          {/*  <div className={s.iconTitle}/>*/}
-          {/*  <input*/}
-          {/*    type='text'*/}
-          {/*    name='title'*/}
-          {/*    placeholder='введіть заголовок'*/}
-          {/*    className={s.txt}*/}
-          {/*    value={this.state.title}*/}
-          {/*    onChange={this.handleChangeStr.bind(this)}*/}
-          {/*    onBlur={(e) => this.validateInput(e, 'titleErr')}*/}
-          {/*  />*/}
-          {/*</div>*/}
           <p>Заголовок оголошення</p>
           <input
             type='text'
@@ -139,13 +125,12 @@ class OfferJob extends React.Component {
             <option value='violin'>Скрипач</option>
           </select>
           <p>Дата</p>
-            <input
-              type='date'
-              name='date'
-              className={s.date}
-              // value={this.state.date}
-              onChange={this.handleChangeStr.bind(this)}
-            />
+          <input
+            type='date'
+            name='date'
+            className={s.date}
+            onChange={this.handleChangeStr.bind(this)}
+          />
           <span className={s.textErr}>{this.state.dateErr}</span>
           <p>Адреса</p>
           <input
@@ -193,7 +178,7 @@ class OfferJob extends React.Component {
     return (
       <div>
         {
-          // !this.props.authorized && <Redirect to='/login'/>
+          !this.props.authorized && <Redirect to='/login'/>
         }
         {
           this.props.loading

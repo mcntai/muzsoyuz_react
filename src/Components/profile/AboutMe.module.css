@@ -22,8 +22,14 @@
   margin-top: 16.5px;
 }
 
-.name img {
+.imgWrapper {
   padding-left: 29px;
+}
+
+.name img {
+  width: 53px;
+  height: 53px;
+  border-radius: 50%;
 }
 
 .nameRole {
@@ -96,7 +102,7 @@
   background: #FFFFFF;
   outline: none;
   text-decoration: none;
-  color: #000000;
+  color: #262D33;
   margin-top: 60px;
 }
 
@@ -109,6 +115,19 @@
   composes: montserrat;
   border: none;
   width: 200px;
+}
+
+.inp::placeholder {
+  color: #262D33;
+}
+
+.inp:disabled {
+  color: #262D33;
+  background-color: #FFFFFF;
+}
+
+.role:disabled {
+  color: #6A6A6A;
 }
 
 .email {

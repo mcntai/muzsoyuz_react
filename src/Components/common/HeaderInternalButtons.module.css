@@ -21,10 +21,6 @@
   padding-top: 8px;
 }
 
-.btn:focus {
-  outline: none;
-}
-
 .active {
   background-color: #CBF6FF;
   border: 1px solid #CBF6FF;

@@ -1,15 +1,17 @@
 .footer {
   display: flex;
-  justify-content: space-around;
-  white-space: nowrap;
+  justify-content: space-between;
+  padding-top: 12px;
 }
 
-.footer img {
-  display: block;
-  margin: 0 auto 10px;
+.navWrapper {
+  width: 111px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.footer a {
+.nav {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -17,4 +19,19 @@
   line-height: 16px;
   color: #262D33;
   text-decoration: none;
+}
+
+.nav img {
+  display: block;
+  margin: 0 auto 10px;
+  width: 28px;
+  height: 28px;
+}
+
+.active {
+  color: #6384EB;
+}
+
+.active img {
+  filter: invert(53%) sepia(28%) saturate(5061%) hue-rotate(206deg) brightness(97%) contrast(89%);
 }

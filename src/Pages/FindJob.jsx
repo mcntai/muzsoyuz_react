@@ -39,7 +39,7 @@ class FindJob extends React.Component {
 
             return <li key={item.id} className={s.list}>
               <div className={s.jobOfferWrapper}>
-                <img src={item.imageURL} alt='Job offer'/>
+                <img src={item.instrument.imageURL} alt='Instrument'/>
                 <div>
                   <p className={s.jobTitle}>{item.title}</p>
                   <p className={s.jobSalary}>Оплата: {salary}, Грн</p>
@@ -60,7 +60,8 @@ class FindJob extends React.Component {
         orderBy: 'created ASC',
         offset : 0,
         limit  : 100,
-        role   : ['drums'],
+        // role   : ['drums'],
+        relations: ['instrument', 'user'],
       })
         .props([
           'id',

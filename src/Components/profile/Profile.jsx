@@ -60,7 +60,7 @@ class Profile extends React.Component {
             firstText="Про себе"
             firstRoute='/profile'
             secondText="Налаштування"
-            secondRoute='/settings'
+            secondRoute='/profile'
           />
         </div>
         <div className={s.row}/>
