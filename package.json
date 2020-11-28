@@ -11,7 +11,7 @@
     "immer": "^7.0.9",
     "moment": "^2.29.1",
     "react": "^16.13.1",
-    "react-datepicker": "^3.3.0",
+    "react-confetti": "^6.0.0",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "react-router": "^5.2.0",
@@ -44,5 +44,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "react-use": "^15.3.4"
+  }
 }
