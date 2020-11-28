@@ -45,7 +45,7 @@ class Amigo extends React.Component {
           : this.renderPage()
         }
         {
-          <Confetti width="1368px" height="768px" />
+          <Confetti width="1368px" height="1000px" />
         }
       </div>
     )
