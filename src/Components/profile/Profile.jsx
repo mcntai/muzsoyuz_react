@@ -1,12 +1,13 @@
 import React from 'react'
-import s from './Profile.module.css'
 import { connect } from 'react-redux'
-import { pageRoute } from '../../actions/routingActions'
+import { Redirect } from 'react-router'
 import { NavLink } from 'react-router-dom'
+import { pageRoute } from '../../actions/routingActions'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import * as swal from '../../Components/common/Alerts'
 import HeaderInternalButtons from '../common/HeaderInternalButtons'
 import AboutMe from './AboutMe'
+import s from './Profile.module.css'
 
 
 const mapStateToProps = state => {
@@ -49,31 +50,38 @@ class Profile extends React.Component {
 
     const user = this.state.userProfile
 
-    return (
-      <div className={s.profileWrapper}>
-        <div className={s.profileHeader}>
-          <NavLink to={backBtn} className={s.backBtn}>&lt;</NavLink>
-          <span className={s.profile}>Профіль</span>
+    if (this.props.authorized) {
+      return (
+        <div className={s.profileWrapper}>
+          <div className={s.profileHeader}>
+            <NavLink to={backBtn} className={s.backBtn}>&lt;</NavLink>
+            <span className={s.profile}>Профіль</span>
+          </div>
+          <div className={s.headerButtons}>
+            <HeaderInternalButtons
+              firstText="Про себе"
+              firstRoute='/profile'
+              secondText="Налаштування"
+              secondRoute='/profile'
+            />
+          </div>
+          <div className={s.row}/>
+          <AboutMe user={user}/>
         </div>
-        <div className={s.headerButtons}>
-          <HeaderInternalButtons
-            firstText="Про себе"
-            firstRoute='/profile'
-            secondText="Налаштування"
-            secondRoute='/profile'
-          />
-        </div>
-        <div className={s.row}/>
-        <AboutMe user={user}/>
-      </div>
-    )
+      )
+    }
+    else {
+      return <Redirect to='/login'/>
+    }
+
   }
+
 
   render() {
     return (
       <div>
         {
-          this.props.authorized && this.userAuthorized()
+          this.userAuthorized()
         }
       </div>
     )
