@@ -1,5 +1,5 @@
 import {config} from '../config'
-
+import {MuzSoyuzResponseError} from "../errors"
 
 const METHODS = {
   GET   : 'GET',
@@ -8,18 +8,6 @@ const METHODS = {
   DELETE: 'DELETE',
   PATCH : 'PATCH',
 }
-
-class ResponseError extends Error {
-  constructor(error) {
-    super()
-
-    this.error = (error && error.response )|| error
-    this.status = this.error?.status
-    this.message = this.error?.message || error?.statusText
-    this.headers = this.response?.headers
-  }
-}
-
 
 export class Request {
   constructor({ url, method, headers, body }) {
@@ -125,7 +113,7 @@ export class Request {
 
     const error = await this.getError(response)
 
-    return Promise.reject(new ResponseError(error))
+    return Promise.reject(new MuzSoyuzResponseError(error))
   }
 
   async execute() {
