@@ -30,6 +30,12 @@
   font-weight: bold;
 }
 
+/* Styling for special occasion */
+
+.nav {
+  text-decoration: none;
+}
+
 /* Styles for Job Offers*/
 
 .jobsWrapper {

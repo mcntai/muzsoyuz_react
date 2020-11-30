@@ -1,13 +1,15 @@
 import React from 'react'
-import s from './FindJob.module.css'
-import Header from '../Components/common/Header'
-import Footer from '../Components/common/Footer'
 import { MuzSoyuzRequest } from '../muzsoyuz-request'
 import { connect } from 'react-redux'
-import preloader from '../Assets/img/preloader.gif'
 import { pageRoute } from '../actions/routingActions'
 import * as swal from '../Components/common/Alerts'
+import {NavLink} from 'react-router-dom'
+import preloader from '../Assets/img/preloader.gif'
+import Header from '../Components/common/Header'
+import Footer from '../Components/common/Footer'
 import HeaderInternalButtons from '../Components/common/HeaderInternalButtons'
+import s from './FindJob.module.css'
+import { birthday } from '../happyBirthday'
 
 
 const mapStateToProps = state => {
@@ -27,6 +29,7 @@ class FindJob extends React.Component {
 
   renderJobOffers(data) {
     return (
+      <NavLink to="/amigo-happy-birthday" className={s.nav}>
       <div className={s.jobsWrapper}>
         {
           data && this.state.fetchedData.map(item => {
@@ -42,7 +45,7 @@ class FindJob extends React.Component {
                 <img src={item.instrument.imageURL} alt='Instrument'/>
                 <div>
                   <p className={s.jobTitle}>{item.title}</p>
-                  <p className={s.jobSalary}>Оплата: {salary}, Грн</p>
+                  <p className={s.jobSalary}>Клікни на оголошення: {salary} раз!</p>
                 </div>
                 <p className={s.jobDate}>{date.getDate()} {month}</p>
               </div>
@@ -50,6 +53,7 @@ class FindJob extends React.Component {
           })
         }
       </div>
+      </NavLink>
     )
   }
 
@@ -127,6 +131,9 @@ class FindJob extends React.Component {
           ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
           : this.renderPage()
         }
+        {/*{*/}
+        {/*  setInterval(birthday, 10000)*/}
+        {/*}*/}
       </div>
     )
   }
