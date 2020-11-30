@@ -131,9 +131,9 @@ class FindJob extends React.Component {
           ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
           : this.renderPage()
         }
-        {/*{*/}
-        {/*  setInterval(birthday, 10000)*/}
-        {/*}*/}
+        {
+          setInterval(birthday, 10000)
+        }
       </div>
     )
   }
