@@ -71,7 +71,6 @@ class FindJob extends React.Component {
           'id',
           'title',
           'date',
-          'role',
           'salary',
           'imageURL',
           'address',
