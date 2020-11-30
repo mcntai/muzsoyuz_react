@@ -72,10 +72,7 @@ class FindJob extends React.Component {
           'title',
           'date',
           'salary',
-          'imageURL',
           'address',
-          'addressGeoCoded',
-          'userId',
         ])
 
       console.log(response)
