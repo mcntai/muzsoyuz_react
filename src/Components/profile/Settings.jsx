@@ -22,15 +22,18 @@ const Settings = ({dispatch, prevRoute}) => {
   }, [dispatch])
 
   return (
-    <div>
+    <div className={s.settingsPageWrapper}>
       <Header prevRoute={prevRoute}/>
+      <div className={s.sortFilterButtons}>
       <HeaderInternalButtons
         firstText="Про себе"
         firstRoute='/profile'
         secondText="Налаштування"
         secondRoute='/settings'
       />
+      </div>
       <div className={s.row}/>
+      <div className={s.settingsContainer}>
       <div className={s.settingsWrapper}>
         <img src={notifications} alt="settings" className={s.settingsImg}/>
         <span className={s.settingsText}>Оповіщення і звуки</span>
@@ -42,6 +45,7 @@ const Settings = ({dispatch, prevRoute}) => {
       <div className={s.settingsWrapper}>
         <img src={autoLogout} alt="logout" className={s.settingsImg}/>
         <span className={s.settingsText}>Авто розлогін</span>
+      </div>
       </div>
     </div>
   )

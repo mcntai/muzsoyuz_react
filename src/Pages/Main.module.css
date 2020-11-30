@@ -33,9 +33,8 @@
   transform: translateY(-50%);
 }
 
-.mainRow {
-  height: 19px;
-  background: #FFFFFF;
+.background {
+  margin-bottom: 70px;
 }
 
 .footer {
