@@ -1,15 +1,15 @@
 import React from 'react'
-import { fetchDataIfLoggedIn } from '../actions/getProfileActions'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { connect } from 'react-redux'
+import s from './App.module.css'
 import Auth from '../Pages/Auth'
 import Main from '../Pages/Main'
 import SocialMediaOauth from '../Pages/SocialMediaOauth'
 import Profile from '../Components/profile/Profile'
 import OfferJob from '../Pages/OfferJob'
 import FindJob from '../Pages/FindJob'
-import Amigo from '../Pages/Amigo'
-import s from './App.module.css'
+import Settings from '../Components/profile/Settings'
+import { connect } from 'react-redux'
+import { fetchDataIfLoggedIn } from '../actions/getProfileActions'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 
 const mapStateToProps = state => {
@@ -39,12 +39,13 @@ class App extends React.Component {
             <Route path="/offer-job" component={OfferJob}/>
             <Route path="/find-job" component={FindJob}/>
             <Route path="/profile" component={Profile}/>
-            <Route path="/amigo-happy-birthday" component={Amigo}/>
+            <Route path="/settings" component={Settings}/>
           </Switch>
         </div>
       </Router>
     )
   }
 }
+
 
 export default connect(mapStateToProps)(App)
