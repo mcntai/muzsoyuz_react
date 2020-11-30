@@ -2,7 +2,7 @@ import React from 'react'
 import s from './Main.module.css'
 import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
-import background from '../Assets/img/background.svg'
+import amigo from '../Assets/img/X - 1.svg'
 import { connect } from 'react-redux'
 import preloader from '../Assets/img/preloader.gif'
 import { pageRoute } from '../actions/routingActions'
@@ -26,7 +26,7 @@ class Amigo extends React.Component {
       <div>
         <Header/>
         <main className={s.main}>
-          <img src={background} alt="background"/>
+          <img src={amigo} alt="background" className={s.amigo}/>
           <div className={s.mainRow}/>
         </main>
         <div className={s.footer}>
@@ -45,7 +45,7 @@ class Amigo extends React.Component {
           : this.renderPage()
         }
         {
-          <Confetti width="1368px" height="1000px" />
+          <Confetti width="375px" height="812px" />
         }
       </div>
     )

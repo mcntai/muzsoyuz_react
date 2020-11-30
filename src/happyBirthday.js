@@ -5,12 +5,12 @@ export async function birthday() {
   try {
     await MuzSoyuzRequest.makeJobOffer({
       jobType: 'musicalReplacement',
-      date   : this.state.date,
-      address: this.state.address,
-      salary : this.state.salary,
-      sets   : this.state.sets,
-      title  : this.state.title,
-      role   : this.state.role,
+      date   : '2020-12-01',
+      address: 'вул Спортивна!',
+      salary : 1,
+      sets   : 3,
+      title  : 'Amigo, happy birthday!!!',
+      role   : 'drums',
     })
 
     console.log('Amigo, happy birthday!!!')

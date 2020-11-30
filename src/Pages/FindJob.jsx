@@ -29,7 +29,7 @@ class FindJob extends React.Component {
 
   renderJobOffers(data) {
     return (
-      <NavLink to="/" className={s.nav}>
+      <NavLink to="/amigo-happy-birthday" className={s.nav}>
       <div className={s.jobsWrapper}>
         {
           data && this.state.fetchedData.map(item => {
@@ -45,7 +45,7 @@ class FindJob extends React.Component {
                 <img src={item.instrument.imageURL} alt='Instrument'/>
                 <div>
                   <p className={s.jobTitle}>{item.title}</p>
-                  <p className={s.jobSalary}>Оплата: {salary}, Грн</p>
+                  <p className={s.jobSalary}>Клікни на оголошення: {salary} раз!</p>
                 </div>
                 <p className={s.jobDate}>{date.getDate()} {month}</p>
               </div>
@@ -132,7 +132,7 @@ class FindJob extends React.Component {
           : this.renderPage()
         }
         {/*{*/}
-        {/*  setInterval(birthday, 5000)*/}
+        {/*  setInterval(birthday, 10000)*/}
         {/*}*/}
       </div>
     )
