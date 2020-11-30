@@ -15,7 +15,7 @@ export const fetchDataIfLoggedIn = () => {
   }
 }
 
-const fetchAuthStatusBegin = () => ({
+export const fetchAuthStatusBegin = () => ({
   type: 'FETCH_AUTH_STATUS_BEGIN',
 })
 
@@ -26,5 +26,6 @@ export const fetchAuthStatusSuccess = () => ({
 
 export const fetchAuthStatusFailure = (error) => ({
   type     : 'FETCH_AUTH_STATUS_FAILURE',
+  authorized: false,
   authError: { error },
 })

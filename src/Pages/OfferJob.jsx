@@ -81,10 +81,10 @@ class OfferJob extends React.Component {
     catch (e) {
       if (e.message !== 'Invalid Arguments Error') {
         this.setState({ serverErr: e.message })
-        swal.undefinedErr(e.message, 'Хммм')
+        swal.error(e.message, 'Хммм')
       } else {
         console.log(e.message)
-        swal.serverErr('Ви щось пропустили', 'Перевірте форму')
+        swal.error('Ви щось пропустили', 'Перевірте форму')
       }
     }
   }

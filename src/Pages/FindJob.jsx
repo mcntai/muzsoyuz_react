@@ -82,7 +82,7 @@ class FindJob extends React.Component {
     }
     catch (e) {
       if (e.message === 'Bad Request Exception') {
-        swal.badRequest('Повідомте адміну в телеграм @maxshei', 'Тип юзера невизначений')
+        swal.error('Повідомте адміну в телеграм @maxshei', 'Тип юзера невизначений')
       }
     }
 

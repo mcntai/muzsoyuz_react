@@ -1,17 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import { NavLink } from 'react-router-dom'
 import { pageRoute } from '../../actions/routingActions'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
-import * as swal from '../../Components/common/Alerts'
+import { fetchAuthStatusFailure } from '../../actions/getProfileActions'
+import Header from '../profile/Header'
 import HeaderInternalButtons from '../common/HeaderInternalButtons'
 import AboutMe from './AboutMe'
 import s from './Profile.module.css'
+import preloader from '../../Assets/img/preloader.gif'
 
 
 const mapStateToProps = state => {
   return {
+    loading   : state.authReducer.loading,
     authorized: state.authReducer.authorized,
     prevRoute : state.pageReducer.prevRoute
   }
@@ -21,16 +23,15 @@ class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      userProfile: {},
+      userProfile : {},
     }
   }
 
-  componentDidMount() {
+  // noinspection JSCheckFunctionSignatures
+  async componentDidMount() {
     this.props.dispatch(pageRoute('PROFILE', 'profile'))
 
-    this.getUserData().catch(error => {
-      alert(error.message)
-    })
+    await this.getUserData()
   }
 
   async getUserData() {
@@ -38,42 +39,30 @@ class Profile extends React.Component {
       const response = await MuzSoyuzRequest.getUserProfile()
 
       this.setState({ userProfile: response })
-      console.log(response)
     }
     catch (e) {
-      swal.serverErr('Щось пішло не так', 'Хммм')
+      this.props.dispatch(fetchAuthStatusFailure(e.message))
     }
   }
 
   userAuthorized() {
-    const backBtn = this.props.prevRoute
-
     const user = this.state.userProfile
 
-    if (this.props.authorized) {
-      return (
-        <div className={s.profileWrapper}>
-          <div className={s.profileHeader}>
-            <NavLink to={backBtn} className={s.backBtn}>&lt;</NavLink>
-            <span className={s.profile}>Профіль</span>
-          </div>
-          <div className={s.headerButtons}>
-            <HeaderInternalButtons
-              firstText="Про себе"
-              firstRoute='/profile'
-              secondText="Налаштування"
-              secondRoute='/profile'
-            />
-          </div>
-          <div className={s.row}/>
-          <AboutMe user={user}/>
+    return (
+      <div className={s.profileWrapper}>
+        <Header prevRoute={this.props.prevRoute}/>
+        <div className={s.headerButtons}>
+          <HeaderInternalButtons
+            firstText="Про себе"
+            firstRoute='/profile'
+            secondText="Налаштування"
+            secondRoute='/settings'
+          />
         </div>
-      )
-    }
-    else {
-      return <Redirect to='/login'/>
-    }
-
+        <div className={s.row}/>
+        <AboutMe user={user}/>
+      </div>
+    )
   }
 
 
@@ -81,7 +70,14 @@ class Profile extends React.Component {
     return (
       <div>
         {
-          this.userAuthorized()
+          this.props.loading
+          ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
+          : null
+        }
+        {
+          this.props.authorized === false
+          ? <Redirect to='/login'/>
+          : this.userAuthorized()
         }
       </div>
     )

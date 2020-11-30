@@ -71,9 +71,9 @@ class AuthForm extends BasicAuth {
     }
     catch (e) {
       if (e.message === 'Unauthorized') {
-        swal.unauthorized(e.message, 'Упс!')
+        swal.error(e.message, 'Упс!')
       } else {
-        swal.undefinedErr(e.message, 'Хммм')
+        swal.error(e.message, 'Хммм')
       }
 
       this.props.dispatch(fetchAuthStatusFailure(e.message))

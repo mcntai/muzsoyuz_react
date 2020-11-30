@@ -1,0 +1,27 @@
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.profileHeader {
+  width: 343px;
+  display: flex;
+  margin-top: 30px;
+}
+
+.backBtn {
+  text-decoration: none;
+  color: #262D33;
+  font-size: 20px;
+  display: inline-block;
+  transform: translateY(-15%);
+}
+
+.profile {
+  composes: montserrat;
+  display: inline-block;
+  margin: 0 auto;
+}

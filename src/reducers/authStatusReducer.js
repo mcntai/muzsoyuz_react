@@ -20,6 +20,7 @@ const authStatusReducer = (state = initialState, action) => {
         break
       case 'FETCH_AUTH_STATUS_FAILURE':
         draft.loading = false
+        draft.authorized = action.authorized
         draft.authError = action.authError
         break
       case 'LOGOUT':
