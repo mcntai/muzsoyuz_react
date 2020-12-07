@@ -35,7 +35,12 @@ export class MuzSoyuzRequest extends Request {
   }
 
   static makeProfileUpdate(changes) {
-    return this.patch('/user/profile/', changes)
+    return this.patch('/user/profile', changes)
+      .sendToken()
+  }
+
+  static setDaysOff(days) {
+    return this.post('/user/workday', days)
       .sendToken()
   }
 

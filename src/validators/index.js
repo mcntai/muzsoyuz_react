@@ -31,7 +31,14 @@ const AuthMap = {
   },
 }
 
+const Quest = {
+  roleBtnErr: value => {
+    argumentAssert(value, 'оберіть свій інструмент')
+  }
+}
+
 const getValidator = rulesMap => (fieldName, ...rest) => rulesMap[fieldName](...rest)
 
 export const authValidator = getValidator(AuthMap)
 export const jobOfferValidator = getValidator(JobOfferMap)
+export const questValidator = getValidator(Quest)

@@ -1,0 +1,152 @@
+/* Common Classes */
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  color: #262D33;
+}
+
+.flexWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.imgWrapper {
+  position: relative;
+  height: 513px;
+}
+
+.logo {
+  position: relative;
+  top: 47px;
+  z-index: 1;
+}
+
+.textWrapper {
+  width: 142px;
+}
+
+
+/* Start Page */
+
+.startPageWrapper {
+  composes: flexWrapper;
+}
+
+.startText {
+  composes: montserrat;
+  font-size: 24px;
+  line-height: 29px;
+  margin-top: 33px;
+}
+
+.startBtn {
+  composes: montserrat;
+  font-size: 13px;
+  line-height: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: #6384EB;
+  color: #FFFFFF;
+  border: 1px solid #6384EB;
+  border-radius: 50px;
+  width: 185px;
+  padding: 16px 40px;
+  margin: 117px 0 49px 0;
+}
+
+/* Choose Instrument Page */
+
+.chooseInstrumentPageWrapper {
+  composes: flexWrapper;
+}
+
+.chooseInstBack {
+  position: relative;
+  z-index: 0;
+}
+
+.chooseInstText {
+  composes: montserrat;
+  width: 142px;
+  font-size: 24px;
+  line-height: 29px;
+  position: absolute;
+  z-index: 1;
+  top: 430px;
+  left: 50%;
+  margin-left: -71px;
+}
+
+.selectInstrument {
+  composes: montserrat;
+  margin-top: 30px;
+}
+
+.chooseInstBtn {
+  composes: startBtn;
+  margin: 117px 0 49px 0;
+}
+
+/* Choose Free Days Page */
+
+.chooseDaysWrapper {
+  composes: flexWrapper;
+}
+
+.chooseDaysBack {
+  position: relative;
+  z-index: 0;
+}
+
+.chooseDaysTextWrapper {
+  width: 290px;
+}
+
+.chooseDaysText {
+  composes: chooseInstText;
+  top: 420px;
+  width: 250px;
+  margin-left: -125px;
+}
+
+.calendarBtn {
+  composes: montserrat;
+  font-size: 14px;
+  margin-top: 60px;
+  width: 260px;
+  padding: 19px 0;
+  border-radius: 13px;
+  border: 1px solid #DADADA;
+  background-color: #FFFFFF;
+  line-height: 17px;
+}
+
+.showBtn {
+  display: none;
+}
+
+.chooseDaysFinishBtn {
+  composes: chooseInstBtn;
+  margin-top: 87px;
+}
+
+
+.calendarContainer {
+  position: absolute;
+  z-index: 1;
+  top: 420px;
+  left: 50%;
+  margin-left: -141.5px;
+}
+
+.finishBtn {
+  position: absolute;
+  z-index: 1;
+  top: 630px;
+  left: 50%;
+  margin-left: -92.5px;
+
+}

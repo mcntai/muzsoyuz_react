@@ -57,7 +57,7 @@ class FindJob extends React.Component {
     try {
       const response = await MuzSoyuzRequest.getJobOffers({
         jobType: 'musicalReplacement',
-        orderBy: 'created ASC',
+        orderBy: 'created DESC',
         offset : 0,
         limit  : 100,
         // role   : ['drums'],

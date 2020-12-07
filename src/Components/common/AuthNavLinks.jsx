@@ -1,5 +1,5 @@
 import React from 'react'
-import s from '../Auth/AuthForm.module.css'
+import s from '../auth/AuthForm.module.css'
 import { NavLink } from 'react-router-dom'
 
 

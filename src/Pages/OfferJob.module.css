@@ -82,6 +82,7 @@
 }
 
 .role {
+  -webkit-appearance: none;
   display: block;
   margin: 12px auto 0;
   width: 302px;

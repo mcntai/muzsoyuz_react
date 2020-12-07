@@ -14,6 +14,7 @@ import * as swal from '../common/Alerts'
 const mapStateToProps = state => {
   return {
     authorized: state.authReducer.authorized,
+    role      : state.authReducer.role,
   }
 }
 
@@ -67,7 +68,7 @@ class AuthForm extends BasicAuth {
 
       await this.setDataToLocalStorage(response)
 
-      this.props.dispatch(fetchAuthStatusSuccess())
+      this.props.dispatch(fetchAuthStatusSuccess(response.profile.role))
     }
     catch (e) {
       if (e.message === 'Unauthorized') {

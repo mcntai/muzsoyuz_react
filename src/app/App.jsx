@@ -7,6 +7,9 @@ import Profile from '../Components/profile/Profile'
 import OfferJob from '../Pages/OfferJob'
 import FindJob from '../Pages/FindJob'
 import Settings from '../Components/profile/Settings'
+import StartPage from '../Components/questionary/StartPage'
+import ChooseInstrumentPage from '../Components/questionary/ChooseInstrumentPage'
+import ChooseFreeDaysPage from '../Components/questionary/ChooseFreeDaysPage'
 import { connect } from 'react-redux'
 import { fetchDataIfLoggedIn } from '../actions/getProfileActions'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -40,6 +43,9 @@ class App extends React.Component {
             <Route path="/find-job" component={FindJob}/>
             <Route path="/profile" component={Profile}/>
             <Route path="/settings" component={Settings}/>
+            <Route path="/quest-1" component={StartPage}/>
+            <Route path="/quest-2" component={ChooseInstrumentPage}/>
+            <Route path="/quest-3" component={ChooseFreeDaysPage}/>
           </Switch>
         </div>
       </Router>

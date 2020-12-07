@@ -5,6 +5,7 @@ const initialState = {
   loading   : false,
   authorized: undefined,
   authError : null,
+  role: '',
 }
 
 const authStatusReducer = (state = initialState, action) => {
@@ -17,6 +18,7 @@ const authStatusReducer = (state = initialState, action) => {
       case 'FETCH_AUTH_STATUS_SUCCESS':
         draft.loading = false
         draft.authorized = action.authorized
+        draft.role = action.role
         break
       case 'FETCH_AUTH_STATUS_FAILURE':
         draft.loading = false
