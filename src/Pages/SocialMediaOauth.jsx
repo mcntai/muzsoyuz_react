@@ -10,9 +10,10 @@ const mapStateToProps = state => ({
   role      : state.authReducer.role,
 })
 
-const fetchAuthStatusSuccess = () => ({
+const fetchAuthStatusSuccess = (role) => ({
   type      : 'FETCH_AUTH_STATUS_SUCCESS',
   authorized: true,
+  role      : role,
 })
 
 const fetchAuthStatusFailure = (error) => ({
@@ -35,7 +36,7 @@ class SocialMediaOauth extends BasicAuth {
 
         await this.setDataToLocalStorage(response)
 
-        dispatch(fetchAuthStatusSuccess(response.profile.role))
+        dispatch(fetchAuthStatusSuccess())
       }
       catch (e) {
         if (e.message === 'Unauthorized') {
