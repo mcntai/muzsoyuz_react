@@ -7,6 +7,7 @@ import * as swal from '../Components/common/Alerts'
 
 const mapStateToProps = state => ({
   authorized: state.authReducer.authorized,
+  role      : state.authReducer.role,
 })
 
 const fetchAuthStatusSuccess = () => ({

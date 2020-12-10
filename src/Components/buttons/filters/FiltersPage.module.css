@@ -1,0 +1,72 @@
+/* Common Classes*/
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #262D33;
+}
+
+.filtersPageWrapper {
+  width: 375px;
+}
+
+/* Header part classes */
+
+.headerWrapper {
+  display: flex;
+  padding: 29px 17px;
+  margin: 0 auto;
+  background: #CBF6FF;
+}
+
+.btnText {
+  composes: montserrat;
+  font-size: 14px;
+  line-height: 17px;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.btnText:active {
+  color: #6A6A6A;
+}
+
+/* Button Classes */
+
+.btn {
+  composes: montserrat;
+  /*display: block;*/
+  width: 100%;
+  padding: 30px 35px 30px 20px;
+  background: none;
+  border: none;
+  outline: none;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn::after {
+  content: url("../../../Assets/img/arrow-bottom.svg");
+}
+
+/* Background Image Classes */
+
+.background {
+  width: 375px;
+  position: absolute;
+  z-index: -1;
+  top: 420px;
+}
+
+.footerWrapper {
+  width: 375px;
+  position: absolute;
+  bottom: 6px;
+}

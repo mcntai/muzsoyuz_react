@@ -4,11 +4,10 @@ import { Redirect } from 'react-router'
 import { pageRoute } from '../../actions/routingActions'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import { fetchAuthStatusFailure } from '../../actions/getProfileActions'
-import Header from '../profile/Header'
+import HeaderInternal from '../common/HeaderInternal'
 import HeaderInternalButtons from '../common/HeaderInternalButtons'
 import AboutMe from './AboutMe'
 import s from './Profile.module.css'
-import preloader from '../../Assets/img/preloader.gif'
 
 
 const mapStateToProps = state => {
@@ -50,13 +49,18 @@ class Profile extends React.Component {
 
     return (
       <div className={s.profileWrapper}>
-        <Header prevRoute={this.props.prevRoute}/>
+        <HeaderInternal
+          prevRoute={this.props.prevRoute}
+          heading="Профіль"
+          wrapperClass={s.headerWrapper}
+          btnTextClass={s.headerBtnText}
+        />
         <div className={s.headerButtons}>
           <HeaderInternalButtons
             firstText="Про себе"
-            firstRoute='/profile'
+            firstRoute="/profile"
             secondText="Налаштування"
-            secondRoute='/settings'
+            secondRoute="/settings"
           />
         </div>
         <div className={s.row}/>
@@ -69,11 +73,6 @@ class Profile extends React.Component {
   render() {
     return (
       <div>
-        {
-          this.props.loading
-          ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
-          : null
-        }
         {
           this.props.authorized === false
           ? <Redirect to='/login'/>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import Header from './Header'
+import HeaderInternal from '../common/HeaderInternal'
 import HeaderInternalButtons from '../common/HeaderInternalButtons'
 import notifications from '../../Assets/img/notifications.svg'
 import twoFactors from '../../Assets/img/2fa.svg'
@@ -23,7 +23,7 @@ const Settings = ({dispatch, prevRoute}) => {
 
   return (
     <div className={s.settingsPageWrapper}>
-      <Header prevRoute={prevRoute}/>
+      <HeaderInternal prevRoute={prevRoute}/>
       <div className={s.sortFilterButtons}>
       <HeaderInternalButtons
         firstText="Про себе"

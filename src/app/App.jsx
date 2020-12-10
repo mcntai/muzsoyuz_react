@@ -1,5 +1,7 @@
 import React from 'react'
-import s from './App.module.css'
+import { connect } from 'react-redux'
+import { fetchDataIfLoggedIn } from '../actions/getProfileActions'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Auth from '../Pages/Auth'
 import Main from '../Pages/Main'
 import SocialMediaOauth from '../Pages/SocialMediaOauth'
@@ -10,9 +12,8 @@ import Settings from '../Components/profile/Settings'
 import StartPage from '../Components/questionary/StartPage'
 import ChooseInstrumentPage from '../Components/questionary/ChooseInstrumentPage'
 import ChooseFreeDaysPage from '../Components/questionary/ChooseFreeDaysPage'
-import { connect } from 'react-redux'
-import { fetchDataIfLoggedIn } from '../actions/getProfileActions'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import FiltersPage from '../Components/buttons/filters/FiltersPage'
+import s from './App.module.css'
 
 
 const mapStateToProps = state => {
@@ -46,6 +47,7 @@ class App extends React.Component {
             <Route path="/quest-1" component={StartPage}/>
             <Route path="/quest-2" component={ChooseInstrumentPage}/>
             <Route path="/quest-3" component={ChooseFreeDaysPage}/>
+            <Route path="/find-job-filter" component={FiltersPage}/>
           </Switch>
         </div>
       </Router>

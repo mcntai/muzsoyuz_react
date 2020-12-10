@@ -6,13 +6,14 @@
   line-height: 22px;
 }
 
-.profileHeader {
+.wrapperClass {
   width: 343px;
   display: flex;
   margin-top: 30px;
 }
 
 .backBtn {
+  content: url("../../Assets/img/arrow-left.svg");
   text-decoration: none;
   color: #262D33;
   font-size: 20px;
@@ -20,7 +21,7 @@
   transform: translateY(-15%);
 }
 
-.profile {
+.heading {
   composes: montserrat;
   display: inline-block;
   margin: 0 auto;

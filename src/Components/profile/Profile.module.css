@@ -13,6 +13,17 @@
   align-items: center;
 }
 
+.headerWrapper {
+  width: 343px;
+  display: flex;
+  margin-top: 30px;
+}
+
+.headerBtnText {
+  background: none;
+  border: none;
+}
+
 .headerButtons {
   margin-top: 15px;
 }
