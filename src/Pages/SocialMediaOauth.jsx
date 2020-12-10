@@ -36,7 +36,7 @@ class SocialMediaOauth extends BasicAuth {
 
         await this.setDataToLocalStorage(response)
 
-        dispatch(fetchAuthStatusSuccess())
+        dispatch(fetchAuthStatusSuccess(response.profile.role))
       }
       catch (e) {
         if (e.message === 'Unauthorized') {
