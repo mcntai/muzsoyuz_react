@@ -75,8 +75,8 @@
   margin: 12px auto 0;
   width: 302px;
   height: 40px;
-  border: 1px solid #6A6A6A;
-  border-radius: 16px;
+  border: 1px solid #DADADA;
+  border-radius: 6px;
   font-size: 12px;
   line-height: 15px;
 }
@@ -87,8 +87,8 @@
   margin: 12px auto 0;
   width: 302px;
   height: 40px;
-  border: 1px solid #6A6A6A;
-  border-radius: 16px;
+  border: 1px solid #DADADA;
+  border-radius: 6px;
   font-size: 12px;
   line-height: 15px;
   position: relative;

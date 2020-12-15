@@ -12,7 +12,7 @@ import Settings from '../Components/profile/Settings'
 import StartPage from '../Components/questionary/StartPage'
 import ChooseInstrumentPage from '../Components/questionary/ChooseInstrumentPage'
 import ChooseFreeDaysPage from '../Components/questionary/ChooseFreeDaysPage'
-import FiltersPage from '../Components/buttons/filters/FiltersPage'
+import FilterPage from '../Components/buttons/filters/FilterPage'
 import s from './App.module.css'
 
 
@@ -47,7 +47,7 @@ class App extends React.Component {
             <Route path="/quest-1" component={StartPage}/>
             <Route path="/quest-2" component={ChooseInstrumentPage}/>
             <Route path="/quest-3" component={ChooseFreeDaysPage}/>
-            <Route path="/find-job-filter" component={FiltersPage}/>
+            <Route path="/find-job-filter" component={FilterPage}/>
           </Switch>
         </div>
       </Router>

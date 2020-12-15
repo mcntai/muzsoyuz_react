@@ -1,10 +1,10 @@
 import React from 'react'
-import s from './AboutMe.module.css'
-import avatar from '../../Assets/img/avatar.svg'
-import Logout from './Logout'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import * as swalAlert from '../common/Alerts'
-import { pickChanges } from '../../utils/object'
+import { pickChanges } from '../../utils/muzsoyuz/object'
+import Logout from './Logout'
+import avatar from '../../Assets/img/avatar.svg'
+import s from './AboutMe.module.css'
 
 
 class AboutMe extends React.Component {

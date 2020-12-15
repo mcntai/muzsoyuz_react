@@ -1,18 +1,20 @@
 import React from 'react'
-import s from './FindJob.module.css'
-import Header from '../Components/common/Header'
-import Footer from '../Components/common/Footer'
-import { MuzSoyuzRequest } from '../muzsoyuz-request'
 import { connect } from 'react-redux'
-import preloader from '../Assets/img/preloader.gif'
+import { MuzSoyuzRequest } from '../muzsoyuz-request'
+import { omitBy, predicates } from '../utils/object'
 import { pageRoute } from '../actions/routingActions'
 import * as swal from '../Components/common/Alerts'
+import Header from '../Components/common/Header'
 import HeaderInternalButtons from '../Components/common/HeaderInternalButtons'
+import Footer from '../Components/common/Footer'
+import preloader from '../Assets/img/preloader.gif'
+import s from './FindJob.module.css'
 
 
 const mapStateToProps = state => {
   return {
     loading: state.authReducer.loading,
+    body: state.filterReducer
   }
 }
 
@@ -35,7 +37,7 @@ class FindJob extends React.Component {
             let month = date.toLocaleString('default', { month: 'short' })
             month = month.charAt(0).toUpperCase() + month.slice(1, month.length - 1)
 
-            const salary = item.salary.slice(0, -3)
+            const salary = Number(item.salary)
 
             return <li key={item.id} className={s.list}>
               <div className={s.jobOfferWrapper}>
@@ -54,15 +56,10 @@ class FindJob extends React.Component {
   }
 
   async getAllJobOffers() {
+    const transformedBody = omitBy(this.props.body, predicates.isEmptyString)
+
     try {
-      const response = await MuzSoyuzRequest.getJobOffers({
-        jobType: 'musicalReplacement',
-        orderBy: 'created DESC',
-        offset : 0,
-        limit  : 100,
-        // role   : ['drums'],
-        relations: ['instrument', 'user'],
-      })
+      const response = await MuzSoyuzRequest.getJobOffers(transformedBody)
         .props([
           'id',
           'title',
@@ -75,10 +72,11 @@ class FindJob extends React.Component {
 
       this.setState({ fetchFinished: true })
       this.setState({ fetchedData: response })
+
     }
     catch (e) {
       if (e.message === 'Bad Request Exception') {
-        swal.error('Повідомте адміну в телеграм @maxshei', 'Тип юзера невизначений')
+        swal.error('Повідомте адміна, якщо можете', 'Щось пішло не так...')
       }
     }
 

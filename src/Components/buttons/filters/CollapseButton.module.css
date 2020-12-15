@@ -1,0 +1,37 @@
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #262D33;
+}
+
+.btnWrapper {
+  composes: montserrat;
+  display: flex;
+  margin-top: 10px;
+  padding: 30px 35px 30px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.filterName {
+  composes: montserrat;
+  width: 100%;
+}
+
+.arrowUp {
+  transform: rotate(180deg);
+}
+
+.hideContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.showContent {
+  max-height: 500px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in;
+}

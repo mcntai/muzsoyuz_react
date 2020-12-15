@@ -38,6 +38,8 @@ class Profile extends React.Component {
       const response = await MuzSoyuzRequest.getUserProfile()
 
       this.setState({ userProfile: response })
+
+      console.log(response.role)
     }
     catch (e) {
       this.props.dispatch(fetchAuthStatusFailure(e.message))
@@ -54,6 +56,7 @@ class Profile extends React.Component {
           heading="Профіль"
           wrapperClass={s.headerWrapper}
           btnTextClass={s.headerBtnText}
+          redirectTo=""
         />
         <div className={s.headerButtons}>
           <HeaderInternalButtons

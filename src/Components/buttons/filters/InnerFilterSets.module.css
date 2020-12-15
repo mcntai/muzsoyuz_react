@@ -1,0 +1,20 @@
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+}
+
+.selector {
+  composes: montserrat;
+  width: 375px;
+  height: 52px;
+  padding-left: 31px;
+  border: 1px solid #DADADA;
+  background: #FFFFFF;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

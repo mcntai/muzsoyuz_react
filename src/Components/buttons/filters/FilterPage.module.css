@@ -17,6 +17,7 @@
 
 .headerWrapper {
   display: flex;
+  align-items: center;
   padding: 29px 17px;
   margin: 0 auto;
   background: #CBF6FF;
@@ -29,6 +30,7 @@
   background: none;
   border: none;
   outline: none;
+  text-decoration: none;
 }
 
 .btnText:active {
@@ -39,7 +41,6 @@
 
 .btn {
   composes: montserrat;
-  /*display: block;*/
   width: 100%;
   padding: 30px 35px 30px 20px;
   background: none;
@@ -62,7 +63,7 @@
   width: 375px;
   position: absolute;
   z-index: -1;
-  top: 420px;
+  top: 465px;
 }
 
 .footerWrapper {

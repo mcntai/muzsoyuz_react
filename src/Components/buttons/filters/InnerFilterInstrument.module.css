@@ -1,0 +1,33 @@
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 21px;
+  color: #262D33;
+}
+
+.instrumentWrapper {
+  max-height: 460px;
+  overflow-y:scroll;
+}
+.instrumentWrapper:first-child {
+  padding-top: 20px;
+}
+
+.instrument {
+  composes: montserrat;
+  padding: 0 0 20px 44px;
+}
+
+.instrument:last-child {
+  padding-bottom: 10px;
+}
+
+.instrument:hover {
+  font-weight: 500;
+  color: #6384EB;
+}
+
+
+

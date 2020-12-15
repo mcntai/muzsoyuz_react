@@ -1,12 +1,12 @@
 import React from 'react'
-import s from './Main.module.css'
+import { connect } from 'react-redux'
+import { pageRoute } from '../actions/routingActions'
 import Header from '../Components/common/Header'
 import Footer from '../Components/common/Footer'
 import logo from '../Assets/img/logo.svg'
 import background from '../Assets/img/background.svg'
-import { connect } from 'react-redux'
 import preloader from '../Assets/img/preloader.gif'
-import { pageRoute } from '../actions/routingActions'
+import s from './Main.module.css'
 
 
 const mapStateToProps = state => {
@@ -29,7 +29,7 @@ class Main extends React.Component {
           <img src={background} className={s.background} alt="background"/>
         </main>
         <div className={s.footer}>
-        <Footer/>
+          <Footer/>
         </div>
       </div>
     )
@@ -40,8 +40,8 @@ class Main extends React.Component {
       <div className={s.wrapper}>
         {
           this.props.loading
-            ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
-            : this.renderPage()
+          ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
+          : this.renderPage()
         }
       </div>
     )
