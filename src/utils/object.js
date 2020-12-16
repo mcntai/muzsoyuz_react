@@ -87,7 +87,9 @@ export const predicates = {
 
   isPrimitive: value => value !== Object(value),
 
-  isEmptyString: value => typeof value === 'string' && value === ''
+  isEmptyString: value => typeof value === 'string' && value === '',
+
+  isEmptyRange: value => isObject(value) && value.from === null && value.to === null
 }
 
 export const values = object => Object.keys(object).map(key => object[key])

@@ -13,9 +13,9 @@ import s from './FindJob.module.css'
 
 const mapStateToProps = state => {
   return {
-    loading: state.authReducer.loading,
-    prevRoute : state.pageReducer.prevRoute,
-    body: state.filterReducer
+    loading  : state.authReducer.loading,
+    prevRoute: state.pageReducer.prevRoute,
+    body     : state.filterReducer
   }
 }
 
@@ -57,8 +57,10 @@ class FindJob extends React.Component {
   }
 
   async getAllJobOffers() {
-    const transformedBody = omitBy(this.props.body, predicates.isEmptyString)
+    const transformedBody = omitBy(this.props.body,
+      value => predicates.isEmptyString(value) || predicates.isEmptyRange(value))
 
+    console.log(transformedBody)
     try {
       const response = await MuzSoyuzRequest.getJobOffers(transformedBody)
         .props([
