@@ -15,7 +15,7 @@ const instruments = {
   violin : 'Скрипка',
 }
 
-const InnerFilterInstrument = (props) => {
+const InnerFilterInstrument = ({ dispatch }) => {
   const [instrument, setInstrument] = useState([])
 
   const chooseInstrument = (newInst) => {
@@ -23,10 +23,10 @@ const InnerFilterInstrument = (props) => {
   }
 
   useEffect(() => {
-    if(instrument.length) {
-      props.dispatch(filterInstruments(instrument))
+    if (instrument.length) {
+      dispatch(filterInstruments(instrument))
     }
-  }, [instrument])
+  }, [dispatch, instrument])
 
   return (
     <div className={s.instrumentWrapper}>

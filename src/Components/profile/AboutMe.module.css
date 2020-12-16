@@ -122,12 +122,13 @@
 }
 
 .inp:disabled {
-  color: #262D33;
+  color: #000000;
   background-color: #FFFFFF;
+  opacity: 1 !important;
 }
 
 .role:disabled {
-  color: #6A6A6A;
+  color: #262D33;
 }
 
 .email {

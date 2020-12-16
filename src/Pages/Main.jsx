@@ -12,6 +12,7 @@ import s from './Main.module.css'
 const mapStateToProps = state => {
   return {
     loading: state.authReducer.loading,
+    prevRoute : state.pageReducer.prevRoute
   }
 }
 

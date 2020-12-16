@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { filterSalary } from '../../../actions/filterActions'
 import s from './InnerFilterSalary.module.css'
@@ -27,6 +27,8 @@ const InnerFilterSalary = (props) => {
   return (
     <div className={s.salaryWrapper}>
       <div className={s.salaryInputWrapper}>
+        <label>
+          від
         <input
           type="number"
           pattern="\d*"
@@ -35,6 +37,9 @@ const InnerFilterSalary = (props) => {
           onChange={enterMinSalary}
           onBlur={fixSalary}
         />
+      </label>
+        <label>
+          до
         <input
           type="number"
           pattern="\d*"
@@ -43,29 +48,30 @@ const InnerFilterSalary = (props) => {
           onChange={enterMaxSalary}
           onBlur={fixSalary}
         />
+        </label>
       </div>
-      <div className={s.salaryRangeWrapper}>
-        <input
-          type="range"
-          min="0"
-          max="30000"
-          className={s.range}
-          value={minSalary}
-          onChange={enterMinSalary}
-          onTouchEnd={fixSalary}
-          onMouseUp={fixSalary}
-        />
-        <input
-          type="range"
-          min="30001"
-          max="60000"
-          className={s.range}
-          value={maxSalary}
-          onChange={enterMaxSalary}
-          onTouchEnd={fixSalary}
-          onMouseUp={fixSalary}
-        />
-      </div>
+      {/*<div className={s.salaryRangeWrapper}>*/}
+      {/*  <input*/}
+      {/*    type="range"*/}
+      {/*    min="0"*/}
+      {/*    max="30000"*/}
+      {/*    className={s.range}*/}
+      {/*    value={minSalary}*/}
+      {/*    onChange={enterMinSalary}*/}
+      {/*    onTouchEnd={fixSalary}*/}
+      {/*    onMouseUp={fixSalary}*/}
+      {/*  />*/}
+      {/*  <input*/}
+      {/*    type="range"*/}
+      {/*    min="30001"*/}
+      {/*    max="60000"*/}
+      {/*    className={s.range}*/}
+      {/*    value={maxSalary}*/}
+      {/*    onChange={enterMaxSalary}*/}
+      {/*    onTouchEnd={fixSalary}*/}
+      {/*    onMouseUp={fixSalary}*/}
+      {/*  />*/}
+      {/*</div>*/}
     </div>
   )
 }

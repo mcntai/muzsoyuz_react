@@ -16,6 +16,7 @@ const mapStateToProps = state => {
   return {
     loading   : state.authReducer.loading,
     authorized: state.authReducer.authorized,
+    prevRoute : state.pageReducer.prevRoute
   }
 }
 

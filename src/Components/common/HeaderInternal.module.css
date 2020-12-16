@@ -14,11 +14,6 @@
 
 .backBtn {
   content: url("../../Assets/img/arrow-left.svg");
-  text-decoration: none;
-  color: #262D33;
-  font-size: 20px;
-  display: inline-block;
-  transform: translateY(-15%);
 }
 
 .heading {

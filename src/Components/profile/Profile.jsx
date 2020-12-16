@@ -28,7 +28,7 @@ class Profile extends React.Component {
 
   // noinspection JSCheckFunctionSignatures
   async componentDidMount() {
-    this.props.dispatch(pageRoute('PROFILE', 'profile'))
+    this.props.dispatch(pageRoute('PROFILE', this.props.prevRoute))
 
     await this.getUserData()
   }
@@ -38,8 +38,6 @@ class Profile extends React.Component {
       const response = await MuzSoyuzRequest.getUserProfile()
 
       this.setState({ userProfile: response })
-
-      console.log(response.role)
     }
     catch (e) {
       this.props.dispatch(fetchAuthStatusFailure(e.message))

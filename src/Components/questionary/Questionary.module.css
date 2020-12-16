@@ -135,11 +135,12 @@
 
 
 .calendarContainer {
+  composes: montserrat;
   position: absolute;
   z-index: 1;
   top: 420px;
   left: 50%;
-  margin-left: -141.5px;
+  margin-left: -140.5px;
 }
 
 .finishBtn {

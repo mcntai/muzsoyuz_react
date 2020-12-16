@@ -14,6 +14,7 @@ import s from './FindJob.module.css'
 const mapStateToProps = state => {
   return {
     loading: state.authReducer.loading,
+    prevRoute : state.pageReducer.prevRoute,
     body: state.filterReducer
   }
 }

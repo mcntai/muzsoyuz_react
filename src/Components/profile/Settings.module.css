@@ -20,6 +20,18 @@
   align-items: center;
 }
 
+.headerWrapper {
+  width: 343px;
+  display: flex;
+  margin-top: 30px;
+}
+
+.headerBtnText {
+  background: none;
+  border: none;
+  height: 22px;
+}
+
 .sortFilterButtons {
   width: 343px;
   margin: 15px auto 0;

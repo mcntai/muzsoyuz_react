@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { pageRoute } from '../../actions/routingActions'
 import HeaderInternal from '../common/HeaderInternal'
 import HeaderInternalButtons from '../common/HeaderInternalButtons'
 import notifications from '../../Assets/img/notifications.svg'
 import twoFactors from '../../Assets/img/2fa.svg'
 import autoLogout from '../../Assets/img/auto-logout.svg'
 import s from './Settings.module.css'
-import { pageRoute } from '../../actions/routingActions'
 
 
 const mapStateToProps = state => {
@@ -18,12 +18,18 @@ const mapStateToProps = state => {
 
 const Settings = ({dispatch, prevRoute}) => {
   useEffect( () => {
-    dispatch(pageRoute('SETTINGS', 'settings'))
-  }, [dispatch])
+    dispatch(pageRoute('SETTINGS', prevRoute))
+  })
 
   return (
     <div className={s.settingsPageWrapper}>
-      <HeaderInternal prevRoute={prevRoute}/>
+      <HeaderInternal
+        prevRoute={prevRoute}
+        heading="Профіль"
+        wrapperClass={s.headerWrapper}
+        btnTextClass={s.headerBtnText}
+        redirectTo=""
+      />
       <div className={s.sortFilterButtons}>
       <HeaderInternalButtons
         firstText="Про себе"

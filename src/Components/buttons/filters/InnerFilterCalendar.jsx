@@ -31,7 +31,7 @@ const FIRST_DAY_OF_WEEK = {
   ua: 1,
 }
 
-class FilterInternalCalendar extends React.Component {
+class InnerFilterCalendar extends React.Component {
   constructor(props) {
     super(props)
     this.handleDayClick = this.handleDayClick.bind(this)
@@ -78,6 +78,7 @@ class FilterInternalCalendar extends React.Component {
           .RangeExample {
             display: flex;
             justify-content: center;
+            font-family: 'Montserrat', sans-serif;
           }
           .Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
             background-color: #CBF6FF !important;
@@ -102,5 +103,5 @@ class FilterInternalCalendar extends React.Component {
 }
 
 
-export default connect(undefined)(FilterInternalCalendar)
+export default connect(undefined)(InnerFilterCalendar)
 

@@ -26,7 +26,7 @@ const checkRouteReducer = (state = initialState, action) => {
         draft.prevRoute = state.currentRoute
         break
       case 'PROFILE':
-        draft.currentRoute = action.currentRoute
+        draft.currentRoute = state.currentRoute
         draft.prevRoute = state.currentRoute
         break
       case 'SETTINGS':
