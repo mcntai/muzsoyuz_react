@@ -3,25 +3,35 @@
   font-style: normal;
   font-weight: 400;
   font-size: 17px;
-  line-height: 21px;
+  line-height: 22px;
   color: #262D33;
 }
 
-.instrumentWrapper {
+.instrumentsWrapper {
   max-height: 460px;
-  overflow-y:scroll;
+  overflow-y: scroll;
 }
-.instrumentWrapper:first-child {
-  padding-top: 20px;
+
+.instWrapper {
+  margin-top: 24px;
+  padding-left: 45px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+}
+
+.instWrapper:last-child {
+  margin-bottom: 10px;
 }
 
 .instrument {
-  composes: montserrat;
-  padding: 0 0 20px 44px;
+  width: 20px;
+  height: 20px;
 }
 
-.instrument:last-child {
-  padding-bottom: 10px;
+.label {
+  composes: montserrat;
+  margin-left: 18px;
 }
 
 .instrument:hover {

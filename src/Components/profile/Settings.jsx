@@ -36,6 +36,8 @@ const Settings = ({dispatch, prevRoute}) => {
         firstRoute='/profile'
         secondText="Налаштування"
         secondRoute='/settings'
+        btnClass={s.btnClass}
+        active={s.active}
       />
       </div>
       <div className={s.row}/>

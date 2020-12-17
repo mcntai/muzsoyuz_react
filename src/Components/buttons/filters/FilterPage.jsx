@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import HeaderInternal from '../../common/HeaderInternal'
 import CollapseButton from './CollapseButton'
 import InnerFilterInstrument from './InnerFilterInstrument'
@@ -9,7 +10,14 @@ import s from './FilterPage.module.css'
 import background from '../../../Assets/img/filters-background.svg'
 
 
-const FilterPage = () => {
+const mapStateToProps = state => {
+  return {
+    body     : state.filterReducer
+  }
+}
+
+const FilterPage = ({body}) => {
+  // const filtersNumber = Object.keys(body).length - 2
 
   return (
     <div className={s.filtersPageWrapper}>
@@ -21,6 +29,7 @@ const FilterPage = () => {
         btnTextClass={s.btnText}
         redirectTo="/find-job"
       />
+      {/*<span className={s.filtersNumber}>{filtersNumber}</span>*/}
       <CollapseButton title="Інструмент" innerContent={<InnerFilterInstrument/>}/>
       <CollapseButton title="Дата проведення івенту" innerContent={<FilterInternalCalendar/>}/>
       <CollapseButton title="Зарплата, грн" innerContent={<InnerFilterSalary/>}/>
@@ -34,4 +43,4 @@ const FilterPage = () => {
   )
 }
 
-export default FilterPage
+export default connect(mapStateToProps)(FilterPage)

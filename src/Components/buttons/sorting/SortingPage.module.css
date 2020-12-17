@@ -1,0 +1,47 @@
+/* Common Classes*/
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #262D33;
+}
+
+.sortingPageWrapper {
+  width: 375px;
+}
+
+/* Internal Header Classes */
+
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  padding: 29px 17px;
+  margin: 0 auto;
+  background: #CBF6FF;
+}
+
+.btnText {
+  composes: montserrat;
+  font-size: 14px;
+  line-height: 17px;
+  background: none;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.btnText:active {
+  color: #6A6A6A;
+}
+
+/* Image Background Styling */
+
+.imgBackground {
+  width: 273px;
+  height: 246px;
+  display: block;
+  margin: 50px auto 0;
+}

@@ -20,4 +20,14 @@ export const filterSets = (sets) => ({
   sets,
 })
 
+export const sortDesc = (param) => ({
+  type: 'SORT_DESC',
+  param: `${param} DESC`
+})
+
+export const sortAsc = (param) => ({
+  type: 'SORT_ASC',
+  param: `${param} ASC`
+})
+
 

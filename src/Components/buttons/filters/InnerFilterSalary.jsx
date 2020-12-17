@@ -27,7 +27,7 @@ const InnerFilterSalary = (props) => {
   return (
     <div className={s.salaryWrapper}>
       <div className={s.salaryInputWrapper}>
-        <label>
+        <label className={s.label}>
           від
         <input
           type="number"
@@ -38,7 +38,7 @@ const InnerFilterSalary = (props) => {
           onBlur={fixSalary}
         />
       </label>
-        <label>
+        <label className={s.label}>
           до
         <input
           type="number"

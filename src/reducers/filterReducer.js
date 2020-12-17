@@ -4,7 +4,7 @@ import produce from 'immer'
 const initialState = {
   jobType  : 'musicalReplacement',
   relations: ['instrument', 'user'],
-  role     : ['guitar', 'drums', 'voice', 'bas', 'keys', 'sax', 'pandora', 'violin', 'trumpet', 'trombone'],
+  "instrument.name": [],
   date     : {
     from: null,
     to  : null,
@@ -20,7 +20,7 @@ const filterReducer = (state = initialState, action) => {
   return produce(state, draft => {
     switch (action.type) {
       case 'FILTER_INSTRUMENTS':
-        draft.role = action.instrument
+        draft["instrument.name"] = action.instrument
         break
       case 'FILTER_DATE':
         draft.date.from = action.from
@@ -31,7 +31,13 @@ const filterReducer = (state = initialState, action) => {
         draft.salary.to = action.to
         break
       case 'FILTER_SETS':
-        draft.sets = action.sets
+        draft.sets = Number(action.sets)
+        break
+      case 'SORT_DESC':
+        draft.orderBy = action.param
+        break
+      case 'SORT_ASC':
+        draft.orderBy = action.param
         break
       default:
         return state

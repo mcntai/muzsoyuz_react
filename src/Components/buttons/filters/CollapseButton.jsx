@@ -27,7 +27,7 @@ const CollapseButton = ({ title, innerContent }) => {
         <span className={s.filterName}>{title}</span>
         <img src={arrowIcon} className={arrow} alt="arrow-icon"/>
       </div>
-      <div className={[show, hide].join('')}>
+      <div className={[show, hide].join(' ')}>
         {innerContent}
       </div>
     </div>

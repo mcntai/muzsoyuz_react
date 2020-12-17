@@ -89,7 +89,9 @@ export const predicates = {
 
   isEmptyString: value => typeof value === 'string' && value === '',
 
-  isEmptyRange: value => isObject(value) && value.from === null && value.to === null
+  isEmptyRange: value => isObject(value) && value.from === null && value.to === null,
+
+  isEmptyArray: value => Array.isArray(value) && !value.length
 }
 
 export const values = object => Object.keys(object).map(key => object[key])

@@ -13,6 +13,7 @@ const options = [
   { value: 'sax', label: 'Саксофон' },
   { value: 'trumpet', label: 'Труба' },
   { value: 'violin', label: 'Скрипка' },
+  { value: 'piano', label: 'Клавішні' },
 ]
 
 const customStyles = {

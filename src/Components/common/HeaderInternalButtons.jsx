@@ -3,20 +3,20 @@ import { NavLink } from 'react-router-dom'
 import s from './HeaderInternalButtons.module.css'
 
 
-const HeaderInternalButtons = ({ firstText, firstRoute, secondText, secondRoute }) => {
+const HeaderInternalButtons = ({ firstText, firstRoute, secondText, secondRoute, btnClass, active }) => {
   return (
     <div className={s.sortFilterButtons}>
       <NavLink
         to={firstRoute}
-        className={s.btn}
-        activeClassName={s.active}
+        className={btnClass}
+        activeClassName={active}
       >
         {firstText}
       </NavLink>
       <NavLink
         to={secondRoute}
-        className={s.btn}
-        activeClassName={s.active}
+        className={btnClass}
+        activeClassName={active}
       >
         {secondText}
       </NavLink>

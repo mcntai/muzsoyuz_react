@@ -29,7 +29,7 @@ class Logout extends React.Component {
           className={[s.btn, s.logout].join(' ')}
           onClick={() => this.props.dispatch(this.handleLogOut)}
         >
-          Выйти
+          Вийти
         </NavLink>
     )
   }

@@ -30,6 +30,23 @@
   font-weight: bold;
 }
 
+/* Buttons styles */
+.btnClass {
+  width: 169px;
+  height: 32px;
+  background: #CBF6FF;
+  border: 1px solid #CBF6FF;
+  border-radius: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: #262D33;
+  font-size: 12px;
+  line-height: 15px;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 8px;
+}
+
 /* Styles for Job Offers*/
 
 .jobsWrapper {
@@ -67,6 +84,12 @@
   padding: 10px 20px;
 }
 
+.instrumentIcon {
+  width: 43px;
+  height: 43px;
+  filter: invert(42%) sepia(4%) saturate(10%) hue-rotate(16deg) brightness(96%) contrast(87%);
+}
+
 .jobTitle {
   composes: montserrat;
   font-size: 15px;
@@ -79,6 +102,7 @@
   composes: jobTitle;
   width: 40px;
   height: 40px;
+  text-transform: capitalize;
 }
 
 .jobSalary {

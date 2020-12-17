@@ -13,6 +13,7 @@ import StartPage from '../Components/questionary/StartPage'
 import ChooseInstrumentPage from '../Components/questionary/ChooseInstrumentPage'
 import ChooseFreeDaysPage from '../Components/questionary/ChooseFreeDaysPage'
 import FilterPage from '../Components/buttons/filters/FilterPage'
+import SortingPage from '../Components/buttons/sorting/SortingPage'
 import s from './App.module.css'
 
 
@@ -48,6 +49,7 @@ class App extends React.Component {
             <Route path="/quest-2" component={ChooseInstrumentPage}/>
             <Route path="/quest-3" component={ChooseFreeDaysPage}/>
             <Route path="/find-job-filter" component={FilterPage}/>
+            <Route path="/find-job-sort" component={SortingPage}/>
           </Switch>
         </div>
       </Router>

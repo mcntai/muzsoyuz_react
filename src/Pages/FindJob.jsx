@@ -35,14 +35,13 @@ class FindJob extends React.Component {
           data && this.state.fetchedData.map(item => {
             const date = new Date(item.date)
 
-            let month = date.toLocaleString('default', { month: 'short' })
-            month = month.charAt(0).toUpperCase() + month.slice(1, month.length - 1)
+            let month = date.toLocaleString('uk-UA', { month: 'short' })
 
             const salary = Number(item.salary)
 
             return <li key={item.id} className={s.list}>
               <div className={s.jobOfferWrapper}>
-                <img src={item.instrument.imageURL} alt='Instrument'/>
+                <img src={item.instrument.imageURL} alt='Instrument' className={s.instrumentIcon} />
                 <div>
                   <p className={s.jobTitle}>{item.title}</p>
                   <p className={s.jobSalary}>Оплата: {salary}, Грн</p>
@@ -58,7 +57,7 @@ class FindJob extends React.Component {
 
   async getAllJobOffers() {
     const transformedBody = omitBy(this.props.body,
-      value => predicates.isEmptyString(value) || predicates.isEmptyRange(value))
+      value => predicates.isEmptyString(value) || predicates.isEmptyRange(value) || predicates.isEmptyArray(value))
 
     console.log(transformedBody)
     try {
@@ -69,6 +68,7 @@ class FindJob extends React.Component {
           'date',
           'salary',
           'address',
+          'sets',
         ])
 
       console.log(response)
@@ -105,6 +105,7 @@ class FindJob extends React.Component {
           firstRoute='/find-job-sort'
           secondText="Фільтр"
           secondRoute='/find-job-filter'
+          btnClass={s.btnClass}
         />
         {
           this.state.fetchFinished && this.renderJobOffers(this.state.fetchedData)

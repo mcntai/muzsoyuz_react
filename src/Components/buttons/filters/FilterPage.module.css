@@ -37,6 +37,18 @@
   color: #6A6A6A;
 }
 
+/* Filters Number */
+.filtersNumber {
+  composes: montserrat;
+  font-size: 12px;
+  line-height: 12px;
+  position: absolute;
+  border: 1px solid #C4C4C4;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+
 /* Button Classes */
 
 .btn {
