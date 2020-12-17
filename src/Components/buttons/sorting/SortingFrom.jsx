@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import {Redirect} from 'react-router'
+import { Redirect } from 'react-router'
 import { sortDesc } from '../../../actions/filterActions'
 import { sortAsc } from '../../../actions/filterActions'
 import s from './SortingFrom.module.css'

@@ -16,13 +16,14 @@ const SortingButton = ({ btnName, title, btnTextFirst, btnTextSecond }) => {
 
   return (
     <div>
-      <input
-        type="button"
+      <div
+        tabIndex={1}
         className={s.sortBtnWrapper}
         onClick={showMenu}
         onBlur={hideMenu}
-        defaultValue={title}
-      />
+      >
+        {title}
+      </div>
       <SortingFrom
         btnName={btnName}
         trigger={trigger}

@@ -18,8 +18,8 @@ const SortingPage = () => {
       <SortingButton
         btnName="date"
         title="Дата проведення івенту"
-        btnTextFirst="Від найближчої дати"
-        btnTextSecond="Від останньої дати"
+        btnTextFirst="Від останньої дати"
+        btnTextSecond="Від найближчої дати"
       />
       <SortingButton
         btnName="salary"

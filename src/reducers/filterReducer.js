@@ -1,4 +1,5 @@
 import produce from 'immer'
+import { addDays } from '../utils/date'
 
 
 const initialState = {
@@ -6,8 +7,8 @@ const initialState = {
   relations: ['instrument', 'user'],
   "instrument.name": [],
   date     : {
-    from: null,
-    to  : null,
+    from: new Date(),
+    to  : addDays(Date.now(), 365),
   },
   salary   : {
     from: null,
