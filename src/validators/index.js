@@ -17,6 +17,9 @@ const JobOfferMap = {
     argumentAssert(!isNaN(value), 'введіть число')
     argumentAssert(value > 0, 'поставте трохи більшу зпшку')
   },
+  phoneErr: value => {
+    argumentAssert(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/.test(value), 'невірний номер')
+  }
 }
 
 const AuthMap = {
@@ -31,14 +34,7 @@ const AuthMap = {
   },
 }
 
-const Quest = {
-  roleBtnErr: value => {
-    argumentAssert(value, 'оберіть свій інструмент')
-  }
-}
-
 const getValidator = rulesMap => (fieldName, ...rest) => rulesMap[fieldName](...rest)
 
 export const authValidator = getValidator(AuthMap)
 export const jobOfferValidator = getValidator(JobOfferMap)
-export const questValidator = getValidator(Quest)

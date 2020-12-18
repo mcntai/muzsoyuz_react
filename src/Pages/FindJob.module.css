@@ -7,9 +7,11 @@
 
 .montserrat {
   font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
   font-style: normal;
   font-size: 18px;
-  line-height: 21.94px;
+  line-height: 21px;
+  color: #262D33;
 }
 
 /* Main styles */
@@ -79,36 +81,41 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-align: center;
   overflow: hidden;
   padding: 10px 20px;
 }
 
 .instrumentIcon {
   width: 43px;
-  height: 43px;
+  height: 44px;
   filter: invert(42%) sepia(4%) saturate(10%) hue-rotate(16deg) brightness(96%) contrast(87%);
+}
+
+.jobTextWrapper {
+  width: 200px;
 }
 
 .jobTitle {
   composes: montserrat;
-  font-size: 15px;
-  line-height: 18.29px;
+  font-size: 14px;
+  line-height: 17px;
   color: #000000;
-  padding: 0 2px;
 }
 
 .jobDate {
   composes: jobTitle;
-  width: 40px;
+  font-size: 15px;
+  line-height: 18px;
+  width: 30px;
   height: 40px;
   text-transform: capitalize;
+  text-align: center;
 }
 
 .jobSalary {
   composes: montserrat;
   font-size: 11px;
-  line-height: 13.4px;
+  line-height: 13px;
   color: #828282;
   margin-top: 10px;
 }

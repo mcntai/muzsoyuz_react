@@ -21,17 +21,29 @@
 }
 
 .inputIconPosition {
-  background-position: 6% 50%;
+  background-position: 50% 50%;
   background-repeat: no-repeat;
-  padding-left: 59px;
+  padding-left: 45px;
+}
+
+.inputIcon {
+  composes: inputIconPosition;
+
+  height: 40px;
+
+  border: 1px solid #DADADA;
+  border-right: none;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
 }
 
 .authForm {
   composes: flexCol;
   width: 322px;
+  margin-top: 55px;
+
   border: 1px solid #C4C4C4;
   border-radius: 10px;
-  margin-top: 55px;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
 }
 
@@ -40,6 +52,7 @@
   text-align: left;
   font-size: 11px;
   align-self: flex-start;
+
   padding-left: 15px;
   margin-bottom: 6px;
 }
@@ -58,12 +71,14 @@
   composes: montserrat;
   display: flex;
   justify-content: space-between;
+
   width: 290px;
+  margin-top: 31px;
+
   font-size: 20px;
   line-height: 24px;
   text-transform: uppercase;
   color: #AEAAAA;
-  margin-top: 31px;
 }
 
 .header a {
@@ -87,56 +102,74 @@
   padding-top: 21px;
 }
 
-.inputEmail,
-.inputPassword {
-  composes: focus inputIconPosition montserrat;
+.inputWrapper {
+  composes: focus;
   width: 290px;
   height: 40px;
-  border: 1px solid #6A6A6A;
-  border-radius: 16px;
+
+  display: flex;
+
   margin-bottom: 14px;
+
   font-size: 12px;
   line-height: 15px;
+
+  background-color: #FFFFFF !important;
 }
 
-.inputConfirmPassword {
-  composes: focus inputIconPosition montserrat;
-  width: 290px;
+.input {
+  composes: montserrat;
+  font-size: 12px;
+  line-height: 15px;
+
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+
+  width: 240px;
   height: 40px;
-  border: 1px solid #6A6A6A;
-  border-radius: 16px;
-  font-size: 12px;
-  line-height: 15px;
-  text-transform: lowercase;
+
+  outline: none;
+  border: 1px solid #DADADA;
+  border-left: none;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
-.inputEmail::placeholder,
-.inputPassword::placeholder,
-.inputConfirmPassword::placeholder {
+.input::placeholder {
   opacity: 0.5;
 }
 
-.inputEmail {
+.emailIcon {
+  composes: inputIcon;
   background-image: url('../../Assets/img/email-icon.svg');
 }
 
-.inputPassword, .inputConfirmPassword {
+.passwordIcon {
+  composes: inputIcon;
   background-image: url('../../Assets/img/password-icon.svg');
 }
 
 .inputSubmit {
   composes: focus;
+
   width: 46px;
   height: 46px;
-  border-radius: 50px;
+
+  position: relative;
+  top: 22px;
+
   background-image: url('../../Assets/img/arrow-icon.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-color: #6384EB;
+
   border: #6384EB;
+  border-radius: 50px;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
-  position: relative;
-  top: 22px;
+
   cursor: pointer;
 }
 

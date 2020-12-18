@@ -1,4 +1,12 @@
 /*Common classes*/
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #FFFFFF inset !important;
+}
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #BDBDBD;
 }
@@ -12,7 +20,7 @@
 }
 
 .inputIconPosition {
-  background-position: 6% 50%;
+  background-position: 30% 50%;
   background-repeat: no-repeat;
   padding-left: 59px;
 }
@@ -23,6 +31,7 @@
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
+
   color: #262D33;
 }
 
@@ -54,7 +63,7 @@
 
 .form p {
   padding-left: 20px;
-  margin-top: 25px;
+  margin-top: 12px;
   white-space: nowrap;
 }
 
@@ -70,28 +79,89 @@
   margin-bottom: 5px;
 }
 
-.form input {
-  display: block;
-  margin: 12px auto 0;
-  width: 302px;
+.inputWrapper {
+  width: 307px;
+  margin: 5px auto 0;
+
+  display: flex;
+
+  background-color: #FFFFFF !important;
+}
+
+.inputIcon {
+  composes: inputIconPosition;
+
   height: 40px;
+
   border: 1px solid #DADADA;
-  border-radius: 6px;
+  border-right: none;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.form input {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+
+  display: block;
+
+  width: 247px;
+  height: 40px;
+
+  background-color: #FFFFFF;
+
+  outline: none;
+  border: 1px solid #DADADA;
+  border-left: none;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+
   font-size: 12px;
   line-height: 15px;
+
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.form input:focus {
+  outline: none;
+}
+
+.textArea {
+  -webkit-appearance: none;
+  composes: montserrat;
+
+  width: 307px;
+  height: 90px;
+
+  border: 1px solid #DADADA;
+  border-radius: 6px;
+
+  padding: 10px 0 0 10px;
+
+  outline: none;
+
+  resize: none;
 }
 
 .role {
   -webkit-appearance: none;
+
   display: block;
-  margin: 12px auto 0;
-  width: 302px;
+
+  width: 307px;
   height: 40px;
+
+  position: relative;
+
+  margin: 5px auto 0;
+
   border: 1px solid #DADADA;
   border-radius: 6px;
+
   font-size: 12px;
   line-height: 15px;
-  position: relative;
+
   background-color: #ffffff;
 }
 
@@ -103,59 +173,72 @@
   color: #BDBDBD;
 }
 
-.form input:focus {
-  outline: none;
-}
-
 .role:focus {
   outline: none;
 }
 
 .title {
-  composes: inputIconPosition;
+  composes: inputIcon;
   background-image: url('../Assets/img/title-icon.svg');
 }
 
 .role {
   composes: inputIconPosition;
   background-image: url('../Assets/img/role-icon.svg');
+  background-position: 4% 50%;
 }
 
 .date {
-  composes: inputIconPosition;
+  composes: inputIcon;
+
   background-image: url('../Assets/img/calendar-icon.svg');
   background-color: #FFFFFF;
+}
+
+.inpDate {
+
   padding-top: 12px;
 }
 
 .address {
-  composes: inputIconPosition;
+  composes: inputIcon;
   background-image: url('../Assets/img/location-icon.svg');
 }
 
 .sets {
-  composes: inputIconPosition;
+  composes: inputIcon;
   background-image: url('../Assets/img/sets-icon.svg');
 }
 
 .salary {
-  composes: inputIconPosition;
+  composes: inputIcon;
   background-image: url('../Assets/img/moneyhand-icon.svg');
+}
+
+.phone {
+  composes: inputIcon;
+  background-image: url('../Assets/img/phone.svg');
 }
 
 .submit {
   width: 46px;
   height: 46px;
-  border-radius: 50px;
+
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  margin-bottom: 100px;
+
   background-image: url('../Assets/img/arrow-icon.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-color: #6384EB;
+
+  border-radius: 50px;
   border: #6384EB;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
   cursor: pointer;
 }
 
@@ -164,11 +247,13 @@
 }
 
 .footerWrapper {
+  width: 375px;
   position: fixed;
   bottom: 0;
   z-index: 1;
+
   background: #FFFFFF;
-  width: 375px;
+
   margin: 0 auto;
   padding-bottom: 6px;
 }
@@ -179,33 +264,4 @@
   width: 64px;
   height: 64px;
   margin: 50% auto;
-}
-
-
-/* test input */
-
-.inputWrapper {
-  display: flex;
-  border-radius: 4px;
-  background-color: red !important;
-  border: none;
-  height: 51px;
-}
-
-.iconTitle {
-  background-image: url('../Assets/img/title-icon.svg');
-  background-position: 6% 50%;
-  background-repeat: no-repeat;
-}
-
-.txt {
-  padding-left: 5px;
-  float:left;
-  outline:none ;
-  border: none;
-  background-color: #f7f8fa;
-  font-size: 16px;
-  width: 100%;
-  margin-left: 9px;
-  margin-bottom: 21px;
 }

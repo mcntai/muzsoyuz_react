@@ -42,9 +42,9 @@ class FindJob extends React.Component {
             return <li key={item.id} className={s.list}>
               <div className={s.jobOfferWrapper}>
                 <img src={item.instrument.imageURL} alt='Instrument' className={s.instrumentIcon} />
-                <div>
+                <div className={s.jobTextWrapper}>
                   <p className={s.jobTitle}>{item.title}</p>
-                  <p className={s.jobSalary}>Оплата: {salary}, Грн</p>
+                  <p className={s.jobSalary}>{salary} грн</p>
                 </div>
                 <p className={s.jobDate}>{date.getDate()} {month}</p>
               </div>

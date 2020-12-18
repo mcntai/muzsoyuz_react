@@ -86,36 +86,49 @@ class AuthForm extends BasicAuth {
       <div className={s.authFormReg}>
         <AuthNavLinks/>
         <form action="" className={s.form}>
+
           <span className={s.textErr}>{this.state.emailErr}</span>
-          <input
-            type="email"
-            name="email"
-            placeholder="імейл"
-            className={s.inputEmail}
-            value={this.state.email}
-            onChange={this.handleChange.bind(this)}
-            onBlur={(e) => this.validateInput(e, 'emailErr')}
-          />
+          <div className={s.inputWrapper}>
+            <div className={s.emailIcon}></div>
+            <input
+              type="email"
+              name="email"
+              placeholder="імейл"
+              className={s.input}
+              value={this.state.email}
+              onChange={this.handleChange.bind(this)}
+              onBlur={(e) => this.validateInput(e, 'emailErr')}
+            />
+          </div>
+
           <span className={s.textErr}>{this.state.passwordErr}</span>
-          <input
-            type="password"
-            name="password"
-            placeholder="пароль"
-            className={s.inputPassword}
-            value={this.state.password}
-            onChange={this.handleChange.bind(this)}
-            onBlur={(e) => this.validateInput(e, 'passwordErr')}
-          />
+          <div className={s.inputWrapper}>
+            <div className={s.passwordIcon}></div>
+            <input
+              type="password"
+              name="password"
+              placeholder="пароль"
+              className={s.input}
+              value={this.state.password}
+              onChange={this.handleChange.bind(this)}
+              onBlur={(e) => this.validateInput(e, 'passwordErr')}
+            />
+          </div>
+
           <span className={s.textErr}>{this.state.confirmErr}</span>
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="підтвердіть пароль"
-            className={s.inputConfirmPassword}
-            value={this.state.confirmPassword}
-            onChange={this.handleChange.bind(this)}
-            onBlur={(e) => this.validateInput(e, 'confirmErr', this.state.password)}
-          />
+          <div className={s.inputWrapper}>
+            <div className={s.passwordIcon}></div>
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="підтвердіть пароль"
+              className={s.input}
+              value={this.state.confirmPassword}
+              onChange={this.handleChange.bind(this)}
+              onBlur={(e) => this.validateInput(e, 'confirmErr', this.state.password)}
+            />
+          </div>
+
           <input
             type="submit"
             className={s.inputSubmit}
@@ -132,26 +145,35 @@ class AuthForm extends BasicAuth {
       <div className={s.authFormLog}>
         <AuthNavLinks/>
         <form action="" className={s.form}>
+
           <span className={s.textErr}>{this.state.emailErr}</span>
-          <input
-            type="email"
-            name="email"
-            placeholder="імейл"
-            className={s.inputEmail}
-            value={this.state.email}
-            onChange={this.handleChange.bind(this)}
-            onBlur={(e) => this.validateInput(e, 'emailErr')}
-          />
+          <div className={s.inputWrapper}>
+            <div className={s.emailIcon}></div>
+            <input
+              type="email"
+              name="email"
+              placeholder="імейл"
+              className={s.input}
+              value={this.state.email}
+              onChange={this.handleChange.bind(this)}
+              onBlur={(e) => this.validateInput(e, 'emailErr')}
+            />
+          </div>
+
           <span className={s.textErr}>{this.state.passwordErr}</span>
-          <input
-            type="password"
-            name="password"
-            placeholder="пароль"
-            className={s.inputPassword}
-            value={this.state.password}
-            onChange={this.handleChange.bind(this)}
-            onBlur={(e) => this.validateInput(e, 'passwordErr')}
-          />
+          <div className={s.inputWrapper}>
+            <div className={s.passwordIcon}></div>
+            <input
+              type="password"
+              name="password"
+              placeholder="пароль"
+              className={s.input}
+              value={this.state.password}
+              onChange={this.handleChange.bind(this)}
+              onBlur={(e) => this.validateInput(e, 'passwordErr')}
+            />
+          </div>
+
           <input
             type="submit"
             className={s.inputSubmit}

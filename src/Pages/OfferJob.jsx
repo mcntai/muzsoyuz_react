@@ -31,11 +31,13 @@ class OfferJob extends React.Component {
       sets      : '',
       salary    : '',
       phone     : '',
+      extraInfo : '',
       titleErr  : '',
       dateErr   : '',
       addressErr: '',
       setsErr   : '',
       salaryErr : '',
+      phoneErr  : '',
     }
   }
 
@@ -68,13 +70,15 @@ class OfferJob extends React.Component {
   async handleSubmit() {
     try {
       await MuzSoyuzRequest.makeJobOffer({
-        jobType: 'musicalReplacement',
-        date   : this.state.date,
-        address: this.state.address,
-        salary : this.state.salary,
-        sets   : this.state.sets,
-        title  : this.state.title,
-        role   : this.state.role,
+        jobType  : 'musicalReplacement',
+        date     : this.state.date,
+        address  : this.state.address,
+        salary   : this.state.salary,
+        sets     : this.state.sets,
+        title    : this.state.title,
+        role     : this.state.role,
+        phone    : this.state.phone,
+        extraInfo: this.state.extraInfo,
       })
 
       swal.success('Оголошення створено', 'Ура!')
@@ -98,16 +102,19 @@ class OfferJob extends React.Component {
         </div>
         <form action="" className={s.form}>
           <p>Заголовок оголошення</p>
-          <input
-            type='text'
-            name='title'
-            placeholder='введіть заголовок'
-            className={s.title}
-            value={this.state.title}
-            onChange={this.handleChangeStr.bind(this)}
-            onBlur={(e) => this.validateInput(e, 'titleErr')}
-          />
+          <div className={s.inputWrapper}>
+            <div className={s.title}></div>
+            <input
+              type='text'
+              name='title'
+              placeholder='введіть заголовок'
+              value={this.state.title}
+              onChange={this.handleChangeStr.bind(this)}
+              onBlur={(e) => this.validateInput(e, 'titleErr')}
+            />
+          </div>
           <span className={s.textErr}>{this.state.titleErr}</span>
+
           <p>Роль</p>
           <select
             required name='role'
@@ -124,48 +131,88 @@ class OfferJob extends React.Component {
             <option value='sax'>Саксофоніст</option>
             <option value='trumpet'>Трубач</option>
             <option value='violin'>Скрипач</option>
+            <option value='piano'>Піаніст</option>
           </select>
+
           <p>Дата</p>
-          <input
-            type='date'
-            name='date'
-            className={s.date}
-            onChange={this.handleChangeStr.bind(this)}
-          />
+          <div className={s.inputWrapper}>
+            <div className={s.date}></div>
+            <input
+              type='date'
+              name='date'
+              className={s.inpDate}
+              onChange={this.handleChangeStr.bind(this)}
+            />
+          </div>
           <span className={s.textErr}>{this.state.dateErr}</span>
+
           <p>Адреса</p>
-          <input
-            type='text'
-            name='address'
-            placeholder='введіть адресу'
-            className={s.address}
-            value={this.state.address}
-            onChange={this.handleChangeStr.bind(this)}
-            onBlur={(e) => this.validateInput(e, 'addressErr')}
-          />
+          <div className={s.inputWrapper}>
+            <div className={s.address}></div>
+            <input
+              type='text'
+              name='address'
+              placeholder='введіть адресу'
+              value={this.state.address}
+              onChange={this.handleChangeStr.bind(this)}
+              onBlur={(e) => this.validateInput(e, 'addressErr')}
+            />
+          </div>
           <span className={s.textErr}>{this.state.addressErr}</span>
+
           <p>Кількість сетів</p>
-          <input
-            type='number'
-            name='sets'
-            placeholder='наприклад, 3'
-            className={s.sets}
-            value={this.state.sets}
-            onChange={this.handleChangeNum.bind(this)}
-            onBlur={(e) => this.validateInput(e, 'setsErr')}
-          />
+          <div className={s.inputWrapper}>
+            <div className={s.sets}></div>
+            <input
+              type='number'
+              name='sets'
+              placeholder='наприклад, 3'
+              value={this.state.sets}
+              onChange={this.handleChangeNum.bind(this)}
+              onBlur={(e) => this.validateInput(e, 'setsErr')}
+            />
+          </div>
           <span className={s.textErr}>{this.state.setsErr}</span>
+
           <p>Гонорар, грн</p>
-          <input
-            type='number'
-            name='salary'
-            placeholder='гонорар за роботу'
-            className={s.salary}
-            value={this.state.salary}
-            onChange={this.handleChangeNum.bind(this)}
-            onBlur={(e) => this.validateInput(e, 'salaryErr')}
-          />
+          <div className={s.inputWrapper}>
+            <div className={s.salary}></div>
+            <input
+              type='number'
+              name='salary'
+              placeholder='гонорар за роботу'
+              value={this.state.salary}
+              onChange={this.handleChangeNum.bind(this)}
+              onBlur={(e) => this.validateInput(e, 'salaryErr')}
+            />
+          </div>
           <span className={s.textErr}>{this.state.salaryErr}</span>
+
+          <p>Ваш телефон</p>
+          <div className={s.inputWrapper}>
+            <div className={s.phone}></div>
+            <input
+              type='number'
+              pattern='\d*'
+              name='phone'
+              placeholder='0 93 111 22 33'
+              value={this.state.phone}
+              onChange={this.handleChangeNum.bind(this)}
+              onBlur={(e) => this.validateInput(e, 'phoneErr')}
+            />
+          </div>
+          <span className={s.textErr}>{this.state.phoneErr}</span>
+
+          <p>Додаткові деталі</p>
+          <div className={s.inputWrapper}>
+            <textarea
+              name='extraInfo'
+              placeholder='будь яка додаткова інформація'
+              className={s.textArea}
+              value={this.state.extraInfo}
+              onChange={this.handleChangeStr.bind(this)}
+            />
+          </div>
         </form>
         <button className={s.submit} onClick={this.handleSubmit.bind(this)}/>
         <div className={s.footerWrapper}>
