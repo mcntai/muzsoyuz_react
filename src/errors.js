@@ -12,13 +12,3 @@ export const argumentAssert = (condition, message) => {
     throw new ArgumentsError(message)
   }
 }
-
-export class MuzSoyuzResponseError extends Error {
-  constructor(error) {
-    super()
-
-    this.error = error
-    this.status = this.error?.status
-    this.message = this.error?.message
-  }
-}
