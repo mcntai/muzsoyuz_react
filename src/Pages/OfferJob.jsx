@@ -103,11 +103,11 @@ class OfferJob extends React.Component {
         <form action="" className={s.form}>
           <p>Заголовок оголошення</p>
           <div className={s.inputWrapper}>
-            <div className={s.title}></div>
             <input
               type='text'
               name='title'
               placeholder='введіть заголовок'
+              className={s.input}
               value={this.state.title}
               onChange={this.handleChangeStr.bind(this)}
               onBlur={(e) => this.validateInput(e, 'titleErr')}
@@ -136,11 +136,10 @@ class OfferJob extends React.Component {
 
           <p>Дата</p>
           <div className={s.inputWrapper}>
-            <div className={s.date}></div>
             <input
               type='date'
               name='date'
-              className={s.inpDate}
+              className={[s.inpDate, s.input].join(' ')}
               onChange={this.handleChangeStr.bind(this)}
             />
           </div>
@@ -148,11 +147,11 @@ class OfferJob extends React.Component {
 
           <p>Адреса</p>
           <div className={s.inputWrapper}>
-            <div className={s.address}></div>
             <input
               type='text'
               name='address'
               placeholder='введіть адресу'
+              className={s.input}
               value={this.state.address}
               onChange={this.handleChangeStr.bind(this)}
               onBlur={(e) => this.validateInput(e, 'addressErr')}
@@ -162,11 +161,11 @@ class OfferJob extends React.Component {
 
           <p>Кількість сетів</p>
           <div className={s.inputWrapper}>
-            <div className={s.sets}></div>
             <input
               type='number'
               name='sets'
               placeholder='наприклад, 3'
+              className={s.input}
               value={this.state.sets}
               onChange={this.handleChangeNum.bind(this)}
               onBlur={(e) => this.validateInput(e, 'setsErr')}
@@ -176,11 +175,11 @@ class OfferJob extends React.Component {
 
           <p>Гонорар, грн</p>
           <div className={s.inputWrapper}>
-            <div className={s.salary}></div>
             <input
               type='number'
               name='salary'
               placeholder='гонорар за роботу'
+              className={s.input}
               value={this.state.salary}
               onChange={this.handleChangeNum.bind(this)}
               onBlur={(e) => this.validateInput(e, 'salaryErr')}
@@ -190,12 +189,12 @@ class OfferJob extends React.Component {
 
           <p>Ваш телефон</p>
           <div className={s.inputWrapper}>
-            <div className={s.phone}></div>
             <input
               type='number'
               pattern='\d*'
               name='phone'
               placeholder='0 93 111 22 33'
+              className={s.input}
               value={this.state.phone}
               onChange={this.handleChangeNum.bind(this)}
               onBlur={(e) => this.validateInput(e, 'phoneErr')}

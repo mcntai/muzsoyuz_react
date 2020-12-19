@@ -88,7 +88,6 @@
 .instrumentIcon {
   width: 43px;
   height: 44px;
-  filter: invert(42%) sepia(4%) saturate(10%) hue-rotate(16deg) brightness(96%) contrast(87%);
 }
 
 .jobTextWrapper {

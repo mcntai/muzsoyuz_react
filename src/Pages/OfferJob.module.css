@@ -5,18 +5,19 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #FFFFFF inset !important;
+  -webkit-text-fill-color: #6A6A6A;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #BDBDBD;
+  color: #9e9e9e;
 }
 
 ::-moz-placeholder { /* Firefox 19+ */
-  color: #BDBDBD;
+  color: #9e9e9e;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-  color: #BDBDBD;
+  color: #9e9e9e;
 }
 
 .inputIconPosition {
@@ -32,7 +33,7 @@ input:-webkit-autofill:active {
   font-size: 14px;
   line-height: 17px;
 
-  color: #262D33;
+  color: #6A6A6A;
 }
 
 .headerWrapper div {
@@ -99,37 +100,39 @@ input:-webkit-autofill:active {
   border-bottom-left-radius: 6px;
 }
 
-.form input {
+.input {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
 
-  display: block;
+  composes: montserrat;
+  font-size: 12px;
+  line-height: 14px;
 
-  width: 247px;
+  display: block;
+  padding-left: 10px;
+
+  width: 307px;
   height: 40px;
 
   background-color: #FFFFFF;
 
   outline: none;
   border: 1px solid #DADADA;
-  border-left: none;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
-
-  font-size: 12px;
-  line-height: 15px;
+  border-radius: 6px;
 
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 
-.form input:focus {
+.input:focus {
   outline: none;
 }
 
 .textArea {
   -webkit-appearance: none;
   composes: montserrat;
+  font-size: 12px;
+  line-height: 14px;
 
   width: 307px;
   height: 90px;
@@ -147,6 +150,10 @@ input:-webkit-autofill:active {
 .role {
   -webkit-appearance: none;
 
+  composes: montserrat;
+  font-size: 12px;
+  line-height: 14px;
+
   display: block;
 
   width: 307px;
@@ -155,12 +162,10 @@ input:-webkit-autofill:active {
   position: relative;
 
   margin: 5px auto 0;
+  padding-left: 10px;
 
   border: 1px solid #DADADA;
   border-radius: 6px;
-
-  font-size: 12px;
-  line-height: 15px;
 
   background-color: #ffffff;
 }
@@ -170,54 +175,16 @@ input:-webkit-autofill:active {
 }
 
 .role:invalid {
-  color: #BDBDBD;
+  color: #9e9e9e;
 }
 
 .role:focus {
   outline: none;
 }
 
-.title {
-  composes: inputIcon;
-  background-image: url('../Assets/img/title-icon.svg');
-}
-
-.role {
-  composes: inputIconPosition;
-  background-image: url('../Assets/img/role-icon.svg');
-  background-position: 4% 50%;
-}
-
-.date {
-  composes: inputIcon;
-
-  background-image: url('../Assets/img/calendar-icon.svg');
-  background-color: #FFFFFF;
-}
-
 .inpDate {
-
+  background-color: #FFFFFF;
   padding-top: 12px;
-}
-
-.address {
-  composes: inputIcon;
-  background-image: url('../Assets/img/location-icon.svg');
-}
-
-.sets {
-  composes: inputIcon;
-  background-image: url('../Assets/img/sets-icon.svg');
-}
-
-.salary {
-  composes: inputIcon;
-  background-image: url('../Assets/img/moneyhand-icon.svg');
-}
-
-.phone {
-  composes: inputIcon;
-  background-image: url('../Assets/img/phone.svg');
 }
 
 .submit {

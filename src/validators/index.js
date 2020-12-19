@@ -24,7 +24,7 @@ const JobOfferMap = {
 
 const AuthMap = {
   emailErr   : value => {
-    argumentAssert(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value), 'некоректний імейл')
+    argumentAssert(/^[\w-.]+@([\w-]+\.)+[\w-]{2,10}$/.test(value), 'некоректний імейл')
   },
   passwordErr: value => {
     argumentAssert(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[a-z]).*$/.test(value), 'мінімум 8 символів включаючи цифру')

@@ -139,7 +139,7 @@
 }
 
 .input::placeholder {
-  opacity: 0.5;
+  color: #9e9e9e;
 }
 
 .emailIcon {
