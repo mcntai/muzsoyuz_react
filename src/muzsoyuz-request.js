@@ -1,15 +1,13 @@
 import {Request} from './utils/request'
+import {config} from "./config"
 
 export class MuzSoyuzRequest extends Request {
   sendToken() {
-    this.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`
+    this.setHeaders({
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    })
 
     return this
-  }
-
-  static validateToken() {
-    return this.get('/user/validateToken')
-      .sendToken()
   }
 
   static getUserProfile() {
@@ -55,6 +53,8 @@ export class MuzSoyuzRequest extends Request {
   }
 
   async execute() {
+    this.url = config.getApiPath() + this.url
+
     return super.execute()
       .then(this.checkStatus.bind(this))
       .catch(e => {

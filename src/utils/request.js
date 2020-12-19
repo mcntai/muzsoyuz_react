@@ -1,5 +1,12 @@
-import {config} from '../config'
-import {MuzSoyuzResponseError} from "../errors"
+class ResponseError extends Error {
+  constructor(error) {
+    super()
+
+    this.error = error
+    this.status = this.error?.status
+    this.message = this.error?.message
+  }
+}
 
 const METHODS = {
   GET   : 'GET',
@@ -12,7 +19,7 @@ const METHODS = {
 export class Request {
   constructor({ url, method, headers, body }) {
     this.method = method
-    this.url = config.getApiPath() + url
+    this.url = url
     this.headers = headers || {}
     this.body = body || {}
   }
@@ -113,7 +120,7 @@ export class Request {
 
     const error = await this.getError(response)
 
-    return Promise.reject(new MuzSoyuzResponseError(error))
+    return Promise.reject(new ResponseError(error))
   }
 
   async execute() {
