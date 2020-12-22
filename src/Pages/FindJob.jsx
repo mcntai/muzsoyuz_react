@@ -75,6 +75,7 @@ class FindJob extends React.Component {
           'salary',
           'address',
           'sets',
+          'phone',
           'extraInfo',
         ])
 

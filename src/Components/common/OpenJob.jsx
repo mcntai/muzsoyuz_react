@@ -56,7 +56,7 @@ const OpenJob = () => {
 
                 <div className={s.nameAndPhoneWrapper}>
                   <span className={s.userName}>{el.user.name || 'Анонімус'}</span>
-                  <a href={`tel:${el.user.phone}`} className={s.userPhone}>{el.user.phone}</a>
+                  <a href={`tel:${el.user.phone}`} className={s.userPhone}>{el.phone}</a>
                 </div>
 
                 <div>
@@ -64,7 +64,7 @@ const OpenJob = () => {
                 </div>
 
               </div>
-              <button className={s.applyBtn}>Подати заявку</button>
+              <button className={s.chatBtn}>Перейти в чат</button>
             </div>
             <div className={s.footerWrapper}>
               <Footer/>

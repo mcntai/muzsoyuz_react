@@ -11,9 +11,9 @@
 .montserrat {
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 30px;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 15px;
 }
 
 .focus:focus {
@@ -43,36 +43,51 @@
   width: 290px;
 }
 
-.socialMedias p {
-  padding-top: 38px;
-}
-
 .authWith {
   composes: montserrat;
-  font-size: 12px;
-  line-height: 15px;
-  color: #6A6A6A;
+  color: #000000;
+  margin-top: 60px;
 }
 
-.socialIcons {
-  width: 290px;
+/*.socialIcons {*/
+/*  composes: montserrat;*/
+/*  font-weight: 500;*/
+
+/*  width: 305px;*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+
+/*  margin: 28px 0 58px 0;*/
+/*}*/
+
+.regIcons {
+  composes: montserrat;
+  font-weight: 500;
+
+  width: 305px;
   display: flex;
   justify-content: space-between;
-  padding: 25px 0 45px 0;
+
+  margin: 28px 0 58px 0;
+}
+
+.logIcons {
+  composes: regIcons;
+  margin: 28px 0 189px 0;
 }
 
 .facebookIcon {
   composes: focus iconsStyles montserrat cursor;
   background: url('../../Assets/img/fb-icon.svg') #3B5999 no-repeat 20% 50%;
-  border: #3B5999;
+  border: 1px solid #3B5999;
   color: #FFFFFF;
 }
 
 .googleIcon {
   composes: focus iconsStyles montserrat cursor;
-  background: url('../../Assets/img/google-icon.svg') #FFFFFF no-repeat 20% 50%;
-  border: 1px solid #6A6A6A;
-  color: #6A6A6A;
+  background: url('../../Assets/img/google-icon.svg') transparent no-repeat 20% 50%;
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
 }
 
 

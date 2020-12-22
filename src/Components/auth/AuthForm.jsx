@@ -28,6 +28,7 @@ class AuthForm extends BasicAuth {
       emailErr       : '',
       passwordErr    : '',
       confirmErr     : '',
+      gender         : '',
     }
   }
 
@@ -43,6 +44,10 @@ class AuthForm extends BasicAuth {
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value })
+  }
+
+  handleGender(e) {
+    this.setState({ gender: e.target.name })
   }
 
   validateInput(e, name, prevValue) {
@@ -87,13 +92,12 @@ class AuthForm extends BasicAuth {
         <AuthNavLinks/>
         <form action="" className={s.form}>
 
-          <span className={s.textErr}>{this.state.emailErr}</span>
           <div className={s.inputWrapper}>
-            <div className={s.emailIcon}></div>
+            <span className={s.textErr}>{this.state.emailErr}</span>
             <input
               type="email"
               name="email"
-              placeholder="імейл"
+              placeholder="Імейл"
               className={s.input}
               value={this.state.email}
               onChange={this.handleChange.bind(this)}
@@ -101,13 +105,12 @@ class AuthForm extends BasicAuth {
             />
           </div>
 
-          <span className={s.textErr}>{this.state.passwordErr}</span>
           <div className={s.inputWrapper}>
-            <div className={s.passwordIcon}></div>
+            <span className={s.textErr}>{this.state.passwordErr}</span>
             <input
               type="password"
               name="password"
-              placeholder="пароль"
+              placeholder="Пароль"
               className={s.input}
               value={this.state.password}
               onChange={this.handleChange.bind(this)}
@@ -115,13 +118,12 @@ class AuthForm extends BasicAuth {
             />
           </div>
 
-          <span className={s.textErr}>{this.state.confirmErr}</span>
           <div className={s.inputWrapper}>
-            <div className={s.passwordIcon}></div>
+            <span className={s.textErr}>{this.state.confirmErr}</span>
             <input
               type="password"
               name="confirmPassword"
-              placeholder="підтвердіть пароль"
+              placeholder="Повторити пароль"
               className={s.input}
               value={this.state.confirmPassword}
               onChange={this.handleChange.bind(this)}
@@ -129,12 +131,30 @@ class AuthForm extends BasicAuth {
             />
           </div>
 
-          <input
-            type="submit"
+          <div className={s.genderWrapper}>
+            <span className={s.genderTitle}>Стать</span>
+            <input
+              type='button'
+              name='f'
+              value='жін'
+              className={s.genderInput}
+              onClick={this.handleGender.bind(this)}
+            />
+            <input
+              type='button'
+              name='m'
+              value='чол'
+              className={s.genderInput}
+              onClick={this.handleGender.bind(this)}
+            />
+          </div>
+
+          <button
             className={s.inputSubmit}
-            value=''
             onClick={(e) => this.handleAuthSubmit.call(this, e, 'register')}
-          />
+          >
+            Зареєструватися
+          </button>
         </form>
       </div>
     )
@@ -146,13 +166,12 @@ class AuthForm extends BasicAuth {
         <AuthNavLinks/>
         <form action="" className={s.form}>
 
-          <span className={s.textErr}>{this.state.emailErr}</span>
           <div className={s.inputWrapper}>
-            <div className={s.emailIcon}></div>
+            <span className={s.textErr}>{this.state.emailErr}</span>
             <input
               type="email"
               name="email"
-              placeholder="імейл"
+              placeholder="Імейл"
               className={s.input}
               value={this.state.email}
               onChange={this.handleChange.bind(this)}
@@ -160,13 +179,12 @@ class AuthForm extends BasicAuth {
             />
           </div>
 
-          <span className={s.textErr}>{this.state.passwordErr}</span>
           <div className={s.inputWrapper}>
-            <div className={s.passwordIcon}></div>
+            <span className={s.textErr}>{this.state.passwordErr}</span>
             <input
               type="password"
               name="password"
-              placeholder="пароль"
+              placeholder="Пароль"
               className={s.input}
               value={this.state.password}
               onChange={this.handleChange.bind(this)}
@@ -174,11 +192,12 @@ class AuthForm extends BasicAuth {
             />
           </div>
 
-          <input
-            type="submit"
+          <button
             className={s.inputSubmit}
-            value=''
-            onClick={(e) => this.handleAuthSubmit.call(this, e, 'login')}/>
+            onClick={(e) => this.handleAuthSubmit.call(this, e, 'login')}
+          >
+            Увійти
+          </button>
         </form>
       </div>
     )

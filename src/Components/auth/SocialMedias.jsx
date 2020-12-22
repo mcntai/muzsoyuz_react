@@ -6,6 +6,26 @@ import s from './SocialMedias.module.css'
 const appPath = config.getApiPath()
 
 class SocialMedias extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      socialIcons: '',
+    }
+  }
+
+  componentDidMount() {
+    const socialIcons = this.props.type === 'login' ? s.logIcons : s.regIcons
+
+    this.setState({ socialIcons })
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const socialIcons = this.props.type === 'login' ? s.logIcons : s.regIcons
+
+    if(prevProps.type !== this.props.type) {
+      this.setState({ socialIcons })
+    }
+  }
 
   #FORM_TYPE_MAP = {
     register: 'зареєструватись',
@@ -13,8 +33,10 @@ class SocialMedias extends React.Component {
   }
 
   getLinks() {
+    // const socialIcons = this.props.type === 'login' ? s.logIcons : s.regIcons
+
     return (
-      <div className={s.socialIcons}>
+      <div className={this.state.socialIcons}>
         <a href={appPath + '/auth/oauth/facebook'}>
           <input
             type="button"

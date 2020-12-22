@@ -37,6 +37,8 @@ class Profile extends React.Component {
     try {
       const response = await MuzSoyuzRequest.getUserProfile()
 
+      console.log(response)
+
       this.setState({ userProfile: response })
     }
     catch (e) {

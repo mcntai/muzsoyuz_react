@@ -26,19 +26,11 @@
 .wrapper {
   composes: flexCol;
   width: 375px;
-  background: #FFFFFF;
+  background: linear-gradient(180deg, #6384EB 0%, rgba(99, 132, 235, 0.63) 100%);
 }
 
-.brandName {
-  composes: montserrat;
-  text-align: center;
-  letter-spacing: 0.245em;
-  color: #6A6A6A;
-  padding-top: 34px;
-}
-
-.muz {
-  font-size: 50px;
-  line-height: 50px;
-  font-family: 'Kufam', cursive;
+.logo {
+  width: 166px;
+  height: 36px;
+  margin-top: 75px;
 }

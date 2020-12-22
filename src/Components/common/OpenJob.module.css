@@ -110,7 +110,7 @@
   border-radius: 50%;
 }
 
-.applyBtn {
+.chatBtn {
   composes: montserratSmall;
   font-weight: 500;
   color: #FFFFFF;
@@ -131,6 +131,5 @@
   z-index: 1;
   background: #FFFFFF;
   width: 375px;
-  /*margin: 0 auto;*/
   padding-bottom: 6px;
 }

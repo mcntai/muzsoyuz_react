@@ -38,7 +38,7 @@ export class MuzSoyuzRequest extends Request {
   }
 
   static setDaysOff(days) {
-    return this.post('/user/workday', days)
+    return this.post('/user/workdays', days)
       .sendToken()
   }
 
