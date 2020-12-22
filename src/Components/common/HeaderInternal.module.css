@@ -14,6 +14,8 @@
 
 .backBtn {
   content: url("../../Assets/img/arrow-left.svg");
+  width: 20px;
+  height: 20px;
 }
 
 .heading {

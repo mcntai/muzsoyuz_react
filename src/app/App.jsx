@@ -8,6 +8,7 @@ import SocialMediaOauth from '../Pages/SocialMediaOauth'
 import Profile from '../Components/profile/Profile'
 import OfferJob from '../Pages/OfferJob'
 import FindJob from '../Pages/FindJob'
+import OpenJob from '../Components/common/OpenJob'
 import Settings from '../Components/profile/Settings'
 import StartPage from '../Components/questionary/StartPage'
 import ChooseInstrumentPage from '../Components/questionary/ChooseInstrumentPage'
@@ -43,6 +44,7 @@ class App extends React.Component {
             <Route path="/oauth/google/callback" component={() => <SocialMediaOauth type="google"/>}/>
             <Route path="/offer-job" component={OfferJob}/>
             <Route path="/find-job" component={FindJob}/>
+            <Route path="/open-job" component={OpenJob}/>
             <Route path="/profile" component={Profile}/>
             <Route path="/settings" component={Settings}/>
             <Route path="/quest-1" component={StartPage}/>

@@ -9,6 +9,7 @@ import HeaderInternalButtons from '../Components/common/HeaderInternalButtons'
 import Footer from '../Components/common/Footer'
 import preloader from '../Assets/img/preloader.gif'
 import s from './FindJob.module.css'
+import { NavLink } from 'react-router-dom'
 
 
 const mapStateToProps = state => {
@@ -40,14 +41,19 @@ class FindJob extends React.Component {
             const salary = Number(item.salary)
 
             return <li key={item.id} className={s.list}>
-              <div className={s.jobOfferWrapper}>
-                <img src={item.instrument.imageURL} alt='Instrument' className={s.instrumentIcon} />
-                <div className={s.jobTextWrapper}>
-                  <p className={s.jobTitle}>{item.title}</p>
-                  <p className={s.jobSalary}>{salary} грн</p>
+              <NavLink className={s.nav} to={{
+                pathname: '/open-job',
+                state: {data: item}
+              }}>
+                <div className={s.jobOfferWrapper}>
+                  <img src={item.instrument.imageURL} alt='Instrument' className={s.instrumentIcon}/>
+                  <div className={s.jobTextWrapper}>
+                    <p className={s.jobTitle}>{item.title}</p>
+                    <p className={s.jobSalary}>{salary} грн</p>
+                  </div>
+                  <p className={s.jobDate}>{date.getDate()} {month}</p>
                 </div>
-                <p className={s.jobDate}>{date.getDate()} {month}</p>
-              </div>
+              </NavLink>
             </li>
           })
         }
@@ -69,12 +75,13 @@ class FindJob extends React.Component {
           'salary',
           'address',
           'sets',
+          'extraInfo',
         ])
-
-      console.log(response)
 
       this.setState({ fetchFinished: true })
       this.setState({ fetchedData: response })
+
+      console.log(this.state.fetchedData)
 
     }
     catch (e) {

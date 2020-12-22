@@ -1,0 +1,136 @@
+/* Common Styles */
+
+.montserratBig {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 24px;
+  color: #262D33;
+}
+
+.montserratSmall {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #262D33;
+}
+
+.container {
+  width: 375px;
+}
+
+/* Main Styles */
+
+.jobWrapper {
+  display: flex;
+  flex-direction: column;
+
+  width: 302px;
+  margin: 0 auto;
+}
+
+.title {
+  composes: montserratBig;
+}
+
+.salary {
+  composes: montserratBig;
+  font-weight: 700;
+
+  margin-top: 7px;
+}
+
+.description {
+  composes: montserratSmall;
+
+  display: inline-block;
+  margin-top: 30px;
+
+  color: #8F8F8F;
+}
+
+.date {
+  composes: montserratSmall;
+
+  margin-top: 12px;
+}
+
+.descriptionWrapper {
+  composes: montserratSmall;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 12px;
+}
+
+.descriptionWrapper span {
+  margin-top: 8px;
+}
+
+.jobCreatorWrapper {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 91px;
+}
+
+.nameAndPhoneWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.userName {
+  composes: montserratBig;
+  width: 220px;
+
+  display: inline-block;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userPhone {
+  composes: montserratSmall;
+  font-size: 16px;
+  line-height: 19.5px;
+  text-decoration: none;
+
+  margin-top: 14px;
+}
+
+.userImage {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 50%;
+}
+
+.applyBtn {
+  composes: montserratSmall;
+  font-weight: 500;
+  color: #FFFFFF;
+
+  width: 302px;
+  padding: 12px 0;
+  margin-top: 50px;
+
+  background-color: #6384EB;
+  border: 1px solid #6384EB;
+  outline: none;
+  border-radius: 16px;
+}
+
+.footerWrapper {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  background: #FFFFFF;
+  width: 375px;
+  /*margin: 0 auto;*/
+  padding-bottom: 6px;
+}

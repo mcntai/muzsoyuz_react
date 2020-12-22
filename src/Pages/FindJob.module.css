@@ -33,6 +33,10 @@
 }
 
 /* Buttons styles */
+.nav {
+  text-decoration: none;
+}
+
 .btnClass {
   width: 169px;
   height: 32px;
