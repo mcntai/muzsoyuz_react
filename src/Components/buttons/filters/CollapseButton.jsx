@@ -3,7 +3,7 @@ import arrowIcon from '../../../Assets/img/arrow-bottom.svg'
 import s from './CollapseButton.module.css'
 
 
-const CollapseButton = ({ title, innerContent }) => {
+const CollapseButton = ({ btnWrapper, filterName, title, innerContent }) => {
   const [collapse, setCollaps] = useState(true)
   const [hide, setHide] = useState(s.hideContent)
   const [show, setShow] = useState('')
@@ -23,8 +23,8 @@ const CollapseButton = ({ title, innerContent }) => {
 
   return (
     <div>
-      <div className={s.btnWrapper} onClick={toggle}>
-        <span className={s.filterName}>{title}</span>
+      <div className={btnWrapper} onClick={toggle}>
+        <span className={filterName}>{title}</span>
         <img src={arrowIcon} className={arrow} alt="arrow-icon"/>
       </div>
       <div className={[show, hide].join(' ')}>

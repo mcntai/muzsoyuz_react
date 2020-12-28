@@ -136,7 +136,7 @@
 }
 
 .togglePencil {
-  background-image: url("../../Assets/img/pencil.svg");
+  /*background-image: url("../../Assets/img/pencil.svg");*/
   background-position: 100%;
   background-repeat: no-repeat;
 }

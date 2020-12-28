@@ -37,6 +37,11 @@ export class MuzSoyuzRequest extends Request {
       .sendToken()
   }
 
+  static getDaysOff(days) {
+    return this.get('/user/workdays', days)
+      .sendToken()
+  }
+
   static setDaysOff(days) {
     return this.post('/user/workdays', days)
       .sendToken()

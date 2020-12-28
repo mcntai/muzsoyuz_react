@@ -67,9 +67,11 @@ class OfferJob extends React.Component {
   }
 
 
-  async handleSubmit() {
+  async handleSubmit(e) {
+    e.preventDefault()
+
     try {
-      await MuzSoyuzRequest.makeJobOffer({
+      const response = await MuzSoyuzRequest.makeJobOffer({
         jobType  : 'musicalReplacement',
         date     : this.state.date,
         address  : this.state.address,
@@ -80,6 +82,8 @@ class OfferJob extends React.Component {
         phone    : this.state.phone,
         extraInfo: this.state.extraInfo,
       })
+
+      console.log(response)
 
       swal.success('Оголошення створено', 'Ура!')
     }
@@ -212,8 +216,9 @@ class OfferJob extends React.Component {
               onChange={this.handleChangeStr.bind(this)}
             />
           </div>
+          <button className={s.submit} onClick={this.handleSubmit.bind(this)}>Опублікувати</button>
         </form>
-        <button className={s.submit} onClick={this.handleSubmit.bind(this)}/>
+
         <div className={s.footerWrapper}>
           <Footer/>
         </div>

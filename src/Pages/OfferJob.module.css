@@ -29,7 +29,7 @@ input:-webkit-autofill:active {
 .montserrat {
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   font-size: 14px;
   line-height: 17px;
 
@@ -58,8 +58,7 @@ input:-webkit-autofill:active {
   composes: montserrat;
   width: 343px;
   padding: 20px 0 40px 0;
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
-  margin: 0 auto;
+  margin: 0 auto 35px;
 }
 
 .form p {
@@ -188,23 +187,20 @@ input:-webkit-autofill:active {
 }
 
 .submit {
-  width: 46px;
-  height: 46px;
+  composes: montserrat;
+  color: #FFFFFF;
+  font-weight: 500;
 
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: block;
+  width: 302px;
 
-  margin-bottom: 100px;
+  margin: 22px auto;
+  padding: 13px 0;
 
-  background-image: url('../Assets/img/arrow-icon.svg');
-  background-position: center;
-  background-repeat: no-repeat;
   background-color: #6384EB;
 
-  border-radius: 50px;
+  border-radius: 16px;
   border: #6384EB;
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
 
   cursor: pointer;
 }

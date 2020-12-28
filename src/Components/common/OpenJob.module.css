@@ -30,6 +30,8 @@
 
   width: 302px;
   margin: 0 auto;
+
+  word-wrap: break-word;
 }
 
 .title {

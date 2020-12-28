@@ -1,0 +1,31 @@
+/* Common Styles */
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #000000;
+}
+
+/* Name Wrapper Styles */
+.editIconWrapper {
+  display: inline-block;
+}
+
+/* Collapse Button Styles */
+.btnWrapper {
+  composes: montserrat;
+  display: flex;
+
+  width: 307px;
+  padding: 13px 16px;
+
+  border: 1px solid #DADADA;
+  border-radius: 6px;
+}
+
+.filterName {
+  composes: montserrat;
+  width: 100%;
+}

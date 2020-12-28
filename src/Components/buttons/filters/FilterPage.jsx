@@ -16,8 +16,7 @@ const mapStateToProps = state => {
   }
 }
 
-const FilterPage = ({body}) => {
-  // const filtersNumber = Object.keys(body).length - 2
+const FilterPage = () => {
 
   return (
     <div className={s.filtersPageWrapper}>
@@ -29,11 +28,30 @@ const FilterPage = ({body}) => {
         btnTextClass={s.btnText}
         redirectTo="/find-job"
       />
-      {/*<span className={s.filtersNumber}>{filtersNumber}</span>*/}
-      <CollapseButton title="Інструмент" innerContent={<InnerFilterInstrument/>}/>
-      <CollapseButton title="Дата проведення івенту" innerContent={<FilterInternalCalendar/>}/>
-      <CollapseButton title="Зарплата, грн" innerContent={<InnerFilterSalary/>}/>
-      <CollapseButton title="Кількість сетів" innerContent={<InnerFilterSets/>}/>
+      <CollapseButton
+        title="Інструмент"
+        btnWrapper={s.btnWrapper}
+        filterName={s.filterName}
+        innerContent={<InnerFilterInstrument/>}
+      />
+      <CollapseButton
+        title="Дата проведення івенту"
+        btnWrapper={s.btnWrapper}
+        filterName={s.filterName}
+        innerContent={<FilterInternalCalendar/>}
+      />
+      <CollapseButton
+        title="Зарплата, грн"
+        btnWrapper={s.btnWrapper}
+        filterName={s.filterName}
+        innerContent={<InnerFilterSalary/>}
+      />
+      <CollapseButton
+        title="Кількість сетів"
+        btnWrapper={s.btnWrapper}
+        filterName={s.filterName}
+        innerContent={<InnerFilterSets/>}
+      />
       <img
         src={background}
         alt="man playing on sax"

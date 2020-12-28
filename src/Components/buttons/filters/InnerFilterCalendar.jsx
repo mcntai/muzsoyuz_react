@@ -61,7 +61,7 @@ class InnerFilterCalendar extends React.Component {
 
   render() {
     const { from, to } = this.state
-    const modifiers = { start: from, end: to };
+    const modifiers = { start: from, end: to }
     return (
       <div className="RangeExample">
         <DayPicker
@@ -95,7 +95,7 @@ class InnerFilterCalendar extends React.Component {
             border-top-right-radius: 50% !important;
             border-bottom-right-radius: 50% !important;
           }
-`}</style>
+          `}</style>
         </Helmet>
       </div>
     )
