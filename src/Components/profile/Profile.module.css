@@ -48,13 +48,16 @@ input:-webkit-autofill:active {
   left: 17px;
 }
 
+.topContentWrapper {
+  margin-top: 61px;
+  composes: flex;
+  justify-content: center;
+}
+
 .avatarWrapper {
   width: 111px;
   height: 111px;
   border-radius: 50%;
-  margin-top: 61px;
-  composes: flex;
-  justify-content: center;
 }
 
 .profileMiddleSection {
