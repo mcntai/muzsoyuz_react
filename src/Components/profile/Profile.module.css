@@ -57,6 +57,11 @@ input:-webkit-autofill:active {
 .avatarWrapper {
   width: 111px;
   height: 111px;
+}
+
+.avatar {
+  width: 111px;
+  height: 111px;
   border-radius: 50%;
 }
 
