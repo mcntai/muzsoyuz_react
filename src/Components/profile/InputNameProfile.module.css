@@ -11,7 +11,7 @@
 /* Main Styles */
 .nameWrapper {
   margin-top: 20px;
-  max-width: 145px;
+  /*max-width: 145px;*/
 }
 
 .name {
@@ -51,5 +51,5 @@
 }
 
 .edit {
-  position: absolute;
+  position: relative;
 }
