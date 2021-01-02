@@ -47,7 +47,7 @@ const InputPhoneProfile = ({ data }) => {
   return (
     <>
       <input
-        type='text'
+        type='number'
         name='phone'
         className={[s.phoneNumber, s.inp].join(' ')}
         value={phone || ''}

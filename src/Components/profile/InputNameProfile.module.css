@@ -12,11 +12,19 @@
   color: #262D33;
 }
 
+.name:-webkit-autofill,
+.name:-webkit-autofill:hover,
+.name:-webkit-autofill:focus,
+.name:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #6384EB inset !important;
+  -webkit-text-fill-color: #262D33;
+}
+
 /* Main Styles */
 .nameWrapper {
   margin-top: 20px;
   max-width: 200px;
-  padding: 0 2px;
+  padding: 0 5px;
 }
 
 .name {

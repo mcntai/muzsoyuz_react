@@ -8,6 +8,14 @@
   color: #262D33;
 }
 
+.phoneNumber:-webkit-autofill,
+.phoneNumber:-webkit-autofill:hover,
+.phoneNumber:-webkit-autofill:focus,
+.phoneNumber:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #FFFFFF inset !important;
+  -webkit-text-fill-color: #262D33;
+}
+
 /* Main Styles */
 .phoneNumber {
   -webkit-appearance: none;
