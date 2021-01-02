@@ -4,14 +4,18 @@
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
-  line-height: 15px;
+  line-height: 16px;
+  color: #262D33;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #262D33;
 }
 
 /* Main Styles */
 .nameWrapper {
   margin-top: 20px;
-  /*max-width: 145px;*/
+  max-width: 145px;
 }
 
 .name {
@@ -19,11 +23,13 @@
   composes: montserrat;
   text-align: center;
 
-  display: inline;
-
   border: none;
   text-overflow: ellipsis;
   background: none;
+}
+
+.inp {
+  background: url("../../Assets/img/edit-icon.svg") no-repeat right center;
 }
 
 .name:disabled {
@@ -46,10 +52,6 @@
   background: none;
 }
 
-.border {
-  border-bottom: 1px solid red;
-}
-
 .edit {
-  position: relative;
+  position: absolute;
 }
