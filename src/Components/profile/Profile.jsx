@@ -51,8 +51,8 @@ const Profile = ({ loading, authorized, prevRoute, dispatch }) => {
           <NavLink to={prevRoute} className={s.backBtn}/>
           <div className={s.avatarWrapper}>
             <img src={profileData.imageURL || avatar} alt="avatar"/>
+            <InputNameProfile data={profileData.name}/>
           </div>
-          <InputNameProfile data={profileData.name}/>
         </div>
         <div className={s.profileMiddleSection}>
           <div className={s.profileTitleSettingsWrapper}>

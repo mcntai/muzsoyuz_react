@@ -51,6 +51,7 @@ input:-webkit-autofill:active {
 .avatarWrapper {
   margin-top: 61px;
   composes: flex;
+  justify-content: center;
 }
 
 .profileMiddleSection {
