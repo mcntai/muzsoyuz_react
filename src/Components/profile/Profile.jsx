@@ -34,6 +34,7 @@ const Profile = ({ loading, authorized, prevRoute, dispatch }) => {
       try {
         const response = await MuzSoyuzRequest.getUserProfile()
         setProfileData(response)
+        console.log(response)
       }
       catch (e) {
         swalAlert.error(e.message, 'Упс!')
