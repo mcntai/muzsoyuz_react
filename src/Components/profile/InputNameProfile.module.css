@@ -19,6 +19,8 @@
   composes: montserrat;
   text-align: center;
 
+  display: inline;
+
   border: none;
   text-overflow: ellipsis;
   background: none;
