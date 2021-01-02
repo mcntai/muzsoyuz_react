@@ -10,6 +10,7 @@
 
 /* Main Styles */
 .phoneNumber {
+  -webkit-appearance: none;
   composes: montserrat;
 
   width: 307px;
@@ -18,5 +19,6 @@
 
   border: 1px solid #DADADA;
   border-radius: 6px;
+  outline: none;
 }
 
