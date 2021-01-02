@@ -49,26 +49,6 @@
   height: 24px;
 }
 
-/* Button Classes */
-
-.btn {
-  composes: montserrat;
-  width: 100%;
-  padding: 30px 35px 30px 20px;
-  background: none;
-  border: none;
-  outline: none;
-  text-align: left;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.btn::after {
-  content: url("../../../Assets/img/arrow-bottom.svg");
-}
-
 /* Background Image Classes */
 
 .background {

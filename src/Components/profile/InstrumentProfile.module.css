@@ -1,0 +1,28 @@
+/* Common Styles */
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 22px;
+  color: #262D33;
+}
+
+/* Main Styles */
+.instrumentsListWrapper {
+  composes: montserrat;
+
+}
+.instWrapper {
+  display: flex;
+  align-items: center;
+
+  margin-top: 5px;
+  margin-left: 92px;
+}
+
+
+.label {
+  padding-top: 1px;
+  padding-left: 18px;
+}

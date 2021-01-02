@@ -1,0 +1,52 @@
+/* Common Styles */
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #262D33;
+}
+
+/* Main Styles */
+.nameWrapper {
+  margin-top: 20px;
+  max-width: 145px;
+}
+
+.name {
+  composes: montserrat;
+  text-align: center;
+
+  border: none;
+  text-overflow: ellipsis;
+  background: none;
+}
+
+.name:disabled {
+  background: none;
+  color: #262D33;
+  opacity: 1;
+}
+
+.name::placeholder {
+  background: none;
+  color: #262D33;
+  opacity: 1;
+}
+
+.name:focus {
+  background: none;
+}
+
+.name:active {
+  background: none;
+}
+
+.border {
+  border-bottom: 1px solid red;
+}
+
+.edit {
+  position: absolute;
+}

@@ -1,26 +1,24 @@
 .montserrat {
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  color: #FFFFFF;
 }
 
 .btn {
   composes: montserrat;
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 400;
-  width: 302px;
-  border: 1px solid #262D33;
-  border-radius: 16px;
-  padding: 13px 0;
-  background: #FFFFFF;
-  outline: none;
   text-decoration: none;
-}
+  text-align: center;
 
-.logout {
-  margin-top: 18px;
-  color: #6A6A6A;
+  display: inline-block;
+  width: 302px;
+  padding: 13px 0;
+
+  background: #6384EB;
+
+  border: 1px solid #6384EB;
+  border-radius: 16px;
+  outline: none;
 }

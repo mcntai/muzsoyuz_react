@@ -3,6 +3,7 @@ import DayPicker, { DateUtils } from 'react-day-picker'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import * as swalAlert from '../common/Alerts'
 import 'react-day-picker/lib/style.css'
+import s from './CalendarProfile.module.css'
 
 
 const WEEKDAYS_SHORT = {
@@ -83,14 +84,14 @@ class CalendarProfile extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={s.calendarWrapper}>
         <DayPicker
           selectedDays={this.state.selectedDays}
           onDayClick={this.handleDayClick}
           months={MONTHS['ua']}
           weekdaysShort={WEEKDAYS_SHORT['ua']}
           firstDayOfWeek={FIRST_DAY_OF_WEEK['ua']}
-          // className={s.calendarContainer}
+          className={s.calendarContainer}
         />
       </div>
     )

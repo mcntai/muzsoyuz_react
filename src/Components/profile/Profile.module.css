@@ -1,61 +1,116 @@
+/* Common Styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #FFFFFF inset !important;
+  -webkit-text-fill-color: #262D33;
+}
+
 .montserrat {
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #262D33;
 }
 
-.profileWrapper {
-  width: 375px;
+.flex {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.btnClass {
-  width: 169px;
-  height: 32px;
-  background: #DADADA;
-  border: 1px solid #DADADA;
-  border-radius: 12px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  color: #262D33;
-  font-size: 12px;
-  line-height: 15px;
-  text-decoration: none;
+/* Main Styles */
+.profileWrapper {
+  composes: flex;
+  width: 375px;
+}
+
+.profileTopSection {
+  composes: flex;
   text-align: center;
-  padding-top: 8px;
+
+  width: 375px;
+  padding-bottom: 60px;
+
+  background: linear-gradient(180deg, #6384EB 0%, rgba(99, 132, 235, 0.63) 100%);
 }
 
-.active {
-  background-color: #CBF6FF;
-  border: 1px solid #CBF6FF;
+.backBtn {
+  content: url("../../Assets/img/arrow-left.svg");
+  width: 20px;
+  height: 20px;
+
+  position: absolute;
+  top: 30px;
+  left: 17px;
 }
 
-.headerWrapper {
-  width: 343px;
+.avatarWrapper {
+  margin-top: 61px;
+  composes: flex;
+}
+
+.profileMiddleSection {
+  composes: flex;
+
+  width: 348px;
+  min-height: 496px;
+
+  margin-top: -45px;
+
+  padding-bottom: 20px;
+
+  background: #FFFFFF;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.profileTitleSettingsWrapper {
+  margin-top: 20px;
+}
+
+.profileTitle {
+  composes: montserrat;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.settings {
+  margin-left: 10px;
+  position: absolute;
+}
+
+/* Collapse Button Styles */
+.btnWrapper {
+  composes: montserrat;
   display: flex;
-  margin-top: 30px;
+
+  width: 307px;
+  padding: 13px 16px;
+
+  border: 1px solid #DADADA;
+  border-radius: 6px;
 }
 
-.headerBtnText {
-  background: none;
-  border: none;
+.btnWrapperInstrument {
+  composes: btnWrapper;
+  margin-top: 40px;
 }
 
-.headerButtons {
-  margin-top: 15px;
+.filterName {
+  composes: montserrat;
+  width: 100%;
 }
 
-.row {
-  width: 343px;
-  border-top: 1px solid #f0f0f0;
-  margin-top: 25px;
+.btnWrapperCalendar {
+  composes: btnWrapper;
+  margin-top: 19px;
 }
 
-.preloader {
-  transform: translate(-50%, -50%);
+/* Logout button */
+.logoutBtnWrapper {
+  margin: 25px 0;
 }
-

@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Auth from '../Pages/Auth'
 import Main from '../Pages/Main'
 import SocialMediaOauth from '../Pages/SocialMediaOauth'
-import Profile from '../Components/profile/Profile'
 import OfferJob from '../Pages/OfferJob'
 import FindJob from '../Pages/FindJob'
 import OpenJob from '../Components/common/OpenJob'
@@ -15,7 +14,7 @@ import ChooseInstrumentPage from '../Components/questionary/ChooseInstrumentPage
 import ChooseFreeDaysPage from '../Components/questionary/ChooseFreeDaysPage'
 import FilterPage from '../Components/buttons/filters/FilterPage'
 import SortingPage from '../Components/buttons/sorting/SortingPage'
-import NewProfile from '../Components/profile/NewProfile'
+import Profile from '../Components/profile/Profile'
 import s from './App.module.css'
 
 
@@ -47,7 +46,6 @@ class App extends React.Component {
             <Route path="/find-job" component={FindJob}/>
             <Route path="/open-job" component={OpenJob}/>
             <Route path="/profile" component={Profile}/>
-            <Route path="/new-profile" component={NewProfile}/>
             <Route path="/settings" component={Settings}/>
             <Route path="/quest-1" component={StartPage}/>
             <Route path="/quest-2" component={ChooseInstrumentPage}/>

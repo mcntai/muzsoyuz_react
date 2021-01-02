@@ -5,27 +5,18 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
-  color: #000000;
+  color: #262D33;
 }
 
-/* Name Wrapper Styles */
-.editIconWrapper {
-  display: inline-block;
-}
-
-/* Collapse Button Styles */
-.btnWrapper {
+/* Main Styles */
+.phoneNumber {
   composes: montserrat;
-  display: flex;
 
   width: 307px;
-  padding: 13px 16px;
+  margin-top: 19px;
+  padding: 13px 0 13px 16px;
 
   border: 1px solid #DADADA;
   border-radius: 6px;
 }
 
-.filterName {
-  composes: montserrat;
-  width: 100%;
-}

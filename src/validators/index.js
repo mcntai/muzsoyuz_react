@@ -18,7 +18,7 @@ const JobOfferMap = {
     argumentAssert(value > 0, 'поставте трохи більшу зпшку')
   },
   phoneErr: value => {
-    argumentAssert(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/.test(value), 'невірний номер')
+    argumentAssert(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9]){10,12}$/.test(value), 'невірний номер')
   }
 }
 

@@ -1,0 +1,25 @@
+/* Common Styles */
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  color: #262D33;
+}
+
+/* Main Styles */
+.calendarWrapper {
+  padding-bottom: 32px;
+}
+
+.calendarContainer {
+  composes: montserrat;
+  width: 200px;
+
+  display: block;
+  margin: 15px auto 0;
+
+  border-radius: 6px;
+  box-shadow: 0 5px 32px rgba(0, 0, 0, 0.1);
+}

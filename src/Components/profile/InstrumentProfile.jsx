@@ -63,18 +63,18 @@ const InstrumentProfile = ({ defaultInstrument }) => {
                 key={item}
                 className={s.instWrapper}
               >
+                <input
+                  type="radio"
+                  id={item}
+                  value={item}
+                  checked={item === defaultOption || checkedOption === item}
+                  className={s.instrument}
+                  onChange={chooseInstrument}
+                />
                 <label
                   htmlFor={item}
                   className={s.label}
                 >
-                  <input
-                    type="radio"
-                    id={item}
-                    value={item}
-                    checked={item === defaultOption || checkedOption === item}
-                    className={s.instrument}
-                    onChange={chooseInstrument}
-                  />
                   {instruments[item]}
                 </label>
               </div>

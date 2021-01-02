@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import { pageRoute } from '../../actions/routingActions'
+import { NavLink } from 'react-router-dom'
+import CollapseButton from '../buttons/filters/CollapseButton'
+import InputNameProfile from './InputNameProfile'
+import CalendarProfile from './CalendarProfile'
+import InstrumentProfile from './InstrumentProfile'
+import InputPhoneProfile from './InputPhoneProfile'
+import Logout from './Logout'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
-import { fetchAuthStatusFailure } from '../../actions/getProfileActions'
-import HeaderInternal from '../common/HeaderInternal'
-import HeaderInternalButtons from '../common/HeaderInternalButtons'
-import AboutMe from './AboutMe'
+import { pageRoute } from '../../actions/routingActions'
+import * as swalAlert from '../common/Alerts'
+import avatar from '../../Assets/img/avatar.svg'
+import settings from '../../Assets/img/settings.svg'
 import s from './Profile.module.css'
 
 
@@ -18,74 +24,70 @@ const mapStateToProps = state => {
   }
 }
 
-class Profile extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      userProfile: {},
+const Profile = ({ loading, authorized, prevRoute, dispatch }) => {
+  const [profileData, setProfileData] = useState({})
+
+  useEffect(() => {
+    dispatch(pageRoute('PROFILE', prevRoute))
+
+    async function fetchData() {
+      try {
+        const response = await MuzSoyuzRequest.getUserProfile()
+        setProfileData(response)
+      }
+      catch (e) {
+        swalAlert.error(e.message, 'Упс!')
+      }
     }
-  }
 
-  // noinspection JSCheckFunctionSignatures
-  async componentDidMount() {
-    this.props.dispatch(pageRoute('PROFILE', this.props.prevRoute))
+    fetchData()
+  }, [])
 
-    await this.getUserData()
-  }
 
-  async getUserData() {
-    try {
-      const response = await MuzSoyuzRequest.getUserProfile()
-
-      console.log(response)
-
-      this.setState({ userProfile: response })
-    }
-    catch (e) {
-      this.props.dispatch(fetchAuthStatusFailure(e.message))
-    }
-  }
-
-  userAuthorized() {
-    const user = this.state.userProfile
-
+  const userAuthorized = () => {
     return (
       <div className={s.profileWrapper}>
-        <HeaderInternal
-          prevRoute={this.props.prevRoute}
-          heading="Профіль"
-          wrapperClass={s.headerWrapper}
-          btnTextClass={s.headerBtnText}
-          redirectTo=""
-        />
-        <div className={s.headerButtons}>
-          <HeaderInternalButtons
-            firstText="Про себе"
-            firstRoute="/profile"
-            secondText="Налаштування"
-            secondRoute="/settings"
-            btnClass={s.btnClass}
-            active={s.active}
+        <div className={s.profileTopSection}>
+          <NavLink to={prevRoute} className={s.backBtn}/>
+          <div className={s.avatarWrapper}>
+            <img src={profileData.imageURL || avatar} alt="avatar"/>
+          </div>
+          <InputNameProfile data={profileData.name}/>
+        </div>
+        <div className={s.profileMiddleSection}>
+          <div className={s.profileTitleSettingsWrapper}>
+            <span className={s.profileTitle}>Профіль</span>
+            <NavLink to='/profile'><img src={settings} className={s.settings} alt='settings'/></NavLink>
+          </div>
+          <CollapseButton
+            title={'Твій інструмент'}
+            btnWrapper={s.btnWrapperInstrument}
+            filterName={s.filterName}
+            innerContent={<InstrumentProfile defaultInstrument={{ role: profileData.role }}/>}
+          />
+          <InputPhoneProfile data={profileData.phone}/>
+          <CollapseButton
+            title={'Вільні дні'}
+            btnWrapper={s.btnWrapperCalendar}
+            filterName={s.filterName}
+            innerContent={<CalendarProfile/>}
           />
         </div>
-        <div className={s.row}/>
-        <AboutMe user={user}/>
+        <Logout btnWrapper={s.logoutBtnWrapper}/>
       </div>
     )
   }
 
-
-  render() {
-    return (
-      <div>
-        {
-          this.props.authorized === false
-          ? <Redirect to='/login'/>
-          : this.userAuthorized()
-        }
-      </div>
-    )
-  }
+  return (
+    <>
+      {
+        authorized === false
+        ? <Redirect to='/login'/>
+        : userAuthorized()
+      }
+    </>
+  )
 }
+
 
 export default connect(mapStateToProps)(Profile)
