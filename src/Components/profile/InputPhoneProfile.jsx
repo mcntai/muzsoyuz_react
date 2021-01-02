@@ -26,7 +26,7 @@ const InputPhoneProfile = ({ data }) => {
     }
 
     submitChanges()
-  }, [finishedUpdatingPhone])
+  }, [phone, finishedUpdatingPhone])
 
   const changePhone = (e) => {
     setPhone(e.target.value)

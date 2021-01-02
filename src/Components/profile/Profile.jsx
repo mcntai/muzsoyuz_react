@@ -4,9 +4,9 @@ import { Redirect } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import CollapseButton from '../buttons/filters/CollapseButton'
 import InputNameProfile from './InputNameProfile'
-import CalendarProfile from './CalendarProfile'
 import InstrumentProfile from './InstrumentProfile'
 import InputPhoneProfile from './InputPhoneProfile'
+import CalendarProfile from './CalendarProfile'
 import Logout from './Logout'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import { pageRoute } from '../../actions/routingActions'
@@ -41,7 +41,7 @@ const Profile = ({ loading, authorized, prevRoute, dispatch }) => {
     }
 
     fetchData()
-  }, [])
+  }, [prevRoute, dispatch])
 
 
   const userAuthorized = () => {

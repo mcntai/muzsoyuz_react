@@ -42,7 +42,7 @@ const InstrumentProfile = ({ defaultInstrument }) => {
     }
 
     setInstrument()
-  }, [instrumentChanged])
+  }, [instrument, instrumentChanged])
 
   const chooseInstrument = (e) => {
     if (e.target.checked) {

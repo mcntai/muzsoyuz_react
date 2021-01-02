@@ -25,7 +25,7 @@ const InputNameProfile = ({ data }) => {
     }
 
     submitChanges()
-  }, [finishedUpdatingName])
+  }, [name, finishedUpdatingName])
 
   const changeName = (e) => {
     setName(e.target.value)

@@ -3,8 +3,8 @@
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 11px;
-  line-height: 13px;
+  font-size: 13px;
+  line-height: 15px;
   color: #262D33;
 }
 
@@ -15,7 +15,7 @@
 
 .calendarContainer {
   composes: montserrat;
-  width: 200px;
+  width: 240px;
 
   display: block;
   margin: 15px auto 0;

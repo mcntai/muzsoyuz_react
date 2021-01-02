@@ -9,7 +9,7 @@ export const fetchDataIfLoggedIn = () => {
 
       if (response.role) {
         dispatch(fetchAuthStatusSuccess(response.role))
-      } else if (response.role === null) {
+      } else if (response.role === null || response.role === "") {
         dispatch(fetchAuthStatusSuccess())
       }
     }

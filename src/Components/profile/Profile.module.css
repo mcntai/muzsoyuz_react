@@ -3,7 +3,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #FFFFFF inset !important;
+  -webkit-box-shadow: 0 0 0 30px #6384EB inset !important;
   -webkit-text-fill-color: #262D33;
 }
 
@@ -35,7 +35,7 @@ input:-webkit-autofill:active {
   width: 375px;
   padding-bottom: 60px;
 
-  background: linear-gradient(180deg, #6384EB 0%, rgba(99, 132, 235, 0.63) 100%);
+  background: linear-gradient(180deg, #6384eb 0%, rgba(99, 132, 235, 0.63) 100%);
 }
 
 .backBtn {
