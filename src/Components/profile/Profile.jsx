@@ -24,7 +24,7 @@ const mapStateToProps = state => {
   }
 }
 
-const Profile = ({ loading, authorized, prevRoute, dispatch }) => {
+const Profile = ({ authorized, prevRoute, dispatch }) => {
   const [profileData, setProfileData] = useState({})
 
   useEffect(() => {
@@ -34,7 +34,6 @@ const Profile = ({ loading, authorized, prevRoute, dispatch }) => {
       try {
         const response = await MuzSoyuzRequest.getUserProfile()
         setProfileData(response)
-        console.log(response)
       }
       catch (e) {
         swalAlert.error(e.message, 'Упс!')
@@ -42,7 +41,7 @@ const Profile = ({ loading, authorized, prevRoute, dispatch }) => {
     }
 
     fetchData()
-  }, [prevRoute, dispatch])
+  }, [])
 
 
   const userAuthorized = () => {

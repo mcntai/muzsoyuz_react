@@ -7,6 +7,7 @@ import * as swalAlert from '../common/Alerts'
 
 const InputPhoneProfile = ({ data }) => {
   const [phone, setPhone] = useState({})
+  const [lastNumber, setLastNumber] = useState({phone: ''})
   const [finishedUpdatingPhone, setFinishedUpdatingPhone] = useState(false)
 
   useEffect(() => {
@@ -28,6 +29,10 @@ const InputPhoneProfile = ({ data }) => {
     submitChanges()
   }, [phone, finishedUpdatingPhone])
 
+  const backUpLastNumber= (e) => {
+    setLastNumber(e.target.value)
+  }
+
   const changePhone = (e) => {
     setPhone(e.target.value)
   }
@@ -41,6 +46,7 @@ const InputPhoneProfile = ({ data }) => {
     }
     catch (e) {
       swalAlert.error(e.message, 'Упс...')
+      setPhone(lastNumber)
     }
   }
 
@@ -54,6 +60,7 @@ const InputPhoneProfile = ({ data }) => {
         placeholder="+380-XX-XXX-XX-XX"
         onChange={changePhone}
         onBlur={finishChanges}
+        onFocus={backUpLastNumber}
       />
     </>
   )
