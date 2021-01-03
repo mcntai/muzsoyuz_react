@@ -27,7 +27,7 @@ const InputPhoneProfile = ({ data }) => {
     }
 
     submitChanges()
-  }, [phone, finishedUpdatingPhone])
+  }, [finishedUpdatingPhone])
 
   const backUpLastNumber= (e) => {
     setLastNumber(e.target.value)
