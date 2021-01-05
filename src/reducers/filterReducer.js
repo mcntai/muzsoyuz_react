@@ -15,6 +15,8 @@ const initialState = {
     to  : null,
   },
   sets: '',
+  limit: 30,
+  offset: null,
 }
 
 const filterReducer = (state = initialState, action) => {

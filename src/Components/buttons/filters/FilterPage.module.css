@@ -50,12 +50,16 @@
 }
 
 /* Background Image Classes */
+.imgWrapper {
+  height: 336px;
+  position: absolute;
+  top: 465px;
+  z-index: -1;
+}
 
 .background {
   width: 375px;
-  position: absolute;
-  z-index: -1;
-  top: 465px;
+  height: 336px;
 }
 
 .footerWrapper {

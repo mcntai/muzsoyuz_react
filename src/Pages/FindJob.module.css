@@ -143,3 +143,16 @@
   margin: 50% auto;
 }
 
+.loadingNewOffers {
+  composes: montserrat;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  width: 375px;
+  margin: 10px 0 90px;
+}
+
+.hide {
+  opacity: 0;
+}
+

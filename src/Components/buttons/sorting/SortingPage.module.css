@@ -38,6 +38,9 @@
 }
 
 /* Image Background Styling */
+.imgWrapper {
+  height: 246px;
+}
 
 .imgBackground {
   width: 273px;

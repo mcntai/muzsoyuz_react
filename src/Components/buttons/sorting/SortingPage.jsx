@@ -33,11 +33,13 @@ const SortingPage = () => {
         btnTextFirst="Від найбільшої"
         btnTextSecond="Від найменшої"
       />
-      <img
-        src={background}
-        alt="man playing on sax"
-        className={s.imgBackground}
-      />
+      <div className={s.imgWrapper}>
+        <img
+          src={background}
+          alt="man playing on sax"
+          className={s.imgBackground}
+        />
+      </div>
     </div>
   )
 }

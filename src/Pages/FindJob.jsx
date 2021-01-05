@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import useInfiniteScroll from '../Components/common/useInfniteScroll'
 import { connect } from 'react-redux'
 import { MuzSoyuzRequest } from '../muzsoyuz-request'
 import { omitBy, predicates } from '../utils/object'
 import { pageRoute } from '../actions/routingActions'
-import * as swal from '../Components/common/Alerts'
 import Header from '../Components/common/Header'
 import HeaderInternalButtons from '../Components/common/HeaderInternalButtons'
 import Footer from '../Components/common/Footer'
@@ -20,20 +20,71 @@ const mapStateToProps = state => {
   }
 }
 
-class FindJob extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      fetchFinished: false,
-      fetchedData  : [],
+
+const FindJob = ({ loading, body, dispatch }) => {
+  const [fetchedData, setFetchedData] = useState([])
+  const [fetchFinished, setFetchFinished] = useState(false)
+  const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreOffers)
+  const [offSet, setOffSet] = useState(0)
+  const [infiniteScrollFinished, setInfiniteScrollFinished] = useState(false)
+
+  useEffect(() => {
+    let isCancelled = false
+
+    getAllJobOffers().catch()
+
+    dispatch(pageRoute('FIND_JOB', 'find-job'))
+
+    return () => {
+      isCancelled = true
+    }
+  }, [])
+
+  async function getAllJobOffers(count) {
+    const transformedBody = omitBy(body,
+      value => predicates.isEmptyString(value) || predicates.isEmptyRange(value) || predicates.isEmptyArray(value))
+    transformedBody.offset = count * 30
+
+    const response = await MuzSoyuzRequest.getJobOffers(transformedBody)
+      .props([
+        'id',
+        'title',
+        'date',
+        'salary',
+        'address',
+        'sets',
+        'phone',
+        'extraInfo',
+      ])
+
+    if (count > 0) {
+      return response
+    } else if (response) {
+      setFetchFinished(true)
+      setFetchedData(response)
+
+      return response
     }
   }
 
-  renderJobOffers(data) {
+  async function fetchMoreOffers() {
+    let count = offSet + 1
+    const response = await getAllJobOffers(count)
+
+    if (response && response.length < 1) {
+      setInfiniteScrollFinished(true)
+    } else if (response) {
+      setFetchedData(prevState => ([...prevState, ...response]))
+      setIsFetching(false)
+      setOffSet(offSet + 1)
+    }
+  }
+
+  const renderJobOffers = data => {
     return (
       <div className={s.jobsWrapper}>
         {
-          data && this.state.fetchedData.map(item => {
+          data && fetchedData.map(item => {
             const date = new Date(item.date)
 
             let month = date.toLocaleString('uk-UA', { month: 'short' })
@@ -43,7 +94,7 @@ class FindJob extends React.Component {
             return <li key={item.id} className={s.list}>
               <NavLink className={s.nav} to={{
                 pathname: '/open-job',
-                state: {data: item}
+                state   : { data: item }
               }}>
                 <div className={s.jobOfferWrapper}>
                   <img src={item.instrument.imageURL} alt='Instrument' className={s.instrumentIcon}/>
@@ -57,51 +108,21 @@ class FindJob extends React.Component {
             </li>
           })
         }
+        {
+          isFetching && loadingNewOffers()
+        }
       </div>
     )
   }
 
-  async getAllJobOffers() {
-    const transformedBody = omitBy(this.props.body,
-      value => predicates.isEmptyString(value) || predicates.isEmptyRange(value) || predicates.isEmptyArray(value))
-
-    console.log(transformedBody)
-    try {
-      const response = await MuzSoyuzRequest.getJobOffers(transformedBody)
-        .props([
-          'id',
-          'title',
-          'date',
-          'salary',
-          'address',
-          'sets',
-          'phone',
-          'extraInfo',
-        ])
-
-      this.setState({ fetchFinished: true })
-      this.setState({ fetchedData: response })
-
-      console.log(this.state.fetchedData)
-
-    }
-    catch (e) {
-      if (e.message === 'Bad Request Exception') {
-        swal.error('Повідомте адміна, якщо можете', 'Щось пішло не так...')
-      }
-    }
-
+  function loadingNewOffers() {
+    const hide = infiniteScrollFinished ? s.hide : ''
+    return (
+      <p className={[s.loadingNewOffers, hide].join(' ')}>Завантажую нові оголошення</p>
+    )
   }
 
-  componentDidMount() {
-    this.getAllJobOffers().catch(error => {
-      alert(error.message)
-    })
-
-    this.props.dispatch(pageRoute('FIND_JOB', 'find-job'))
-  }
-
-  renderPage() {
+  const renderPage = () => {
     return (
       <div>
         <div className={s.headerWrapper}>
@@ -116,7 +137,7 @@ class FindJob extends React.Component {
           btnClass={s.btnClass}
         />
         {
-          this.state.fetchFinished && this.renderJobOffers(this.state.fetchedData)
+          fetchFinished && renderJobOffers(fetchedData)
         }
         <div className={s.footerWrapper}>
           <Footer/>
@@ -125,17 +146,16 @@ class FindJob extends React.Component {
     )
   }
 
-  render() {
-    return (
-      <div>
-        {
-          this.props.loading
-          ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
-          : this.renderPage()
-        }
-      </div>
-    )
-  }
+
+  return (
+    <div>
+      {
+        loading
+        ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
+        : renderPage()
+      }
+    </div>
+  )
 }
 
 export default connect(mapStateToProps)(FindJob)

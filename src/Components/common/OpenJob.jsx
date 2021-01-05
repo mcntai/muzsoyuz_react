@@ -1,10 +1,18 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import {connect} from 'react-redux'
+import * as swal from '../../Components/common/Alerts'
 import Header from './Header'
 import Footer from './Footer'
 import avatar from '../../Assets/img/avatar.svg'
 import s from './OpenJob.module.css'
 
+
+const mapStateToProps = state => {
+  return {
+    authorized: state.authReducer.authorized,
+  }
+}
 
 const role = {
   drums  : 'Барабанщик',
@@ -18,9 +26,18 @@ const role = {
   piano  : 'Клавішні'
 }
 
-const OpenJob = () => {
+const OpenJob = ({authorized}) => {
   let location = useLocation()
   const [data] = useState([location.state.data])
+
+  const handleChat = () => {
+   if (!authorized) {
+     swal.warning('Чат буде доступний в наступному релізі...', 'Пардон...')
+   } else {
+     swal.warning('Чат буде доступний в наступному релізі...', 'Пардон...')
+   }
+  }
+
   return (
     <div>
       <Header/>
@@ -51,7 +68,7 @@ const OpenJob = () => {
                   <img src={el.user.imageURL || avatar} className={s.userImage} alt="avatar"/>
                 </div>
               </div>
-              <button className={s.chatBtn}>Перейти в чат</button>
+              <button className={s.chatBtn} onClick={handleChat}>Перейти в чат</button>
             </div>
             <div className={s.footerWrapper}>
               <Footer/>
@@ -63,4 +80,4 @@ const OpenJob = () => {
   )
 }
 
-export default OpenJob
+export default connect(mapStateToProps)(OpenJob)

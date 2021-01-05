@@ -12,7 +12,7 @@ import background from '../../../Assets/img/filters-background.svg'
 
 const mapStateToProps = state => {
   return {
-    body     : state.filterReducer
+    body: state.filterReducer
   }
 }
 
@@ -52,11 +52,13 @@ const FilterPage = () => {
         filterName={s.filterName}
         innerContent={<InnerFilterSets/>}
       />
-      <img
-        src={background}
-        alt="man playing on sax"
-        className={s.background}
-      />
+      <div className={s.imgWrapper}>
+        <img
+          src={background}
+          alt="man playing on sax"
+          className={s.background}
+        />
+      </div>
     </div>
   )
 }

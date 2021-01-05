@@ -27,7 +27,9 @@ class Main extends React.Component {
         <Header/>
         <main className={s.main}>
           <div className={s.logo}><img src={logo} alt='logo'/></div>
-          <img src={background} className={s.background} alt="background"/>
+          <div className={s.imgWrapper}>
+          <img src={background} alt="background"/>
+          </div>
         </main>
         <div className={s.footer}>
           <Footer/>

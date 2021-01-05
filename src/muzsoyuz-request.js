@@ -1,5 +1,7 @@
-import {Request} from './utils/request'
-import {config} from "./config"
+import { Request } from './utils/request'
+import { config } from './config'
+import * as swal from './Components/common/Alerts'
+
 
 export class MuzSoyuzRequest extends Request {
   sendToken() {
@@ -63,11 +65,14 @@ export class MuzSoyuzRequest extends Request {
     return super.execute()
       .then(this.checkStatus.bind(this))
       .catch(e => {
-        e.message = Array.isArray(e.message)
-          ? e.message.join(', ')
-          : e.message
+        e.message = Array.isArray(e.message) ? e.message.join(', ') : e.message
 
-        throw e
+        if (e.message === 'Bad Request Exception') {
+          console.error(e.message)
+          swal.error('Повідомте адміна, якщо можете', 'Щось пішло не так...')
+        } else {
+          throw e
+        }
       })
   }
 }
