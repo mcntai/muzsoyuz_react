@@ -9,51 +9,38 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-style: normal;
+  text-decoration: none;
   font-size: 18px;
-  line-height: 21px;
+  line-height: 22px;
   color: #262D33;
 }
 
 /* Main styles */
 
-.headerWrapper {
-  width: 343px;
-  margin: 0 auto;
-}
-
-.headerWrapper div img {
-  margin: 23px 0;
-}
-
 .jobSearch {
   composes: montserrat;
   text-align: center;
-  color: #000000;
-  font-weight: bold;
 }
 
 /* Buttons styles */
-.nav {
+
+.navLinkWrapper {
   text-decoration: none;
 }
 
 .btnClass {
-  width: 169px;
-  height: 32px;
   background: #CBF6FF;
   border: 1px solid #CBF6FF;
   border-radius: 12px;
-  font-family: 'Montserrat', sans-serif;
+  composes: montserrat;
   font-weight: 500;
-  color: #262D33;
   font-size: 12px;
   line-height: 15px;
-  text-decoration: none;
   text-align: center;
   padding-top: 8px;
 }
 
-/* Styles for Job Offers*/
+/* Styles for Job Offers */
 
 .jobsWrapper {
   display: flex;
@@ -62,65 +49,23 @@
   align-items: center;
 }
 
-.list {
+.jobOfferItem {
   list-style: none;
-  width: 343px;
-  height: 80px;
   border: 1px solid #FFFFFF;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  margin-top: 8px;
 }
 
-.list:first-child {
-  margin-top: 17px;
-}
-
-.list:last-child {
+.jobOfferItem:last-child {
   margin-bottom: 100px;
 }
 
-.jobOfferWrapper {
-  height: 80px;
+.jobOfferContentWrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
   padding: 10px 20px;
-}
-
-.instrumentIcon {
-  width: 43px;
-  height: 44px;
-}
-
-.jobTextWrapper {
-  width: 200px;
-}
-
-.jobTitle {
-  composes: montserrat;
-  font-size: 14px;
-  line-height: 17px;
-  color: #000000;
-}
-
-.jobDate {
-  composes: jobTitle;
-  font-size: 15px;
-  line-height: 18px;
-  width: 30px;
-  height: 40px;
-  text-transform: capitalize;
-  text-align: center;
-}
-
-.jobSalary {
-  composes: montserrat;
-  font-size: 11px;
-  line-height: 13px;
-  color: #828282;
-  margin-top: 10px;
 }
 
 /* Footer classes */
@@ -130,9 +75,7 @@
   bottom: 0;
   z-index: 1;
   background: #FFFFFF;
-  width: 375px;
   margin: 0 auto;
-  padding-bottom: 6px;
 }
 
 /* Preloader Styles */
@@ -145,14 +88,161 @@
 
 .loadingNewOffers {
   composes: montserrat;
-  font-size: 12px;
-  line-height: 15px;
   text-align: center;
-  width: 375px;
   margin: 10px 0 90px;
 }
 
 .hide {
   opacity: 0;
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  .headerWrapper {
+    width: 320px;
+    margin: 0 auto;
+  }
+
+  .headerWrapper div img {
+    margin: 23px 20px 20px 0;
+  }
+
+  /* Buttons styles */
+  .btnClass {
+    width: 142px;
+    height: 32px;
+  }
+
+  /* Styles for Job Offers */
+  .jobOfferItem {
+    width: 286px;
+    height: 70px;
+    margin-top: 15px;
+  }
+
+  .jobOfferContentWrapper {
+    height: 70px;
+  }
+
+  .instrumentIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .jobTextWrapper {
+    width: 160px;
+  }
+
+  .jobTitle {
+    composes: montserrat;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .jobDate {
+    composes: jobTitle;
+    font-size: 12px;
+    line-height: 17px;
+    width: 25px;
+    height: 27px;
+    text-transform: capitalize;
+    text-align: center;
+  }
+
+  .jobSalary {
+    composes: montserrat;
+    font-size: 11px;
+    line-height: 16px;
+    color: #828282;
+    margin-top: 3px;
+  }
+
+  /* Footer classes */
+  .footerWrapper {
+    width: 320px;
+    padding-bottom: 3px;
+  }
+
+  /* Preloader Styles */
+  .loadingNewOffers {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+@media (min-width: 375px) {
+  .headerWrapper {
+    width: 375px;
+    margin: 0 auto;
+  }
+
+  .headerWrapper div img {
+    margin: 27px 20px 20px 0;
+  }
+
+  /* Buttons styles */
+  .btnClass {
+    width: 169px;
+    height: 32px;
+  }
+
+  /* Styles for Job Offers */
+  .jobOfferItem {
+    width: 343px;
+    height: 80px;
+    margin-top: 8px;
+  }
+
+  .jobOfferItem:first-child {
+    margin-top: 10px;
+  }
+
+  .jobOfferContentWrapper {
+    height: 80px;
+  }
+
+  .instrumentIcon {
+    width: 43px;
+    height: 43px;
+  }
+
+  .jobTextWrapper {
+    width: 200px;
+  }
+
+  .jobTitle {
+    composes: montserrat;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .jobDate {
+    composes: jobTitle;
+    font-size: 15px;
+    line-height: 18px;
+    width: 30px;
+    height: 40px;
+    text-transform: capitalize;
+    text-align: center;
+  }
+
+  .jobSalary {
+    composes: montserrat;
+    font-size: 11px;
+    line-height: 13px;
+    color: #828282;
+    margin-top: 10px;
+  }
+
+  /* Footer classes */
+  .footerWrapper {
+    width: 375px;
+    padding-bottom: 6px;
+  }
+
+  /* Preloader Styles */
+  .loadingNewOffers {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }
 

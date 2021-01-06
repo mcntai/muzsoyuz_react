@@ -1,9 +1,9 @@
 import React from 'react'
-import s from './Auth.module.css'
-import logo from '../Assets/img/logo.svg'
+import { NavLink } from 'react-router-dom'
 import AuthForm from '../Components/auth/AuthForm'
 import SocialMedias from '../Components/auth/SocialMedias'
-import { NavLink } from 'react-router-dom'
+import s from './Auth.module.css'
+import logo from '../Assets/img/logo.svg'
 
 
 class Auth extends React.Component {

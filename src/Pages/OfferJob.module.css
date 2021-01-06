@@ -1,5 +1,4 @@
 /*Common classes*/
-
 .input:-webkit-autofill,
 .input:-webkit-autofill:hover,
 .input:-webkit-autofill:focus,
@@ -32,12 +31,6 @@
   color: #9e9e9e;
 }
 
-.inputIconPosition {
-  background-position: 30% 50%;
-  background-repeat: no-repeat;
-  padding-left: 59px;
-}
-
 .montserrat {
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
@@ -48,33 +41,17 @@
   color: #6A6A6A;
 }
 
-.headerWrapper div {
-  width: 343px;
-  margin: 0 auto;
-}
-
-.headerWrapper div img {
-  margin: 23px 0;
-}
-
 .textErr {
   color: #fd4343;
   display: block;
   margin-top: 5px;
   margin-left: 20.5px;
+  font-size: 11px;
+  line-height: 16px;
 }
 
 /*Main classes*/
-
-.form {
-  composes: montserrat;
-  width: 343px;
-  padding: 20px 0 40px 0;
-  margin: 0 auto 35px;
-}
-
 .form p {
-  padding-left: 20px;
   margin-top: 12px;
   white-space: nowrap;
 }
@@ -83,32 +60,10 @@
   margin-top: 0;
 }
 
-.note {
-  composes: montserrat;
-  font-size: 10px;
-  line-height: 12px;
-  color: #6A6A6A;
-  margin-bottom: 5px;
-}
-
 .inputWrapper {
-  width: 307px;
   margin: 5px auto 0;
-
   display: flex;
-
   background-color: #FFFFFF !important;
-}
-
-.inputIcon {
-  composes: inputIconPosition;
-
-  height: 40px;
-
-  border: 1px solid #DADADA;
-  border-right: none;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
 }
 
 .input {
@@ -121,9 +76,6 @@
 
   display: block;
   padding-left: 10px;
-
-  width: 307px;
-  height: 40px;
 
   background-color: #FFFFFF;
 
@@ -145,16 +97,11 @@
   font-size: 12px;
   line-height: 14px;
 
-  width: 307px;
-  height: 90px;
-
   border: 1px solid #DADADA;
   border-radius: 6px;
 
   padding: 10px 0 0 10px;
-
   outline: none;
-
   resize: none;
 }
 
@@ -166,10 +113,6 @@
   line-height: 14px;
 
   display: block;
-
-  width: 307px;
-  height: 40px;
-
   position: relative;
 
   margin: 5px auto 0;
@@ -177,7 +120,6 @@
 
   border: 1px solid #DADADA;
   border-radius: 6px;
-
   background-color: #ffffff;
 }
 
@@ -204,16 +146,14 @@
   font-weight: 500;
 
   display: block;
-  width: 302px;
 
   margin: 22px auto;
   padding: 13px 0;
 
-  background-color: #6384EB;
-
   border-radius: 16px;
   border: #6384EB;
 
+  background-color: #6384EB;
   cursor: pointer;
 }
 
@@ -222,21 +162,133 @@
 }
 
 .footerWrapper {
-  width: 375px;
   position: fixed;
   bottom: 0;
   z-index: 1;
 
-  background: #FFFFFF;
-
   margin: 0 auto;
-  padding-bottom: 6px;
+  background: #FFFFFF;
 }
 
 /* Preloader Styles */
-
 .preLoader {
   width: 64px;
   height: 64px;
   margin: 50% auto;
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  .headerWrapper {
+    width: 320px;
+    margin: 0 auto;
+  }
+
+  .headerWrapper div img {
+    margin: 23px 20px 20px 0;
+  }
+
+  /*Main classes*/
+  .form {
+    composes: montserrat;
+    width: 320px;
+    padding-bottom: 40px;
+    margin: 0 auto 35px;
+  }
+
+  /*Main classes*/
+  .form p {
+    margin-left: 23px;
+  }
+
+  .inputWrapper {
+    width: 275px;
+  }
+
+  .input {
+    width: 275px;
+    height: 35px;
+  }
+
+  .textArea {
+    width: 275px;
+    height: 90px;
+  }
+
+  .role {
+    width: 275px;
+    height: 35px;
+  }
+
+  .submit {
+    width: 275px;
+  }
+
+  .footerWrapper {
+    width: 320px;
+    padding-bottom: 3px;
+  }
+}
+
+@media (min-width: 375px) {
+  .headerWrapper {
+    width: 375px;
+    margin: 0 auto;
+  }
+
+  .headerWrapper div img {
+    margin: 27px 20px 20px 0;
+  }
+
+  /*Main classes*/
+  .form {
+    composes: montserrat;
+    width: 343px;
+    padding: 20px 0 40px 0;
+    margin: 0 auto 35px;
+  }
+  /*Main classes*/
+  .form p {
+    margin-left: 20px;
+  }
+
+
+  .inputWrapper {
+    width: 307px;
+  }
+
+  .input {
+    width: 307px;
+    height: 40px;
+  }
+
+  .textArea {
+    width: 307px;
+    height: 90px;
+  }
+
+  .role {
+    width: 307px;
+    height: 40px;
+  }
+
+  .role option {
+    color: #000000;
+  }
+
+  .role:invalid {
+    color: #9e9e9e;
+  }
+
+  .role:focus {
+    outline: none;
+  }
+
+  .submit {
+    width: 302px;
+  }
+
+  .footerWrapper {
+    width: 375px;
+    padding-bottom: 6px;
+  }
 }

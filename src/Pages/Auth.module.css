@@ -29,8 +29,20 @@
   background: linear-gradient(180deg, #6384EB 0%, rgba(99, 132, 235, 0.63) 100%);
 }
 
-.logo {
-  width: 166px;
-  height: 36px;
-  margin-top: 75px;
+@media (min-width: 320px) and (max-width: 374px) {
+  .logo {
+    width: 141px;
+    height: 31px;
+    margin-top: 40px;
+  }
 }
+
+@media (min-width: 375px) {
+  .logo {
+    width: 166px;
+    height: 36px;
+    margin-top: 75px;
+  }
+}
+
+

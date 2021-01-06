@@ -31,13 +31,13 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         {
           this.props.authorized
           ? this.userAuthorized()
           : this.userUnAuthorized()
         }
-      </div>
+      </>
     )
   }
 }

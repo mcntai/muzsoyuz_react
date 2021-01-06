@@ -10,20 +10,23 @@ class SocialMedias extends React.Component {
     super(props);
     this.state = {
       socialIcons: '',
+      authWith: '',
     }
   }
 
   componentDidMount() {
     const socialIcons = this.props.type === 'login' ? s.logIcons : s.regIcons
+    const authWith = this.props.type === 'login' ? s.authWithLogin : s.authWith
 
-    this.setState({ socialIcons })
+    this.setState({ socialIcons, authWith })
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     const socialIcons = this.props.type === 'login' ? s.logIcons : s.regIcons
+    const authWith = this.props.type === 'login' ? s.authWithLogin : s.authWith
 
     if(prevProps.type !== this.props.type) {
-      this.setState({ socialIcons })
+      this.setState({ socialIcons, authWith })
     }
   }
 
@@ -33,8 +36,6 @@ class SocialMedias extends React.Component {
   }
 
   getLinks() {
-    // const socialIcons = this.props.type === 'login' ? s.logIcons : s.regIcons
-
     return (
       <div className={this.state.socialIcons}>
         <a href={appPath + '/auth/oauth/facebook'}>
@@ -58,7 +59,7 @@ class SocialMedias extends React.Component {
   drawAuthSocialBtns(word) {
     return (
       <div className={s.socialMedias}>
-        <p className={s.authWith}>{`або ${word} через`}</p>
+        <p className={this.state.authWith}>{`або ${word} через`}</p>
         {
           this.getLinks()
         }

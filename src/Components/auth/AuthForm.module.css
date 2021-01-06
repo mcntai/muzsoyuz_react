@@ -47,7 +47,6 @@
 }
 
 /* Middle part */
-
 .authFormReg {
   composes: authForm;
 }
@@ -60,9 +59,6 @@
   composes: montserrat;
   display: flex;
   justify-content: space-between;
-
-  width: 307px;
-  margin-top: 48px;
 
   font-size: 23px;
   line-height: 28px;
@@ -110,7 +106,6 @@
   -webkit-border-radius: 0;
   background: #AEC0F9;
 
-  width: 307px;
   padding: 13px 0 13px 27px;
 
   outline: none;
@@ -132,28 +127,20 @@
   font-size: 14px;
   line-height: 14px;
 
-  width: 302px;
   padding: 13px 0;
-  margin-top: 66px;
 
   background-color: #6384EB;
+  cursor: pointer;
 
   border: 1px solid #6384EB;
   border-radius: 16px;
-
-  cursor: pointer;
 }
 
 /* Gender Styling */
-
 .genderWrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  width: 260px;
-  margin-top: 28px;
-
   align-self: flex-start;
 }
 
@@ -176,6 +163,87 @@
   background: #AEC0F9;
   border: none;
   border-radius: 6px;
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  .authForm {
+    width: 275px;
+  }
+
+  /* Middle part */
+  .header {
+    width: 275px;
+    margin-top: 59px;
+  }
+
+  .form {
+    width: 275px;
+    margin-top: 25px;
+  }
+
+  .inputWrapper {
+    width: 275px;
+    margin: 16px auto 0;
+  }
+
+  .input {
+    width: 275px;
+  }
+
+  .inputSubmit {
+    width: 275px;
+    margin-top: 22px;
+  }
+
+  .inputSubmitLogin {
+    composes: inputSubmit;
+    width: 275px;
+    margin-top: 102px;
+  }
+
+  /* Gender Styling */
+  .genderWrapper {
+    width: 235px;
+    margin-top: 8px;
+  }
+}
+
+@media (min-width: 375px) {
+  .authForm {
+    width: 307px;
+  }
+
+  /* Middle part */
+  .header {
+    width: 307px;
+    margin-top: 48px;
+  }
+
+  .form {
+    width: 307px;
+    margin-top: 60px;
+  }
+
+  .inputWrapper {
+    width: 307px;
+    margin: 20px auto 0;
+  }
+
+  .input {
+    width: 307px;
+  }
+
+  .inputSubmit {
+    width: 302px;
+    margin-top: 66px;
+  }
+
+  /* Gender Styling */
+  .genderWrapper {
+    width: 260px;
+    margin-top: 28px;
+  }
+
 }
 
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import s from './AuthForm.module.css'
 import { connect } from 'react-redux'
 import AuthNavLinks from '../common/AuthNavLinks'
 import { authValidator } from '../../validators'
@@ -9,6 +8,7 @@ import { fetchAuthStatusSuccess } from '../../actions/getProfileActions'
 import { fetchAuthStatusFailure } from '../../actions/getProfileActions'
 import { authPageRoute } from '../../actions/routingActions'
 import * as swal from '../common/Alerts'
+import s from './AuthForm.module.css'
 
 
 const mapStateToProps = state => {
@@ -161,6 +161,8 @@ class AuthForm extends BasicAuth {
   }
 
   drawLoginForm() {
+    const submit = this.props.type === 'login' ? s.inputSubmitLogin : s.inputSubmit
+
     return (
       <div className={s.authFormLog}>
         <AuthNavLinks/>
@@ -193,7 +195,7 @@ class AuthForm extends BasicAuth {
           </div>
 
           <button
-            className={s.inputSubmit}
+            className={submit}
             onClick={(e) => this.handleAuthSubmit.call(this, e, 'login')}
           >
             Увійти

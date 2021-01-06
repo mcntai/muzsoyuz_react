@@ -11,8 +11,8 @@ import s from './Main.module.css'
 
 const mapStateToProps = state => {
   return {
-    loading: state.authReducer.loading,
-    prevRoute : state.pageReducer.prevRoute
+    loading  : state.authReducer.loading,
+    prevRoute: state.pageReducer.prevRoute
   }
 }
 
@@ -23,18 +23,16 @@ class Main extends React.Component {
 
   renderPage() {
     return (
-      <div>
+      <>
         <Header/>
         <main className={s.main}>
           <div className={s.logo}><img src={logo} alt='logo'/></div>
           <div className={s.imgWrapper}>
-          <img src={background} alt="background"/>
+            <img src={background} className={s.background} alt="background"/>
           </div>
         </main>
-        <div className={s.footer}>
           <Footer/>
-        </div>
-      </div>
+      </>
     )
   }
 

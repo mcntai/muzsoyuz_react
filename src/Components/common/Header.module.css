@@ -1,12 +1,25 @@
+/* Common Styles */
 .profile {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-.profile img {
-  margin: 23px 16px;
-  width: 32px;
-  height: 32px;
+@media (min-width: 320px) and (max-width: 374px) {
+  .profile img {
+    margin: 23px 20px 20px 0;
+    width: 27px;
+    height: 27px;
+  }
 }
+
+@media (min-width: 375px) {
+  .profile img {
+    margin: 26px 20px 20px 0;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+
 

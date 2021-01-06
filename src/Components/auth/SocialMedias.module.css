@@ -40,7 +40,6 @@
 
 .socialMedias {
   composes: flexCol;
-  width: 290px;
 }
 
 .authWith {
@@ -49,17 +48,6 @@
   margin-top: 60px;
 }
 
-/*.socialIcons {*/
-/*  composes: montserrat;*/
-/*  font-weight: 500;*/
-
-/*  width: 305px;*/
-/*  display: flex;*/
-/*  justify-content: space-between;*/
-
-/*  margin: 28px 0 58px 0;*/
-/*}*/
-
 .regIcons {
   composes: montserrat;
   font-weight: 500;
@@ -67,8 +55,6 @@
   width: 305px;
   display: flex;
   justify-content: space-between;
-
-  margin: 28px 0 58px 0;
 }
 
 .logIcons {
@@ -88,6 +74,33 @@
   background: url('../../Assets/img/google-icon.svg') transparent no-repeat 20% 50%;
   border: 1px solid #FFFFFF;
   color: #FFFFFF;
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  .authWithLogin {
+    composes: authWith;
+    margin-top: 20px;
+  }
+
+  .regIcons {
+    margin: 28px 0 85px 0;
+  }
+
+  .logIcons {
+    composes: regIcons;
+    margin: 30px 0 113px 0;
+  }
+}
+
+@media (min-width: 375px) {
+  .regIcons {
+    margin: 28px 0 58px 0;
+  }
+
+  .logIcons {
+    composes: regIcons;
+    margin: 28px 0 189px 0;
+  }
 }
 
 

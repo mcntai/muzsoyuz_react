@@ -91,12 +91,12 @@ const FindJob = ({ loading, body, dispatch }) => {
 
             const salary = Number(item.salary)
 
-            return <li key={item.id} className={s.list}>
-              <NavLink className={s.nav} to={{
+            return <li key={item.id} className={s.jobOfferItem}>
+              <NavLink className={s.navLinkWrapper} to={{
                 pathname: '/open-job',
                 state   : { data: item }
               }}>
-                <div className={s.jobOfferWrapper}>
+                <div className={s.jobOfferContentWrapper}>
                   <img src={item.instrument.imageURL} alt='Instrument' className={s.instrumentIcon}/>
                   <div className={s.jobTextWrapper}>
                     <p className={s.jobTitle}>{item.title}</p>

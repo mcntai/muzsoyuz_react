@@ -1,6 +1,18 @@
 .sortFilterButtons {
-  width: 343px;
-  margin: 12px auto 0;
   display: flex;
   justify-content: space-between;
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  .sortFilterButtons {
+    width: 286px;
+    margin: 33px auto 0;
+  }
+}
+
+@media (min-width: 375px) {
+  .sortFilterButtons {
+    width: 343px;
+    margin: 24px auto 0;
+  }
 }
