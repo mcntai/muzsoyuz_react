@@ -45,7 +45,7 @@ const InnerFilterInstrument = ({ dispatch }) => {
                 <input
                   type="checkbox"
                   id={item}
-                  className={s.instrument}
+                  className={s.instrumentCheckbox}
                   onClick={(e) => chooseInstrument(e, item)}
                 />
                 <label

@@ -9,12 +9,25 @@
 
 .selector {
   composes: montserrat;
-  width: 375px;
-  height: 52px;
-  padding-left: 31px;
   border: 1px solid #DADADA;
   background: #FFFFFF;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  .selector {
+    width: 320px;
+    height: 36px;
+    padding-left: 31px;
+  }
+}
+
+@media (min-width: 375px) {
+  .selector {
+    width: 375px;
+    height: 52px;
+    padding-left: 31px;
+  }
 }

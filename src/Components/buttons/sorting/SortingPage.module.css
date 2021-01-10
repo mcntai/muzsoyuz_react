@@ -1,5 +1,4 @@
-/* Common Classes*/
-
+/* Common Styling */
 .montserrat {
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
@@ -9,12 +8,7 @@
   color: #262D33;
 }
 
-.sortingPageWrapper {
-  width: 375px;
-}
-
-/* Internal Header Classes */
-
+/* Internal Header Styling */
 .headerWrapper {
   display: flex;
   align-items: center;
@@ -37,14 +31,31 @@
   color: #6A6A6A;
 }
 
-/* Image Background Styling */
-.imgWrapper {
-  height: 246px;
+@media (min-width: 320px) and (max-width: 374px) {
+  .sortingPageWrapper {
+    width: 320px;
+  }
+
+  /* Image Background Styling */
+  .imgBackground {
+    display: none;
+  }
 }
 
-.imgBackground {
-  width: 273px;
-  height: 246px;
-  display: block;
-  margin: 50px auto 0;
+@media (min-width: 375px) {
+  .sortingPageWrapper {
+    width: 375px;
+  }
+
+  /* Image Background Styling */
+  .imgWrapper {
+    height: 246px;
+  }
+
+  .imgBackground {
+    width: 273px;
+    height: 246px;
+    display: block;
+    margin: 50px auto 0;
+  }
 }

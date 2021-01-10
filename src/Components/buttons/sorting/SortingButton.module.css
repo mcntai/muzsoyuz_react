@@ -1,4 +1,4 @@
-/* Common Classes*/
+/* Common Styling */
 
 .montserrat {
   font-family: 'Montserrat', sans-serif;
@@ -10,8 +10,7 @@
 }
 
 
-/* Sorting Options Classes */
-
+/* Sorting Styling */
 .sortBtnWrapper {
   composes: montserrat;
   width: 375px;
@@ -26,4 +25,21 @@
 
 .sortBtnWrapper:hover {
   color: #6384EB;
+}
+
+
+@media (min-width: 320px) and (max-width: 374px) {
+  .sortBtnWrapper {
+    width: 320px;
+    margin-top: 10px;
+    padding: 30px 35px 30px 20px;
+  }
+}
+
+@media (min-width: 375px) {
+  .sortBtnWrapper {
+    width: 375px;
+    margin-top: 10px;
+    padding: 30px 35px 30px 20px;
+  }
 }

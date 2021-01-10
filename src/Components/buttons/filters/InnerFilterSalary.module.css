@@ -7,10 +7,6 @@
   color: #000000;
 }
 
-/*.salaryWrapper {*/
-/*  height: 140px;*/
-/*}*/
-
 .salaryInputWrapper,
 .salaryRangeWrapper {
   display: flex;
@@ -18,8 +14,6 @@
 }
 
 .label {
-  margin-top: 15px;
-  margin-left: 15px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -30,8 +24,6 @@
 
 .input {
   composes: montserrat;
-  width: 159px;
-  height: 36px;
   border: 1px solid #DADADA;
   border-radius: 5px;
   margin-bottom: 5px;
@@ -39,47 +31,29 @@
   outline: none;
 }
 
-/*.range {*/
-/*  width: 167px;*/
-/*  margin-top: 30px;*/
-/*  -webkit-appearance: none;*/
-/*  background: transparent;*/
-/*}*/
+@media (min-width: 320px) and (max-width: 374px) {
+  .label {
+    margin-top: 15px;
+    margin-left: 15px;
+  }
 
-/*.range:focus {*/
-/*  outline: none;*/
-/*}*/
+  .input {
+    width: 129px;
+    height: 36px;
+  }
+}
 
-/*.range::-webkit-slider-thumb {*/
-/*  -webkit-appearance: none;*/
-/*  width: 16px;*/
-/*  height: 30px;*/
-/*  background: url("../../../Assets/img/musical-icon.svg") center center no-repeat;*/
-/*  border: none;*/
-/*}*/
+@media (min-width: 375px) {
+  .label {
+    margin-top: 15px;
+    margin-left: 15px;
+  }
 
-/*.range::-webkit-slider-runnable-track {*/
-/*  height: 10px;*/
-/*  background: #FFFFFF;*/
-/*  border-top: 2px solid #6A6A6A;*/
-/*  border-bottom: 2px solid #6A6A6A;*/
-/*}*/
-
-/*.range:focus::-webkit-slider-runnable-track {*/
-/*  background: #FFFFFF;*/
-/*}*/
-
-/*.range::-moz-range-track {*/
-/*  height: 7px;*/
-/*  background: #FFFFFF;*/
-/*  border-top: 2px solid #6A6A6A;*/
-/*  border-bottom: 2px solid #6A6A6A;*/
-/*}*/
-/*.range::-moz-range-thumb {*/
-/*  -webkit-appearance: none;*/
-/*  width: 50px;*/
-/*  height: 50px;*/
-/*  background: url("../../../Assets/img/musical-icon.svg") center center no-repeat;*/
-/*}*/
+  .input {
+    composes: montserrat;
+    width: 159px;
+    height: 36px;
+  }
+}
 
 

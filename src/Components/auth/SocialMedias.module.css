@@ -45,20 +45,22 @@
 .authWith {
   composes: montserrat;
   color: #000000;
-  margin-top: 60px;
 }
 
-.regIcons {
+.socialIcons {
   composes: montserrat;
   font-weight: 500;
 
-  width: 305px;
   display: flex;
   justify-content: space-between;
 }
 
+.regIcons {
+  composes: socialIcons;
+}
+
 .logIcons {
-  composes: regIcons;
+  composes: socialIcons;
   margin: 28px 0 189px 0;
 }
 
@@ -77,28 +79,46 @@
 }
 
 @media (min-width: 320px) and (max-width: 374px) {
-  .authWithLogin {
-    composes: authWith;
+  .authWith {
     margin-top: 20px;
   }
 
+  .authWithLogin {
+    composes: authWith;
+    margin-top: 50px;
+  }
+
+  .socialIcons {
+    width: 275px;
+  }
+
   .regIcons {
-    margin: 28px 0 85px 0;
+    margin: 28px 0 20px 0;
   }
 
   .logIcons {
-    composes: regIcons;
-    margin: 30px 0 113px 0;
+    margin: 35px 0 20px 0;
   }
 }
 
 @media (min-width: 375px) {
+  .authWith {
+    margin-top: 64px;
+  }
+
+  .authWithLogin {
+    composes: authWith;
+  }
+
+  .socialIcons {
+    width: 305px;
+  }
+
   .regIcons {
     margin: 28px 0 58px 0;
   }
 
   .logIcons {
-    composes: regIcons;
     margin: 28px 0 189px 0;
   }
 }

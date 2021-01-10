@@ -13,7 +13,6 @@
 }
 
 .instWrapper {
-  margin-top: 24px;
   padding-left: 45px;
   height: 22px;
   display: flex;
@@ -24,7 +23,7 @@
   margin-bottom: 10px;
 }
 
-.instrument {
+.instrumentCheckbox {
   width: 20px;
   height: 20px;
 }
@@ -37,6 +36,18 @@
 .instrument:hover {
   font-weight: 500;
   color: #6384EB;
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  .instWrapper {
+    margin-top: 22px;
+  }
+}
+
+@media (min-width: 375px) {
+  .instWrapper {
+    margin-top: 24px;
+  }
 }
 
 

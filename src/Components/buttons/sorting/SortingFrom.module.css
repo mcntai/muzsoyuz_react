@@ -10,10 +10,7 @@
 }
 
 /* Main Styling */
-
 .sortingModalWrapper {
-  width: 357px;
-  margin: 0 auto 9px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,10 +18,8 @@
 
 .btn {
   composes: montserrat;
-  width: 357px;
   background: #F3F3F3;
   border: 1px solid #F3F3F3;
-  padding: 13px 0;
   outline: none;
 }
 
@@ -40,14 +35,11 @@
 }
 
 .cancelBtn {
-  width: 322px;
   color: #FF0000;
-  margin-top: 5px;
   border-radius: 10px;
 }
 
 /* Visibility of Modal Menu */
-
 .defaultPosition {
   position: absolute;
   margin-left: auto;
@@ -68,6 +60,44 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-out;
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  /* Main Styling */
+  .sortingModalWrapper {
+    width: 283px;
+    margin: 0 auto 8px;
+  }
+
+  .btn {
+    width: 283px;
+    padding: 10px 0;
+  }
+
+  .cancelBtn {
+    width: 240px;
+    margin-top: 2px;
+  }
+}
+
+@media (min-width: 375px) {
+
+  /* Main Styling */
+  .sortingModalWrapper {
+    width: 357px;
+    margin: 0 auto 9px;
+  }
+
+  .btn {
+    composes: montserrat;
+    width: 357px;
+    padding: 13px 0;
+  }
+
+  .cancelBtn {
+    width: 322px;
+    margin-top: 5px;
+  }
 }
 
 
