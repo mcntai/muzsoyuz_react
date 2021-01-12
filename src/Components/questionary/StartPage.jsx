@@ -40,9 +40,10 @@ const StartPage = ({ authorized, role }) => {
 
   return (
     <div className={s.startPageWrapper}>
-      {
-        handleRedirect(authorized, role, renderContent)
-      }
+      {/*{*/}
+      {/*  handleRedirect(authorized, role, renderContent)*/}
+      {/*}*/}
+      {renderContent()}
     </div>
   )
 }

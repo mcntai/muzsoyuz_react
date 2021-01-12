@@ -25,7 +25,7 @@ const CollapseButton = ({ btnWrapper, filterName, title, innerContent }) => {
     <div>
       <div className={btnWrapper} onClick={toggle}>
         <span className={filterName}>{title}</span>
-        <img src={arrowIcon} className={arrow} alt="arrow-icon"/>
+        <img src={arrowIcon} className={[arrow, s.arrowSize].join(" ")} alt="arrow-icon"/>
       </div>
       <div className={[show, hide].join(' ')}>
         {innerContent}

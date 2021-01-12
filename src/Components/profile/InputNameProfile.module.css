@@ -4,7 +4,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
-  line-height: 22px;
+  line-height: 15px;
   color: #262D33;
 }
 
@@ -21,11 +21,6 @@
 }
 
 /* Main Styles */
-.nameWrapper {
-  margin-top: 20px;
-  max-width: 200px;
-}
-
 .name {
   -webkit-appearance: none;
   composes: montserrat;
@@ -36,8 +31,8 @@
   background: none;
 }
 
-.inp {
-  background: url("../../Assets/img/edit-icon.svg") no-repeat right center;
+.nameWrapper:after {
+  content: url("../../Assets/img/edit-icon.svg");
 }
 
 .name:disabled {
@@ -58,4 +53,27 @@
 
 .name:active {
   background: none;
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  /* Main Styles */
+  .nameWrapper {
+    margin-top: 13px;
+  }
+
+  .name {
+    max-width: 130px;
+    padding-right: 10px;
+  }
+}
+
+@media (min-width: 375px) {
+  /* Main Styles */
+  .nameWrapper {
+    margin-top: 20px;
+  }
+
+  .name {
+    max-width: 200px;
+  }
 }

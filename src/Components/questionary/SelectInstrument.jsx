@@ -20,7 +20,7 @@ const customStyles = {
   valueContainer     : (provided) => ({
     ...provided,
     justifyContent: 'center',
-    height        : '54.5px',
+    height        : '40px',
   }),
   control            : (provided, state) => ({
     ...provided,

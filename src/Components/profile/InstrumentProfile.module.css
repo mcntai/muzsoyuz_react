@@ -16,13 +16,28 @@
 .instWrapper {
   display: flex;
   align-items: center;
-
-  margin-top: 5px;
-  margin-left: 92px;
 }
 
+@media (min-width: 320px) and (max-width: 374px) {
+  .instWrapper {
+    margin-top: 5px;
+    margin-left: 66px;
+  }
 
-.label {
-  padding-top: 1px;
-  padding-left: 18px;
+  .label {
+    padding-top: 1px;
+    padding-left: 15px;
+  }
+}
+
+@media (min-width: 375px) {
+  .instWrapper {
+    margin-top: 5px;
+    margin-left: 92px;
+  }
+
+  .label {
+    padding-top: 1px;
+    padding-left: 18px;
+  }
 }

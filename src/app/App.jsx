@@ -11,6 +11,7 @@ import OpenJob from '../Components/common/OpenJob'
 import Settings from '../Components/profile/Settings'
 import StartPage from '../Components/questionary/StartPage'
 import ChooseInstrumentPage from '../Components/questionary/ChooseInstrumentPage'
+import ChooseExperiencePage from '../Components/questionary/ChooseExperiencePage'
 import ChooseFreeDaysPage from '../Components/questionary/ChooseFreeDaysPage'
 import FilterPage from '../Components/buttons/filters/FilterPage'
 import SortingPage from '../Components/buttons/sorting/SortingPage'
@@ -49,6 +50,7 @@ class App extends React.Component {
             <Route path="/settings" component={Settings}/>
             <Route path="/quest-1" component={StartPage}/>
             <Route path="/quest-2" component={ChooseInstrumentPage}/>
+            <Route path="/quest-5" component={ChooseExperiencePage}/>
             <Route path="/quest-3" component={ChooseFreeDaysPage}/>
             <Route path="/find-job-filter" component={FilterPage}/>
             <Route path="/find-job-sort" component={SortingPage}/>

@@ -27,7 +27,7 @@ const ChooseInstrumentPage = ({ selectedInst, authorized, role }) => {
       })
     }
     catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
 
@@ -55,8 +55,11 @@ const ChooseInstrumentPage = ({ selectedInst, authorized, role }) => {
 
   return (
     <div className={s.chooseInstrumentPageWrapper}>
+      {/*{*/}
+      {/*  handleRedirect(authorized, role, renderContent)*/}
+      {/*}*/}
       {
-        handleRedirect(authorized, role, renderContent)
+        renderContent()
       }
     </div>
   )

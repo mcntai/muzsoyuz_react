@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import s from './InputPhoneProfile.module.css'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import { jobOfferValidator } from '../../validators/index'
 import * as swalAlert from '../common/Alerts'
+import s from './InputPhoneProfile.module.css'
 
 
 const InputPhoneProfile = ({ data }) => {
