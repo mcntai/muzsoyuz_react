@@ -66,14 +66,14 @@
 
 .facebookIcon {
   composes: focus iconsStyles montserrat cursor;
-  background: url('../../assets/img/fb-icon.svg') #3B5999 no-repeat 20% 50%;
+  background: url('../../Assets/img/fb-icon.svg') #3B5999 no-repeat 20% 50%;
   border: 1px solid #3B5999;
   color: #FFFFFF;
 }
 
 .googleIcon {
   composes: focus iconsStyles montserrat cursor;
-  background: url('../../assets/img/google-icon.svg') transparent no-repeat 20% 50%;
+  background: url('../../Assets/img/google-icon.svg') transparent no-repeat 20% 50%;
   border: 1px solid #FFFFFF;
   color: #FFFFFF;
 }

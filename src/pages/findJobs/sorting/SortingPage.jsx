@@ -1,7 +1,7 @@
 import React from 'react'
-import HeaderInternal from '../../../components/internalHeader/HeaderInternal'
+import HeaderInternal from '../../../Components/internalHeader/HeaderInternal'
 import SortingButton from './SortingButton'
-import background from '../../../assets/img/filters-background.svg'
+import background from '../../../Assets/img/filters-background.svg'
 import s from './SortingPage.module.css'
 
 

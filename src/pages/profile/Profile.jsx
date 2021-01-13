@@ -10,9 +10,9 @@ import CalendarProfile from './CalendarProfile'
 import Logout from './Logout'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import { pageRoute } from '../../actions/routingActions'
-import * as swalAlert from '../../components/common/alerts'
-import avatar from '../../assets/img/avatar.svg'
-import settings from '../../assets/img/settings.svg'
+import * as swalAlert from '../../Components/common/alerts'
+import avatar from '../../Assets/img/avatar.svg'
+import settings from '../../Assets/img/settings.svg'
 import s from './Profile.module.css'
 
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import s from './Footer.module.css'
-import findJob from '../../assets/img/findJob.svg'
-import mainPage from '../../assets/img/mainPage.svg'
-import offerJob from '../../assets/img/offerJob.svg'
+import findJob from '../../Assets/img/findJob.svg'
+import mainPage from '../../Assets/img/mainPage.svg'
+import offerJob from '../../Assets/img/offerJob.svg'
 
 
 class Footer extends React.Component {

@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { pageRoute } from '../../actions/routingActions'
-import Header from '../../components/mainHeader/Header'
-import Footer from '../../components/mainFooter/Footer'
-import logo from '../../assets/img/logo.svg'
-import background from '../../assets/img/background.svg'
-import preloader from '../../assets/img/preloader.gif'
+import Header from '../../Components/mainHeader/Header'
+import Footer from '../../Components/mainFooter/Footer'
+import logo from '../../Assets/img/logo.svg'
+import background from '../../Assets/img/background.svg'
+import preloader from '../../Assets/img/preloader.gif'
 import s from './Main.module.css'
 
 

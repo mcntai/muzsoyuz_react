@@ -6,7 +6,7 @@ import BackgroundImage from './BackgroundImage'
 import Text from './Text'
 import SelectInstrument from './SelectInstrument'
 import Button from './Button'
-import img from '../../assets/img/start-choose-instrument-background.svg'
+import img from '../../Assets/img/start-choose-instrument-background.svg'
 import s from './Questionary.module.css'
 
 

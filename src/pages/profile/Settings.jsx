@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { pageRoute } from '../../actions/routingActions'
-import HeaderInternal from '../../components/internalHeader/HeaderInternal'
-import HeaderInternalButtons from '../../components/internalHeader/HeaderInternalButtons'
-import notifications from '../../assets/img/notifications.svg'
-import twoFactors from '../../assets/img/2fa.svg'
-import autoLogout from '../../assets/img/auto-logout.svg'
+import HeaderInternal from '../../Components/internalHeader/HeaderInternal'
+import HeaderInternalButtons from '../../Components/internalHeader/HeaderInternalButtons'
+import notifications from '../../Assets/img/notifications.svg'
+import twoFactors from '../../Assets/img/2fa.svg'
+import autoLogout from '../../Assets/img/auto-logout.svg'
 import s from './Settings.module.css'
 
 

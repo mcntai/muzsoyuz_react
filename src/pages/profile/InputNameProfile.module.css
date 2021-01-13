@@ -32,7 +32,7 @@
 }
 
 .nameWrapper:after {
-  content: url("../../assets/img/edit-icon.svg");
+  content: url("../../Assets/img/edit-icon.svg");
 }
 
 .name:disabled {

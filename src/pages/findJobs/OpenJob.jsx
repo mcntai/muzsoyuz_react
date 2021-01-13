@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import {connect} from 'react-redux'
-import * as swal from '../../components/common/alerts'
-import Header from '../../components/mainHeader/Header'
-import Footer from '../../components/mainFooter/Footer'
-import avatar from '../../assets/img/avatar.svg'
+import * as swal from '../../Components/common/alerts'
+import Header from '../../Components/mainHeader/Header'
+import Footer from '../../Components/mainFooter/Footer'
+import avatar from '../../Assets/img/avatar.svg'
 import s from './OpenJob.module.css'
 
 

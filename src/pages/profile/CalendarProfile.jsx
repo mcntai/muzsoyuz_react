@@ -1,7 +1,7 @@
 import React from 'react'
 import DayPicker, { DateUtils } from 'react-day-picker'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
-import * as swalAlert from '../../components/common/alerts'
+import * as swalAlert from '../../Components/common/alerts'
 import 'react-day-picker/lib/style.css'
 import s from './CalendarProfile.module.css'
 

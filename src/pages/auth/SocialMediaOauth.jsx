@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import BasicAuth from './BasicAuth'
-import * as swal from '../../components/common/alerts'
+import * as swal from '../../Components/common/alerts'
 
 
 const mapStateToProps = state => ({

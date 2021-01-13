@@ -4,7 +4,7 @@ import { handleRedirect } from './handleRedirect'
 import BackgroundImage from './BackgroundImage'
 import Text from './Text'
 import Button from './Button'
-import img from '../../assets/img/start-page-background.svg'
+import img from '../../Assets/img/start-page-background.svg'
 import s from './Questionary.module.css'
 
 

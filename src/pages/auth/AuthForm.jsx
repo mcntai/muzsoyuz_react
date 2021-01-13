@@ -7,7 +7,7 @@ import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import { fetchAuthStatusSuccess } from '../../actions/getProfileActions'
 import { fetchAuthStatusFailure } from '../../actions/getProfileActions'
 import { authPageRoute } from '../../actions/routingActions'
-import * as swal from '../../components/common/alerts'
+import * as swal from '../../Components/common/alerts'
 import s from './AuthForm.module.css'
 
 

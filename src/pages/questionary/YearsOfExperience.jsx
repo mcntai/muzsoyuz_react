@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
-import * as swalAlert from '../../components/common/alerts'
+import * as swalAlert from '../../Components/common/alerts'
 import s from './Questionary.module.css'
 
 
