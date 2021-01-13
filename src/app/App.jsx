@@ -2,20 +2,20 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchDataIfLoggedIn } from '../actions/getProfileActions'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Auth from '../Pages/Auth'
-import Main from '../Pages/Main'
-import SocialMediaOauth from '../Pages/SocialMediaOauth'
-import OfferJob from '../Pages/OfferJob'
-import FindJob from '../Pages/FindJob'
-import OpenJob from '../Components/common/OpenJob'
-import Settings from '../Components/profile/Settings'
-import StartPage from '../Components/questionary/StartPage'
-import ChooseInstrumentPage from '../Components/questionary/ChooseInstrumentPage'
-import ChooseExperiencePage from '../Components/questionary/ChooseExperiencePage'
-import ChooseFreeDaysPage from '../Components/questionary/ChooseFreeDaysPage'
-import FilterPage from '../Components/buttons/filters/FilterPage'
-import SortingPage from '../Components/buttons/sorting/SortingPage'
-import Profile from '../Components/profile/Profile'
+import Auth from '../pages/auth/Auth'
+import Main from '../pages/main/Main'
+import SocialMediaOauth from '../pages/auth/SocialMediaOauth'
+import OfferJob from '../pages/offerJobs/OfferJob'
+import FindJob from '../pages/findJobs/FindJob'
+import OpenJob from '../pages/findJobs/OpenJob'
+import Settings from '../pages/profile/Settings'
+import StartPage from '../pages/questionary/StartPage'
+import ChooseInstrumentPage from '../pages/questionary/ChooseInstrumentPage'
+import ChooseExperiencePage from '../pages/questionary/ChooseExperiencePage'
+import ChooseFreeDaysPage from '../pages/questionary/ChooseFreeDaysPage'
+import FilterPage from '../pages/findJobs/filters/FilterPage'
+import SortingPage from '../pages/findJobs/sorting/SortingPage'
+import Profile from '../pages/profile/Profile'
 import s from './App.module.css'
 
 
@@ -48,10 +48,10 @@ class App extends React.Component {
             <Route path="/open-job" component={OpenJob}/>
             <Route path="/profile" component={Profile}/>
             <Route path="/settings" component={Settings}/>
-            <Route path="/quest-1" component={StartPage}/>
-            <Route path="/quest-2" component={ChooseInstrumentPage}/>
-            <Route path="/quest-5" component={ChooseExperiencePage}/>
-            <Route path="/quest-3" component={ChooseFreeDaysPage}/>
+            <Route path="/quest-start" component={StartPage}/>
+            <Route path="/quest-instrument" component={ChooseInstrumentPage}/>
+            <Route path="/quest-experience" component={ChooseExperiencePage}/>
+            <Route path="/quest-free-days" component={ChooseFreeDaysPage}/>
             <Route path="/find-job-filter" component={FilterPage}/>
             <Route path="/find-job-sort" component={SortingPage}/>
           </Switch>

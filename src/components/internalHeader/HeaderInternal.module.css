@@ -1,0 +1,25 @@
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.wrapperClass {
+  width: 343px;
+  display: flex;
+  margin-top: 30px;
+}
+
+.backBtn {
+  content: url("../../assets/img/arrow-left.svg");
+  width: 20px;
+  height: 20px;
+}
+
+.heading {
+  composes: montserrat;
+  display: inline-block;
+  margin: 0 auto;
+}

@@ -1,0 +1,127 @@
+/*Common classes*/
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.focus:focus {
+  outline: none;
+}
+
+.iconsStyles {
+  width: 135px;
+  height: 35px;
+  background-position: 20% 50%;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  padding-left: 20px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Bottom part */
+
+.socialMedias {
+  composes: flexCol;
+}
+
+.authWith {
+  composes: montserrat;
+  color: #000000;
+}
+
+.socialIcons {
+  composes: montserrat;
+  font-weight: 500;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.regIcons {
+  composes: socialIcons;
+}
+
+.logIcons {
+  composes: socialIcons;
+  margin: 28px 0 189px 0;
+}
+
+.facebookIcon {
+  composes: focus iconsStyles montserrat cursor;
+  background: url('../../assets/img/fb-icon.svg') #3B5999 no-repeat 20% 50%;
+  border: 1px solid #3B5999;
+  color: #FFFFFF;
+}
+
+.googleIcon {
+  composes: focus iconsStyles montserrat cursor;
+  background: url('../../assets/img/google-icon.svg') transparent no-repeat 20% 50%;
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  .authWith {
+    margin-top: 20px;
+  }
+
+  .authWithLogin {
+    composes: authWith;
+    margin-top: 50px;
+  }
+
+  .socialIcons {
+    width: 275px;
+  }
+
+  .regIcons {
+    margin: 28px 0 20px 0;
+  }
+
+  .logIcons {
+    margin: 35px 0 20px 0;
+  }
+}
+
+@media (min-width: 375px) {
+  .authWith {
+    margin-top: 64px;
+  }
+
+  .authWithLogin {
+    composes: authWith;
+  }
+
+  .socialIcons {
+    width: 305px;
+  }
+
+  .regIcons {
+    margin: 28px 0 58px 0;
+  }
+
+  .logIcons {
+    margin: 28px 0 189px 0;
+  }
+}
+
+
+
