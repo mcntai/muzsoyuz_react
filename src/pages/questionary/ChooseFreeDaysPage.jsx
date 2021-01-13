@@ -6,7 +6,7 @@ import BackgroundImage from './BackgroundImage'
 import Text from './Text'
 import Calendar from './Calendar'
 import Button from './Button'
-import img from '../../Assets/img/start-choose-days-background.svg'
+import img from '../../assets/img/start-choose-days-background.svg'
 import s from './Questionary.module.css'
 
 

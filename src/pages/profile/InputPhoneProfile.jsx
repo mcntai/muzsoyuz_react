@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import { jobOfferValidator } from '../../validators'
-import * as swalAlert from '../../Components/common/alerts'
+import * as swalAlert from '../../components/common/alerts'
 import s from './InputPhoneProfile.module.css'
 
 

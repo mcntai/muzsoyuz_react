@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import AuthForm from './AuthForm'
 import SocialMedias from './SocialMedias'
 import s from './Auth.module.css'
-import logo from '../../Assets/img/logo.svg'
+import logo from '../../assets/img/logo.svg'
 
 
 class Auth extends React.Component {

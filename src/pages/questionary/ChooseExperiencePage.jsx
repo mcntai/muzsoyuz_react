@@ -5,7 +5,7 @@ import BackgroundImage from './BackgroundImage'
 import Text from './Text'
 import YearsOfExperience from './YearsOfExperience'
 import Button from './Button'
-import img from '../../Assets/img/start-choose-exp-background.svg'
+import img from '../../assets/img/start-choose-exp-background.svg'
 import s from './Questionary.module.css'
 
 

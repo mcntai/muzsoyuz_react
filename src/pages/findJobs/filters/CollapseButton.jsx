@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import arrowIcon from '../../../Assets/img/arrow-bottom.svg'
+import arrowIcon from '../../../assets/img/arrow-bottom.svg'
 import s from './CollapseButton.module.css'
 
 

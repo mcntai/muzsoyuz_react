@@ -1,6 +1,6 @@
 import React from 'react'
 import s from './Header.module.css'
-import profile from '../../Assets/img/profile.svg'
+import profile from '../../assets/img/profile.svg'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 

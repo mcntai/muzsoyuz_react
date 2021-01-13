@@ -1,6 +1,6 @@
 import { Request } from './utils/request'
 import { config } from './config'
-import * as swal from './Components/common/alerts'
+import * as swal from './components/common/alerts'
 
 
 export class MuzSoyuzRequest extends Request {

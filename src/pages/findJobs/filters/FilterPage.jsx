@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import HeaderInternal from '../../../Components/internalHeader/HeaderInternal'
+import HeaderInternal from '../../../components/internalHeader/HeaderInternal'
 import CollapseButton from './CollapseButton'
 import InnerFilterInstrument from './InnerFilterInstrument'
 import FilterInternalCalendar from './InnerFilterCalendar'
 import InnerFilterSalary from './InnerFilterSalary'
 import InnerFilterSets from './InnerFilterSets'
 import s from './FilterPage.module.css'
-import background from '../../../Assets/img/filters-background.svg'
+import background from '../../../assets/img/filters-background.svg'
 
 
 const mapStateToProps = state => {
