@@ -5,7 +5,15 @@
   align-items: center;
 }
 
-@media (min-width: 320px) and (max-width: 374px) {
+@media (min-width: 320px) and (max-width: 359px) {
+  .profile img {
+    margin: 23px 20px 20px 0;
+    width: 27px;
+    height: 27px;
+  }
+}
+
+@media (min-width: 360px) and (max-height: 640px) {
   .profile img {
     margin: 23px 20px 20px 0;
     width: 27px;

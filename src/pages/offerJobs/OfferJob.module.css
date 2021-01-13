@@ -177,7 +177,7 @@
   margin: 50% auto;
 }
 
-@media (min-width: 320px) and (max-width: 374px) {
+@media (min-width: 320px) and (max-width: 359px) {
   .headerWrapper {
     width: 320px;
     margin: 0 auto;
@@ -226,6 +226,58 @@
   .footerWrapper {
     width: 320px;
     padding-bottom: 3px;
+  }
+}
+
+@media (min-width: 360px) and (max-height: 640px) {
+  .headerWrapper {
+    width: 320px;
+    margin: 0 auto;
+  }
+
+  .headerWrapper div img {
+    margin: 23px 20px 20px 0;
+  }
+
+  /*Main classes*/
+  .form {
+    composes: montserrat;
+    width: 320px;
+    padding-bottom: 40px;
+    margin: 0 auto 35px;
+  }
+
+  /*Main classes*/
+  .form p {
+    margin-left: 23px;
+  }
+
+  .inputWrapper {
+    width: 300px;
+  }
+
+  .input {
+    width: 300px;
+    height: 35px;
+  }
+
+  .textArea {
+    width: 300px;
+    height: 90px;
+  }
+
+  .role {
+    width: 300px;
+    height: 35px;
+  }
+
+  .submit {
+    width: 300px;
+  }
+
+  .footerWrapper {
+    width: 360px;
+    padding-bottom: 5px;
   }
 }
 

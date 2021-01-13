@@ -120,7 +120,7 @@
 }
 
 
-@media (min-width: 320px) and (max-width: 374px) {
+@media (min-width: 320px) and (max-width: 359px) {
   /* Common Styles */
   .container {
     width: 320px;
@@ -152,6 +152,41 @@
   .footerWrapper {
     width: 320px;
     padding-bottom: 3px;
+  }
+}
+
+@media (min-width: 360px) and (max-height: 640px) {
+  /* Common Styles */
+  .container {
+    width: 360px;
+  }
+
+  /* Main Styles */
+  .jobWrapper {
+    width: 300px;
+  }
+
+  .description {
+    margin-top: 20px;
+  }
+
+  .jobCreatorWrapper {
+    margin-top: 28px;
+  }
+
+  .userName {
+    width: 200px;
+  }
+
+  .chatBtn {
+    width: 300px;
+    margin-top: 30px;
+    margin-bottom: 80px;
+  }
+
+  .footerWrapper {
+    width: 360px;
+    padding-bottom: 5px;
   }
 }
 

@@ -46,7 +46,7 @@
   width: 100%;
 }
 
-@media (min-width: 320px) and (max-width: 374px) {
+@media (min-width: 320px) and (max-width: 359px) {
   .filtersPageWrapper {
     width: 320px;
   }
@@ -60,6 +60,41 @@
   /* Background Image Classes */
   .background {
     display: none;
+  }
+
+  /* Collapse Buttons */
+  .btnWrapper {
+    padding: 26px 30px 27px 17px;
+  }
+
+  .filterName {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+@media (min-width: 360px) and (max-height: 640px) {
+  .filtersPageWrapper {
+    width: 360px;
+  }
+
+  /* Header part classes */
+  .btnText {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  /* Background Image Classes */
+  .background {
+    width: 360px;
+    height: 220px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .imgWrapper {
+    height: 220px;
+    top: 420px;
   }
 
   /* Collapse Buttons */

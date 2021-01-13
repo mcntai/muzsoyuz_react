@@ -31,7 +31,9 @@ class Main extends React.Component {
             <img src={background} className={s.background} alt="background"/>
           </div>
         </main>
+        <div className={s.footerWrapper}>
           <Footer/>
+        </div>
       </>
     )
   }

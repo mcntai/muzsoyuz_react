@@ -28,7 +28,7 @@
   background: linear-gradient(180deg, #6384EB 0%, rgba(99, 132, 235, 0.63) 100%);
 }
 
-@media (min-width: 320px) and (max-width: 374px) {
+@media (min-width: 320px) and (max-width: 359px) {
   .logo {
     width: 141px;
     height: 31px;
@@ -37,6 +37,18 @@
 
   .wrapper {
     width: 320px;
+  }
+}
+
+@media (min-width: 360px) and (max-height: 640px) {
+  .logo {
+    width: 160px;
+    height: 35px;
+    margin-top: 40px;
+  }
+
+  .wrapper {
+    width: 360px;
   }
 }
 

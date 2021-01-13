@@ -78,7 +78,7 @@
   color: #FFFFFF;
 }
 
-@media (min-width: 320px) and (max-width: 374px) {
+@media (min-width: 320px) and (max-width: 359px) {
   .authWith {
     margin-top: 20px;
   }
@@ -98,6 +98,29 @@
 
   .logIcons {
     margin: 35px 0 20px 0;
+  }
+}
+
+@media (min-width: 360px) and (max-height: 640px) {
+  .authWith {
+    margin-top: 20px;
+  }
+
+  .authWithLogin {
+    composes: authWith;
+    margin-top: 50px;
+  }
+
+  .socialIcons {
+    width: 300px;
+  }
+
+  .regIcons {
+    margin: 28px 0 70px 0;
+  }
+
+  .logIcons {
+    margin: 35px 0 87px 0;
   }
 }
 

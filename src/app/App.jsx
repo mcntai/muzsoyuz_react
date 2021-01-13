@@ -8,7 +8,6 @@ import SocialMediaOauth from '../pages/auth/SocialMediaOauth'
 import OfferJob from '../pages/offerJobs/OfferJob'
 import FindJob from '../pages/findJobs/FindJob'
 import OpenJob from '../pages/findJobs/OpenJob'
-import Settings from '../pages/profile/Settings'
 import StartPage from '../pages/questionary/StartPage'
 import ChooseInstrumentPage from '../pages/questionary/ChooseInstrumentPage'
 import ChooseExperiencePage from '../pages/questionary/ChooseExperiencePage'
@@ -47,7 +46,6 @@ class App extends React.Component {
             <Route path="/find-job" component={FindJob}/>
             <Route path="/open-job" component={OpenJob}/>
             <Route path="/profile" component={Profile}/>
-            <Route path="/settings" component={Settings}/>
             <Route path="/quest-start" component={StartPage}/>
             <Route path="/quest-instrument" component={ChooseInstrumentPage}/>
             <Route path="/quest-experience" component={ChooseExperiencePage}/>

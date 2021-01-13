@@ -5,7 +5,7 @@ import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import { omitBy, predicates } from '../../utils/object'
 import { pageRoute } from '../../actions/routingActions'
 import Header from '../../components/mainHeader/Header'
-import HeaderInternalButtons from '../../components/internalHeader/HeaderInternalButtons'
+import SortingFilterButtons from './SortingFilterButtons'
 import Footer from '../../components/mainFooter/Footer'
 import preloader from '../../assets/img/preloader.gif'
 import s from './FindJob.module.css'
@@ -129,7 +129,7 @@ const FindJob = ({ loading, body, dispatch }) => {
           <Header/>
         </div>
         <p className={s.jobSearch}>Пошук роботи</p>
-        <HeaderInternalButtons
+        <SortingFilterButtons
           firstText="Сортувати"
           firstRoute='/find-job-sort'
           secondText="Фільтр"

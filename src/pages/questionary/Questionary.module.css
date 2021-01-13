@@ -124,7 +124,7 @@
   margin-left: -92.5px;
 }
 
-@media (min-width: 320px) and (max-width: 374px) {
+@media (min-width: 320px) and (max-width: 359px) {
   /* Common Styling */
   .startPageWrapper {
     composes: flexWrapper;
@@ -263,6 +263,150 @@
     top: 530px;
     left: 50%;
     margin-left: -92.5px;
+  }
+}
+
+@media (min-width: 360px) and (max-height: 640px) {
+  /* Common Styling */
+  .startPageWrapper {
+    composes: flexWrapper;
+    width: 360px;
+  }
+
+  .imgWrapper {
+    position: relative;
+    height: 380px;
+  }
+
+  .startImgBack {
+    width: 360px;
+    height: 380px;
+  }
+
+  .logo {
+    position: relative;
+    width: 87px;
+    height: 19px;
+    top: 47px;
+    z-index: 1;
+  }
+
+  .textWrapper {
+    width: 104px;
+  }
+
+  /* Start Page */
+  .startText {
+    composes: montserrat;
+    font-size: 18px;
+    line-height: 22px;
+    display: block;
+    margin-top: 20px;
+  }
+
+  .startBtn {
+    margin: 80px 0 30px;
+  }
+
+  /* Choose Instrument Page */
+  .chooseInstBack {
+    width: 360px;
+  }
+
+  .chooseInstText {
+    width: 111px;
+    font-size: 18px;
+    line-height: 22px;
+    top: 380px;
+    margin-left: -55.5px;
+  }
+
+  .selectInstrument {
+    composes: montserrat;
+    margin-top: 68px;
+  }
+
+  .chooseInstBtn {
+    composes: commonBtn;
+    margin: 41px 0 26px;
+  }
+
+  /* Choose Experience Page */
+  .chooseExpPageWrapper {
+    width: 360px;
+  }
+
+  .chooseExpImgBack {
+    width: 360px;
+  }
+
+  .chooseExpTextWrapper {
+    width: 220px;
+  }
+
+  .chooseExpText {
+    composes: chooseInstText;
+    top: 390px;
+    width: 220px;
+    margin-left: -110px;
+  }
+
+  .yearExpBtnsWrapper {
+    width: 280px;
+    margin-top: 100px;
+  }
+
+  .expBtn {
+    width: 42px;
+    height: 34px;
+    line-height: 34px;
+  }
+
+  .chooseExpFinishBtn {
+    composes: commonBtn;
+    margin-top: 32px;
+  }
+
+  /* Choose Free Days Page */
+  .chooseDaysBack {
+    width: 360px;
+  }
+
+  .chooseDaysTextWrapper {
+    width: 360px;
+  }
+
+  .chooseDaysText {
+    composes: chooseInstText;
+    top: 390px;
+    width: 220px;
+    margin-left: -110px;
+  }
+
+  .calendarBtn {
+    line-height: 16px;
+    margin-top: 100px;
+  }
+
+  .calendarContainer {
+    top: 365px;
+    margin-left: -114.5px;
+  }
+
+  .calendarContainer > div {
+    font-size: 13px;
+  }
+
+  .chooseDaysFinishBtn {
+    composes: commonBtn;
+    margin-top: 26px;
+  }
+
+  .finishBtn {
+    top: 530px;
+    left: 50%;
+    margin-left: -92.5px;
+    margin-top: 46px;
   }
 }
 

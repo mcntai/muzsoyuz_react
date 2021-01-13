@@ -1,9 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import s from './HeaderInternalButtons.module.css'
+import s from './SortingFilterButtons.module.css'
 
 
-const HeaderInternalButtons = ({ firstText, firstRoute, secondText, secondRoute, btnClass, active }) => {
+const SortingFilterButtons = ({ firstText, firstRoute, secondText, secondRoute, btnClass, active }) => {
   return (
     <div className={s.sortFilterButtons}>
       <NavLink
@@ -24,4 +24,4 @@ const HeaderInternalButtons = ({ firstText, firstRoute, secondText, secondRoute,
   )
 }
 
-export default HeaderInternalButtons
+export default SortingFilterButtons

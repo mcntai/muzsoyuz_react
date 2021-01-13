@@ -16,7 +16,7 @@
   box-shadow: 0 5px 32px rgba(0, 0, 0, 0.1);
 }
 
-@media (min-width: 320px) and (max-width: 374px) {
+@media (min-width: 320px) and (max-width: 359px) {
   .calendarWrapper {
     padding-bottom: 32px;
   }
@@ -26,6 +26,20 @@
     line-height: 14px;
 
     width: 220px;
+    margin: 15px auto 0;
+  }
+}
+
+@media (min-width: 360px) and (max-height: 640px) {
+  .calendarWrapper {
+    padding-bottom: 32px;
+  }
+
+  .calendarContainer {
+    font-size: 14px;
+    line-height: 16px;
+
+    width: 260px;
     margin: 15px auto 0;
   }
 }

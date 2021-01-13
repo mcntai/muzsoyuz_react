@@ -3,9 +3,16 @@
   justify-content: space-between;
 }
 
-@media (min-width: 320px) and (max-width: 374px) {
+@media (min-width: 320px) and (max-width: 359px) {
   .sortFilterButtons {
     width: 286px;
+    margin: 33px auto 0;
+  }
+}
+
+@media (min-width: 360px) and (max-height: 640px) {
+  .sortFilterButtons {
+    width: 330px;
     margin: 33px auto 0;
   }
 }

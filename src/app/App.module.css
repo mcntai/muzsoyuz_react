@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 
-@media (min-width: 320px) and (max-width: 374px) {
+@media (min-width: 320px) and (max-width: 359px) {
   .wrapper {
     width: 320px;
   }

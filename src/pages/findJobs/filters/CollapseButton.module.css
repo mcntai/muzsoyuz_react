@@ -23,7 +23,7 @@
   transition: max-height 0.3s ease-in;
 }
 
-@media (min-width: 320px) and (max-width: 374px) {
+@media (min-width: 320px) and (max-width: 359px) {
   .arrowSize {
     width: 13px;
     height: 13px;

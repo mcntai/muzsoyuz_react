@@ -71,7 +71,7 @@
   margin: 25px 0;
 }
 
-@media (min-width: 320px) and (max-width: 374px) {
+@media (min-width: 320px) and (max-width: 359px) {
   /* Main Styles */
   .profileWrapper {
     composes: flex;
@@ -137,7 +137,74 @@
     composes: btnWrapper;
     margin-top: 13px;
   }
+}
 
+@media (min-width: 360px) and (max-height: 640px) {
+  /* Main Styles */
+  .profileWrapper {
+    composes: flex;
+    width: 360px;
+  }
+
+  .profileTopSection {
+    width: 360px;
+    padding-bottom: 32px;
+  }
+
+  .backBtn {
+    top: 30px;
+    left: 10px;
+  }
+
+  .topContentWrapper {
+    margin-top: 56px;
+  }
+
+  .avatarWrapper {
+    width: 68px;
+    height: 68px;
+  }
+
+  .avatar {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+  }
+
+  .profileMiddleSection {
+    width: 330px;
+    min-height: 366px;
+
+    margin-top: -20px;
+    padding-bottom: 10px;
+  }
+
+  .profileTitleSettingsWrapper {
+    margin-top: 15px;
+  }
+
+  .profileTitle {
+    composes: montserrat;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  /* Collapse Button Styles */
+  .btnWrapper {
+    width: 290px;
+    padding: 12px 16px;
+  }
+
+  .btnWrapperInstrument {
+    composes: btnWrapper;
+    margin-top: 20px;
+  }
+
+  .btnWrapperCalendar {
+    composes: btnWrapper;
+    margin-top: 13px;
+  }
 }
 
 @media (min-width: 375px) {
