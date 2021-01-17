@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import * as swalAlert from '../../components/common/alerts'
-import s from './Questionary.module.css'
+import s from './ChooseExperiencePage.module.css'
 
 
 const YearsOfExperience = () => {

@@ -78,6 +78,7 @@
   color: #FFFFFF;
 }
 
+/* iPhone 5/5s/SE*/
 @media (min-width: 320px) and (max-width: 359px) {
   .authWith {
     margin-top: 20px;
@@ -85,7 +86,7 @@
 
   .authWithLogin {
     composes: authWith;
-    margin-top: 50px;
+    margin-top: 20px;
   }
 
   .socialIcons {
@@ -97,40 +98,42 @@
   }
 
   .logIcons {
-    margin: 35px 0 20px 0;
+    margin: 30px 0 8px 0;
   }
 }
 
-@media (min-width: 360px) and (max-height: 640px) {
+/*@media (max-width: 360px) {*/
+/*  .authWith {*/
+/*    margin-top: 20px;*/
+/*  }*/
+
+/*  .authWithLogin {*/
+/*    composes: authWith;*/
+/*    margin-top: 50px;*/
+/*  }*/
+
+/*  .socialIcons {*/
+/*    width: 300px;*/
+/*  }*/
+
+/*  .regIcons {*/
+/*    margin: 28px 0 70px 0;*/
+/*  }*/
+
+/*  .logIcons {*/
+/*    margin: 35px 0 87px 0;*/
+/*  }*/
+/*}*/
+
+
+/* iPhone 6/7/8 */
+@media (min-width: 375px) and (max-width: 413px) {
   .authWith {
     margin-top: 20px;
   }
 
   .authWithLogin {
-    composes: authWith;
-    margin-top: 50px;
-  }
-
-  .socialIcons {
-    width: 300px;
-  }
-
-  .regIcons {
-    margin: 28px 0 70px 0;
-  }
-
-  .logIcons {
-    margin: 35px 0 87px 0;
-  }
-}
-
-@media (min-width: 375px) {
-  .authWith {
-    margin-top: 64px;
-  }
-
-  .authWithLogin {
-    composes: authWith;
+    margin-top: 40px;
   }
 
   .socialIcons {
@@ -138,11 +141,11 @@
   }
 
   .regIcons {
-    margin: 28px 0 58px 0;
+    margin: 20px 0 28px;
   }
 
   .logIcons {
-    margin: 28px 0 189px 0;
+    margin: 48px 0 98px 0;
   }
 }
 

@@ -1,0 +1,102 @@
+/* Common Classes */
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  color: #262D33;
+}
+
+.startPageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.startBtn {
+  composes: montserrat;
+  font-size: 13px;
+  line-height: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: #6384EB;
+  color: #FFFFFF;
+  border: 1px solid #6384EB;
+  border-radius: 50px;
+  padding: 14px 0;
+  width: 185px;
+}
+
+/* iPhone 5/5s/SE*/
+@media (min-width: 320px) and (max-width: 359px) {
+  /* Common Styling */
+  .startPageWrapper {
+    width: 320px;
+  }
+
+  .imgWrapper {
+    position: relative;
+    height: 380px;
+  }
+
+  .startImgBackground {
+    width: 320px;
+    height: 380px;
+  }
+
+  .logo {
+    position: relative;
+    width: 87px;
+    height: 19px;
+    top: 47px;
+    z-index: 1;
+  }
+
+  .startTextWrapper {
+    width: 104px;
+  }
+
+  .startText {
+    composes: montserrat;
+    font-size: 18px;
+    line-height: 22px;
+    display: block;
+    margin-top: 20px;
+  }
+
+  .startBtn {
+    margin: 34px 0 30px;
+  }
+}
+
+/* iPhone 6/7/8 */
+@media (min-width: 375px) and (max-width: 413px) {
+  /* Common Styling */
+  .startPageWrapper {
+    width: 375px;
+  }
+
+  .startTextWrapper {
+    width: 142px;
+    margin-top: 50px;
+  }
+
+  /* Start Page */
+  .startImgBackground {
+    width: 375px;
+    height: 300px;
+    display: block;
+    margin-top: 20px;
+  }
+
+  .startText {
+    composes: montserrat;
+    font-size: 18px;
+    line-height: 23px;
+    display: block;
+    margin-top: 41px;
+  }
+
+  .startBtn {
+    margin: 50px 0 20px 0;
+  }
+}

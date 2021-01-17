@@ -7,7 +7,7 @@ import Text from './Text'
 import SelectInstrument from './SelectInstrument'
 import Button from './Button'
 import img from '../../assets/img/start-choose-instrument-background.svg'
-import s from './Questionary.module.css'
+import s from './ChooseInstrumentPage.module.css'
 
 
 const mapStateToProps = state => {
@@ -36,7 +36,7 @@ const ChooseInstrumentPage = ({ selectedInst, authorized, role }) => {
       <>
         <BackgroundImage
           img={img}
-          imgClass={s.chooseInstBack}
+          imgClass={s.chooseInstBackground}
         />
         <Text
           text="Обери свій інструмент"

@@ -35,6 +35,7 @@
   filter: invert(53%) sepia(28%) saturate(5061%) hue-rotate(206deg) brightness(97%) contrast(89%);
 }
 
+/* iPhone 5/5s/SE */
 @media (min-width: 320px) and (max-width: 359px) {
   .footer {
     padding-top: 5px;
@@ -51,29 +52,27 @@
   }
 }
 
-@media (min-width: 360px) and (max-height: 640px) {
-  .footer {
-    padding-top: 5px;
-  }
+/* Androids...*/
+/*@media (max-width: 360px) {*/
+/*  .footer {*/
+/*    padding-top: 5px;*/
+/*  }*/
 
+/*  .navWrapper {*/
+/*    width: 125px;*/
+/*  }*/
+
+/*  .nav img {*/
+/*    margin: 0 auto 9px;*/
+/*    width: 24px;*/
+/*    height: 24px;*/
+/*  }*/
+/*}*/
+
+/* iPhone 6/7/8 */
+@media (min-width: 375px) and (max-width: 413px) {
   .navWrapper {
     width: 125px;
-  }
-
-  .nav img {
-    margin: 0 auto 9px;
-    width: 24px;
-    height: 24px;
-  }
-}
-
-@media (min-width: 375px) {
-  .footer {
-    padding-top: 11px;
-  }
-
-  .navWrapper {
-    width: 112px;
   }
 
   .nav {
@@ -83,10 +82,32 @@
 
   .nav img {
     margin: 0 auto 8px;
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
   }
 }
+
+/* iPhone X/11*/
+/*@media (max-width: 375px) and (min-height: 812px) {*/
+/*  .footer {*/
+/*    padding-top: 11px;*/
+/*  }*/
+
+/*  .navWrapper {*/
+/*    width: 112px;*/
+/*  }*/
+
+/*  .nav {*/
+/*    font-size: 14px;*/
+/*    line-height: 17px;*/
+/*  }*/
+
+/*  .nav img {*/
+/*    margin: 0 auto 8px;*/
+/*    width: 28px;*/
+/*    height: 28px;*/
+/*  }*/
+/*}*/
 
 
 

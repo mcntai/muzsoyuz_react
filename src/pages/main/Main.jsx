@@ -4,7 +4,7 @@ import { pageRoute } from '../../actions/routingActions'
 import Header from '../../components/mainHeader/Header'
 import Footer from '../../components/mainFooter/Footer'
 import logo from '../../assets/img/logo.svg'
-import background from '../../assets/img/background.svg'
+import background from '../../assets/img/background_main.svg'
 import preloader from '../../assets/img/preloader.gif'
 import s from './Main.module.css'
 
@@ -24,7 +24,9 @@ class Main extends React.Component {
   renderPage() {
     return (
       <>
-        <Header/>
+        <div className={s.headerWrapper}>
+          <Header/>
+        </div>
         <main className={s.main}>
           <div className={s.logo}><img src={logo} alt='logo'/></div>
           <div className={s.imgWrapper}>

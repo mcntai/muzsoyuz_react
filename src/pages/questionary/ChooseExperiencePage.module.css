@@ -1,0 +1,130 @@
+/* Common Classes */
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  color: #262D33;
+}
+
+.chooseExpPageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.chooseExpText {
+  composes: montserrat;
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+}
+
+.chooseExpFinishBtn {
+  composes: montserrat;
+  font-size: 13px;
+  line-height: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: #6384EB;
+  color: #FFFFFF;
+  border: 1px solid #6384EB;
+  border-radius: 50px;
+  padding: 14px 0;
+  width: 185px;
+}
+
+/* Choose Experience Page */
+.yearExpBtnsWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.expBtn {
+  composes: montserrat;
+  font-size: 14px;
+  line-height: 17px;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid #AFAFAF;
+  color: #000000;
+}
+
+.expBtn:focus {
+  border: 1px solid #6384EB;
+  background-color: #b6c5fd;
+}
+
+/* iPhone 5/5s/SE*/
+@media (min-width: 320px) and (max-width: 359px) {
+  /* Choose Experience Page */
+  .chooseExpPageWrapper {
+    width: 320px;
+  }
+
+  .chooseExpImgBack {
+    width: 320px;
+  }
+
+  .chooseExpTextWrapper {
+    width: 220px;
+  }
+
+  .chooseExpText {
+    top: 350px;
+    width: 220px;
+    margin-left: -110px;
+  }
+
+  .yearExpBtnsWrapper {
+    width: 280px;
+    margin-top: 60px;
+  }
+
+  .expBtn {
+    width: 42px;
+    height: 34px;
+    line-height: 34px;
+  }
+
+  .chooseExpFinishBtn {
+    margin-top: 26px;
+  }
+}
+
+/* iPhone 6/7/8 */
+@media (min-width: 375px) and (max-width: 413px) {
+  /* Choose Experience Page */
+  .chooseExpPageWrapper {
+    width: 375px;
+  }
+
+  .chooseExpImgBack {
+    width: 375px;
+  }
+
+  .chooseExpTextWrapper {
+    width: 290px;
+  }
+
+  .chooseExpText {
+    top: 320px;
+    width: 300px;
+    margin-left: -150px;
+  }
+
+  .yearExpBtnsWrapper {
+    width: 330px;
+    margin-top: 100px;
+  }
+
+  .expBtn {
+    width: 56px;
+    height: 41px;
+    line-height: 41px;
+  }
+
+  .chooseExpFinishBtn {
+    margin-top: 46px;
+  }
+}

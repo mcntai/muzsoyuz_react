@@ -162,6 +162,7 @@
   border-radius: 6px;
 }
 
+/* iPhone 5/5s/SE*/
 @media (min-width: 320px) and (max-width: 359px) {
   .authForm {
     width: 275px;
@@ -170,7 +171,7 @@
   /* Middle part */
   .header {
     width: 275px;
-    margin-top: 48px;
+    margin-top: 25px;
   }
 
   .form {
@@ -195,7 +196,7 @@
   .inputSubmitLogin {
     composes: inputSubmit;
     width: 275px;
-    margin-top: 82px;
+    margin-top: 56px;
   }
 
   /* Gender Styling */
@@ -209,40 +210,82 @@
   }
 }
 
-@media (min-width: 360px) and (max-height: 640px) {
+/*@media (max-width: 360px) {*/
+/*  .authForm {*/
+/*    width: 300px;*/
+/*  }*/
+
+/*  !* Middle part *!*/
+/*  .header {*/
+/*    width: 300px;*/
+/*    margin-top: 48px;*/
+/*  }*/
+
+/*  .form {*/
+/*    width: 300px;*/
+/*    margin-top: 25px;*/
+/*  }*/
+
+/*  .inputWrapper {*/
+/*    width: 300px;*/
+/*    margin: 12px auto 0;*/
+/*  }*/
+
+/*  .input {*/
+/*    width: 300px;*/
+/*  }*/
+
+/*  .inputSubmit {*/
+/*    width: 300px;*/
+/*    margin-top: 32px;*/
+/*  }*/
+
+/*  .inputSubmitLogin {*/
+/*    composes: inputSubmit;*/
+/*    width: 300px;*/
+/*    margin-top: 82px;*/
+/*  }*/
+
+/*  !* Gender Styling *!*/
+/*  .genderWrapper {*/
+/*    width: 260px;*/
+/*    margin-top: 15px;*/
+/*  }*/
+
+/*  .genderInput {*/
+/*    padding: 8px 19px;*/
+/*  }*/
+/*}*/
+
+/* iPhone 6/7/8 */
+@media (min-width: 375px) and (max-width: 413px) {
   .authForm {
-    width: 300px;
+    width: 307px;
   }
 
   /* Middle part */
   .header {
-    width: 300px;
-    margin-top: 48px;
+    width: 307px;
+    margin-top: 20px;
   }
 
   .form {
-    width: 300px;
-    margin-top: 25px;
+    width: 307px;
+    margin-top: 20px;
   }
 
   .inputWrapper {
-    width: 300px;
-    margin: 12px auto 0;
+    width: 307px;
+    margin: 15px auto 0;
   }
 
   .input {
-    width: 300px;
+    width: 307px;
   }
 
   .inputSubmit {
-    width: 300px;
-    margin-top: 32px;
-  }
-
-  .inputSubmitLogin {
-    composes: inputSubmit;
-    width: 300px;
-    margin-top: 82px;
+    width: 302px;
+    margin-top: 30px;
   }
 
   /* Gender Styling */
@@ -252,51 +295,11 @@
   }
 
   .genderInput {
-    padding: 8px 19px;
-  }
-}
-
-@media (min-width: 375px) {
-  .authForm {
-    width: 307px;
-  }
-
-  /* Middle part */
-  .header {
-    width: 307px;
-    margin-top: 48px;
-  }
-
-  .form {
-    width: 307px;
-    margin-top: 60px;
-  }
-
-  .inputWrapper {
-    width: 307px;
-    margin: 20px auto 0;
-  }
-
-  .input {
-    width: 307px;
-  }
-
-  .inputSubmit {
-    width: 302px;
-    margin-top: 66px;
-  }
-
-  /* Gender Styling */
-  .genderWrapper {
-    width: 260px;
-    margin-top: 28px;
-  }
-
-  .genderInput {
     padding: 13px 24px;
   }
 
 }
+
 
 
 

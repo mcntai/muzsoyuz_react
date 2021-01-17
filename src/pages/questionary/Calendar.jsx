@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import DayPicker, { DateUtils } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
-import s from './Questionary.module.css'
+import s from './ChooseFreeDaysPage.module.css'
 
 
 const WEEKDAYS_SHORT = {

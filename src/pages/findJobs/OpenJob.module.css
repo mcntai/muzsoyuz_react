@@ -120,6 +120,7 @@
 }
 
 
+/* iPhone 5/5s/SE*/
 @media (min-width: 320px) and (max-width: 359px) {
   /* Common Styles */
   .container {
@@ -155,42 +156,43 @@
   }
 }
 
-@media (min-width: 360px) and (max-height: 640px) {
-  /* Common Styles */
-  .container {
-    width: 360px;
-  }
+/*@media (max-width: 360px) {*/
+/*  !* Common Styles *!*/
+/*  .container {*/
+/*    width: 360px;*/
+/*  }*/
 
-  /* Main Styles */
-  .jobWrapper {
-    width: 300px;
-  }
+/*  !* Main Styles *!*/
+/*  .jobWrapper {*/
+/*    width: 300px;*/
+/*  }*/
 
-  .description {
-    margin-top: 20px;
-  }
+/*  .description {*/
+/*    margin-top: 20px;*/
+/*  }*/
 
-  .jobCreatorWrapper {
-    margin-top: 28px;
-  }
+/*  .jobCreatorWrapper {*/
+/*    margin-top: 28px;*/
+/*  }*/
 
-  .userName {
-    width: 200px;
-  }
+/*  .userName {*/
+/*    width: 200px;*/
+/*  }*/
 
-  .chatBtn {
-    width: 300px;
-    margin-top: 30px;
-    margin-bottom: 80px;
-  }
+/*  .chatBtn {*/
+/*    width: 300px;*/
+/*    margin-top: 30px;*/
+/*    margin-bottom: 80px;*/
+/*  }*/
 
-  .footerWrapper {
-    width: 360px;
-    padding-bottom: 5px;
-  }
-}
+/*  .footerWrapper {*/
+/*    width: 360px;*/
+/*    padding-bottom: 5px;*/
+/*  }*/
+/*}*/
 
-@media (min-width: 375px) {
+/* iPhone 6/7/8 */
+@media (min-width: 375px) and (max-width: 413px) {
   /* Common Styles */
   .container {
     width: 375px;
@@ -202,11 +204,11 @@
   }
 
   .description {
-    margin-top: 30px;
+    margin-top: 15px;
   }
 
   .jobCreatorWrapper {
-    margin-top: 91px;
+    margin-top: 30px;
   }
 
   .userName {
@@ -215,11 +217,11 @@
 
   .chatBtn {
     width: 302px;
-    margin-top: 50px;
+    margin: 30px 0 80px;
   }
 
   .footerWrapper {
     width: 375px;
-    padding-bottom: 6px;
+    padding: 4px 0 3px;
   }
 }

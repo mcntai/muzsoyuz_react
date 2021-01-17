@@ -1,0 +1,168 @@
+/* Common Classes */
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  color: #262D33;
+}
+
+.chooseDaysWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.chooseDaysText {
+  composes: montserrat;
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+}
+
+.chooseDaysFinishBtn {
+  composes: montserrat;
+  font-size: 13px;
+  line-height: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: #6384EB;
+  color: #FFFFFF;
+  border: 1px solid #6384EB;
+  border-radius: 50px;
+  padding: 14px 0;
+  width: 185px;
+}
+
+.chooseDaysBackground {
+  position: relative;
+  z-index: 0;
+}
+
+.calendarBtn {
+  composes: montserrat;
+  font-size: 14px;
+  width: 260px;
+  padding: 11px 0;
+  border-radius: 13px;
+  border: 1px solid #DADADA;
+  background-color: #FFFFFF;
+}
+
+.showBtn {
+  display: none;
+}
+
+.calendarContainer {
+  composes: montserrat;
+  position: absolute;
+  z-index: 1;
+  top: 330px;
+  left: 50%;
+  margin-left: -140.5px;
+}
+
+.finishBtn {
+  position: relative;
+  z-index: 1;
+}
+
+/* iPhone 5/5s/SE*/
+@media (min-width: 320px) and (max-width: 359px) {
+  /* Common Styling */
+  .logo {
+    position: relative;
+    width: 87px;
+    height: 19px;
+    top: 47px;
+    z-index: 1;
+  }
+
+  .textWrapper {
+    width: 104px;
+  }
+
+  /* Choose Free Days Page */
+  .chooseDaysBackground {
+    width: 320px;
+  }
+
+  .chooseDaysTextWrapper {
+    width: 220px;
+  }
+
+  .chooseDaysText {
+    top: 350px;
+    width: 220px;
+    margin-left: -110px;
+  }
+
+  .calendarBtn {
+    line-height: 16px;
+    margin-top: 50px;
+  }
+
+  .calendarContainer {
+    top: 340px;
+    margin-left: -114.5px;
+  }
+
+  .calendarContainer > div {
+    font-size: 13px;
+  }
+
+  .finishBtn {
+    top: 530px;
+    left: 50%;
+    margin-left: -92.5px;
+  }
+}
+
+/* iPhone 6/7/8 */
+@media (min-width: 375px) and (max-width: 413px) {
+  /* Common Styling */
+  .logo {
+    position: relative;
+    width: 150px;
+    height: 33px;
+    top: 20px;
+    z-index: 1;
+  }
+
+  .textWrapper {
+    width: 142px;
+    margin-top: 50px;
+  }
+
+  /* Choose Free Days Page */
+  .chooseDaysBackground {
+    width: 375px;
+  }
+
+  .chooseDaysTextWrapper {
+    width: 290px;
+  }
+
+  .chooseDaysText {
+    top: 350px;
+    width: 340px;
+    margin-left: -170px;
+  }
+
+  .calendarBtn {
+    line-height: 17px;
+    margin-top: 116px;
+  }
+
+  .chooseDaysFinishBtn {
+    margin-top: 30px;
+  }
+
+  .calendarContainer {
+    top: 330px;
+    padding-bottom: 60px;
+  }
+
+  .finishBtn {
+    top: 270px;
+  }
+}

@@ -10,16 +10,16 @@
   }
 }
 
-@media (min-width: 360px) and (max-height: 640px) {
-  .sortFilterButtons {
-    width: 330px;
-    margin: 33px auto 0;
-  }
-}
+/*@media (max-width: 360px) {*/
+/*  .sortFilterButtons {*/
+/*    width: 330px;*/
+/*    margin: 33px auto 0;*/
+/*  }*/
+/*}*/
 
-@media (min-width: 375px) {
+@media (min-width: 375px) and (max-width: 413px) {
   .sortFilterButtons {
     width: 343px;
-    margin: 24px auto 0;
+    margin: 20px auto 0;
   }
 }

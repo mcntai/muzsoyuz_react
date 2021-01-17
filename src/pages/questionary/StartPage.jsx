@@ -5,7 +5,7 @@ import BackgroundImage from './BackgroundImage'
 import Text from './Text'
 import Button from './Button'
 import img from '../../assets/img/start-page-background.svg'
-import s from './Questionary.module.css'
+import s from './StartPage.module.css'
 
 
 const mapStateToProps = state => {
@@ -22,11 +22,11 @@ const StartPage = ({ authorized, role }) => {
       <>
         <BackgroundImage
           img={img}
-          imgClass={s.startImgBack}
+          imgClass={s.startImgBackground}
         />
         <Text
           text="Сервіс пошуку музикантів"
-          textWrapperClass={s.textWrapper}
+          textWrapperClass={s.startTextWrapper}
           textClass={s.startText}
         />
         <Button

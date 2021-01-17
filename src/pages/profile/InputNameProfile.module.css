@@ -67,22 +67,23 @@
   }
 }
 
-@media (min-width: 360px) and (max-height: 640px) {
+/*@media (max-width: 360px) {*/
+/*  !* Main Styles *!*/
+/*  .nameWrapper {*/
+/*    margin-top: 13px;*/
+/*  }*/
+
+/*  .name {*/
+/*    max-width: 160px;*/
+/*    padding-right: 10px;*/
+/*  }*/
+/*}*/
+
+/* iPhone 6/7/8 */
+@media (min-width: 375px) and (max-width: 413px) {
   /* Main Styles */
   .nameWrapper {
-    margin-top: 13px;
-  }
-
-  .name {
-    max-width: 160px;
-    padding-right: 10px;
-  }
-}
-
-@media (min-width: 375px) {
-  /* Main Styles */
-  .nameWrapper {
-    margin-top: 20px;
+    margin-top: 15px;
   }
 
   .name {

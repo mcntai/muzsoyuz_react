@@ -10,6 +10,10 @@
   flex-direction: column;
 }
 
+.headerWrapper {
+  position: relative;
+}
+
 .main {
   display: flex;
   flex-direction: column;
@@ -19,63 +23,111 @@
 .logo {
   background: #FFFFFF;
   text-align: center;
+  width: 375px;
 }
 
+.footerWrapper {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+
+  margin: 0 auto;
+  background: #FFFFFF;
+}
+
+.preLoader {
+  width: 64px;
+  height: 64px;
+  margin: 50% auto;
+}
+
+/* iPhone 5/5s/SE*/
 @media (min-width: 320px) and (max-width: 359px) {
   .wrapper {
     width: 320px;
   }
 
+  .headerWrapper {
+    width: 320px;
+    margin-top: 66px;
+  }
+
   .main {
     width: 320px;
   }
 
   .logo {
-    height: 30px;
-    margin: 29px auto 0;
+    height: 26px;
+    margin: 0 auto;
   }
 
   .logo img {
-    width: 131px;
-    height: 30px;
+    width: 115px;
+    height: 26px;
   }
 
-  .imgWrapper {
-    width: 320px;
-    height: 325px;
-
-    margin-top: 28px;
-    margin-bottom: 27px;
-  }
-
+  .imgWrapper,
   .background {
     width: 320px;
-    height: 325px;
+    height: 285px;
   }
 
-  .footer {
-    margin-top: 14px;
-  }
-
-  .preLoader {
-    width: 64px;
-    height: 64px;
-    margin: 50% auto;
+  .footerWrapper {
+    width: 320px;
+    bottom: 44px;
   }
 }
 
-@media (min-width: 360px) and (max-height: 640px) {
-  .wrapper {
-    width: 360px;
+/* Androids...*/
+/*@media (max-width: 360px) {*/
+/*  .wrapper {*/
+/*    width: 360px;*/
+/*  }*/
+
+/*  .main {*/
+/*    width: 360px;*/
+/*  }*/
+
+/*  .logo {*/
+/*    height: 33px;*/
+/*    margin: 43px auto 0;*/
+/*  }*/
+
+/*  .logo img {*/
+/*    width: 150px;*/
+/*    height: 33px;*/
+/*  }*/
+
+/*  .imgWrapper {*/
+/*    width: 360px;*/
+/*    height: 430px;*/
+/*  }*/
+
+/*  .background {*/
+/*    width: 360px;*/
+/*    height: 430px;*/
+/*  }*/
+
+/*  .footerWrapper {*/
+/*    margin-top: 3px;*/
+/*  }*/
+/*}*/
+
+/* iPhone 6/7/8 */
+@media (min-width: 375px) and (max-width: 413px) {
+  .wrapper,
+  .main {
+    width: 375px;
   }
 
-  .main {
-    width: 360px;
+  .headerWrapper {
+    width: 375px;
   }
 
   .logo {
+    width: 375px;
     height: 33px;
-    margin: 43px auto 0;
+    margin: 10px auto 0;
   }
 
   .logo img {
@@ -84,59 +136,88 @@
   }
 
   .imgWrapper {
-    width: 360px;
-    height: 430px;
+    height: 423px;
   }
 
   .background {
-    width: 360px;
-    height: 430px;
+    width: 375px;
+    height: 423px;
   }
 
   .footerWrapper {
-    margin-top: 3px;
-  }
-
-  .preLoader {
-    width: 64px;
-    height: 64px;
-    margin: 50% auto;
+    width: 375px;
+    padding: 4px 0 3px;
   }
 }
 
-@media (min-width: 375px) {
-  .wrapper {
-    width: 375px;
-  }
+/* iPhone X/11*/
+/*@media (max-width: 375px) and (min-height: 812px) {*/
+/*  .wrapper {*/
+/*    width: 375px;*/
+/*  }*/
 
-  .main {
-    width: 375px;
-  }
+/*  .main {*/
+/*    width: 375px;*/
+/*  }*/
 
-  .logo {
-    width: 375px;
-    height: 36px;
-    margin: 60px auto 0;
-  }
+/*  .logo {*/
+/*    width: 375px;*/
+/*    height: 36px;*/
+/*    margin: 60px auto 0;*/
+/*  }*/
 
-  .logo img {
-    width: 166px;
-    height: 36px;
-  }
+/*  .logo img {*/
+/*    width: 166px;*/
+/*    height: 36px;*/
+/*  }*/
 
-  .imgWrapper {
-    height: 423px;
-    margin: 71px 0 70px;
-  }
+/*  .imgWrapper {*/
+/*    height: 423px;*/
+/*    margin: 71px 0 70px;*/
+/*  }*/
 
-  .background {
-    width: 375px;
-    height: 423px;
-  }
+/*  .background {*/
+/*    width: 375px;*/
+/*    height: 423px;*/
+/*  }*/
+/*}*/
 
-  .preLoader {
-    width: 64px;
-    height: 64px;
-    margin: 50% auto;
-  }
-}
+/*@media (min-width: 1024px) {*/
+/*  .wrapper {*/
+/*    width: 375px;*/
+/*    margin: 0 auto;*/
+/*  }*/
+
+/*  .main {*/
+/*    width: 375px;*/
+/*  }*/
+
+/*  .headerWrapper {*/
+/*    width: 375px;*/
+/*  }*/
+
+/*  .logo {*/
+/*    width: 375px;*/
+/*    height: 33px;*/
+/*    margin: 10px auto 0;*/
+/*  }*/
+
+/*  .logo img {*/
+/*    width: 150px;*/
+/*    height: 33px;*/
+/*  }*/
+
+/*  .imgWrapper {*/
+/*    height: 423px;*/
+/*  }*/
+
+/*  .background {*/
+/*    width: 375px;*/
+/*    height: 423px;*/
+/*  }*/
+
+/*  .footerWrapper {*/
+/*    width: 375px;*/
+/*    padding: 4px 0 3px;*/
+/*  }*/
+/*}*/

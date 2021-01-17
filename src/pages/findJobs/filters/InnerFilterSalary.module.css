@@ -40,7 +40,7 @@
   }
 }
 
-@media (min-width: 360px) and (max-height: 640px) {
+@media (max-width: 360px) {
   .input {
     width: 150px;
     height: 36px;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Select from 'react-select'
 import { connect } from 'react-redux'
-import s from './Questionary.module.css'
+import s from './ChooseInstrumentPage.module.css'
 
 
 const options = [
@@ -20,9 +20,9 @@ const customStyles = {
   valueContainer     : (provided) => ({
     ...provided,
     justifyContent: 'center',
-    height        : '54.5px',
+    height        : '40px',
   }),
-  control            : (provided, state) => ({
+  control            : (provided) => ({
     ...provided,
     borderColor  : '#DADADA',
     width        : 260,

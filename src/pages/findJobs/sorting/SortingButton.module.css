@@ -27,27 +27,28 @@
   color: #6384EB;
 }
 
-
+/* iPhone 5/5s/SE*/
 @media (min-width: 320px) and (max-width: 359px) {
   .sortBtnWrapper {
     width: 320px;
     margin-top: 10px;
-    padding: 30px 35px 30px 20px;
+    padding: 25px 0 25px 15px;
   }
 }
 
-@media (min-width: 360px) and (max-height: 640px) {
-  .sortBtnWrapper {
-    width: 360px;
-    margin-top: 10px;
-    padding: 30px 35px 30px 20px;
-  }
-}
+/*@media (max-width: 360px) {*/
+/*  .sortBtnWrapper {*/
+/*    width: 360px;*/
+/*    margin-top: 10px;*/
+/*    padding: 30px 35px 30px 20px;*/
+/*  }*/
+/*}*/
 
-@media (min-width: 375px) {
+/* iPhone 6/7/8 */
+@media (min-width: 375px) and (max-width: 413px) {
   .sortBtnWrapper {
     width: 375px;
     margin-top: 10px;
-    padding: 30px 35px 30px 20px;
+    padding: 25px 0 25px 15px;
   }
 }

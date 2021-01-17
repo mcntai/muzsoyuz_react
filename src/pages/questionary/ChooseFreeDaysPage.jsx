@@ -7,7 +7,7 @@ import Text from './Text'
 import Calendar from './Calendar'
 import Button from './Button'
 import img from '../../assets/img/start-choose-days-background.svg'
-import s from './Questionary.module.css'
+import s from './ChooseFreeDaysPage.module.css'
 
 
 const mapStateToProps = state => {
@@ -37,7 +37,7 @@ const ChooseFreeDaysPage = ({ selectedDays, authorized, role }) => {
       <>
         <BackgroundImage
           img={img}
-          imgClass={s.chooseDaysBack}
+          imgClass={s.chooseDaysBackground}
         />
         <Text
           text="Відзнач найближчі вільні дні, щоб тебе побачили роботодавці"

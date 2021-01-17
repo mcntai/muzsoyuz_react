@@ -169,31 +169,100 @@
   }
 }
 
-@media (min-width: 360px) and (max-height: 640px) {
-  .headerWrapper {
-    width: 360px;
-    margin: 0 auto;
-  }
+/*@media (max-width: 360px) {*/
+/*  .headerWrapper {*/
+/*    width: 360px;*/
+/*    margin: 0 auto;*/
+/*  }*/
 
-  .headerWrapper div img {
-    margin: 23px 20px 20px 0;
-  }
+/*  .headerWrapper div img {*/
+/*    margin: 23px 20px 20px 0;*/
+/*  }*/
 
+/*  !* Buttons styles *!*/
+/*  .btnClass {*/
+/*    width: 160px;*/
+/*    height: 32px;*/
+/*  }*/
+
+/*  !* Styles for Job Offers *!*/
+/*  .jobOfferItem {*/
+/*    width: 330px;*/
+/*    height: 80px;*/
+/*    margin-top: 15px;*/
+/*  }*/
+
+/*  .jobOfferContentWrapper {*/
+/*    height: 75px;*/
+/*  }*/
+
+/*  .instrumentIcon {*/
+/*    width: 43px;*/
+/*    height: 43px;*/
+/*  }*/
+
+/*  .jobTextWrapper {*/
+/*    width: 190px;*/
+/*  }*/
+
+/*  .jobTitle {*/
+/*    composes: montserrat;*/
+/*    font-size: 14px;*/
+/*    line-height: 16px;*/
+/*  }*/
+
+/*  .jobDate {*/
+/*    composes: jobTitle;*/
+/*    font-size: 14px;*/
+/*    line-height: 16px;*/
+/*    width: 30px;*/
+/*    height: 30px;*/
+/*    text-transform: capitalize;*/
+/*    text-align: center;*/
+/*  }*/
+
+/*  .jobSalary {*/
+/*    composes: montserrat;*/
+/*    font-size: 13px;*/
+/*    line-height: 16px;*/
+/*    color: #828282;*/
+/*    margin-top: 7px;*/
+/*  }*/
+
+/*  !* Footer classes *!*/
+/*  .footerWrapper {*/
+/*    width: 360px;*/
+/*    padding-bottom: 5px;*/
+/*  }*/
+
+/*  !* Preloader Styles *!*/
+/*  .loadingNewOffers {*/
+/*    font-size: 14px;*/
+/*    line-height: 16px;*/
+/*  }*/
+/*}*/
+
+/* iPhone 6/7/8 */
+@media (min-width: 375px) and (max-width: 413px) {
   /* Buttons styles */
   .btnClass {
-    width: 160px;
+    width: 169px;
     height: 32px;
   }
 
   /* Styles for Job Offers */
   .jobOfferItem {
-    width: 330px;
+    width: 343px;
     height: 80px;
-    margin-top: 15px;
+    margin-top: 8px;
+  }
+
+  .jobOfferItem:first-child {
+    margin-top: 10px;
   }
 
   .jobOfferContentWrapper {
-    height: 75px;
+    height: 80px;
   }
 
   .instrumentIcon {
@@ -202,47 +271,48 @@
   }
 
   .jobTextWrapper {
-    width: 190px;
+    width: 200px;
   }
 
   .jobTitle {
     composes: montserrat;
     font-size: 14px;
-    line-height: 16px;
+    line-height: 17px;
   }
 
   .jobDate {
     composes: jobTitle;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 15px;
+    line-height: 18px;
     width: 30px;
-    height: 30px;
+    height: 40px;
     text-transform: capitalize;
     text-align: center;
   }
 
   .jobSalary {
     composes: montserrat;
-    font-size: 13px;
-    line-height: 16px;
+    font-size: 11px;
+    line-height: 13px;
     color: #828282;
-    margin-top: 7px;
+    margin-top: 10px;
   }
 
   /* Footer classes */
   .footerWrapper {
-    width: 360px;
-    padding-bottom: 5px;
+    width: 375px;
+    padding: 4px 0 3px;
   }
 
   /* Preloader Styles */
   .loadingNewOffers {
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 12px;
+    line-height: 15px;
   }
 }
 
-@media (min-width: 375px) {
+/* iPhone X/11*/
+@media (max-width: 375px) and (min-height: 812px) {
   .headerWrapper {
     width: 375px;
     margin: 0 auto;

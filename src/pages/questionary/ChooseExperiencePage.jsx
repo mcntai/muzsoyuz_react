@@ -6,7 +6,7 @@ import Text from './Text'
 import YearsOfExperience from './YearsOfExperience'
 import Button from './Button'
 import img from '../../assets/img/start-choose-exp-background.svg'
-import s from './Questionary.module.css'
+import s from './ChooseExperiencePage.module.css'
 
 
 const mapStateToProps = state => {
