@@ -176,7 +176,7 @@
 
   .form {
     width: 275px;
-    margin-top: 25px;
+    margin-top: 10px;
   }
 
   .inputWrapper {
@@ -196,7 +196,7 @@
   .inputSubmitLogin {
     composes: inputSubmit;
     width: 275px;
-    margin-top: 56px;
+    margin-top: 46px;
   }
 
   /* Gender Styling */
