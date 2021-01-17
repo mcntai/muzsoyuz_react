@@ -104,6 +104,9 @@ class OfferJob extends React.Component {
         <div className={s.headerWrapper}>
           <Header/>
         </div>
+        <div className={s.jobCreateWrapper}>
+          <p className={s.jobCreate}>Запропонуй роботу</p>
+        </div>
         <form action="" className={s.form}>
           <p>Заголовок оголошення</p>
           <div className={s.inputWrapper}>

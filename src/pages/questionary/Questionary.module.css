@@ -35,13 +35,17 @@
 @media (min-width: 320px) and (max-width: 359px) {
   /* Common Styles */
   .imgWrapper {
-    height: 380px;
+    height: 300px;
   }
 
   .logo {
     width: 87px;
     height: 19px;
-    top: 47px;
+    top: 20px;
+  }
+
+  .finishBtn {
+    top: 180px;
   }
 }
 

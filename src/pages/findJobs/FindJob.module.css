@@ -102,13 +102,9 @@
     margin: 0 auto;
   }
 
-  .headerWrapper div img {
-    margin: 23px 20px 20px 0;
-  }
-
   /* Buttons styles */
   .btnClass {
-    width: 142px;
+    width: 140px;
     height: 32px;
   }
 
@@ -116,7 +112,7 @@
   .jobOfferItem {
     width: 286px;
     height: 70px;
-    margin-top: 15px;
+    margin-top: 10px;
   }
 
   .jobOfferContentWrapper {
@@ -159,7 +155,7 @@
   /* Footer classes */
   .footerWrapper {
     width: 320px;
-    padding-bottom: 3px;
+    padding: 4px 0 5px;
   }
 
   /* Preloader Styles */

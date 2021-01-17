@@ -33,22 +33,9 @@
     width: 320px;
   }
 
-  .imgWrapper {
-    position: relative;
-    height: 380px;
-  }
-
   .startImgBackground {
     width: 320px;
-    height: 380px;
-  }
-
-  .logo {
-    position: relative;
-    width: 87px;
-    height: 19px;
-    top: 47px;
-    z-index: 1;
+    height: 300px;
   }
 
   .startTextWrapper {
@@ -57,14 +44,13 @@
 
   .startText {
     composes: montserrat;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 16px;
+    line-height: 19px;
     display: block;
-    margin-top: 20px;
   }
 
   .startBtn {
-    margin: 34px 0 30px;
+    margin: 30px 0 0;
   }
 }
 

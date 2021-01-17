@@ -61,7 +61,6 @@
 
 .logIcons {
   composes: socialIcons;
-  margin: 28px 0 189px 0;
 }
 
 .facebookIcon {
@@ -81,12 +80,12 @@
 /* iPhone 5/5s/SE*/
 @media (min-width: 320px) and (max-width: 359px) {
   .authWith {
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .authWithLogin {
     composes: authWith;
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
   .socialIcons {
@@ -94,11 +93,11 @@
   }
 
   .regIcons {
-    margin: 15px 0 5px 0;
+    margin: 20px 0 25px 0;
   }
 
   .logIcons {
-    margin: 25px 0 48px 0;
+    margin: 20px 0 40px 0;
   }
 }
 
@@ -145,7 +144,7 @@
   }
 
   .logIcons {
-    margin: 48px 0 98px 0;
+    margin: 40px 0 104px 0;
   }
 }
 
@@ -168,7 +167,7 @@
   }
 
   .logIcons {
-    margin: 48px 0 69px 0;
+    margin: 40px 0 77px 0;
   }
 }
 

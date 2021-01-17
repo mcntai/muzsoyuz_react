@@ -41,6 +41,19 @@
   color: #6A6A6A;
 }
 
+.jobCreateWrapper {
+  width: 250px;
+  margin: 0 auto;
+}
+
+.jobCreate {
+  composes: montserrat;
+  text-align: center;
+  font-size: 18px;
+  line-height: 22px;
+  color: #262D33;
+}
+
 .textErr {
   color: #fd4343;
   display: block;
@@ -189,7 +202,7 @@
     composes: montserrat;
     width: 320px;
     padding-bottom: 40px;
-    margin: 0 auto 35px;
+    margin: 30px auto 35px;
   }
 
   /*Main classes*/
@@ -222,7 +235,7 @@
 
   .footerWrapper {
     width: 320px;
-    /*padding-bottom: 3px;*/
+    padding: 4px 0 5px;
   }
 }
 

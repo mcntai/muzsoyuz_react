@@ -2,25 +2,14 @@
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 17px;
-  line-height: 22px;
+  font-size: 16px;
+  line-height: 19px;
   color: #262D33;
 }
 
 .instrumentsWrapper {
-  max-height: 460px;
   overflow-y: scroll;
-}
-
-.instWrapper {
-  padding-left: 45px;
-  height: 22px;
-  display: flex;
-  align-items: center;
-}
-
-.instWrapper:last-child {
-  margin-bottom: 10px;
+  columns: 2;
 }
 
 .instrumentCheckbox {
@@ -30,7 +19,7 @@
 
 .label {
   composes: montserrat;
-  margin-left: 18px;
+  margin-left: 10px;
 }
 
 .instrument:hover {
@@ -40,25 +29,30 @@
 
 @media (min-width: 320px) and (max-width: 359px) {
   .instWrapper {
-    margin-top: 22px;
+    padding-top: 10px;
+    padding-left: 10px;
   }
 }
 
-@media (max-width: 360px) {
-  .instWrapper {
-    margin-top: 20px;
-  }
-}
+/*@media (max-width: 360px) {*/
+/*  .instWrapper {*/
+/*    margin-top: 20px;*/
+/*  }*/
+/*}*/
 
 @media (min-width: 375px) {
   .instWrapper {
-    margin-top: 24px;
+    padding-top: 10px;
+    padding-left: 10px;
   }
 }
 
 /* iPhone 6+/7+/8+ */
 @media (min-width: 414px) and (max-width: 767px) {
-
+  .instWrapper {
+    padding-top: 10px;
+    padding-left: 10px;
+  }
 }
 
 

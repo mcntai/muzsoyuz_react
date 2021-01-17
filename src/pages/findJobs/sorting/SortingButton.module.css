@@ -32,7 +32,10 @@
   .sortBtnWrapper {
     width: 320px;
     margin-top: 10px;
-    padding: 25px 0 25px 15px;
+    padding: 20px 0 20px 15px;
+
+    font-size: 16px;
+    line-height: 19px;
   }
 }
 

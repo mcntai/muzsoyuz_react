@@ -63,20 +63,6 @@
 
 /* iPhone 5/5s/SE*/
 @media (min-width: 320px) and (max-width: 359px) {
-  /* Common Styling */
-  .logo {
-    position: relative;
-    width: 87px;
-    height: 19px;
-    top: 47px;
-    z-index: 1;
-  }
-
-  .textWrapper {
-    width: 104px;
-  }
-
-  /* Choose Free Days Page */
   .chooseDaysBackground {
     width: 320px;
   }
@@ -86,7 +72,10 @@
   }
 
   .chooseDaysText {
-    top: 350px;
+    font-size: 16px;
+    line-height: 19px;
+
+    top: 280px;
     width: 220px;
     margin-left: -110px;
   }
@@ -97,18 +86,17 @@
   }
 
   .calendarContainer {
-    top: 340px;
+    top: 280px;
     margin-left: -114.5px;
+    padding-bottom: 70px;
   }
 
   .calendarContainer > div {
     font-size: 13px;
   }
 
-  .finishBtn {
-    top: 530px;
-    left: 50%;
-    margin-left: -92.5px;
+  .chooseDaysFinishBtn {
+    margin-top: 15px;
   }
 }
 

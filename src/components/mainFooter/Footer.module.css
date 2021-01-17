@@ -37,16 +37,12 @@
 
 /* iPhone 5/5s/SE */
 @media (min-width: 320px) and (max-width: 359px) {
-  .footer {
-    padding-top: 5px;
-  }
-
   .navWrapper {
     width: 93px;
   }
 
   .nav img {
-    margin: 0 auto 9px;
+    margin: 0 auto 4px;
     width: 24px;
     height: 24px;
   }

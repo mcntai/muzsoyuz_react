@@ -33,6 +33,7 @@
   outline: none;
 }
 
+/* iPhone 5/5s/SE*/
 @media (min-width: 320px) and (max-width: 359px) {
   .input {
     width: 129px;
@@ -40,13 +41,14 @@
   }
 }
 
-@media (max-width: 360px) {
-  .input {
-    width: 150px;
-    height: 36px;
-  }
-}
+/*@media (max-width: 360px) {*/
+/*  .input {*/
+/*    width: 150px;*/
+/*    height: 36px;*/
+/*  }*/
+/*}*/
 
+/* iPhone 6/7/8 */
 @media (min-width: 375px) {
   .input {
     composes: montserrat;
