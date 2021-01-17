@@ -276,3 +276,72 @@
     margin: 20px auto;
   }
 }
+
+/* iPhone 6+/7+/8+ */
+@media (min-width: 414px) and (max-width: 767px) {
+  /* Main Styles */
+  .profileWrapper {
+    composes: flex;
+    width: 414px;
+  }
+
+  .profileTopSection {
+    width: 414px;
+    padding-bottom: 60px;
+  }
+
+  .backBtn {
+    top: 20px;
+    left: 17px;
+  }
+
+  .topContentWrapper {
+    margin-top: 40px;
+  }
+
+  .avatarWrapper {
+    width: 111px;
+    height: 111px;
+  }
+
+  .avatar {
+    width: 111px;
+    height: 111px;
+    border-radius: 50%;
+  }
+
+  .profileMiddleSection {
+    width: 380px;
+    min-height: 330px;
+
+    margin-top: -45px;
+    padding-bottom: 10px;
+  }
+
+  .profileTitleSettingsWrapper {
+    margin-top: 20px;
+  }
+
+  .profileTitle {
+    composes: montserrat;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  /* Collapse Button Styles */
+  .btnWrapper {
+    width: 307px;
+    padding: 12px 16px;
+  }
+
+  .btnWrapperInstrument {
+    composes: btnWrapper;
+    margin: 20px auto;
+  }
+
+  .btnWrapperCalendar {
+    composes: btnWrapper;
+    margin: 20px auto;
+  }
+}

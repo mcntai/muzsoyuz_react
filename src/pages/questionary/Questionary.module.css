@@ -26,6 +26,11 @@
   z-index: 0;
 }
 
+.finishBtn {
+  position: relative;
+  z-index: 1;
+}
+
 /* iPhone 5/5s/SE*/
 @media (min-width: 320px) and (max-width: 359px) {
   /* Common Styles */
@@ -52,5 +57,28 @@
     width: 150px;
     height: 33px;
     top: 20px;
+  }
+
+  .finishBtn {
+    top: 270px;
+  }
+}
+
+/* iPhone 6+/7+/8+ */
+@media (min-width: 414px) and (max-width: 767px) {
+  /* Common Styles */
+  .imgWrapper {
+    width: 414px;
+    height: 423px;
+  }
+
+  .logo {
+    width: 150px;
+    height: 33px;
+    top: 40px;
+  }
+
+  .finishBtn {
+    top: 190px;
   }
 }

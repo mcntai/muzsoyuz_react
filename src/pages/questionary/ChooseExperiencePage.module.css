@@ -94,7 +94,6 @@
 
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {
-  /* Choose Experience Page */
   .chooseExpPageWrapper {
     width: 375px;
   }
@@ -126,5 +125,41 @@
 
   .chooseExpFinishBtn {
     margin-top: 46px;
+  }
+}
+
+/* iPhone 6+/7+/8+ */
+@media (min-width: 414px) and (max-width: 767px) {
+  .chooseExpPageWrapper {
+    width: 414px;
+  }
+
+  .chooseExpImgBack {
+    width: 414px;
+  }
+
+  .chooseExpTextWrapper {
+    width: 290px;
+  }
+
+  .chooseExpText {
+    top: 360px;
+    width: 300px;
+    margin-left: -150px;
+  }
+
+  .yearExpBtnsWrapper {
+    width: 330px;
+    margin-top: 20px;
+  }
+
+  .expBtn {
+    width: 56px;
+    height: 41px;
+    line-height: 41px;
+  }
+
+  .chooseExpFinishBtn {
+    margin-top: 45px;
   }
 }

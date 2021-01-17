@@ -225,3 +225,38 @@
     padding: 4px 0 3px;
   }
 }
+
+/* iPhone 6+/7+/8+ */
+@media (min-width: 414px) and (max-width: 767px) {
+  /* Common Styles */
+  .container {
+    width: 414px;
+  }
+
+  /* Main Styles */
+  .jobWrapper {
+    width: 334px;
+  }
+
+  .description {
+    margin-top: 15px;
+  }
+
+  .jobCreatorWrapper {
+    margin-top: 30px;
+  }
+
+  .userName {
+    width: 260px;
+  }
+
+  .chatBtn {
+    width: 334px;
+    margin: 30px 0 90px;
+  }
+
+  .footerWrapper {
+    width: 414px;
+    padding: 4px 0 10px;
+  }
+}

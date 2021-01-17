@@ -16,6 +16,7 @@
   box-shadow: 0 5px 32px rgba(0, 0, 0, 0.1);
 }
 
+/* iPhone 5/5s/SE*/
 @media (min-width: 320px) and (max-width: 359px) {
   .calendarWrapper {
     padding-bottom: 32px;
@@ -55,6 +56,21 @@
     line-height: 15px;
 
     width: 240px;
+    margin: 15px auto 0;
+  }
+}
+
+/* iPhone 6+/7+/8+ */
+@media (min-width: 414px) and (max-width: 767px) {
+  .calendarWrapper {
+    padding-bottom: 32px;
+  }
+
+  .calendarContainer {
+    font-size: 15px;
+    line-height: 17px;
+
+    width: 280px;
     margin: 15px auto 0;
   }
 }

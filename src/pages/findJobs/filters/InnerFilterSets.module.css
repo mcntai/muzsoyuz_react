@@ -16,6 +16,7 @@
   appearance: none;
 }
 
+/* iPhone 5/5s/SE*/
 @media (min-width: 320px) and (max-width: 359px) {
   .selector {
     width: 320px;
@@ -24,18 +25,28 @@
   }
 }
 
-@media (max-width: 360px) {
-  .selector {
-    width: 360px;
-    height: 50px;
-    padding-left: 31px;
-  }
-}
+/*@media (max-width: 360px) {*/
+/*  .selector {*/
+/*    width: 360px;*/
+/*    height: 50px;*/
+/*    padding-left: 31px;*/
+/*  }*/
+/*}*/
 
+/* iPhone 6/7/8 */
 @media (min-width: 375px) {
   .selector {
     width: 375px;
     height: 52px;
+    padding-left: 31px;
+  }
+}
+
+/* iPhone 6+/7+/8+ */
+@media (min-width: 414px) and (max-width: 767px) {
+  .selector {
+    width: 414px;
+    height: 50px;
     padding-left: 31px;
   }
 }

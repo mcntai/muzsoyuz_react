@@ -149,5 +149,28 @@
   }
 }
 
+/* iPhone 6+/7+/8+ */
+@media (min-width: 414px) and (max-width: 767px) {
+  .authWith {
+    margin-top: 20px;
+  }
+
+  .authWithLogin {
+    margin-top: 40px;
+  }
+
+  .socialIcons {
+    width: 305px;
+  }
+
+  .regIcons {
+    margin: 20px 0 34px;
+  }
+
+  .logIcons {
+    margin: 48px 0 69px 0;
+  }
+}
+
 
 

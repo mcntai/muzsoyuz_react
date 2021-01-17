@@ -77,3 +77,22 @@
     margin: 15px auto 0;
   }
 }
+
+/* iPhone 6+/7+/8+ */
+@media (min-width: 414px) and (max-width: 767px) {
+  .sortingPageWrapper {
+    width: 414px;
+  }
+
+  /* Image Background Styling */
+  .imgWrapper {
+    height: 250px;
+  }
+
+  .imgBackground {
+    width: 414px;
+    height: 250px;
+    display: block;
+    margin: 15px auto 0;
+  }
+}

@@ -87,6 +87,24 @@
   }
 }
 
+/* iPhone 6+/7+/8+ */
+@media (min-width: 414px) and (max-width: 767px) {
+  .navWrapper {
+    width: 138px;
+  }
+
+  .nav {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .nav img {
+    margin: 0 auto 8px;
+    width: 28px;
+    height: 28px;
+  }
+}
+
 /* iPhone X/11*/
 /*@media (max-width: 375px) and (min-height: 812px) {*/
 /*  .footer {*/

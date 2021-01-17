@@ -95,3 +95,31 @@
     margin: 35px 0 20px 0;
   }
 }
+
+/* iPhone 6+/7+/8+ */
+@media (min-width: 414px) and (max-width: 767px) {
+  .chooseInstrumentPageWrapper {
+    width: 414px;
+  }
+
+  .chooseInstBackground {
+    width: 414px;
+  }
+
+  .chooseInstText {
+    width: 220px;
+    font-size: 18px;
+    line-height: 23px;
+    top: 390px;
+    margin-left: -110px;
+  }
+
+  .selectInstrument {
+    composes: montserrat;
+    margin-top: 30px;
+  }
+
+  .chooseInstBtn {
+    margin: 34px 0 20px 0;
+  }
+}

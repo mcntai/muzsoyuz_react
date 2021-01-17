@@ -278,9 +278,10 @@
 /*    padding-bottom: 5px;*/
 /*  }*/
 /*}*/
+
+
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {
-  /*Main classes*/
   .form {
     composes: montserrat;
     width: 343px;
@@ -333,45 +334,31 @@
   }
 }
 
-/* iPhone X/11*/
-@media (max-width: 375px) and (min-height: 812px) {
-  .headerWrapper {
-    width: 375px;
-    margin: 0 auto;
-  }
-
-  .headerWrapper div img {
-    margin: 27px 20px 20px 0;
-  }
-
-  /*Main classes*/
+/* iPhone 6+/7+/8+ */
+@media (min-width: 414px) and (max-width: 767px) {
   .form {
     composes: montserrat;
-    width: 343px;
-    padding: 20px 0 40px 0;
+    width: 334px;
+    padding-bottom: 40px;
     margin: 0 auto 35px;
   }
 
-  .form p {
-    margin-left: 20px;
-  }
-
   .inputWrapper {
-    width: 307px;
+    width: 334px;
   }
 
   .input {
-    width: 307px;
+    width: 334px;
     height: 40px;
   }
 
   .textArea {
-    width: 307px;
+    width: 334px;
     height: 90px;
   }
 
   .role {
-    width: 307px;
+    width: 334px;
     height: 40px;
   }
 
@@ -392,7 +379,72 @@
   }
 
   .footerWrapper {
-    width: 375px;
-    padding-bottom: 6px;
+    width: 414px;
+    padding: 4px 0 10px;
   }
 }
+
+
+/* iPhone X/11*/
+/*@media (max-width: 375px) and (min-height: 812px) {*/
+/*  .headerWrapper {*/
+/*    width: 375px;*/
+/*    margin: 0 auto;*/
+/*  }*/
+
+/*  .headerWrapper div img {*/
+/*    margin: 27px 20px 20px 0;*/
+/*  }*/
+
+/*  !*Main classes*!*/
+/*  .form {*/
+/*    composes: montserrat;*/
+/*    width: 343px;*/
+/*    padding: 20px 0 40px 0;*/
+/*    margin: 0 auto 35px;*/
+/*  }*/
+
+/*  .form p {*/
+/*    margin-left: 20px;*/
+/*  }*/
+
+/*  .inputWrapper {*/
+/*    width: 307px;*/
+/*  }*/
+
+/*  .input {*/
+/*    width: 307px;*/
+/*    height: 40px;*/
+/*  }*/
+
+/*  .textArea {*/
+/*    width: 307px;*/
+/*    height: 90px;*/
+/*  }*/
+
+/*  .role {*/
+/*    width: 307px;*/
+/*    height: 40px;*/
+/*  }*/
+
+/*  .role option {*/
+/*    color: #000000;*/
+/*  }*/
+
+/*  .role:invalid {*/
+/*    color: #9e9e9e;*/
+/*  }*/
+
+/*  .role:focus {*/
+/*    outline: none;*/
+/*  }*/
+
+/*  .submit {*/
+/*    width: 302px;*/
+/*  }*/
+
+/*  .footerWrapper {*/
+/*    width: 375px;*/
+/*    padding-bottom: 6px;*/
+/*  }*/
+/*}*/

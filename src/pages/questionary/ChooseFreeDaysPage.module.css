@@ -61,11 +61,6 @@
   margin-left: -140.5px;
 }
 
-.finishBtn {
-  position: relative;
-  z-index: 1;
-}
-
 /* iPhone 5/5s/SE*/
 @media (min-width: 320px) and (max-width: 359px) {
   /* Common Styling */
@@ -119,21 +114,6 @@
 
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {
-  /* Common Styling */
-  .logo {
-    position: relative;
-    width: 150px;
-    height: 33px;
-    top: 20px;
-    z-index: 1;
-  }
-
-  .textWrapper {
-    width: 142px;
-    margin-top: 50px;
-  }
-
-  /* Choose Free Days Page */
   .chooseDaysBackground {
     width: 375px;
   }
@@ -161,8 +141,35 @@
     top: 330px;
     padding-bottom: 60px;
   }
+}
 
-  .finishBtn {
-    top: 270px;
+/* iPhone 6+/7+/8+ */
+@media (min-width: 414px) and (max-width: 767px) {
+  .chooseDaysBackground {
+    width: 414px;
+  }
+
+  .chooseDaysTextWrapper {
+    width: 290px;
+  }
+
+  .chooseDaysText {
+    top: 380px;
+    width: 340px;
+    margin-left: -170px;
+  }
+
+  .calendarBtn {
+    line-height: 17px;
+    margin-top: 30px;
+  }
+
+  .chooseDaysFinishBtn {
+    margin-top: 35px;
+  }
+
+  .calendarContainer {
+    top: 360px;
+    padding-bottom: 80px;
   }
 }

@@ -52,3 +52,16 @@
     padding-left: 18px;
   }
 }
+
+/* iPhone 6+/7+/8+ */
+@media (min-width: 414px) and (max-width: 767px) {
+  .instWrapper {
+    padding-top: 8px;
+    padding-left: 2px;
+  }
+
+  .label {
+    padding-top: 1px;
+    padding-left: 18px;
+  }
+}

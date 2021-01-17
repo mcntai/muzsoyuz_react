@@ -55,14 +55,27 @@
 
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {
+  .wrapper {
+    width: 375px;
+  }
+
   .logo {
     width: 150px;
     height: 33px;
     margin-top: 20px;
   }
+}
 
+/* iPhone 6+/7+/8+ */
+@media (min-width: 414px) and (max-width: 767px) {
   .wrapper {
-    width: 375px;
+    width: 414px;
+  }
+
+  .logo {
+    width: 166px;
+    height: 36px;
+    margin-top: 50px;
   }
 }
 

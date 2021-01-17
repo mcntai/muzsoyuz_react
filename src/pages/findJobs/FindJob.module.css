@@ -311,26 +311,17 @@
   }
 }
 
-/* iPhone X/11*/
-@media (max-width: 375px) and (min-height: 812px) {
-  .headerWrapper {
-    width: 375px;
-    margin: 0 auto;
-  }
-
-  .headerWrapper div img {
-    margin: 27px 20px 20px 0;
-  }
-
+/* iPhone 6+/7+/8+ */
+@media (min-width: 414px) and (max-width: 767px) {
   /* Buttons styles */
   .btnClass {
-    width: 169px;
+    width: 175px;
     height: 32px;
   }
 
   /* Styles for Job Offers */
   .jobOfferItem {
-    width: 343px;
+    width: 375px;
     height: 80px;
     margin-top: 8px;
   }
@@ -362,7 +353,7 @@
     composes: jobTitle;
     font-size: 15px;
     line-height: 18px;
-    width: 30px;
+    width: 40px;
     height: 40px;
     text-transform: capitalize;
     text-align: center;
@@ -378,8 +369,8 @@
 
   /* Footer classes */
   .footerWrapper {
-    width: 375px;
-    padding-bottom: 6px;
+    width: 414px;
+    padding: 4px 0 10px;
   }
 
   /* Preloader Styles */
@@ -388,4 +379,82 @@
     line-height: 15px;
   }
 }
+
+/* iPhone X/11*/
+/*@media (max-width: 375px) and (min-height: 812px) {*/
+/*  .headerWrapper {*/
+/*    width: 375px;*/
+/*    margin: 0 auto;*/
+/*  }*/
+
+/*  .headerWrapper div img {*/
+/*    margin: 27px 20px 20px 0;*/
+/*  }*/
+
+/*  !* Buttons styles *!*/
+/*  .btnClass {*/
+/*    width: 169px;*/
+/*    height: 32px;*/
+/*  }*/
+
+/*  !* Styles for Job Offers *!*/
+/*  .jobOfferItem {*/
+/*    width: 343px;*/
+/*    height: 80px;*/
+/*    margin-top: 8px;*/
+/*  }*/
+
+/*  .jobOfferItem:first-child {*/
+/*    margin-top: 10px;*/
+/*  }*/
+
+/*  .jobOfferContentWrapper {*/
+/*    height: 80px;*/
+/*  }*/
+
+/*  .instrumentIcon {*/
+/*    width: 43px;*/
+/*    height: 43px;*/
+/*  }*/
+
+/*  .jobTextWrapper {*/
+/*    width: 200px;*/
+/*  }*/
+
+/*  .jobTitle {*/
+/*    composes: montserrat;*/
+/*    font-size: 14px;*/
+/*    line-height: 17px;*/
+/*  }*/
+
+/*  .jobDate {*/
+/*    composes: jobTitle;*/
+/*    font-size: 15px;*/
+/*    line-height: 18px;*/
+/*    width: 30px;*/
+/*    height: 40px;*/
+/*    text-transform: capitalize;*/
+/*    text-align: center;*/
+/*  }*/
+
+/*  .jobSalary {*/
+/*    composes: montserrat;*/
+/*    font-size: 11px;*/
+/*    line-height: 13px;*/
+/*    color: #828282;*/
+/*    margin-top: 10px;*/
+/*  }*/
+
+/*  !* Footer classes *!*/
+/*  .footerWrapper {*/
+/*    width: 375px;*/
+/*    padding-bottom: 6px;*/
+/*  }*/
+
+/*  !* Preloader Styles *!*/
+/*  .loadingNewOffers {*/
+/*    font-size: 12px;*/
+/*    line-height: 15px;*/
+/*  }*/
+/*}*/
 

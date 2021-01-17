@@ -58,7 +58,8 @@ const ChooseFreeDaysPage = ({ selectedDays, authorized, role }) => {
   return (
     <div className={s.chooseDaysWrapper}>
       {
-        handleRedirect(authorized, role, renderContent)
+        // handleRedirect(authorized, role, renderContent)
+        renderContent()
       }
     </div>
   )
