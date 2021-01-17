@@ -59,10 +59,11 @@
   /* Main Styles */
   .nameWrapper {
     margin-top: 13px;
+    width: 220px;
   }
 
   .name {
-    max-width: 130px;
+    width: 200px;
     padding-right: 10px;
   }
 }
@@ -83,11 +84,12 @@
 @media (min-width: 375px) and (max-width: 413px) {
   /* Main Styles */
   .nameWrapper {
+    width: 220px;
     margin-top: 15px;
   }
 
   .name {
-    max-width: 200px;
+    width: 200px;
   }
 }
 
@@ -95,10 +97,11 @@
 @media (min-width: 414px) and (max-width: 767px) {
   /* Main Styles */
   .nameWrapper {
+    width: 280px;
     margin-top: 15px;
   }
 
   .name {
-    max-width: 260px;
+    width: 260px;
   }
 }

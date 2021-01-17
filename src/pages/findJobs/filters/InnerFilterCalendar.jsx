@@ -80,6 +80,7 @@ class InnerFilterCalendar extends React.Component {
             justify-content: center;
             font-family: 'Montserrat', sans-serif;
           }
+          }
           .Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
             background-color: #CBF6FF !important;
             color: #6384EB;
@@ -94,6 +95,10 @@ class InnerFilterCalendar extends React.Component {
           .Selectable .DayPicker-Day--end {
             border-top-right-radius: 50% !important;
             border-bottom-right-radius: 50% !important;
+          }
+          @media (min-width: 320px) and (max-width: 359px) {
+            .Selectable {
+              font-size: 14px;
           }
           `}</style>
         </Helmet>

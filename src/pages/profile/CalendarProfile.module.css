@@ -19,7 +19,7 @@
 /* iPhone 5/5s/SE*/
 @media (min-width: 320px) and (max-width: 359px) {
   .calendarWrapper {
-    padding-bottom: 32px;
+    padding-bottom: 15px;
   }
 
   .calendarContainer {

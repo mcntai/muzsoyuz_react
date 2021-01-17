@@ -98,14 +98,14 @@
 
 .input {
   composes: montserrat;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: 16px;
+  line-height: 19px;
 
   -webkit-appearance: none;
   -webkit-border-radius: 0;
   background: #AEC0F9;
 
-  padding: 12px 0 12px 27px;
+  padding: 10px 0 10px 27px;
 
   outline: none;
   border: 1px solid #AEC0F9;
@@ -118,6 +118,8 @@
 
 .input::placeholder {
   color: #000000;
+  font-size: 12px;
+  line-height: 15px;
 }
 
 .inputSubmit {
@@ -176,7 +178,7 @@
 
   .form {
     width: 275px;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .inputWrapper {
