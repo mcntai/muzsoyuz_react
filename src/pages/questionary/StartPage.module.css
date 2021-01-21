@@ -54,6 +54,39 @@
   }
 }
 
+/*Androids...*/
+@media (min-width: 360px) and (max-width: 374px)  {
+  /* Common Styling */
+  .startPageWrapper {
+    max-width: 374px;
+  }
+
+  .startTextWrapper {
+    width: 142px;
+    margin-top: 50px;
+  }
+
+  /* Start Page */
+  .startImgBackground {
+    width: 360px;
+    height: 300px;
+    display: block;
+    margin-top: 20px;
+  }
+
+  .startText {
+    composes: montserrat;
+    font-size: 18px;
+    line-height: 23px;
+    display: block;
+    margin-top: 41px;
+  }
+
+  .startBtn {
+    margin: 50px 0 20px 0;
+  }
+}
+
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {
   /* Common Styling */

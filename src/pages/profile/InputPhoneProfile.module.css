@@ -24,6 +24,8 @@
   border: 1px solid #DADADA;
   border-radius: 6px;
   outline: none;
+
+  margin-top: 20px;
 }
 
 @media (min-width: 320px) and (max-width: 359px) {
@@ -34,13 +36,13 @@
   }
 }
 
-/*@media (max-width: 360px) {*/
-/*  .phoneNumber {*/
-/*    width: 290px;*/
-/*    margin-top: 19px;*/
-/*    padding: 12px 16px;*/
-/*  }*/
-/*}*/
+/*Androids...*/
+@media (min-width: 360px) and (max-width: 374px)  {
+  .phoneNumber {
+    width: 307px;
+    padding: 12px 16px;
+  }
+}
 
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {

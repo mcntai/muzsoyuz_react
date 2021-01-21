@@ -41,17 +41,18 @@
   }
 }
 
-/*@media (max-width: 360px) {*/
-/*  .logo {*/
-/*    width: 160px;*/
-/*    height: 35px;*/
-/*    margin-top: 40px;*/
-/*  }*/
+/*Androids...*/
+@media (min-width: 360px) and (max-width: 374px)  {
+  .wrapper {
+    max-width: 374px;
+  }
 
-/*  .wrapper {*/
-/*    width: 360px;*/
-/*  }*/
-/*}*/
+  .logo {
+    width: 150px;
+    height: 33px;
+    margin-top: 20px;
+  }
+}
 
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {

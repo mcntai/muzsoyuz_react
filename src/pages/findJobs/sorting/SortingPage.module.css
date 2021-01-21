@@ -44,19 +44,24 @@
   }
 }
 
-/*@media (max-width: 360px) {*/
-/*  .sortingPageWrapper {*/
-/*    width: 360px;*/
-/*  }*/
+/* Androids...*/
+@media (min-width: 360px) and (max-width: 374px) {
+  .sortingPageWrapper {
+    max-width: 374px;
+  }
 
-/*  !* Image Background Styling *!*/
-/*  .imgBackground {*/
-/*    width: 360px;*/
-/*    height: 240px;*/
-/*    display: block;*/
-/*    margin: 10px auto 0;*/
-/*  }*/
-/*}*/
+  /* Image Background Styling */
+  .imgWrapper {
+    height: 200px;
+  }
+
+  .imgBackground {
+    width: 273px;
+    height: 200px;
+    display: block;
+    margin: 15px auto 0;
+  }
+}
 
 
 /* iPhone 6/7/8 */

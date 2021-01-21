@@ -33,6 +33,7 @@
 
 .nameWrapper:after {
   content: url("../../assets/img/edit-icon.svg");
+  vertical-align: middle;
 }
 
 .name:disabled {
@@ -56,7 +57,6 @@
 }
 
 @media (min-width: 320px) and (max-width: 359px) {
-  /* Main Styles */
   .nameWrapper {
     margin-top: 13px;
     width: 220px;
@@ -68,21 +68,20 @@
   }
 }
 
-/*@media (max-width: 360px) {*/
-/*  !* Main Styles *!*/
-/*  .nameWrapper {*/
-/*    margin-top: 13px;*/
-/*  }*/
+/*Androids...*/
+@media (min-width: 360px) and (max-width: 374px)  {
+  .nameWrapper {
+    width: 220px;
+    margin-top: 15px;
+  }
 
-/*  .name {*/
-/*    max-width: 160px;*/
-/*    padding-right: 10px;*/
-/*  }*/
-/*}*/
+  .name {
+    width: 200px;
+  }
+}
 
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {
-  /* Main Styles */
   .nameWrapper {
     width: 220px;
     margin-top: 15px;
@@ -95,7 +94,6 @@
 
 /* iPhone 6+/7+/8+ */
 @media (min-width: 414px) and (max-width: 767px) {
-  /* Main Styles */
   .nameWrapper {
     width: 280px;
     margin-top: 15px;

@@ -140,73 +140,74 @@
   }
 }
 
-/*@media (max-width: 360px) {*/
-/*  !* Main Styles *!*/
-/*  .profileWrapper {*/
-/*    composes: flex;*/
-/*    width: 360px;*/
-/*  }*/
+/*Androids...*/
+@media (min-width: 360px) and (max-width: 374px)  {
+  /* Main Styles */
+  .profileWrapper {
+    composes: flex;
+    max-width: 374px;
+  }
 
-/*  .profileTopSection {*/
-/*    width: 360px;*/
-/*    padding-bottom: 32px;*/
-/*  }*/
+  .profileTopSection {
+    width: 100%;
+    padding-bottom: 60px;
+  }
 
-/*  .backBtn {*/
-/*    top: 30px;*/
-/*    left: 10px;*/
-/*  }*/
+  .backBtn {
+    top: 20px;
+    left: 17px;
+  }
 
-/*  .topContentWrapper {*/
-/*    margin-top: 56px;*/
-/*  }*/
+  .topContentWrapper {
+    margin-top: 40px;
+  }
 
-/*  .avatarWrapper {*/
-/*    width: 68px;*/
-/*    height: 68px;*/
-/*  }*/
+  .avatarWrapper {
+    width: 111px;
+    height: 111px;
+  }
 
-/*  .avatar {*/
-/*    width: 68px;*/
-/*    height: 68px;*/
-/*    border-radius: 50%;*/
-/*  }*/
+  .avatar {
+    width: 111px;
+    height: 111px;
+    border-radius: 50%;
+  }
 
-/*  .profileMiddleSection {*/
-/*    width: 330px;*/
-/*    min-height: 366px;*/
+  .profileMiddleSection {
+    width: 340px;
+    min-height: 250px;
 
-/*    margin-top: -20px;*/
-/*    padding-bottom: 10px;*/
-/*  }*/
+    margin-top: -45px;
+    padding-bottom: 10px;
+  }
 
-/*  .profileTitleSettingsWrapper {*/
-/*    margin-top: 15px;*/
-/*  }*/
+  .profileTitleSettingsWrapper {
+    margin-top: 15px;
+  }
 
-/*  .profileTitle {*/
-/*    composes: montserrat;*/
-/*    font-weight: 500;*/
-/*    font-size: 16px;*/
-/*    line-height: 22px;*/
-/*  }*/
+  .profileTitle {
+    composes: montserrat;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+  }
 
-/*  !* Collapse Button Styles *!*/
-/*  .btnWrapper {*/
-/*    width: 290px;*/
-/*    padding: 12px 16px;*/
-/*  }*/
+  /* Collapse Button Styles */
+  .btnWrapper {
+    width: 307px;
+    padding: 12px 16px;
+  }
 
-/*  .btnWrapperInstrument {*/
-/*    composes: btnWrapper;*/
-/*    margin-top: 20px;*/
-/*  }*/
+  .btnWrapperInstrument {
+    composes: btnWrapper;
+    margin: 20px auto 0;
+  }
 
-/*  .btnWrapperCalendar {*/
-/*    composes: btnWrapper;*/
-/*    margin-top: 13px;*/
-/*  }*/
-/*}*/
+  .btnWrapperCalendar {
+    composes: btnWrapper;
+    margin: 20px auto 0;
+  }
+}
 
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {
@@ -268,12 +269,12 @@
 
   .btnWrapperInstrument {
     composes: btnWrapper;
-    margin: 20px auto;
+    margin: 20px auto 0;
   }
 
   .btnWrapperCalendar {
     composes: btnWrapper;
-    margin: 20px auto;
+    margin: 20px auto 0;
   }
 }
 
@@ -337,11 +338,11 @@
 
   .btnWrapperInstrument {
     composes: btnWrapper;
-    margin: 20px auto;
+    margin: 20px auto 0;
   }
 
   .btnWrapperCalendar {
     composes: btnWrapper;
-    margin: 20px auto;
+    margin: 20px auto 0;
   }
 }

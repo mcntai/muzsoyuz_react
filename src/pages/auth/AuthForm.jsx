@@ -47,7 +47,8 @@ class AuthForm extends BasicAuth {
   }
 
   handleGender(e) {
-    this.setState({ gender: e.target.name })
+    let gender = e.target.getAttribute('datafld')
+    this.setState({ gender })
   }
 
   validateInput(e, name, prevValue) {
@@ -133,20 +134,22 @@ class AuthForm extends BasicAuth {
 
           <div className={s.genderWrapper}>
             <span className={s.genderTitle}>Стать</span>
-            <input
-              type='button'
-              name='f'
-              value='жін'
+            <div
+              tabIndex={1}
+              datafld='жін'
               className={s.genderInput}
               onClick={this.handleGender.bind(this)}
-            />
-            <input
-              type='button'
-              name='m'
-              value='чол'
+            >
+              жін
+            </div>
+            <div
+              tabIndex={1}
+              datafld='чол'
               className={s.genderInput}
               onClick={this.handleGender.bind(this)}
-            />
+            >
+              чол
+            </div>
           </div>
 
           <button

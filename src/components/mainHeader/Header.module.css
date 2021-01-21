@@ -15,13 +15,13 @@
 }
 
 /* Androids...*/
-/*@media (max-width: 360px) {*/
-/*  .profile img {*/
-/*    margin: 23px 20px 20px 0;*/
-/*    width: 27px;*/
-/*    height: 27px;*/
-/*  }*/
-/*}*/
+@media (min-width: 360px) and (max-width: 374px) {
+  .profile img {
+    margin: 13px 20px 13px 0;
+    width: 27px;
+    height: 27px;
+  }
+}
 
  /*iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {
@@ -40,6 +40,7 @@
     height: 32px;
   }
 }
+
 
 /* iPhone X/11*/
 /*@media (max-width: 375px) and (min-height: 812px) {*/

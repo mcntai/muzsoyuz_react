@@ -41,12 +41,14 @@
   }
 }
 
-/*@media (max-width: 360px) {*/
-/*  .input {*/
-/*    width: 150px;*/
-/*    height: 36px;*/
-/*  }*/
-/*}*/
+/*Androids...*/
+@media (min-width: 360px) and (max-width: 374px) {
+  .input {
+    composes: montserrat;
+    width: 150px;
+    height: 36px;
+  }
+}
 
 /* iPhone 6/7/8 */
 @media (min-width: 375px) {

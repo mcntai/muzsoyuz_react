@@ -100,6 +100,42 @@
   }
 }
 
+/*Androids...*/
+@media (min-width: 360px) and (max-width: 374px)  {
+  .chooseDaysWrapper {
+    max-width: 374px;
+  }
+
+  .chooseDaysBackground {
+    width: 360px;
+  }
+
+  .chooseDaysTextWrapper {
+    width: 290px;
+  }
+
+  .chooseDaysText {
+    top: 350px;
+    width: 340px;
+    margin-left: -170px;
+  }
+
+  .calendarBtn {
+    line-height: 17px;
+    margin-top: 116px;
+  }
+
+  .chooseDaysFinishBtn {
+    margin-top: 30px;
+  }
+
+  .calendarContainer {
+    top: 330px;
+    padding-bottom: 60px;
+  }
+}
+
+
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {
   .chooseDaysBackground {
