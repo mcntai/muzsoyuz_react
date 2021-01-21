@@ -81,23 +81,24 @@
   }
 }
 
-/*@media (max-width: 360px) {*/
-/*  !* Main Styling *!*/
-/*  .sortingModalWrapper {*/
-/*    width: 330px;*/
-/*    margin: 0 auto 8px;*/
-/*  }*/
+/* Androids...*/
+@media (min-width: 360px) and (max-width: 374px) {
+  .sortingModalWrapper {
+    width: 340px;
+    margin: 0 auto 9px;
+  }
 
-/*  .btn {*/
-/*    width: 330px;*/
-/*    padding: 10px 0;*/
-/*  }*/
+  .btn {
+    composes: montserrat;
+    width: 340px;
+    padding: 13px 0;
+  }
 
-/*  .cancelBtn {*/
-/*    width: 300px;*/
-/*    margin-top: 2px;*/
-/*  }*/
-/*}*/
+  .cancelBtn {
+    width: 320px;
+    margin-top: 5px;
+  }
+}
 
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {

@@ -67,6 +67,35 @@
   }
 }
 
+/*Androids...*/
+@media (min-width: 360px) and (max-width: 374px)  {
+  /* Choose Instrument Page */
+  .chooseInstrumentPageWrapper {
+    max-width: 374px;
+  }
+
+  .chooseInstBackground {
+    width: 360px;
+  }
+
+  .chooseInstText {
+    width: 220px;
+    font-size: 18px;
+    line-height: 23px;
+    top: 360px;
+    margin-left: -110px;
+  }
+
+  .selectInstrument {
+    composes: montserrat;
+    margin-top: 110px;
+  }
+
+  .chooseInstBtn {
+    margin: 35px 0 20px 0;
+  }
+}
+
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {
   /* Choose Instrument Page */

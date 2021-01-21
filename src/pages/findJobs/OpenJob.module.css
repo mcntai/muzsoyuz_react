@@ -156,40 +156,40 @@
   }
 }
 
-/*@media (max-width: 360px) {*/
-/*  !* Common Styles *!*/
-/*  .container {*/
-/*    width: 360px;*/
-/*  }*/
+/* Androids...*/
+@media (min-width: 360px) and (max-width: 374px) {
+  /* Common Styles */
+  .container {
+    max-width: 374px;
+  }
 
-/*  !* Main Styles *!*/
-/*  .jobWrapper {*/
-/*    width: 300px;*/
-/*  }*/
+  /* Main Styles */
+  .jobWrapper {
+    max-width: 302px;
+  }
 
-/*  .description {*/
-/*    margin-top: 20px;*/
-/*  }*/
+  .description {
+    margin-top: 15px;
+  }
 
-/*  .jobCreatorWrapper {*/
-/*    margin-top: 28px;*/
-/*  }*/
+  .jobCreatorWrapper {
+    margin-top: 30px;
+  }
 
-/*  .userName {*/
-/*    width: 200px;*/
-/*  }*/
+  .userName {
+    width: 220px;
+  }
 
-/*  .chatBtn {*/
-/*    width: 300px;*/
-/*    margin-top: 30px;*/
-/*    margin-bottom: 80px;*/
-/*  }*/
+  .chatBtn {
+    max-width: 302px;
+    margin: 30px 0 80px;
+  }
 
-/*  .footerWrapper {*/
-/*    width: 360px;*/
-/*    padding-bottom: 5px;*/
-/*  }*/
-/*}*/
+  .footerWrapper {
+    max-width: 374px;
+    padding: 4px 0 3px;
+  }
+}
 
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {

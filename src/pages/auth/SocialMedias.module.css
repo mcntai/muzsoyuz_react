@@ -101,29 +101,28 @@
   }
 }
 
-/*@media (max-width: 360px) {*/
-/*  .authWith {*/
-/*    margin-top: 20px;*/
-/*  }*/
+/*Androids...*/
+@media (min-width: 360px) and (max-width: 374px)  {
+  .authWith {
+    margin-top: 20px;
+  }
 
-/*  .authWithLogin {*/
-/*    composes: authWith;*/
-/*    margin-top: 50px;*/
-/*  }*/
+  .authWithLogin {
+    margin-top: 40px;
+  }
 
-/*  .socialIcons {*/
-/*    width: 300px;*/
-/*  }*/
+  .socialIcons {
+    width: 305px;
+  }
 
-/*  .regIcons {*/
-/*    margin: 28px 0 70px 0;*/
-/*  }*/
+  .regIcons {
+    margin: 20px 0 37px;
+  }
 
-/*  .logIcons {*/
-/*    margin: 35px 0 87px 0;*/
-/*  }*/
-/*}*/
-
+  .logIcons {
+    margin: 40px 0 114px 0;
+  }
+}
 
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {

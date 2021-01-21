@@ -11,12 +11,12 @@
   }
 }
 
-/*@media (max-width: 360px) {*/
-/*  .sortFilterButtons {*/
-/*    width: 330px;*/
-/*    margin: 33px auto 0;*/
-/*  }*/
-/*}*/
+@media (min-width: 360px) and (max-width: 374px) {
+  .sortFilterButtons {
+    width: 343px;
+    margin: 33px auto 0;
+  }
+}
 
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {

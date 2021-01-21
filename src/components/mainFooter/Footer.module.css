@@ -48,22 +48,18 @@
   }
 }
 
-/* Androids...*/
-/*@media (max-width: 360px) {*/
-/*  .footer {*/
-/*    padding-top: 5px;*/
-/*  }*/
+ /*Androids...*/
+@media (min-width: 360px) and (max-width: 374px) {
+  .navWrapper {
+    width: 125px;
+  }
 
-/*  .navWrapper {*/
-/*    width: 125px;*/
-/*  }*/
-
-/*  .nav img {*/
-/*    margin: 0 auto 9px;*/
-/*    width: 24px;*/
-/*    height: 24px;*/
-/*  }*/
-/*}*/
+  .nav img {
+    margin: 0 auto 8px;
+    width: 24px;
+    height: 24px;
+  }
+}
 
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {

@@ -95,6 +95,43 @@
   }
 }
 
+/*Androids...*/
+@media (min-width: 360px) and (max-width: 374px)  {
+  .chooseExpPageWrapper {
+    max-width: 374px;
+  }
+
+  .chooseExpImgBack {
+    width: 360px;
+  }
+
+  .chooseExpTextWrapper {
+    width: 290px;
+  }
+
+  .chooseExpText {
+    top: 320px;
+    width: 300px;
+    margin-left: -150px;
+  }
+
+  .yearExpBtnsWrapper {
+    width: 330px;
+    margin-top: 100px;
+  }
+
+  .expBtn {
+    width: 56px;
+    height: 41px;
+    line-height: 41px;
+  }
+
+  .chooseExpFinishBtn {
+    margin-top: 46px;
+  }
+}
+
+
 /* iPhone 6/7/8 */
 @media (min-width: 375px) and (max-width: 413px) {
   .chooseExpPageWrapper {
