@@ -170,6 +170,7 @@ class OfferJob extends React.Component {
           <div className={s.inputWrapper}>
             <input
               type='number'
+              pattern='\d*'
               name='sets'
               placeholder='наприклад, 3'
               className={s.input}
@@ -184,6 +185,7 @@ class OfferJob extends React.Component {
           <div className={s.inputWrapper}>
             <input
               type='number'
+              pattern='\d*'
               name='salary'
               placeholder='гонорар за роботу'
               className={s.input}

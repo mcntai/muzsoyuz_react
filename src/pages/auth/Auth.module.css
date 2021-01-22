@@ -29,22 +29,22 @@
 }
 
 /* iPhone 5/5s/SE*/
-@media (min-width: 320px) and (max-width: 359px) {
+@media screen and (min-width: 320px) {
+  .wrapper {
+    min-width: 320px;
+  }
+
   .logo {
     width: 114px;
     height: 26px;
     margin-top: 20px;
   }
-
-  .wrapper {
-    width: 320px;
-  }
 }
 
 /*Androids...*/
-@media (min-width: 360px) and (max-width: 374px)  {
+@media screen and (min-width: 360px)  {
   .wrapper {
-    max-width: 374px;
+    min-width: 360px;
   }
 
   .logo {
@@ -55,9 +55,9 @@
 }
 
 /* iPhone 6/7/8 */
-@media (min-width: 375px) and (max-width: 413px) {
+@media screen and (min-width: 375px) {
   .wrapper {
-    width: 375px;
+    min-width: 375px;
   }
 
   .logo {
@@ -68,9 +68,9 @@
 }
 
 /* iPhone 6+/7+/8+ */
-@media (min-width: 414px) and (max-width: 767px) {
+@media screen and (min-width: 414px) {
   .wrapper {
-    width: 414px;
+    min-width: 414px;
   }
 
   .logo {

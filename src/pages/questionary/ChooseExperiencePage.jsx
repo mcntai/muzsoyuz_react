@@ -23,7 +23,7 @@ const ChooseExperiencePage = ({ authorized, role }) => {
       <>
         <BackgroundImage
           img={img}
-          imgClass={s.chooseExpImgBack}
+          imgClass={s.chooseExpImgBackground}
         />
         <Text
           text="Скільки у тебе років досвіду на вказаному інструменті?"

@@ -36,7 +36,7 @@
 }
 
 /* iPhone 5/5s/SE */
-@media (min-width: 320px) and (max-width: 359px) {
+@media screen and (min-width: 320px) {
   .navWrapper {
     width: 93px;
   }
@@ -49,7 +49,7 @@
 }
 
  /*Androids...*/
-@media (min-width: 360px) and (max-width: 374px) {
+@media screen and (min-width: 360px) {
   .navWrapper {
     width: 125px;
   }
@@ -62,7 +62,7 @@
 }
 
 /* iPhone 6/7/8 */
-@media (min-width: 375px) and (max-width: 413px) {
+@media screen and (min-width: 375px) {
   .navWrapper {
     width: 125px;
   }
@@ -80,7 +80,7 @@
 }
 
 /* iPhone 6+/7+/8+ */
-@media (min-width: 414px) and (max-width: 767px) {
+@media screen and (min-width: 414px) {
   .navWrapper {
     width: 138px;
   }
@@ -96,28 +96,6 @@
     height: 28px;
   }
 }
-
-/* iPhone X/11*/
-/*@media (max-width: 375px) and (min-height: 812px) {*/
-/*  .footer {*/
-/*    padding-top: 11px;*/
-/*  }*/
-
-/*  .navWrapper {*/
-/*    width: 112px;*/
-/*  }*/
-
-/*  .nav {*/
-/*    font-size: 14px;*/
-/*    line-height: 17px;*/
-/*  }*/
-
-/*  .nav img {*/
-/*    margin: 0 auto 8px;*/
-/*    width: 28px;*/
-/*    height: 28px;*/
-/*  }*/
-/*}*/
 
 
 

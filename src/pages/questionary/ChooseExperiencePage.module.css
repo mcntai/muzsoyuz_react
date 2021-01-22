@@ -12,6 +12,10 @@
   text-align: center;
 }
 
+.chooseExpImgBackground {
+  width: 100%;
+}
+
 .chooseExpText {
   composes: montserrat;
   position: absolute;
@@ -56,14 +60,10 @@
 }
 
 /* iPhone 5/5s/SE*/
-@media (min-width: 320px) and (max-width: 359px) {
+@media screen and (min-width: 320px) {
   /* Choose Experience Page */
   .chooseExpPageWrapper {
-    width: 320px;
-  }
-
-  .chooseExpImgBack {
-    width: 320px;
+    min-width: 320px;
   }
 
   .chooseExpTextWrapper {
@@ -96,13 +96,9 @@
 }
 
 /*Androids...*/
-@media (min-width: 360px) and (max-width: 374px)  {
+@media screen and (min-width: 360px)  {
   .chooseExpPageWrapper {
-    max-width: 374px;
-  }
-
-  .chooseExpImgBack {
-    width: 360px;
+    min-width: 360px;
   }
 
   .chooseExpTextWrapper {
@@ -133,13 +129,9 @@
 
 
 /* iPhone 6/7/8 */
-@media (min-width: 375px) and (max-width: 413px) {
+@media screen and (min-width: 375px) {
   .chooseExpPageWrapper {
-    width: 375px;
-  }
-
-  .chooseExpImgBack {
-    width: 375px;
+    min-width: 375px;
   }
 
   .chooseExpTextWrapper {
@@ -169,13 +161,9 @@
 }
 
 /* iPhone 6+/7+/8+ */
-@media (min-width: 414px) and (max-width: 767px) {
+@media screen and (min-width: 414px) {
   .chooseExpPageWrapper {
-    width: 414px;
-  }
-
-  .chooseExpImgBack {
-    width: 414px;
+    min-width: 414px;
   }
 
   .chooseExpTextWrapper {

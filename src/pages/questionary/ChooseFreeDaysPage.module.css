@@ -36,6 +36,7 @@
 .chooseDaysBackground {
   position: relative;
   z-index: 0;
+  width: 100%;
 }
 
 .calendarBtn {
@@ -62,9 +63,9 @@
 }
 
 /* iPhone 5/5s/SE*/
-@media (min-width: 320px) and (max-width: 359px) {
-  .chooseDaysBackground {
-    width: 320px;
+@media screen and (min-width: 320px) {
+  .chooseDaysWrapper {
+    min-width: 320px;
   }
 
   .chooseDaysTextWrapper {
@@ -101,13 +102,9 @@
 }
 
 /*Androids...*/
-@media (min-width: 360px) and (max-width: 374px)  {
+@media screen and (min-width: 360px)  {
   .chooseDaysWrapper {
-    max-width: 374px;
-  }
-
-  .chooseDaysBackground {
-    width: 360px;
+    min-width: 360px;
   }
 
   .chooseDaysTextWrapper {
@@ -137,9 +134,9 @@
 
 
 /* iPhone 6/7/8 */
-@media (min-width: 375px) and (max-width: 413px) {
-  .chooseDaysBackground {
-    width: 375px;
+@media screen and (min-width: 375px) {
+  .chooseDaysWrapper {
+    min-width: 375px;
   }
 
   .chooseDaysTextWrapper {
@@ -168,9 +165,9 @@
 }
 
 /* iPhone 6+/7+/8+ */
-@media (min-width: 414px) and (max-width: 767px) {
-  .chooseDaysBackground {
-    width: 414px;
+@media screen and (min-width: 414px) {
+  .chooseDaysWrapper {
+    min-width: 414px;
   }
 
   .chooseDaysTextWrapper {

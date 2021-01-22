@@ -33,7 +33,7 @@
 }
 
 /* iPhone 5/5s/SE*/
-@media (min-width: 320px) and (max-width: 359px) {
+@media screen and (min-width: 320px) {
   .instWrapper {
     padding-top: 10px;
     padding-left: 10px;
@@ -41,19 +41,15 @@
 }
 
 /*Androids...*/
-@media (min-width: 360px) and (max-width: 374px) {
+@media screen and (min-width: 360px) {
   .instWrapper {
     padding-top: 10px;
     padding-left: 10px;
   }
-
-  .instrumentCheckbox {
-
-  }
 }
 
 /* iPhone 6/7/8 */
-@media (min-width: 375px) and (max-width: 413px) {
+@media screen and (min-width: 375px) {
   .instWrapper {
     padding-top: 10px;
     padding-left: 10px;
@@ -61,7 +57,7 @@
 }
 
 /* iPhone 6+/7+/8+ */
-@media (min-width: 414px) and (max-width: 767px) {
+@media screen and (min-width: 414px) {
   .instWrapper {
     padding-top: 10px;
     padding-left: 10px;

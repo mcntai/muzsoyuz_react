@@ -121,10 +121,10 @@
 
 
 /* iPhone 5/5s/SE*/
-@media (min-width: 320px) and (max-width: 359px) {
+@media screen and (min-width: 320px) {
   /* Common Styles */
   .container {
-    width: 320px;
+    min-width: 320px;
   }
 
   /* Main Styles */
@@ -151,21 +151,21 @@
   }
 
   .footerWrapper {
-    width: 320px;
+    width: 100%;
     padding-bottom: 3px;
   }
 }
 
 /* Androids...*/
-@media (min-width: 360px) and (max-width: 374px) {
+@media screen and (min-width: 360px) {
   /* Common Styles */
   .container {
-    max-width: 374px;
+    min-width: 360px;
   }
 
   /* Main Styles */
   .jobWrapper {
-    max-width: 302px;
+    width: 302px;
   }
 
   .description {
@@ -181,21 +181,21 @@
   }
 
   .chatBtn {
-    max-width: 302px;
+    width: 302px;
     margin: 30px 0 80px;
   }
 
   .footerWrapper {
-    max-width: 374px;
+    width: 100%;
     padding: 4px 0 3px;
   }
 }
 
 /* iPhone 6/7/8 */
-@media (min-width: 375px) and (max-width: 413px) {
+@media screen and (min-width: 375px) {
   /* Common Styles */
   .container {
-    width: 375px;
+    min-width: 375px;
   }
 
   /* Main Styles */
@@ -221,16 +221,16 @@
   }
 
   .footerWrapper {
-    width: 375px;
+    width: 100%;
     padding: 4px 0 3px;
   }
 }
 
 /* iPhone 6+/7+/8+ */
-@media (min-width: 414px) and (max-width: 767px) {
+@media screen and (min-width: 414px) {
   /* Common Styles */
   .container {
-    width: 414px;
+    min-width: 414px;
   }
 
   /* Main Styles */
@@ -256,7 +256,7 @@
   }
 
   .footerWrapper {
-    width: 414px;
+    width: 100%;
     padding: 4px 0 10px;
   }
 }

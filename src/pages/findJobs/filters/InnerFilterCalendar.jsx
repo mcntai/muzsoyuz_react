@@ -96,7 +96,7 @@ class InnerFilterCalendar extends React.Component {
             border-top-right-radius: 50% !important;
             border-bottom-right-radius: 50% !important;
           }
-          @media (min-width: 320px) and (max-width: 359px) {
+          @media screen and (min-width: 320px) {
             .Selectable {
               font-size: 14px;
           }
