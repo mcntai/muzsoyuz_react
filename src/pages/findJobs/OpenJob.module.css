@@ -226,11 +226,11 @@
   }
 }
 
-/* iPhone 6+/7+/8+ */
-@media screen and (min-width: 414px) {
+/* iPhone 6+/7+/8+ and Popular Androids */
+@media screen and (min-width: 412px) {
   /* Common Styles */
   .container {
-    min-width: 414px;
+    min-width: 412px;
   }
 
   /* Main Styles */
