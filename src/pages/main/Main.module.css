@@ -232,3 +232,43 @@
   }
 }
 
+/* iPhone 11 Pro / X / XS */
+@media screen and (min-width: 375px) and (min-height: 812px) {
+  .wrapper {
+    min-width: 375px;
+  }
+
+  .headerWrapper {
+    min-width: 375px;
+  }
+
+  .main {
+    min-width: 375px;
+  }
+
+  .logo {
+    min-width: 375px;
+    height: 33px;
+    margin: 20px auto 0;
+  }
+
+  .logo img {
+    width: 166px;
+    height: 36px;
+  }
+
+  .imgWrapper {
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .background {
+    width: 100%;
+  }
+
+  .footerWrapper {
+    width: 100%;
+    padding: 4px 0 3px;
+  }
+}
+

@@ -39,7 +39,7 @@
 
 .nameWrapper:after {
   content: url("../../assets/img/edit-icon.svg");
-  vertical-align: middle;
+  vertical-align: -15%;
 }
 
 .name:disabled {

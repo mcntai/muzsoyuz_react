@@ -37,3 +37,10 @@
     min-width: 480px;
   }
 }
+
+/* iPhone 11 Pro / X / XS */
+@media screen and (min-width: 375px) and (min-height: 812px) {
+  .wrapper {
+    min-width: 375px;
+  }
+}

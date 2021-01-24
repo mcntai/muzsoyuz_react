@@ -193,5 +193,28 @@
   }
 }
 
+/* iPhone 11 Pro / X / XS */
+@media screen and (min-width: 375px) and (min-height: 812px) {
+  .authWith {
+    margin-top: 30px;
+  }
+
+  .authWithLogin {
+    margin-top: 40px;
+  }
+
+  .socialIcons {
+    width: 305px;
+  }
+
+  .regIcons {
+    margin: 30px 0 20px;
+  }
+
+  .logIcons {
+    margin: 40px 0 92px 0;
+  }
+}
+
 
 

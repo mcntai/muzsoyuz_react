@@ -50,5 +50,14 @@
   }
 }
 
+/* iPhone 11 Pro / X / XS */
+@media screen and (min-width: 375px) and (min-height: 812px) {
+  .profile img {
+    margin: 13px 20px 13px 0;
+    width: 32px;
+    height: 32px;
+  }
+}
+
 
 

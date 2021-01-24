@@ -115,6 +115,24 @@
   }
 }
 
+/* iPhone 11 Pro / X / XS */
+@media screen and (min-width: 375px) and (min-height: 812px) {
+  .navWrapper {
+    width: 125px;
+  }
+
+  .nav {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .nav img {
+    margin: 0 auto 8px;
+    width: 28px;
+    height: 28px;
+  }
+}
+
 
 
 

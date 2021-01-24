@@ -40,7 +40,7 @@ const InputNameProfile = ({ data }) => {
       <input
         type='text'
         name='name'
-        className={[s.name, s.inp].join(' ')}
+        className={s.name}
         value={name || ''}
         placeholder="Твоє ім'я"
         contentEditable={true}

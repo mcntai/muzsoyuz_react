@@ -395,6 +395,53 @@
   }
 }
 
+/* iPhone 11 Pro / X / XS */
+@media screen and (min-width: 375px) and (min-height: 812px) {
+  .authForm {
+    width: 307px;
+  }
+
+  /* Middle part */
+  .header {
+    width: 307px;
+    margin-top: 35px;
+  }
+
+  .form {
+    width: 307px;
+    margin-top: 20px;
+  }
+
+  .inputWrapper {
+    width: 307px;
+    margin: 28px auto 0;
+  }
+
+  .input {
+    width: 307px;
+  }
+
+  .inputSubmit {
+    width: 302px;
+    margin-top: 50px;
+  }
+
+  .inputSubmitLogin {
+    composes: inputSubmit;
+    margin-top: 102px;
+  }
+
+  /* Gender Styling */
+  .genderWrapper {
+    width: 260px;
+    margin-top: 28px;
+  }
+
+  .genderInput {
+    padding: 13px 24px;
+  }
+}
+
 
 
 
