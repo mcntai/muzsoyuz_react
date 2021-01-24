@@ -101,3 +101,22 @@
     margin: 15px auto 0;
   }
 }
+
+/* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
+@media screen and (min-width: 480px) {
+  .sortingPageWrapper {
+    min-width: 480px;
+  }
+
+  /* Image Background Styling */
+  .imgWrapper {
+    height: 350px;
+  }
+
+  .imgBackground {
+    width: 480px;
+    height: 350px;
+    display: block;
+    margin: 15px auto 0;
+  }
+}

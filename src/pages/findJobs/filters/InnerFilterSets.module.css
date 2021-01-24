@@ -55,3 +55,13 @@
     margin-bottom: 10px;
   }
 }
+
+/* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
+@media screen and (min-width: 480px) {
+  .selector {
+    min-width: 480px;
+    height: 50px;
+    padding-left: 30px;
+    margin-bottom: 10px;
+  }
+}

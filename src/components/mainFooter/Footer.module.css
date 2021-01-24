@@ -97,6 +97,24 @@
   }
 }
 
+/* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
+@media screen and (min-width: 480px) {
+  .navWrapper {
+    width: 138px;
+  }
+
+  .nav {
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .nav img {
+    margin: 0 auto 8px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
 
 
 

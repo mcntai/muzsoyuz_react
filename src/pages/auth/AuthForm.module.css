@@ -348,6 +348,53 @@
   }
 }
 
+/* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
+@media screen and (min-width: 480px) {
+  .authForm {
+    width: 380px;
+  }
+
+  /* Middle part */
+  .header {
+    width: 380px;
+    margin-top: 80px;
+  }
+
+  .form {
+    width: 380px;
+    margin-top: 20px;
+  }
+
+  .inputWrapper {
+    width: 380px;
+    margin: 20px auto 0;
+  }
+
+  .input {
+    width: 380px;
+  }
+
+  .inputSubmit {
+    width: 365px;
+    margin-top: 70px;
+  }
+
+  .inputSubmitLogin {
+    composes: inputSubmit;
+    margin-top: 120px;
+  }
+
+  /* Gender Styling */
+  .genderWrapper {
+    width: 260px;
+    margin-top: 40px;
+  }
+
+  .genderInput {
+    padding: 13px 24px;
+  }
+}
+
 
 
 

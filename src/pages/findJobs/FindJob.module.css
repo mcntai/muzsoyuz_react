@@ -372,3 +372,75 @@
     line-height: 15px;
   }
 }
+
+/* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
+@media screen and (min-width: 480px) {
+  /* Buttons styles */
+  .btnClass {
+    width: 200px;
+    height: 32px;
+
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  /* Styles for Job Offers */
+  .jobOfferItem {
+    width: 440px;
+    height: 80px;
+    margin-top: 8px;
+  }
+
+  .jobOfferItem:first-child {
+    margin-top: 10px;
+  }
+
+  .jobOfferContentWrapper {
+    height: 80px;
+  }
+
+  .instrumentIcon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .jobTextWrapper {
+    width: 270px;
+  }
+
+  .jobTitle {
+    composes: montserrat;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .jobDate {
+    composes: jobTitle;
+    font-size: 15px;
+    line-height: 18px;
+    width: 40px;
+    height: 40px;
+    text-transform: capitalize;
+    text-align: center;
+  }
+
+  .jobSalary {
+    composes: montserrat;
+    font-size: 12px;
+    line-height: 14px;
+    color: #828282;
+    margin-top: 5px;
+  }
+
+  /* Footer classes */
+  .footerWrapper {
+    width: 100%;
+    padding: 4px 0 10px;
+  }
+
+  /* Preloader Styles */
+  .loadingNewOffers {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

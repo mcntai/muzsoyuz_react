@@ -5,7 +5,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
-  line-height: 22px;
+  line-height: 20px;
   color: #262D33;
 }
 
@@ -45,6 +45,9 @@
     min-width: 360px;
     margin-top: 10px;
     padding: 20px 20px 20px 15px;
+
+    font-size: 18px;
+    line-height: 20px;
   }
 }
 
@@ -54,6 +57,9 @@
     min-width: 375px;
     margin-top: 10px;
     padding: 25px 0 25px 15px;
+
+    font-size: 18px;
+    line-height: 20px;
   }
 }
 
@@ -63,5 +69,20 @@
     min-width: 412px;
     margin-top: 10px;
     padding: 25px 0 25px 15px;
+
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+/* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
+@media screen and (min-width: 480px) {
+  .sortBtnWrapper {
+    min-width: 480px;
+    margin-top: 10px;
+    padding: 25px 0 25px 15px;
+
+    font-size: 18px;
+    line-height: 20px;
   }
 }

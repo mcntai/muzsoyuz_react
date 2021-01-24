@@ -196,3 +196,39 @@
   }
 }
 
+/* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
+@media screen and (min-width: 480px) {
+  .wrapper,
+  .main {
+    min-width: 480px;
+  }
+
+  .headerWrapper {
+    min-width: 480px;
+  }
+
+  .logo {
+    min-width: 480px;
+    height: 36px;
+    margin: 10px auto 0;
+  }
+
+  .logo img {
+    width: 166px;
+    height: 36px;
+  }
+
+  .imgWrapper {
+    width: 100%;
+  }
+
+  .background {
+    max-width: 100%;
+  }
+
+  .footerWrapper {
+    width: 100%;
+    padding: 4px 0 10px;
+  }
+}
+

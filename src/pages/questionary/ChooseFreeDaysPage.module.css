@@ -194,3 +194,41 @@
     padding-bottom: 80px;
   }
 }
+
+/* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
+@media screen and (min-width: 480px) {
+  .chooseDaysWrapper {
+    min-width: 480px;
+  }
+
+  .chooseDaysTextWrapper {
+    width: 290px;
+  }
+
+  .chooseDaysText {
+    font-size: 18px;
+    line-height: 23px;
+    top: 440px;
+    width: 340px;
+    margin-left: -170px;
+  }
+
+  .calendarBtn {
+    line-height: 17px;
+    margin-top: 120px;
+  }
+
+  .chooseDaysFinishBtn {
+    margin-top: 85px;
+  }
+
+  .calendarContainer {
+    margin-left: -141px;
+    top: 440px;
+    padding-bottom: 80px;
+  }
+
+  .calendarContainer > div {
+    font-size: 16px;
+  }
+}

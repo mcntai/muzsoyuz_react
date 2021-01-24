@@ -102,6 +102,7 @@
   .background {
     width: 273px;
     height: 200px;
+    display: inline;
   }
 
   /* Collapse Buttons */
@@ -135,7 +136,7 @@
 
   .background {
     width: 273px;
-    height: 200px;
+    display: inline;
   }
 
   /* Collapse Buttons */
@@ -168,8 +169,44 @@
   }
 
   .background {
-    width: 414px;
+    width: 412px;
     height: 230px;
+    display: inline;
+  }
+
+  /* Collapse Buttons */
+  .btnWrapper {
+    padding: 25px 15px 25px 15px;
+  }
+
+  .filterName {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+/* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
+@media screen and (min-width: 480px) {
+  .filtersPageWrapper {
+    min-width: 480px;
+  }
+
+  /* Header part classes */
+  .btnText {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  /* Background Image Classes */
+  .imgWrapper {
+    height: 350px;
+    top: 420px;
+  }
+
+  .background {
+    width: 480px;
+    height: 350px;
+    display: inline;
   }
 
   /* Collapse Buttons */

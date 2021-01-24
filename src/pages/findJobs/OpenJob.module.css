@@ -18,6 +18,12 @@
   color: #262D33;
 }
 
+.montserrat480 {
+  composes: montserratBig;
+  font-size: 17px;
+  line-height: 19px;
+}
+
 /* Main Styles */
 
 .jobWrapper {
@@ -73,6 +79,7 @@
 .nameAndPhoneWrapper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .userName {
@@ -87,7 +94,7 @@
 .userPhone {
   composes: montserratSmall;
   font-size: 16px;
-  line-height: 19.5px;
+  line-height: 19px;
   text-decoration: none;
 
   margin-top: 14px;
@@ -252,6 +259,64 @@
 
   .chatBtn {
     width: 334px;
+    margin: 30px 0 90px;
+  }
+
+  .footerWrapper {
+    width: 100%;
+    padding: 4px 0 10px;
+  }
+}
+
+/* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
+@media screen and (min-width: 480px) {
+  /* Common Styles */
+  .container {
+    min-width: 480px;
+  }
+
+  /* Main Styles */
+  .jobWrapper {
+    width: 400px;
+  }
+
+  .title, .salary {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .description,
+  .descriptionWrapper,
+  .date {
+    composes: montserrat480;
+  }
+
+  .description {
+    margin-top: 15px;
+  }
+
+  .jobCreatorWrapper {
+    margin-top: 30px;
+  }
+
+  .userName {
+    width: 260px;
+    composes: montserrat480;
+  }
+
+  .userPhone {
+    font-size: 17px;
+    line-height: 19px;
+  }
+
+  .userImage {
+    width: 70px;
+    height: 70px;
+  }
+
+  .chatBtn {
+    composes: montserrat480;
+    width: 400px;
     margin: 30px 0 90px;
   }
 

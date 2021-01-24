@@ -69,3 +69,21 @@
     padding-left: 18px;
   }
 }
+
+/* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
+@media screen and (min-width: 480px) {
+  .instWrapper {
+    padding-top: 8px;
+    padding-left: 2px;
+  }
+
+  .instrumentsListWrapper {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .label {
+    padding-top: 1px;
+    padding-left: 18px;
+  }
+}

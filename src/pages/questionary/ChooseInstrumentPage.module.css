@@ -137,3 +137,27 @@
     margin: 34px 0 20px 0;
   }
 }
+
+/* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
+@media screen and (min-width: 480px) {
+  .chooseInstrumentPageWrapper {
+    min-width: 480px;
+  }
+
+  .chooseInstText {
+    width: 220px;
+    font-size: 18px;
+    line-height: 23px;
+    top: 460px;
+    margin-left: -110px;
+  }
+
+  .selectInstrument {
+    composes: montserrat;
+    margin-top: 100px;
+  }
+
+  .chooseInstBtn {
+    margin: 104px 0 20px 0;
+  }
+}

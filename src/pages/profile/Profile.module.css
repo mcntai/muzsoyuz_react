@@ -346,3 +346,77 @@
     margin: 20px auto 0;
   }
 }
+
+/* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
+@media screen and (min-width: 480px) {
+  /* Main Styles */
+  .profileWrapper {
+    composes: flex;
+    min-width: 480px;
+  }
+
+  .profileTopSection {
+    min-width: 480px;
+    padding-bottom: 60px;
+  }
+
+  .backBtn {
+    top: 20px;
+    left: 17px;
+  }
+
+  .topContentWrapper {
+    margin-top: 40px;
+  }
+
+  .avatarWrapper {
+    width: 111px;
+    height: 111px;
+  }
+
+  .avatar {
+    width: 111px;
+    height: 111px;
+    border-radius: 50%;
+  }
+
+  .profileMiddleSection {
+    width: 420px;
+    min-height: 330px;
+
+    margin-top: -45px;
+    padding-bottom: 10px;
+  }
+
+  .filterName {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .profileTitleSettingsWrapper {
+    margin-top: 20px;
+  }
+
+  .profileTitle {
+    composes: montserrat;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  /* Collapse Button Styles */
+  .btnWrapper {
+    width: 380px;
+    padding: 12px 16px;
+  }
+
+  .btnWrapperInstrument {
+    composes: btnWrapper;
+    margin: 20px auto 0;
+  }
+
+  .btnWrapperCalendar {
+    composes: btnWrapper;
+    margin: 20px auto 0;
+  }
+}

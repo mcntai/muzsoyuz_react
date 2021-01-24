@@ -64,5 +64,13 @@
   }
 }
 
+/* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
+@media screen and (min-width: 480px) {
+  .instWrapper {
+    padding-top: 10px;
+    padding-left: 10px;
+  }
+}
+
 
 

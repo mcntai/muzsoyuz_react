@@ -100,6 +100,10 @@ class InnerFilterCalendar extends React.Component {
             .Selectable {
               font-size: 14px;
           }
+          @media screen and (min-width: 480px) {
+            .Selectable {
+              font-size: 17px;
+          }
           `}</style>
         </Helmet>
       </div>
