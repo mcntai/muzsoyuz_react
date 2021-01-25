@@ -6,6 +6,7 @@
 }
 
 .chooseInstrumentPageWrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,13 +40,13 @@
   left: 50%;
 }
 
+.selectInstrument {
+  composes: montserrat;
+}
+
 /* iPhone 5/5s/SE*/
 @media screen and (min-width: 320px) {
   /* Choose Instrument Page */
-  .chooseInstrumentPageWrapper {
-    min-width: 320px;
-  }
-
   .chooseInstText {
     width: 200px;
     font-size: 16px;
@@ -55,7 +56,6 @@
   }
 
   .selectInstrument {
-    composes: montserrat;
     margin-top:30px;
   }
 
@@ -67,10 +67,6 @@
 /*Androids...*/
 @media screen and (min-width: 360px)  {
   /* Choose Instrument Page */
-  .chooseInstrumentPageWrapper {
-    min-width: 360px;
-  }
-
   .chooseInstText {
     width: 220px;
     font-size: 18px;
@@ -80,7 +76,6 @@
   }
 
   .selectInstrument {
-    composes: montserrat;
     margin-top: 110px;
   }
 
@@ -92,10 +87,6 @@
 /* iPhone 6/7/8 */
 @media screen and (min-width: 375px) {
   /* Choose Instrument Page */
-  .chooseInstrumentPageWrapper {
-    min-width: 375px;
-  }
-
   .chooseInstText {
     width: 220px;
     font-size: 18px;
@@ -105,7 +96,6 @@
   }
 
   .selectInstrument {
-    composes: montserrat;
     margin-top: 110px;
   }
 
@@ -116,10 +106,6 @@
 
 /* iPhone 6+/7+/8+ and Popular Androids */
 @media screen and (min-width: 412px) {
-  .chooseInstrumentPageWrapper {
-    min-width: 412px;
-  }
-
   .chooseInstText {
     width: 220px;
     font-size: 18px;
@@ -129,7 +115,6 @@
   }
 
   .selectInstrument {
-    composes: montserrat;
     margin-top: 30px;
   }
 
@@ -140,10 +125,6 @@
 
 /* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
 @media screen and (min-width: 480px) {
-  .chooseInstrumentPageWrapper {
-    min-width: 480px;
-  }
-
   .chooseInstText {
     width: 220px;
     font-size: 18px;
@@ -153,11 +134,29 @@
   }
 
   .selectInstrument {
-    composes: montserrat;
     margin-top: 100px;
   }
 
   .chooseInstBtn {
     margin: 104px 0 20px 0;
+  }
+}
+
+/* iPhone 11 Pro / X / XS */
+@media screen and (min-width: 375px) and (min-height: 812px) {
+  .chooseInstText {
+    width: 220px;
+    font-size: 24px;
+    line-height: 29px;
+    top: 350px;
+    margin-left: -110px;
+  }
+
+  .selectInstrument {
+    margin-top: 150px;
+  }
+
+  .chooseInstBtn {
+    margin: 36px 0 20px 0;
   }
 }

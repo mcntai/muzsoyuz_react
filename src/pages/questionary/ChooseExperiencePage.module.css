@@ -6,6 +6,7 @@
 }
 
 .chooseExpPageWrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,10 +63,6 @@
 /* iPhone 5/5s/SE*/
 @media screen and (min-width: 320px) {
   /* Choose Experience Page */
-  .chooseExpPageWrapper {
-    min-width: 320px;
-  }
-
   .chooseExpTextWrapper {
     width: 220px;
   }
@@ -97,10 +94,6 @@
 
 /*Androids...*/
 @media screen and (min-width: 360px)  {
-  .chooseExpPageWrapper {
-    min-width: 360px;
-  }
-
   .chooseExpTextWrapper {
     width: 290px;
   }
@@ -130,10 +123,6 @@
 
 /* iPhone 6/7/8 */
 @media screen and (min-width: 375px) {
-  .chooseExpPageWrapper {
-    min-width: 375px;
-  }
-
   .chooseExpTextWrapper {
     width: 290px;
   }
@@ -162,10 +151,6 @@
 
 /* iPhone 6+/7+/8+ and Popular Androids */
 @media screen and (min-width: 412px) {
-  .chooseExpPageWrapper {
-    min-width: 412px;
-  }
-
   .chooseExpTextWrapper {
     width: 290px;
   }
@@ -194,10 +179,6 @@
 
 /* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
 @media screen and (min-width: 480px) {
-  .chooseExpPageWrapper {
-    min-width: 480px;
-  }
-
   .chooseExpTextWrapper {
     width: 290px;
   }
@@ -223,5 +204,35 @@
 
   .chooseExpFinishBtn {
     margin-top: 105px;
+  }
+}
+
+/* iPhone 11 Pro / X / XS */
+@media screen and (min-width: 375px) and (min-height: 812px) {
+  .chooseExpTextWrapper {
+    width: 290px;
+  }
+
+  .chooseExpText {
+    font-size: 24px;
+    line-height: 29px;
+    top: 320px;
+    width: 300px;
+    margin-left: -150px;
+  }
+
+  .yearExpBtnsWrapper {
+    width: 330px;
+    margin-top: 141px;
+  }
+
+  .expBtn {
+    width: 56px;
+    height: 41px;
+    line-height: 41px;
+  }
+
+  .chooseExpFinishBtn {
+    margin-top: 46px;
   }
 }

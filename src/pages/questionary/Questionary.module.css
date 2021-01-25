@@ -54,7 +54,7 @@
 @media screen and (min-width: 360px)  {
   /* Common Styles */
   .imgWrapper {
-    height: 300px;
+    /*height: 300px;*/
   }
 
   .logo {
@@ -120,5 +120,23 @@
 
   .finishBtn {
     top: 220px;
+  }
+}
+
+/* iPhone 11 Pro / X / XS */
+@media screen and (min-width: 375px) and (min-height: 812px) {
+  /* Common Styles */
+  .imgWrapper {
+    height: 300px;
+  }
+
+  .logo {
+    width: 150px;
+    height: 33px;
+    top: 30px;
+  }
+
+  .finishBtn {
+    top: 230px;
   }
 }

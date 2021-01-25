@@ -6,10 +6,21 @@
 }
 
 .startPageWrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+.startImgBackground {
+  width: 100%;
+  display: block;
+  margin-top: 20px;
+}
+
+.startText {
+  composes: montserrat;
 }
 
 .startBtn {
@@ -29,21 +40,11 @@
 /* iPhone 5/5s/SE*/
 @media screen and (min-width: 320px) {
   /* Common Styling */
-  .startPageWrapper {
-    min-width: 320px;
-  }
-
-  .startImgBackground {
-    min-width: 320px;
-    height: 300px;
-  }
-
   .startTextWrapper {
     width: 104px;
   }
 
   .startText {
-    composes: montserrat;
     font-size: 16px;
     line-height: 19px;
     display: block;
@@ -57,25 +58,13 @@
 /*Androids...*/
 @media screen and (min-width: 360px)  {
   /* Common Styling */
-  .startPageWrapper {
-    min-width: 360px;
-  }
-
   .startTextWrapper {
     width: 142px;
     margin-top: 50px;
   }
 
   /* Start Page */
-  .startImgBackground {
-    min-width: 360px;
-    height: 300px;
-    display: block;
-    margin-top: 20px;
-  }
-
   .startText {
-    composes: montserrat;
     font-size: 18px;
     line-height: 23px;
     display: block;
@@ -90,25 +79,13 @@
 /* iPhone 6/7/8 */
 @media screen and (min-width: 375px) {
   /* Common Styling */
-  .startPageWrapper {
-    min-width: 375px;
-  }
-
   .startTextWrapper {
     width: 142px;
     margin-top: 50px;
   }
 
   /* Start Page */
-  .startImgBackground {
-    min-width: 375px;
-    height: 300px;
-    display: block;
-    margin-top: 20px;
-  }
-
   .startText {
-    composes: montserrat;
     font-size: 18px;
     line-height: 23px;
     display: block;
@@ -123,25 +100,12 @@
 /* iPhone 6+/7+/8+ and Popular Androids */
 @media screen and (min-width: 412px) {
   /* Common Styling */
-  .startPageWrapper {
-    min-width: 412px;
-    overflow-x: hidden;
-  }
-
   .startTextWrapper {
     width: 142px;
   }
 
   /* Start Page */
-  .startImgBackground {
-    min-width: 412px;
-    height: 423px;
-    display: block;
-    margin-top: 20px;
-  }
-
   .startText {
-    composes: montserrat;
     font-size: 18px;
     line-height: 23px;
     display: block;
@@ -156,25 +120,12 @@
 /* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
 @media screen and (min-width: 480px) {
   /* Common Styling */
-  .startPageWrapper {
-    min-width: 480px;
-    overflow-x: hidden;
-  }
-
   .startTextWrapper {
     width: 142px;
   }
 
   /* Start Page */
-  .startImgBackground {
-    min-width: 480px;
-    height: 423px;
-    display: block;
-    margin-top: 20px;
-  }
-
   .startText {
-    composes: montserrat;
     font-size: 18px;
     line-height: 23px;
     display: block;
@@ -183,5 +134,26 @@
 
   .startBtn {
     margin: 100px 0 20px 0;
+  }
+}
+
+/* iPhone 11 Pro / X / XS */
+@media screen and (min-width: 375px) and (min-height: 812px) {
+  /* Common Styling */
+  .startTextWrapper {
+    width: 142px;
+    margin-top: 50px;
+  }
+
+  /* Start Page */
+  .startText {
+    font-size: 24px;
+    line-height: 29px;
+    display: block;
+    margin-top: 41px;
+  }
+
+  .startBtn {
+    margin: 50px 0 20px 0;
   }
 }
