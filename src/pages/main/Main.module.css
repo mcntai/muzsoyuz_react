@@ -5,27 +5,42 @@
 }
 
 .wrapper {
+  width: 100%;
   background: #FFFFFF;
   display: flex;
   flex-direction: column;
 }
 
 .headerWrapper {
+  width: 100%;
   position: relative;
 }
 
 .main {
+  width: 100%;
   display: flex;
   flex-direction: column;
   background: #FFFFFF;
 }
 
 .logo {
+  width: 100%;
   background: #FFFFFF;
   text-align: center;
 }
 
+.imgWrapper {
+  width: 100%;
+  height: 285px;
+  margin-top: 25px;
+}
+
+.background {
+  width: 100%;
+}
+
 .footerWrapper {
+  width: 100%;
   position: fixed;
   bottom: 0;
   z-index: 1;
@@ -42,20 +57,7 @@
 
 /* iPhone 5/5s/SE*/
 @media screen and (min-width: 320px) {
-  .wrapper {
-    min-width: 320px;
-  }
-
-  .headerWrapper {
-    min-width: 320px;
-  }
-
-  .main {
-    min-width: 320px;
-  }
-
   .logo {
-    min-width: 320px;
     height: 26px;
     margin: 0 auto;
   }
@@ -65,38 +67,14 @@
     height: 26px;
   }
 
-  .imgWrapper {
-    width: 100%;
-    height: 285px;
-    margin-top: 25px;
-  }
-
-  .background {
-    min-width: 320px;
-  }
-
   .footerWrapper {
-    width: 100%;
     padding: 4px 0 5px;
   }
 }
 
  /*Androids...*/
 @media screen and (min-width: 360px)  {
-  .wrapper {
-    min-width: 360px;
-  }
-
-  .headerWrapper {
-    min-width: 360px;
-  }
-
-  .main {
-    min-width: 360px;
-  }
-
   .logo {
-    min-width: 360px;
     height: 26px;
     margin: 0 auto;
   }
@@ -106,37 +84,14 @@
     height: 26px;
   }
 
-  .imgWrapper {
-    width: 100%;
-    margin-top: 25px;
-  }
-
-  .background {
-    width: 100%;
-  }
-
   .footerWrapper {
-    width: 100%;
     padding: 4px 0 3px;
   }
 }
 
 /* iPhone 6/7/8 */
 @media screen and (min-width: 375px) {
-  .wrapper {
-    min-width: 375px;
-  }
-
-  .headerWrapper {
-    min-width: 375px;
-  }
-
-  .main {
-    min-width: 375px;
-  }
-
   .logo {
-    min-width: 375px;
     height: 33px;
     margin: 10px auto 0;
   }
@@ -146,33 +101,14 @@
     height: 33px;
   }
 
-  .imgWrapper {
-    width: 100%;
-  }
-
-  .background {
-    width: 100%;
-  }
-
   .footerWrapper {
-    width: 100%;
     padding: 4px 0 3px;
   }
 }
 
 /* iPhone 6+/7+/8+ and Popular Androids */
 @media screen and (min-width: 412px) {
-  .wrapper,
-  .main {
-    min-width: 412px;
-  }
-
-  .headerWrapper {
-    min-width: 412px;
-  }
-
   .logo {
-    min-width: 412px;
     height: 36px;
     margin: 10px auto 0;
   }
@@ -182,33 +118,14 @@
     height: 36px;
   }
 
-  .imgWrapper {
-    width: 100%;
-  }
-
-  .background {
-    max-width: 100%;
-  }
-
   .footerWrapper {
-    width: 100%;
     padding: 4px 0 10px;
   }
 }
 
 /* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
 @media screen and (min-width: 480px) {
-  .wrapper,
-  .main {
-    min-width: 480px;
-  }
-
-  .headerWrapper {
-    min-width: 480px;
-  }
-
   .logo {
-    min-width: 480px;
     height: 36px;
     margin: 10px auto 0;
   }
@@ -218,36 +135,14 @@
     height: 36px;
   }
 
-  .imgWrapper {
-    width: 100%;
-  }
-
-  .background {
-    max-width: 100%;
-  }
-
   .footerWrapper {
-    width: 100%;
     padding: 4px 0 10px;
   }
 }
 
 /* iPhone 11 Pro / X / XS */
-@media screen and (min-width: 375px) and (min-height: 812px) {
-  .wrapper {
-    min-width: 375px;
-  }
-
-  .headerWrapper {
-    min-width: 375px;
-  }
-
-  .main {
-    min-width: 375px;
-  }
-
+@media screen and (min-width: 375px) and (height: 812px) {
   .logo {
-    min-width: 375px;
     height: 33px;
     margin: 20px auto 0;
   }
@@ -258,16 +153,10 @@
   }
 
   .imgWrapper {
-    width: 100%;
     margin-top: 40px;
   }
 
-  .background {
-    width: 100%;
-  }
-
   .footerWrapper {
-    width: 100%;
     padding: 4px 0 3px;
   }
 }

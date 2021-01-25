@@ -29,7 +29,7 @@
 
 .authForm {
   composes: flexCol;
-  width: 307px;
+  width: 275px;
 }
 
 .textErr {
@@ -83,13 +83,13 @@
 
 .form {
   composes: flexCol;
-  width: 307px;
-  margin-top: 60px;
+  width: 275px;
+  margin-top: 20px;
 }
 
 .inputWrapper {
-  width: 307px;
-  margin: 20px auto 0;
+  width: 275px;
+  margin: 12px auto 0;
 }
 
 .inputWrapper:first-of-type {
@@ -105,6 +105,7 @@
   -webkit-border-radius: 0;
   background: #AEC0F9;
 
+  width: 275px;
   padding: 10px 0 10px 27px;
 
   outline: none;
@@ -171,28 +172,10 @@
 
 /* iPhone 5/5s/SE*/
 @media screen and (min-width: 320px) {
-  .authForm {
-    width: 275px;
-  }
-
   /* Middle part */
   .header {
     width: 275px;
     margin-top: 15px;
-  }
-
-  .form {
-    width: 275px;
-    margin-top: 20px;
-  }
-
-  .inputWrapper {
-    width: 275px;
-    margin: 12px auto 0;
-  }
-
-  .input {
-    width: 275px;
   }
 
   .inputSubmit {
@@ -202,7 +185,6 @@
 
   .inputSubmitLogin {
     composes: inputSubmit;
-    width: 275px;
     margin-top: 46px;
   }
 
@@ -231,49 +213,6 @@
 
   .form {
     width: 307px;
-    margin-top: 20px;
-  }
-
-  .inputWrapper {
-    width: 307px;
-    margin: 15px auto 0;
-  }
-
-  .input {
-    width: 307px;
-  }
-
-  .inputSubmit {
-    width: 302px;
-    margin-top: 30px;
-  }
-
-  /* Gender Styling */
-  .genderWrapper {
-    width: 260px;
-    margin-top: 15px;
-  }
-
-  .genderInput {
-    padding: 13px 24px;
-  }
-}
-
-/* iPhone 6/7/8 */
-@media screen and (min-width: 375px) {
-  .authForm {
-    width: 307px;
-  }
-
-  /* Middle part */
-  .header {
-    width: 307px;
-    margin-top: 20px;
-  }
-
-  .form {
-    width: 307px;
-    margin-top: 20px;
   }
 
   .inputWrapper {
@@ -303,48 +242,18 @@
 
 /* iPhone 6+/7+/8+ and Popular Androids */
 @media screen and (min-width: 412px) {
-  .authForm {
-    width: 307px;
-  }
-
   /* Middle part */
   .header {
-    width: 307px;
     margin-top: 40px;
   }
 
-  .form {
-    width: 307px;
-    margin-top: 20px;
-  }
-
   .inputWrapper {
-    width: 307px;
     margin: 20px auto 0;
-  }
-
-  .input {
-    width: 307px;
-  }
-
-  .inputSubmit {
-    width: 302px;
-    margin-top: 30px;
   }
 
   .inputSubmitLogin {
     composes: inputSubmit;
     margin-top: 70px;
-  }
-
-  /* Gender Styling */
-  .genderWrapper {
-    width: 260px;
-    margin-top: 15px;
-  }
-
-  .genderInput {
-    padding: 13px 24px;
   }
 }
 
@@ -362,7 +271,6 @@
 
   .form {
     width: 380px;
-    margin-top: 20px;
   }
 
   .inputWrapper {
@@ -396,33 +304,17 @@
 }
 
 /* iPhone 11 Pro / X / XS */
-@media screen and (min-width: 375px) and (min-height: 812px) {
-  .authForm {
-    width: 307px;
-  }
-
+@media screen and (min-width: 375px) and (height: 812px) {
   /* Middle part */
   .header {
-    width: 307px;
     margin-top: 35px;
   }
 
-  .form {
-    width: 307px;
-    margin-top: 20px;
-  }
-
   .inputWrapper {
-    width: 307px;
     margin: 28px auto 0;
   }
 
-  .input {
-    width: 307px;
-  }
-
   .inputSubmit {
-    width: 302px;
     margin-top: 50px;
   }
 
@@ -433,16 +325,6 @@
 
   /* Gender Styling */
   .genderWrapper {
-    width: 260px;
     margin-top: 28px;
   }
-
-  .genderInput {
-    padding: 13px 24px;
-  }
 }
-
-
-
-
-

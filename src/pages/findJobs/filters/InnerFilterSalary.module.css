@@ -29,6 +29,7 @@
   border: 1px solid #DADADA;
   border-radius: 5px;
   margin-bottom: 5px;
+  height: 36px;
   text-align: center;
   outline: none;
 }
@@ -37,43 +38,34 @@
 @media screen and (min-width: 320px) {
   .input {
     width: 129px;
-    height: 36px;
   }
 }
 
 /*Androids...*/
 @media screen and (min-width: 360px) {
   .input {
-    composes: montserrat;
     width: 150px;
-    height: 36px;
   }
 }
 
 /* iPhone 6/7/8 */
 @media (min-width: 375px) {
   .input {
-    composes: montserrat;
     width: 159px;
-    height: 36px;
   }
 }
 
 /* iPhone 6+/7+/8+ and Popular Androids */
 @media screen and (min-width: 412px) {
   .input {
-    composes: montserrat;
     width: 180px;
-    height: 36px;
   }
 }
 
 /* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
 @media screen and (min-width: 480px) {
   .input {
-    composes: montserrat;
     width: 210px;
-    height: 36px;
   }
 }
 

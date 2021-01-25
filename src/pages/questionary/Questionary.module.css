@@ -124,7 +124,7 @@
 }
 
 /* iPhone 11 Pro / X / XS */
-@media screen and (min-width: 375px) and (min-height: 812px) {
+@media screen and (min-width: 375px) and (height: 812px) {
   /* Common Styles */
   .imgWrapper {
     height: 300px;

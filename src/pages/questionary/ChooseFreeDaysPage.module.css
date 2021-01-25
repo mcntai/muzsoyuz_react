@@ -128,25 +128,6 @@
 
 /* iPhone 6/7/8 */
 @media screen and (min-width: 375px) {
-  .chooseDaysTextWrapper {
-    width: 290px;
-  }
-
-  .chooseDaysText {
-    top: 350px;
-    width: 340px;
-    margin-left: -170px;
-  }
-
-  .calendarBtn {
-    line-height: 17px;
-    margin-top: 116px;
-  }
-
-  .chooseDaysFinishBtn {
-    margin-top: 30px;
-  }
-
   .calendarContainer {
     top: 330px;
     padding-bottom: 60px;
@@ -155,16 +136,6 @@
 
 /* iPhone 6+/7+/8+ and Popular Androids */
 @media screen and (min-width: 412px) {
-  .chooseDaysTextWrapper {
-    width: 290px;
-  }
-
-  .chooseDaysText {
-    top: 380px;
-    width: 340px;
-    margin-left: -170px;
-  }
-
   .calendarBtn {
     line-height: 17px;
     margin-top: 30px;
@@ -182,16 +153,10 @@
 
 /* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
 @media screen and (min-width: 480px) {
-  .chooseDaysTextWrapper {
-    width: 290px;
-  }
-
   .chooseDaysText {
     font-size: 18px;
     line-height: 23px;
     top: 440px;
-    width: 340px;
-    margin-left: -170px;
   }
 
   .calendarBtn {
@@ -215,26 +180,15 @@
 }
 
 /* iPhone 11 Pro / X / XS */
-@media screen and (min-width: 375px) and (min-height: 812px) {
-  .chooseDaysTextWrapper {
-    width: 290px;
-  }
-
+@media screen and (min-width: 375px) and (height: 812px) {
   .chooseDaysText {
     font-size: 24px;
     line-height: 29px;
-    top: 350px;
-    width: 340px;
-    margin-left: -170px;
   }
 
   .calendarBtn {
     line-height: 17px;
     margin-top: 160px;
-  }
-
-  .chooseDaysFinishBtn {
-    margin-top: 27px;
   }
 
   .calendarContainer {

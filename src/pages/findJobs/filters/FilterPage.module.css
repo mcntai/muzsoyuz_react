@@ -1,10 +1,15 @@
 /* Common Classes*/
-
 .montserrat {
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
   color: #262D33;
+}
+
+.filtersPageWrapper {
+  width: 100%;
 }
 
 /* Header part classes */
@@ -18,6 +23,8 @@
 
 .btnText {
   composes: montserrat;
+  font-size: 12px;
+  line-height: 15px;
   background: none;
   border: none;
   outline: none;
@@ -40,11 +47,17 @@
   text-align: center;
 }
 
+.background {
+  width: 100%;
+  height: 200px;
+}
+
 /* Collapse Buttons */
 .btnWrapper {
   display: flex;
   margin-top: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  padding: 20px 15px;
 }
 
 .filterName {
@@ -54,39 +67,14 @@
 
 /* iPhone 5/5s/SE*/
 @media screen and (min-width: 320px) {
-  .filtersPageWrapper {
-    min-width: 320px;
-  }
-
-  /* Header part classes */
-  .btnText {
-    font-size: 12px;
-    line-height: 15px;
-  }
-
   /* Background Image Classes */
   .background {
     display: none;
-  }
-
-  /* Collapse Buttons */
-  .btnWrapper {
-    padding: 20px 15px 20px 15px;
-  }
-
-  .filterName {
-    composes: montserrat;
-    font-size: 16px;
-    line-height: 19px;
   }
 }
 
 /*Androids...*/
 @media screen and (min-width: 360px)  {
-  .filtersPageWrapper {
-    min-width: 360px;
-  }
-
   /* Header part classes */
   .btnText {
     font-size: 14px;
@@ -95,55 +83,14 @@
 
   /* Background Image Classes */
   .imgWrapper {
-    height: 200px;
     top: 360px;
   }
 
   .background {
-    width: 273px;
-    height: 200px;
     display: inline;
   }
 
   /* Collapse Buttons */
-  .btnWrapper {
-    padding: 20px 20px 20px 15px;
-  }
-
-  .filterName {
-    font-size: 18px;
-    line-height: 22px;
-  }
-}
-
-/* iPhone 6/7/8 */
-@media screen and (min-width: 375px) {
-  .filtersPageWrapper {
-    min-width: 375px;
-  }
-
-  /* Header part classes */
-  .btnText {
-    font-size: 14px;
-    line-height: 17px;
-  }
-
-  /* Background Image Classes */
-  .imgWrapper {
-    height: 200px;
-    top: 400px;
-  }
-
-  .background {
-    width: 273px;
-    display: inline;
-  }
-
-  /* Collapse Buttons */
-  .btnWrapper {
-    padding: 25px 20px 25px 15px;
-  }
-
   .filterName {
     font-size: 18px;
     line-height: 22px;
@@ -152,71 +99,25 @@
 
 /* iPhone 6+/7+/8+ and Popular Androids */
 @media screen and (min-width: 412px) {
-  .filtersPageWrapper {
-    min-width: 412px;
-  }
-
-  /* Header part classes */
-  .btnText {
-    font-size: 14px;
-    line-height: 17px;
-  }
-
   /* Background Image Classes */
   .imgWrapper {
-    height: 230px;
     top: 390px;
   }
 
   .background {
-    width: 412px;
     height: 230px;
-    display: inline;
-  }
-
-  /* Collapse Buttons */
-  .btnWrapper {
-    padding: 25px 15px 25px 15px;
-  }
-
-  .filterName {
-    font-size: 18px;
-    line-height: 22px;
   }
 }
 
 /* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
 @media screen and (min-width: 480px) {
-  .filtersPageWrapper {
-    min-width: 480px;
-  }
-
-  /* Header part classes */
-  .btnText {
-    font-size: 14px;
-    line-height: 17px;
-  }
-
   /* Background Image Classes */
   .imgWrapper {
-    height: 350px;
     top: 420px;
   }
 
   .background {
-    width: 480px;
     height: 350px;
-    display: inline;
-  }
-
-  /* Collapse Buttons */
-  .btnWrapper {
-    padding: 25px 15px 25px 15px;
-  }
-
-  .filterName {
-    font-size: 18px;
-    line-height: 22px;
   }
 }
 

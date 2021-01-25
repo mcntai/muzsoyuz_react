@@ -83,18 +83,6 @@
     width: 142px;
     margin-top: 50px;
   }
-
-  /* Start Page */
-  .startText {
-    font-size: 18px;
-    line-height: 23px;
-    display: block;
-    margin-top: 41px;
-  }
-
-  .startBtn {
-    margin: 50px 0 20px 0;
-  }
 }
 
 /* iPhone 6+/7+/8+ and Popular Androids */
@@ -106,14 +94,7 @@
 
   /* Start Page */
   .startText {
-    font-size: 18px;
-    line-height: 23px;
-    display: block;
     margin-top: 10px;
-  }
-
-  .startBtn {
-    margin: 50px 0 20px 0;
   }
 }
 
@@ -126,9 +107,6 @@
 
   /* Start Page */
   .startText {
-    font-size: 18px;
-    line-height: 23px;
-    display: block;
     margin-top: 50px;
   }
 
@@ -138,22 +116,10 @@
 }
 
 /* iPhone 11 Pro / X / XS */
-@media screen and (min-width: 375px) and (min-height: 812px) {
-  /* Common Styling */
-  .startTextWrapper {
-    width: 142px;
-    margin-top: 50px;
-  }
-
+@media screen and (min-width: 375px) and (height: 812px) {
   /* Start Page */
   .startText {
     font-size: 24px;
     line-height: 29px;
-    display: block;
-    margin-top: 41px;
-  }
-
-  .startBtn {
-    margin: 50px 0 20px 0;
   }
 }

@@ -1,5 +1,4 @@
 /* Common Styles */
-
 .montserratBig {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
@@ -16,6 +15,10 @@
   font-size: 14px;
   line-height: 17px;
   color: #262D33;
+}
+
+.container {
+  width: 100%;
 }
 
 /* Main Styles */
@@ -42,6 +45,7 @@
 .description {
   display: inline-block;
   color: #8F8F8F;
+  margin-top: 15px;
 
   composes: montserratSmall;
 }
@@ -68,6 +72,7 @@
 .jobCreatorWrapper {
   display: flex;
   justify-content: space-between;
+  margin-top: 30px;
 }
 
 .nameAndPhoneWrapper {
@@ -107,6 +112,7 @@
   color: #FFFFFF;
 
   padding: 12px 0;
+  margin: 30px 0 80px;
   background-color: #6384EB;
   border: 1px solid #6384EB;
   outline: none;
@@ -114,6 +120,8 @@
 }
 
 .footerWrapper {
+  width: 100%;
+  padding: 4px 0 3px;
   position: fixed;
   bottom: 0;
   z-index: 1;
@@ -123,22 +131,9 @@
 
 /* iPhone 5/5s/SE*/
 @media screen and (min-width: 320px) {
-  /* Common Styles */
-  .container {
-    min-width: 320px;
-  }
-
   /* Main Styles */
   .jobWrapper {
     width: 275px;
-  }
-
-  .description {
-    margin-top: 20px;
-  }
-
-  .jobCreatorWrapper {
-    margin-top: 28px;
   }
 
   .userName {
@@ -147,34 +142,14 @@
 
   .chatBtn {
     width: 275px;
-    margin-top: 30px;
-    margin-bottom: 80px;
-  }
-
-  .footerWrapper {
-    width: 100%;
-    padding-bottom: 3px;
   }
 }
 
 /* Androids...*/
 @media screen and (min-width: 360px) {
-  /* Common Styles */
-  .container {
-    min-width: 360px;
-  }
-
   /* Main Styles */
   .jobWrapper {
     width: 302px;
-  }
-
-  .description {
-    margin-top: 15px;
-  }
-
-  .jobCreatorWrapper {
-    margin-top: 30px;
   }
 
   .userName {
@@ -183,33 +158,14 @@
 
   .chatBtn {
     width: 302px;
-    margin: 30px 0 80px;
-  }
-
-  .footerWrapper {
-    width: 100%;
-    padding: 4px 0 3px;
   }
 }
 
 /* iPhone 6/7/8 */
 @media screen and (min-width: 375px) {
-  /* Common Styles */
-  .container {
-    min-width: 375px;
-  }
-
   /* Main Styles */
   .jobWrapper {
     width: 302px;
-  }
-
-  .description {
-    margin-top: 15px;
-  }
-
-  .jobCreatorWrapper {
-    margin-top: 30px;
   }
 
   .userName {
@@ -218,33 +174,14 @@
 
   .chatBtn {
     width: 302px;
-    margin: 30px 0 80px;
-  }
-
-  .footerWrapper {
-    width: 100%;
-    padding: 4px 0 3px;
   }
 }
 
 /* iPhone 6+/7+/8+ and Popular Androids */
 @media screen and (min-width: 412px) {
-  /* Common Styles */
-  .container {
-    min-width: 412px;
-  }
-
   /* Main Styles */
   .jobWrapper {
     width: 334px;
-  }
-
-  .description {
-    margin-top: 15px;
-  }
-
-  .jobCreatorWrapper {
-    margin-top: 30px;
   }
 
   .userName {
@@ -253,22 +190,15 @@
 
   .chatBtn {
     width: 334px;
-    margin: 30px 0 90px;
   }
 
   .footerWrapper {
-    width: 100%;
     padding: 4px 0 10px;
   }
 }
 
 /* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
 @media screen and (min-width: 480px) {
-  /* Common Styles */
-  .container {
-    min-width: 480px;
-  }
-
   /* Main Styles */
   .jobWrapper {
     width: 400px;
@@ -284,14 +214,6 @@
   .date {
     font-size: 17px;
     line-height: 19px;
-  }
-
-  .description {
-    margin-top: 15px;
-  }
-
-  .jobCreatorWrapper {
-    margin-top: 30px;
   }
 
   .userName {
@@ -314,19 +236,17 @@
     font-size: 17px;
     line-height: 19px;
     width: 400px;
-    margin: 30px 0 90px;
   }
 
   .footerWrapper {
-    width: 100%;
     padding: 4px 0 10px;
   }
 }
 
 /* iPhone 11 Pro / X / XS */
-@media screen and (min-width: 375px) and (min-height: 812px) {
+@media screen and (min-width: 375px) and (height: 812px) {
   .chatBtn {
     width: 302px;
-    margin: 30px 0 20px;
+    margin: 30px auto 20px;
   }
 }

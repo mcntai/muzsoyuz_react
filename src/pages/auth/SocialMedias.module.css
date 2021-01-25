@@ -1,5 +1,4 @@
 /*Common classes*/
-
 .flexCol {
   display: flex;
   flex-direction: column;
@@ -37,7 +36,6 @@
 }
 
 /* Bottom part */
-
 .socialMedias {
   composes: flexCol;
 }
@@ -45,6 +43,7 @@
 .authWith {
   composes: montserrat;
   color: #000000;
+  margin-top: 20px;
 }
 
 .socialIcons {
@@ -53,6 +52,8 @@
 
   display: flex;
   justify-content: space-between;
+
+  width: 275px;
 }
 
 .regIcons {
@@ -79,17 +80,8 @@
 
 /* iPhone 5/5s/SE*/
 @media screen and (min-width: 320px) {
-  .authWith {
-    margin-top: 20px;
-  }
-
   .authWithLogin {
     composes: authWith;
-    margin-top: 20px;
-  }
-
-  .socialIcons {
-    width: 275px;
   }
 
   .regIcons {
@@ -103,10 +95,6 @@
 
 /*Androids...*/
 @media screen and (min-width: 360px)  {
-  .authWith {
-    margin-top: 20px;
-  }
-
   .authWithLogin {
     margin-top: 40px;
   }
@@ -126,18 +114,6 @@
 
 /* iPhone 6/7/8 */
 @media screen and (min-width: 375px) {
-  .authWith {
-    margin-top: 20px;
-  }
-
-  .authWithLogin {
-    margin-top: 40px;
-  }
-
-  .socialIcons {
-    width: 305px;
-  }
-
   .regIcons {
     margin: 20px 0 28px;
   }
@@ -149,18 +125,6 @@
 
 /* iPhone 6+/7+/8+ and Popular Androids */
 @media screen and (min-width: 412px) {
-  .authWith {
-    margin-top: 20px;
-  }
-
-  .authWithLogin {
-    margin-top: 40px;
-  }
-
-  .socialIcons {
-    width: 305px;
-  }
-
   .regIcons {
     margin: 20px 0 34px;
   }
@@ -180,10 +144,6 @@
     margin-top: 80px;
   }
 
-  .socialIcons {
-    width: 305px;
-  }
-
   .regIcons {
     margin: 60px 0 34px;
   }
@@ -194,17 +154,13 @@
 }
 
 /* iPhone 11 Pro / X / XS */
-@media screen and (min-width: 375px) and (min-height: 812px) {
+@media screen and (min-width: 375px) and (height: 812px) {
   .authWith {
     margin-top: 30px;
   }
 
   .authWithLogin {
     margin-top: 40px;
-  }
-
-  .socialIcons {
-    width: 305px;
   }
 
   .regIcons {
