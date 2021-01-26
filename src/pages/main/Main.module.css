@@ -161,3 +161,17 @@
   }
 }
 
+@media screen and (min-width: 1366px) {
+  .main {
+    height: 80vh;
+  }
+
+  .imgWrapper {
+    height: 80vh;
+  }
+
+  .background {
+    height: 80vh;
+  }
+}
+

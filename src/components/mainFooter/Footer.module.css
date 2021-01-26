@@ -133,7 +133,22 @@
   }
 }
 
+@media screen and (min-width: 1366px) {
+  .navWrapper {
+    width: 300px;
+  }
 
+  .nav {
+    font-size: 17px;
+    line-height: 19px;
+  }
+
+  .nav img {
+    margin: 0 auto 8px;
+    width: 30px;
+    height: 30px;
+  }
+}
 
 
 
