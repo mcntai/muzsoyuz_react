@@ -3,9 +3,6 @@ import produce from 'immer'
 
 const initialState = {
   loading   : false,
-  authorized: undefined,
-  authError : null,
-  role: '',
 }
 
 const authStatusReducer = (state = initialState, action) => {

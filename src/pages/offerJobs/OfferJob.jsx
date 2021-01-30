@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import moment from 'moment'
-import { MuzSoyuzRequest } from '../../muzsoyuz-request'
+import { makeOffer } from '../../actions/offers'
 import { pageRoute } from '../../actions/routingActions'
 import { jobOfferValidator } from '../../validators'
 import * as swal from '../../components/common/alerts'
@@ -10,13 +10,15 @@ import Header from '../../components/mainHeader/Header'
 import Footer from '../../components/mainFooter/Footer'
 import preloader from '../../assets/img/preloader.gif'
 import s from './OfferJob.module.css'
+import { STAGES } from '../../slice/utils/constants'
 
 
 const mapStateToProps = state => {
   return {
     loading   : state.authReducer.loading,
-    authorized: state.authReducer.authorized,
-    prevRoute : state.pageReducer.prevRoute
+    prevRoute : state.pageReducer.prevRoute,
+    user      : state.user,
+    // offer     : state.offers,
   }
 }
 
@@ -67,11 +69,12 @@ class OfferJob extends React.Component {
   }
 
 
-  async handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault()
+    // const offer = this.props.offer
 
-    try {
-      const response = await MuzSoyuzRequest.makeJobOffer({
+    this.props.dispatch(makeOffer({
+      body: {
         jobType  : 'musicalReplacement',
         date     : this.state.date,
         address  : this.state.address,
@@ -81,21 +84,14 @@ class OfferJob extends React.Component {
         role     : this.state.role,
         phone    : this.state.phone,
         extraInfo: this.state.extraInfo,
-      })
-
-      console.log(response)
-
-      swal.success('Оголошення створено', 'Ура!')
-    }
-    catch (e) {
-      if (e.message !== 'Invalid Arguments Error') {
-        this.setState({ serverErr: e.message })
-        swal.error(e.message, 'Хммм')
-      } else {
-        console.log(e.message)
-        swal.error('Ви щось пропустили', 'Перевірте форму')
       }
-    }
+    }))
+
+    // if (offer?.status === STAGES.SUCCESS) {
+    //   swal.success('Оголошення створено', 'Ура!')
+    // } else if (offer?.status === STAGES.FAILED) {
+    //   swal.error(offer.status, 'Хммм')
+    // }
   }
 
   renderPage() {
@@ -235,7 +231,7 @@ class OfferJob extends React.Component {
     return (
       <div>
         {
-          !this.props.authorized && <Redirect to='/login'/>
+          this.props.user?.status !== STAGES.SUCCESS && <Redirect to='/login'/>
         }
         {
           this.props.loading

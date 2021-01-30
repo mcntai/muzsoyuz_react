@@ -1,6 +1,5 @@
 import produce from 'immer'
-import { addDays } from '../utils/date'
-
+import moment from 'moment'
 
 const initialState = {
   jobType  : 'musicalReplacement',
@@ -8,7 +7,7 @@ const initialState = {
   "instrument.name": [],
   date     : {
     from: new Date(),
-    to  : addDays(Date.now(), 365),
+    to: moment().add(365, 'days')
   },
   salary   : {
     from: null,

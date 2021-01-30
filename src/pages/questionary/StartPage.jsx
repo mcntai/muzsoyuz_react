@@ -1,6 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { handleRedirect } from './handleRedirect'
+import HandleRedirect from './HandleRedirect'
 import BackgroundImage from './BackgroundImage'
 import Text from './Text'
 import Button from './Button'
@@ -8,14 +7,7 @@ import img from '../../assets/img/start-page-background.svg'
 import s from './StartPage.module.css'
 
 
-const mapStateToProps = state => {
-  return {
-    authorized: state.authReducer.authorized,
-    role      : state.authReducer.role,
-  }
-}
-
-const StartPage = ({ authorized, role }) => {
+const StartPage = () => {
 
   function renderContent() {
     return (
@@ -41,10 +33,10 @@ const StartPage = ({ authorized, role }) => {
   return (
     <div className={s.startPageWrapper}>
       {
-        handleRedirect(authorized, role, renderContent)
+        HandleRedirect(renderContent)
       }
     </div>
   )
 }
 
-export default connect(mapStateToProps)(StartPage)
+export default StartPage

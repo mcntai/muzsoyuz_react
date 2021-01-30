@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
-import { handleRedirect } from './handleRedirect'
+import HandleRedirect from './HandleRedirect'
 import BackgroundImage from './BackgroundImage'
 import Text from './Text'
 import Calendar from './Calendar'
@@ -13,12 +13,10 @@ import s from './ChooseFreeDaysPage.module.css'
 const mapStateToProps = state => {
   return {
     selectedDays: state.questReducer.selectedDays,
-    authorized  : state.authReducer.authorized,
-    role        : state.authReducer.role,
   }
 }
 
-const ChooseFreeDaysPage = ({ selectedDays, authorized, role }) => {
+const ChooseFreeDaysPage = ({ selectedDays }) => {
 
   async function handleSubmit() {
     try {
@@ -58,8 +56,7 @@ const ChooseFreeDaysPage = ({ selectedDays, authorized, role }) => {
   return (
     <div className={s.chooseDaysWrapper}>
       {
-        // handleRedirect(authorized, role, renderContent)
-        renderContent()
+        HandleRedirect(renderContent)
       }
     </div>
   )

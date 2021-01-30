@@ -62,17 +62,6 @@ export class MuzSoyuzRequest extends Request {
   async execute() {
     this.url = config.getApiPath() + this.url
 
-    return super.execute()
-      .then(this.checkStatus.bind(this))
-      .catch(e => {
-        e.message = Array.isArray(e.message) ? e.message.join(', ') : e.message
-
-        if (e.message === 'Bad Request Exception') {
-          console.error(e.message)
-          swal.error('Повідомте адміна, якщо можете', 'Щось пішло не так...')
-        } else {
-          throw e
-        }
-      })
+    return super.execute().then(this.checkStatus.bind(this))
   }
 }

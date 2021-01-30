@@ -1,6 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { handleRedirect } from './handleRedirect'
+import HandleRedirect from './HandleRedirect'
 import BackgroundImage from './BackgroundImage'
 import Text from './Text'
 import YearsOfExperience from './YearsOfExperience'
@@ -9,14 +8,7 @@ import img from '../../assets/img/start-choose-exp-background.svg'
 import s from './ChooseExperiencePage.module.css'
 
 
-const mapStateToProps = state => {
-  return {
-    authorized: state.authReducer.authorized,
-    role      : state.authReducer.role,
-  }
-}
-
-const ChooseExperiencePage = ({ authorized, role }) => {
+const ChooseExperiencePage = () => {
 
   function renderContent() {
     return (
@@ -31,7 +23,7 @@ const ChooseExperiencePage = ({ authorized, role }) => {
           textClass={s.chooseExpText}
         />
         <div className={s.yearExpBtnsWrapper}>
-          <YearsOfExperience />
+          <YearsOfExperience/>
         </div>
         <Button
           btnText="продовжити"
@@ -45,10 +37,10 @@ const ChooseExperiencePage = ({ authorized, role }) => {
   return (
     <div className={s.chooseExpPageWrapper}>
       {
-        handleRedirect(authorized, role, renderContent)
+        HandleRedirect(renderContent)
       }
     </div>
   )
 }
 
-export default connect(mapStateToProps)(ChooseExperiencePage)
+export default ChooseExperiencePage

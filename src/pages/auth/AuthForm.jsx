@@ -2,10 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import AuthNavLinks from './AuthNavLinks'
 import { authValidator } from '../../validators'
+import { authenticateUser } from '../../actions/user'
 import BasicAuth from './BasicAuth'
-import { MuzSoyuzRequest } from '../../muzsoyuz-request'
-import { fetchAuthStatusSuccess } from '../../actions/getProfileActions'
-import { fetchAuthStatusFailure } from '../../actions/getProfileActions'
 import { authPageRoute } from '../../actions/routingActions'
 import * as swal from '../../components/common/alerts'
 import s from './AuthForm.module.css'
@@ -13,8 +11,7 @@ import s from './AuthForm.module.css'
 
 const mapStateToProps = state => {
   return {
-    authorized: state.authReducer.authorized,
-    role      : state.authReducer.role,
+    user: state.user,
   }
 }
 
@@ -63,28 +60,16 @@ class AuthForm extends BasicAuth {
     }
   }
 
-  async handleAuthSubmit(e, route) {
+  handleAuthSubmit(e, route) {
     e.preventDefault()
 
-    try {
-      const response = await MuzSoyuzRequest.makeAuthentication(route, {
+    this.props.dispatch(authenticateUser({
+      route,
+      body: {
         email   : this.state.email,
         password: this.state.password,
-      })
-
-      await this.setDataToLocalStorage(response)
-
-      this.props.dispatch(fetchAuthStatusSuccess(response.profile.role))
-    }
-    catch (e) {
-      if (e.message === 'Unauthorized') {
-        swal.error(e.message, 'Упс!')
-      } else {
-        swal.error(e.message, 'Хммм')
       }
-
-      this.props.dispatch(fetchAuthStatusFailure(e.message))
-    }
+    }))
   }
 
   drawRegForm() {
@@ -217,7 +202,7 @@ class AuthForm extends BasicAuth {
           : this.drawLoginForm()
         }
         {
-          this.handleRedirect()
+          this.handleRedirect(this.props.user)
         }
       </div>
     )

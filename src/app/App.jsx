@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchDataIfLoggedIn } from '../actions/getProfileActions'
+import { fetchUser } from "../actions/user"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Auth from '../pages/auth/Auth'
 import Main from '../pages/main/Main'
@@ -28,7 +28,7 @@ const mapStateToProps = state => {
 class App extends React.Component {
   componentDidMount() {
     if (localStorage.getItem('token')) {
-      this.props.dispatch(fetchDataIfLoggedIn())
+      this.props.dispatch(fetchUser())
     }
   }
 

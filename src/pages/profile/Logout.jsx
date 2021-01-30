@@ -1,46 +1,42 @@
 import React from 'react'
 import s from './Logout.module.css'
 import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { cleanUser } from '../../slice/user'
 
 
-const handleLogoutRedux = () => ({
-  type: 'LOGOUT',
-})
+const Logout = ({ btnWrapper }) => {
+  const dispatch = useDispatch()
 
-class Logout extends React.Component {
-
-  handleLogOut(dispatch) {
+  const handleLogOut = () => {
     try {
       localStorage.removeItem('token')
       localStorage.removeItem('userId')
 
-      dispatch(handleLogoutRedux())
+      dispatch(cleanUser())
     }
     catch (error) {
       alert(error.message)
     }
   }
 
-  LogoutButton() {
+  const LogoutButton = () => {
     return (
-        <NavLink
-          to=""
-          className={s.btn}
-          onClick={() => this.props.dispatch(this.handleLogOut)}
-        >
-          Вийти
-        </NavLink>
+      <NavLink
+        to=""
+        className={s.btn}
+        onClick={() => dispatch(handleLogOut)}
+      >
+        Вийти
+      </NavLink>
     )
   }
 
-  render() {
-    return (
-      <div className={this.props.btnWrapper}>
-        {this.LogoutButton()}
-      </div>
-    )
-  }
+  return (
+    <div className={btnWrapper}>
+      {LogoutButton()}
+    </div>
+  )
 }
 
-export default connect(undefined)(Logout)
+export default Logout

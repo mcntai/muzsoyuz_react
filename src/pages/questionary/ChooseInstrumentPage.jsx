@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
-import { handleRedirect } from './handleRedirect'
+import HandleRedirect from './HandleRedirect'
 import BackgroundImage from './BackgroundImage'
 import Text from './Text'
 import SelectInstrument from './SelectInstrument'
@@ -13,12 +13,10 @@ import s from './ChooseInstrumentPage.module.css'
 const mapStateToProps = state => {
   return {
     selectedInst: state.questReducer.selectedInst,
-    authorized  : state.authReducer.authorized,
-    role        : state.authReducer.role,
   }
 }
 
-const ChooseInstrumentPage = ({ selectedInst, authorized, role }) => {
+const ChooseInstrumentPage = ({ selectedInst }) => {
 
   async function handleSubmit() {
     try {
@@ -56,7 +54,7 @@ const ChooseInstrumentPage = ({ selectedInst, authorized, role }) => {
   return (
     <div className={s.chooseInstrumentPageWrapper}>
       {
-        handleRedirect(authorized, role, renderContent)
+        HandleRedirect(renderContent)
       }
     </div>
   )

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import { Redirect } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import CollapseButton from '../findJobs/filters/CollapseButton'
@@ -14,18 +14,19 @@ import * as swalAlert from '../../components/common/alerts'
 import avatar from '../../assets/img/avatar.svg'
 import settings from '../../assets/img/settings.svg'
 import s from './Profile.module.css'
+import { selectUser } from '../../slice/user'
+import { STAGES } from '../../slice/utils/constants'
 
 
 const mapStateToProps = state => {
   return {
-    loading   : state.authReducer.loading,
-    authorized: state.authReducer.authorized,
     prevRoute : state.pageReducer.prevRoute
   }
 }
 
-const Profile = ({ authorized, prevRoute, dispatch }) => {
+const Profile = ({ prevRoute, dispatch }) => {
   const [profileData, setProfileData] = useState({})
+  const user = useSelector(selectUser)
 
   useEffect(() => {
     dispatch(pageRoute('PROFILE', prevRoute))
@@ -83,7 +84,7 @@ const Profile = ({ authorized, prevRoute, dispatch }) => {
   return (
     <>
       {
-        authorized === false
+        user?.status !== STAGES.SUCCESS
         ? <Redirect to='/login'/>
         : userAuthorized()
       }

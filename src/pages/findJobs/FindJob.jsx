@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import { omitBy, predicates } from '../../utils/object'
 import { pageRoute } from '../../actions/routingActions'
+import { NavLink } from 'react-router-dom'
 import Header from '../../components/mainHeader/Header'
 import SortingFilterButtons from './SortingFilterButtons'
 import Footer from '../../components/mainFooter/Footer'
 import preloader from '../../assets/img/preloader.gif'
 import s from './FindJob.module.css'
-import { NavLink } from 'react-router-dom'
 
 
 const mapStateToProps = state => {
@@ -43,6 +43,7 @@ const FindJob = ({ loading, body, dispatch }) => {
   async function getAllJobOffers(count) {
     const transformedBody = omitBy(body,
       value => predicates.isEmptyString(value) || predicates.isEmptyRange(value) || predicates.isEmptyArray(value))
+
     transformedBody.offset = count * 30
 
     const response = await MuzSoyuzRequest.getJobOffers(transformedBody)
@@ -56,6 +57,8 @@ const FindJob = ({ loading, body, dispatch }) => {
         'phone',
         'extraInfo',
       ])
+
+    console.log(response)
 
     if (count > 0) {
       return response

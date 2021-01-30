@@ -1,18 +1,14 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import {connect} from 'react-redux'
+import { useSelector } from 'react-redux'
+import { selectUser } from '../../slice/user'
+import { STAGES } from '../../slice/utils/constants'
 import * as swal from '../../components/common/alerts'
 import Header from '../../components/mainHeader/Header'
 import Footer from '../../components/mainFooter/Footer'
 import avatar from '../../assets/img/avatar.svg'
 import s from './OpenJob.module.css'
 
-
-const mapStateToProps = state => {
-  return {
-    authorized: state.authReducer.authorized,
-  }
-}
 
 const role = {
   drums  : 'Барабанщик',
@@ -26,16 +22,17 @@ const role = {
   piano  : 'Клавішні'
 }
 
-const OpenJob = ({authorized}) => {
+const OpenJob = () => {
   let location = useLocation()
   const [data] = useState([location.state.data])
+  const user = useSelector(selectUser)
 
   const handleChat = () => {
-   if (!authorized) {
-     swal.warning('Чат буде доступний в наступному релізі...', 'Пардон...')
-   } else {
-     swal.warning('Чат буде доступний в наступному релізі...', 'Пардон...')
-   }
+    if (user?.status !== STAGES.SUCCESS) {
+      swal.warning('Чат буде доступний в наступному релізі...', 'Пардонч...')
+    } else {
+      swal.warning('Чат буде доступний в наступному релізі...', 'Пардон...')
+    }
   }
 
   return (
@@ -80,4 +77,4 @@ const OpenJob = ({authorized}) => {
   )
 }
 
-export default connect(mapStateToProps)(OpenJob)
+export default OpenJob
