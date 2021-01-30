@@ -1,12 +1,12 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 import { useSelector } from 'react-redux'
-import { selectUser } from '../../slice/user'
+import { selectProfile } from '../../slice/user'
 import { STAGES } from '../../slice/utils/constants'
 
 
 const HandleRedirect = (renderContent) => {
-  const user = useSelector(selectUser)
+  const user = useSelector(selectProfile)
   const status = user?.status === STAGES.SUCCESS
   const role = user?.role
 

@@ -5,7 +5,9 @@ import {setDataToLocalStorage} from '../utils/muzsoyuz/setDataToLS'
 
 export const fetchUser = createAsyncThunk(
   p.USER_FETCH,
-  (_, thunkAPI) => thunkAPI.extra.api.getUserProfile(),
+  (_, thunkAPI) => {
+    return thunkAPI.extra.api.getUserProfile()
+  }
 )
 
 export const authenticateUser = createAsyncThunk(

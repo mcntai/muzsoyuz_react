@@ -202,7 +202,7 @@ class AuthForm extends BasicAuth {
           : this.drawLoginForm()
         }
         {
-          this.handleRedirect(this.props.user)
+          this.handleRedirect(this.props?.user?.profile)
         }
       </div>
     )

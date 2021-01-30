@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { selectUser } from '../../slice/user'
+import { selectProfile } from '../../slice/user'
 import { STAGES } from '../../slice/utils/constants'
 import * as swal from '../../components/common/alerts'
 import Header from '../../components/mainHeader/Header'
@@ -25,7 +25,7 @@ const role = {
 const OpenJob = () => {
   let location = useLocation()
   const [data] = useState([location.state.data])
-  const user = useSelector(selectUser)
+  const user = useSelector(selectProfile)
 
   const handleChat = () => {
     if (user?.status !== STAGES.SUCCESS) {

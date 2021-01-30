@@ -14,7 +14,7 @@ import * as swalAlert from '../../components/common/alerts'
 import avatar from '../../assets/img/avatar.svg'
 import settings from '../../assets/img/settings.svg'
 import s from './Profile.module.css'
-import { selectUser } from '../../slice/user'
+import { selectProfile } from '../../slice/user'
 import { STAGES } from '../../slice/utils/constants'
 
 
@@ -26,7 +26,7 @@ const mapStateToProps = state => {
 
 const Profile = ({ prevRoute, dispatch }) => {
   const [profileData, setProfileData] = useState({})
-  const user = useSelector(selectUser)
+  const user = useSelector(selectProfile)
 
   useEffect(() => {
     dispatch(pageRoute('PROFILE', prevRoute))

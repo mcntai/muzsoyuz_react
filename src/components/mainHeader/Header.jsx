@@ -3,17 +3,17 @@ import s from './Header.module.css'
 import profile from '../../assets/img/profile.svg'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { selectUser } from '../../slice/user'
+import { selectProfile } from '../../slice/user'
 import { STAGES } from '../../slice/utils/constants'
 
 
 const Header = () => {
-  const user = useSelector(selectUser)
+  const user = useSelector(selectProfile)
 
   return (
     <>
       {
-        user?.status === STAGES.SUCCESS
+        user.status === STAGES.SUCCESS
         ?
         <div className={s.profile}>
           <NavLink to="/profile"><img src={profile} alt="profile-icon"/></NavLink>
