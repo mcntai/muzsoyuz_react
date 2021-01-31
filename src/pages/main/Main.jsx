@@ -11,7 +11,7 @@ import s from './Main.module.css'
 
 const mapStateToProps = state => {
   return {
-    loading  : state.authReducer.loading,
+    // loading  : state.authReducer.loading,
     prevRoute: state.pageReducer.prevRoute
   }
 }
@@ -43,10 +43,13 @@ class Main extends React.Component {
   render() {
     return (
       <div className={s.wrapper}>
+        {/*{*/}
+        {/*  this.props.loading*/}
+        {/*  ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>*/}
+        {/*  : this.renderPage()*/}
+        {/*}*/}
         {
-          this.props.loading
-          ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
-          : this.renderPage()
+          this.renderPage()
         }
       </div>
     )

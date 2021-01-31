@@ -15,9 +15,9 @@ import { STAGES } from '../../slice/utils/constants'
 
 const mapStateToProps = state => {
   return {
-    loading   : state.authReducer.loading,
+    // loading   : state.authReducer.loading,
     prevRoute : state.pageReducer.prevRoute,
-    user      : state.user,
+    user      : state.user.profile,
     // offer     : state.offers,
   }
 }
@@ -233,10 +233,13 @@ class OfferJob extends React.Component {
         {
           this.props.user?.status !== STAGES.SUCCESS && <Redirect to='/login'/>
         }
+        {/*{*/}
+        {/*  this.props.loading*/}
+        {/*  ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>*/}
+        {/*  : this.renderPage()*/}
+        {/*}*/}
         {
-          this.props.loading
-          ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
-          : this.renderPage()
+          this.renderPage()
         }
       </div>
     )

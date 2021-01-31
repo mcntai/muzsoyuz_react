@@ -16,7 +16,7 @@ const Logout = ({ btnWrapper }) => {
       dispatch(cleanUser())
     }
     catch (error) {
-      alert(error.message)
+      console.log(error.message)
     }
   }
 
@@ -25,7 +25,7 @@ const Logout = ({ btnWrapper }) => {
       <NavLink
         to=""
         className={s.btn}
-        onClick={() => dispatch(handleLogOut)}
+        onClick={() => handleLogOut()}
       >
         Вийти
       </NavLink>

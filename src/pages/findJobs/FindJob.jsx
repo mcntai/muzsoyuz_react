@@ -14,7 +14,7 @@ import s from './FindJob.module.css'
 
 const mapStateToProps = state => {
   return {
-    loading  : state.authReducer.loading,
+    // loading  : state.authReducer.loading,
     prevRoute: state.pageReducer.prevRoute,
     body     : state.filterReducer
   }
@@ -152,11 +152,12 @@ const FindJob = ({ loading, body, dispatch }) => {
 
   return (
     <div>
-      {
-        loading
-        ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
-        : renderPage()
-      }
+      {/*{*/}
+      {/*  loading*/}
+      {/*  ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>*/}
+      {/*  : renderPage()*/}
+      {/*}*/}
+      {renderPage()}
     </div>
   )
 }
