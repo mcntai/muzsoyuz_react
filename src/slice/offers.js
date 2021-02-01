@@ -1,32 +1,49 @@
 import { createSlice } from '@reduxjs/toolkit'
 import loadExtraReducers from './utils/load-extra-reducers'
-import { makeOffer } from '../actions/offers'
-import { STAGES } from './utils/constants'
+import { fetchOffers, makeOffer } from '../actions/offers'
+import moment from 'moment'
 
 
 const fulfilledReducer = (state, action) => {
-  state.status = STAGES.SUCCESS
-  state[action.type] = {}
-  Object.assign(state[action.type], action.payload)
-}
-
-const rejectedReducer = state => {
-  state.status = STAGES.FAILED
+  state.isFetchedAll = !action.payload.length
+  state.data = [...new Set([...state.data, ...action.payload])]
 }
 
 const offersSlice = createSlice({
   name         : 'offers',
-  initialState : {},
-  reducers     : {},
+  initialState : {
+    fetchOffersBody: {
+      jobType          : 'musicalReplacement',
+      relations        : ['instrument', 'user'],
+      'instrument.name': [],
+      date             : {
+        from: new Date(),
+        to  : moment().add(365, 'days')
+      },
+      salary           : {
+        from: null,
+        to  : null,
+      },
+      sets             : '',
+      limit            : 30,
+      offset           : 0,
+    },
+    fetchedOffers  : { data: [] },
+    madeOffer      : {},
+  },
+  reducers     : {
+    incrementOffSet(state, action) {
+      state.fetchOffersBody.offset = action.payload
+    }
+  },
   extraReducers: {
-    ...loadExtraReducers(makeOffer, {
-      fulfilledReducer,
-      rejectedReducer,
-    })
+    ...loadExtraReducers(makeOffer, { context: 'madeOffer' }),
+    ...loadExtraReducers(fetchOffers, { context: 'fetchedOffers', fulfilledReducer }),
   }
 })
 
 export default offersSlice.reducer
 
-export const selectOffer = state => state.offers
-export const { } = offersSlice.actions
+export const selectOfferBody = state => state.offers.fetchOffersBody
+export const selectFetchedOffers = state => state.offers.fetchedOffers
+export const { incrementOffSet } = offersSlice.actions

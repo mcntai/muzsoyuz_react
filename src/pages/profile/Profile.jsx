@@ -83,7 +83,6 @@ const Profile = ({ prevRoute, dispatch }) => {
 
   return (
     <>
-      {console.log(user?.status)}
       {
         user?.status !== STAGES.SUCCESS
         ? <Redirect to='/login'/>

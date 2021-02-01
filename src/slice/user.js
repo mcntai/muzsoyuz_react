@@ -17,7 +17,7 @@ const userSlice = createSlice({
   },
   reducers     : {
     cleanUser(state) {
-      return state.profile = {}
+      state.profile = {}
     }
   },
   extraReducers: {

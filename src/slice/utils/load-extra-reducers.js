@@ -6,6 +6,12 @@ const defaultFulfilledReducer = (state, action) => {
   Object.assign(state, action.payload)
 }
 
+// const defaultFulfilledReducer = (state, action) => {
+//   let newState = Object.keys(action.payload).map((item, index) => {
+//     return item
+//   })
+// }
+
 const contextWrapper = (context, reducer) => (state, action) => {
   return reducer(context ? get(state, context) : state, action)
 }

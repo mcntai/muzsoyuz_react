@@ -8,7 +8,7 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
 import { MuzSoyuzRequest } from "./muzsoyuz-request"
 
-const store = configureStore({
+export const store = configureStore({
   reducer       : rootReducer,
   preloadedState: {},
   middleware    : [thunk.withExtraArgument({ api: MuzSoyuzRequest })],
