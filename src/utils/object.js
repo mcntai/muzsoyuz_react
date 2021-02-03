@@ -91,6 +91,8 @@ export const predicates = {
 
   isEmptyRange: value => isObject(value) && value.from === null && value.to === null,
 
+  isNilRange: value => isObject(value) && value.from === 0 && value.to === 0,
+
   isEmptyArray: value => Array.isArray(value) && !value.length
 }
 

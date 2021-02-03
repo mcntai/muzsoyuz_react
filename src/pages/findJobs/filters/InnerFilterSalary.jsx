@@ -1,27 +1,18 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { filterSalary } from '../../../actions/filterActions'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import s from './InnerFilterSalary.module.css'
+import { filterSalary, selectSalary } from '../../../slice/offers'
 
 
-const InnerFilterSalary = (props) => {
-  const [minSalary, setMinSalary] = useState(0)
-  const [maxSalary, setMaxSalary] = useState(60000)
+const InnerFilterSalary = () => {
+  const dispatch = useDispatch()
+  const salary = useSelector(selectSalary)
 
-  const enterMinSalary = (e) => {
-    setMinSalary(e.target.value)
-  }
-  const enterMaxSalary = (e) => {
-    setMaxSalary(e.target.value)
-  }
+  const enterSalary = (e) => {
+    let value = e.target.value
+    let range = e.target.getAttribute('datafld')
 
-  const fixSalary = () => {
-    if(minSalary > 0) {
-      props.dispatch(filterSalary(minSalary, maxSalary))
-    }
-    else if(maxSalary < 60000) {
-      props.dispatch(filterSalary(minSalary, maxSalary))
-    }
+    // dispatch(filterSalary({ value, range }))
   }
 
   return (
@@ -29,29 +20,29 @@ const InnerFilterSalary = (props) => {
       <div className={s.salaryInputWrapper}>
         <label className={s.label}>
           від
-        <input
-          type="number"
-          pattern="\d*"
-          className={s.input}
-          value={minSalary}
-          onChange={enterMinSalary}
-          onBlur={fixSalary}
-        />
-      </label>
+          <input
+            type="number"
+            pattern="\d*"
+            datafld='from'
+            value={salary.from}
+            className={s.input}
+            onChange={enterSalary}
+          />
+        </label>
         <label className={s.label}>
           до
-        <input
-          type="number"
-          pattern="\d*"
-          className={s.input}
-          value={maxSalary}
-          onChange={enterMaxSalary}
-          onBlur={fixSalary}
-        />
+          <input
+            type="number"
+            pattern="\d*"
+            datafld='to'
+            value={salary.to}
+            className={s.input}
+            onChange={enterSalary}
+          />
         </label>
       </div>
     </div>
   )
 }
 
-export default connect(undefined)(InnerFilterSalary)
+export default InnerFilterSalary

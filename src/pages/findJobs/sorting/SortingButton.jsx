@@ -3,7 +3,7 @@ import SortingFrom from './SortingFrom'
 import s from './SortingButton.module.css'
 
 
-const SortingButton = ({ btnName, title, btnTextFirst, btnTextSecond }) => {
+const SortingButton = ({ param, title, btnTextFirst, btnTextSecond }) => {
   const [trigger, setTrigger] = useState(false)
 
   const showMenu = () => {
@@ -25,7 +25,7 @@ const SortingButton = ({ btnName, title, btnTextFirst, btnTextSecond }) => {
         {title}
       </div>
       <SortingFrom
-        btnName={btnName}
+        param={param}
         trigger={trigger}
         btnTextFirst={btnTextFirst}
         btnTextSecond={btnTextSecond}

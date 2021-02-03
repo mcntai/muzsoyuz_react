@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import useInfiniteScroll from '../../components/common/useInfniteScroll'
 import { useSelector, useDispatch } from 'react-redux'
 import { incrementOffSet, selectFetchedOffers, selectOfferBody } from '../../slice/offers'
@@ -31,7 +31,7 @@ const FindJob = () => {
 
   function getAllJobOffers(newOffSet) {
     const transformedBody = omitBy(body,
-      composition(predicates.isEmptyString, predicates.isEmptyRange, predicates.isEmptyArray))
+      composition(predicates.isEmptyString, predicates.isEmptyRange, predicates.isEmptyArray, predicates.isNilRange))
 
     transformedBody.offset = newOffSet
     dispatch(fetchOffers({ body: transformedBody }))

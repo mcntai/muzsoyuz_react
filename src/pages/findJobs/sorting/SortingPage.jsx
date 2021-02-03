@@ -16,19 +16,19 @@ const SortingPage = () => {
         redirectTo="/find-job"
       />
       <SortingButton
-        btnName="date"
+        param="date"
         title="Дата проведення івенту"
         btnTextFirst="Від останньої дати"
         btnTextSecond="Від найближчої дати"
       />
       <SortingButton
-        btnName="salary"
+        param="salary"
         title="Зарплата, грн"
         btnTextFirst="Від найбільшої"
         btnTextSecond="Від найменшої"
       />
       <SortingButton
-        btnName="sets"
+        param="sets"
         title="Кількісь сетів"
         btnTextFirst="Від найбільшої"
         btnTextSecond="Від найменшої"

@@ -1,40 +1,35 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router'
-import { sortDesc } from '../../../actions/filterActions'
-import { sortAsc } from '../../../actions/filterActions'
 import s from './SortingFrom.module.css'
+import { sortOffers } from '../../../slice/offers'
 
 
-const SortingFrom = ({ btnName, trigger, btnTextFirst, btnTextSecond, dispatch }) => {
+const SortingFrom = ({ param, trigger, btnTextFirst, btnTextSecond }) => {
+  const dispatch = useDispatch()
   const [redirect, setRedirect] = useState(false)
   const visible = trigger ? s.visible : s.hidden
 
-  const sortingDescending = () => {
-    dispatch(sortDesc(btnName))
+  const handleSorting = (e) => {
+    const sortType = e.target.getAttribute('datafld')
+    dispatch(sortOffers({ param, sortType }))
 
-    setRedirect(!redirect)
-  }
-
-  const sortingAscending = () => {
-    dispatch(sortAsc(btnName))
-
-    setRedirect(!redirect)
+    setRedirect(true)
   }
 
   return (
     <div className={[s.sortingModalWrapper, visible, s.defaultPosition].join(' ')}>
       <div className={s.sortingBtnWrapper}>
         <button
-          name={btnName}
-          onClick={sortingDescending}
+          datafld='DESC'
+          onClick={handleSorting}
           className={s.btn}
         >
           {btnTextFirst}
         </button>
         <button
-          name={btnName}
-          onClick={sortingAscending}
+          datafld='ASC'
+          onClick={handleSorting}
           className={s.btn}
         >
           {btnTextSecond}
@@ -46,9 +41,7 @@ const SortingFrom = ({ btnName, trigger, btnTextFirst, btnTextSecond, dispatch }
         Відмінити
       </button>
       {
-        redirect
-        ? <Redirect to="/find-job"/>
-        : null
+        redirect && <Redirect to="/find-job"/>
       }
     </div>
   )
