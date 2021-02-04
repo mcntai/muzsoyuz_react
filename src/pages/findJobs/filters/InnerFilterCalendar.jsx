@@ -1,9 +1,9 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { connect } from 'react-redux'
-import { filterDate } from '../../../actions/filterActions'
 import DayPicker, { DateUtils } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
+import { filterDate } from '../../../slice/offers'
 
 
 const WEEKDAYS_SHORT = {
@@ -56,7 +56,7 @@ class InnerFilterCalendar extends React.Component {
   }
 
   componentDidUpdate() {
-    this.props.dispatch(filterDate(this.state.from, this.state.to))
+    this.props.dispatch(filterDate({ from: this.state.from, to: this.state.to }))
   }
 
   render() {

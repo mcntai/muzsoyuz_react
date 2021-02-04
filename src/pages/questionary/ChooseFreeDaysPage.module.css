@@ -132,6 +132,10 @@
     top: 330px;
     padding-bottom: 60px;
   }
+
+  .calendarContainer > div {
+    line-height: 15px;
+  }
 }
 
 /* iPhone 6+/7+/8+ and Popular Androids */

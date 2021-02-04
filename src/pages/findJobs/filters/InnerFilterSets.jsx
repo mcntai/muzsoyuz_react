@@ -1,13 +1,14 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { filterSets } from '../../../actions/filterActions'
+import { useDispatch } from 'react-redux'
 import s from './InnerFilterSets.module.css'
+import { filterSets } from '../../../slice/offers'
 
 
-const InnerFilterSets = (props) => {
+const InnerFilterSets = () => {
+  const dispatch = useDispatch()
 
   const chooseSets = (e) => {
-    props.dispatch(filterSets(e.target.value))
+    dispatch(filterSets(Number(e.target.value)))
   }
 
   return (
@@ -23,4 +24,4 @@ const InnerFilterSets = (props) => {
   )
 }
 
-export default connect(undefined)(InnerFilterSets)
+export default InnerFilterSets

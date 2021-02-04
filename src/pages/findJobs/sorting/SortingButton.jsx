@@ -4,14 +4,14 @@ import s from './SortingButton.module.css'
 
 
 const SortingButton = ({ param, title, btnTextFirst, btnTextSecond }) => {
-  const [trigger, setTrigger] = useState(false)
+  const [display, setDisplay] = useState(false)
 
   const showMenu = () => {
-    setTrigger(!trigger)
+    setDisplay(!display)
   }
 
   const hideMenu = () => {
-    setTrigger(false)
+    setDisplay(false)
   }
 
   return (
@@ -26,7 +26,7 @@ const SortingButton = ({ param, title, btnTextFirst, btnTextSecond }) => {
       </div>
       <SortingFrom
         param={param}
-        trigger={trigger}
+        display={display}
         btnTextFirst={btnTextFirst}
         btnTextSecond={btnTextSecond}
       />

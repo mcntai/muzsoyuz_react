@@ -5,10 +5,10 @@ import s from './SortingFrom.module.css'
 import { sortOffers } from '../../../slice/offers'
 
 
-const SortingFrom = ({ param, trigger, btnTextFirst, btnTextSecond }) => {
+const SortingFrom = ({ param, display, btnTextFirst, btnTextSecond }) => {
   const dispatch = useDispatch()
   const [redirect, setRedirect] = useState(false)
-  const visible = trigger ? s.visible : s.hidden
+  let visible = display ? s.visible : s.hidden
 
   const handleSorting = (e) => {
     const sortType = e.target.getAttribute('datafld')
@@ -22,14 +22,14 @@ const SortingFrom = ({ param, trigger, btnTextFirst, btnTextSecond }) => {
       <div className={s.sortingBtnWrapper}>
         <button
           datafld='DESC'
-          onClick={handleSorting}
+          onMouseDown={handleSorting}
           className={s.btn}
         >
           {btnTextFirst}
         </button>
         <button
           datafld='ASC'
-          onClick={handleSorting}
+          onMouseDown={handleSorting}
           className={s.btn}
         >
           {btnTextSecond}

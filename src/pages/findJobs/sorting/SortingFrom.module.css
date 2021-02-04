@@ -21,6 +21,7 @@
   background: #F3F3F3;
   border: 1px solid #F3F3F3;
   outline: none;
+  cursor: pointer;
 }
 
 .btn:first-child {
