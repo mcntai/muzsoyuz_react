@@ -1,14 +1,11 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { selectShowText } from '../../slice/general'
 
 
-const mapStateToProps = state => {
-  return {
-    showText: state.questReducer.showText
-  }
-}
+const Text = ({ text, textWrapperClass, textClass }) => {
+  const showText = useSelector(selectShowText)
 
-const Text = ({ text, textWrapperClass, textClass, showText }) => {
   return (
     <div className={textWrapperClass}>
       {
@@ -20,4 +17,4 @@ const Text = ({ text, textWrapperClass, textClass, showText }) => {
   )
 }
 
-export default connect(mapStateToProps)(Text)
+export default Text

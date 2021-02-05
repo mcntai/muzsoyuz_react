@@ -11,6 +11,3 @@ export const fetchOffers = createAsyncThunk(
   p.OFFER_FETCH,
   ({ body }, thunkAPI) => thunkAPI.extra.api.getJobOffers(body),
 )
-
-
-

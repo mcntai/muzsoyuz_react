@@ -2,6 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import DayPicker, { DateUtils } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
+import { setDaysOff } from '../../actions/user'
+import { debounce } from 'lodash'
+import { moveFinishBtnCalendarQuest, toggleElement } from '../../slice/general'
 import s from './ChooseFreeDaysPage.module.css'
 
 
@@ -32,36 +35,25 @@ const FIRST_DAY_OF_WEEK = {
 
 const mapStateToProps = state => {
   return {
-    calendar: state.questReducer.showCalendar,
-    text    : state.questReducer.showText
+    calendar: state.general.showCalendar,
+    text    : state.general.showText
   }
 }
-
-const showHideElementQuestionary = (showCal, showText) => ({
-  type: 'SHOW_HIDE_ELEMENT',
-  showCal,
-  showText
-})
-
-const moveFinishButton = () => ({
-  type     : 'MOVE_FINISH_BUTTON',
-  finishBtn: true
-})
-
-const saveSelectedDays = (selectedDays) => ({
-  type: 'SAVE_SELECTED_DAYS',
-  selectedDays,
-})
 
 class Calendar extends React.Component {
   constructor(props) {
     super(props)
     this.handleDayClick = this.handleDayClick.bind(this)
     this.handleShowCalendar = this.handleShowCalendar.bind(this)
+    this.makeDispatch = debounce(this.makeDispatch, 5000)
     this.state = {
       selectedDays: [],
       showBtn     : '',
     }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    this.makeDispatch()
   }
 
   handleDayClick(day, { selected }) {
@@ -75,19 +67,18 @@ class Calendar extends React.Component {
       selectedDays.push(day)
     }
     this.setState({ selectedDays })
+  }
 
-    this.props.dispatch(saveSelectedDays([...this.state.selectedDays]))
+  makeDispatch() {
+    this.props.dispatch(setDaysOff({ dates: [...this.state.selectedDays], dayOff: true }))
   }
 
   handleShowCalendar() {
     const button = this.state.showBtn === '' ? s.showBtn : ''
-    const calendar = this.props.calendar
-    const text = this.props.text
-
     this.setState({ showBtn: button })
 
-    this.props.dispatch(showHideElementQuestionary(!calendar, !text))
-    this.props.dispatch(moveFinishButton())
+    this.props.dispatch(toggleElement())
+    this.props.dispatch(moveFinishBtnCalendarQuest())
   }
 
   render() {

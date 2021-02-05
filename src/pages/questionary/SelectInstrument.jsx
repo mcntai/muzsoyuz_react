@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Select from 'react-select'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { userProfileUpdate } from '../../actions/user'
 import s from './ChooseInstrumentPage.module.css'
 
 
@@ -43,22 +44,12 @@ const customStyles = {
   })
 }
 
-const saveSelectedInst = (selectedInst) => ({
-  type: 'SAVE_SELECTED_INSTRUMENT',
-  selectedInst
-})
+const SelectInstrument = () => {
+  const dispatch = useDispatch()
 
-const SelectInstrument = (props) => {
-  const [selectedOption, setSelectedOption] = useState('')
-
-  function handleChange(e) {
-    setSelectedOption(e.value)
+  const handleChange = e => {
+    dispatch(userProfileUpdate({ role: e.value }))
   }
-
-  useEffect(() => {
-    props.dispatch(saveSelectedInst(selectedOption))
-  })
-
 
   return (
     <div>
@@ -75,4 +66,4 @@ const SelectInstrument = (props) => {
   )
 }
 
-export default connect(undefined)(SelectInstrument)
+export default SelectInstrument

@@ -1,7 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { MuzSoyuzRequest } from '../../muzsoyuz-request'
-import HandleRedirect from './HandleRedirect'
 import BackgroundImage from './BackgroundImage'
 import Text from './Text'
 import Calendar from './Calendar'
@@ -10,26 +7,7 @@ import img from '../../assets/img/start-choose-days-background.svg'
 import s from './ChooseFreeDaysPage.module.css'
 
 
-const mapStateToProps = state => {
-  return {
-    selectedDays: state.questReducer.selectedDays,
-  }
-}
-
-const ChooseFreeDaysPage = ({ selectedDays }) => {
-
-  async function handleSubmit() {
-    try {
-      await MuzSoyuzRequest.setDaysOff({
-        dates : selectedDays,
-        dayOff: true
-      })
-    }
-    catch (e) {
-      console.log(e.message)
-    }
-  }
-
+const ChooseFreeDaysPage = () => {
   function renderContent() {
     return (
       <>
@@ -47,7 +25,6 @@ const ChooseFreeDaysPage = ({ selectedDays }) => {
           btnText="завершити"
           nextRoute="/"
           btnClass={s.chooseDaysFinishBtn}
-          handleSubmit={handleSubmit}
         />
       </>
     )
@@ -62,4 +39,4 @@ const ChooseFreeDaysPage = ({ selectedDays }) => {
   )
 }
 
-export default connect(mapStateToProps)(ChooseFreeDaysPage)
+export default ChooseFreeDaysPage

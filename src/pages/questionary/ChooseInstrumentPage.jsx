@@ -1,6 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import HandleRedirect from './HandleRedirect'
 import BackgroundImage from './BackgroundImage'
 import Text from './Text'
@@ -10,25 +8,7 @@ import img from '../../assets/img/start-choose-instrument-background.svg'
 import s from './ChooseInstrumentPage.module.css'
 
 
-const mapStateToProps = state => {
-  return {
-    selectedInst: state.questReducer.selectedInst,
-  }
-}
-
-const ChooseInstrumentPage = ({ selectedInst }) => {
-
-  async function handleSubmit() {
-    try {
-      await MuzSoyuzRequest.makeProfileUpdate({
-        role: selectedInst,
-      })
-    }
-    catch (e) {
-      console.error(e)
-    }
-  }
-
+const ChooseInstrumentPage = () => {
   function renderContent() {
     return (
       <>
@@ -45,7 +25,6 @@ const ChooseInstrumentPage = ({ selectedInst }) => {
           btnText="продовжити"
           nextRoute="/quest-experience"
           btnClass={s.chooseInstBtn}
-          handleSubmit={handleSubmit}
         />
       </>
     )
@@ -60,4 +39,4 @@ const ChooseInstrumentPage = ({ selectedInst }) => {
   )
 }
 
-export default connect(mapStateToProps)(ChooseInstrumentPage)
+export default ChooseInstrumentPage

@@ -1,28 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { MuzSoyuzRequest } from '../../muzsoyuz-request'
-import * as swalAlert from '../../components/common/alerts'
+import React from 'react'
 import s from './ChooseExperiencePage.module.css'
+import { useDispatch } from 'react-redux'
+import { userProfileUpdate } from '../../actions/user'
 
 
 const YearsOfExperience = () => {
-  const [year, setYear] = useState(null)
-
-  useEffect(() => {
-    async function sendYearsOfExperience() {
-      try {
-        await MuzSoyuzRequest.makeProfileUpdate({ yearCommercialExp: year })
-      }
-      catch (e) {
-        swalAlert.error(e.message, 'Упс...')
-      }
-    }
-
-    sendYearsOfExperience()
-  }, [year])
+  const dispatch = useDispatch()
 
   const chooseExperience = (e) => {
-    const exp = e.target.getAttribute('datafld')
-    setYear(Number(exp))
+    const exp = Number(e.target.getAttribute('datafld'))
+
+    dispatch(userProfileUpdate({ yearCommercialExp: exp }))
   }
 
   return (

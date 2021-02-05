@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ACTION_PREFIXES as p } from '../constants/action-types'
-import {setDataToLocalStorage} from '../utils/muzsoyuz/setDataToLS'
+import { setDataToLocalStorage } from '../utils/muzsoyuz/setDataToLS'
 
 
 export const fetchUser = createAsyncThunk(
@@ -27,6 +27,20 @@ export const getTokenAfterOauth = createAsyncThunk(
     thunkAPI.extra.api.getTokenAfterSocialOauth(provider, query)
 
     await thunkAPI.dispatch(fetchUser())
+  }
+)
+
+export const userProfileUpdate = createAsyncThunk(
+  p.USER_PROFILE_UPDATE,
+  ({ role, yearCommercialExp }, thunkAPI) => {
+    return thunkAPI.extra.api.makeProfileUpdate({ role, yearCommercialExp })
+  }
+)
+
+export const setDaysOff = createAsyncThunk(
+  p.USER_DAYS_OFF,
+  ({dates, dayOff}, thunkAPI) => {
+    return thunkAPI.extra.api.setDaysOff({dates, dayOff})
   }
 )
 
