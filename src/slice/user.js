@@ -1,6 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import loadExtraReducers from './utils/load-extra-reducers'
-import { fetchUser, authenticateUser, getTokenAfterOauth, userProfileUpdate, setDaysOff } from '../actions/user'
+import { addHours, trimTime } from '../utils/date'
+import {
+  fetchUser,
+  authenticateUser,
+  getTokenAfterOauth,
+  userProfileUpdate,
+  setDaysOff,
+  getDaysOff
+} from '../actions/user'
 
 
 const fulfilledReducer = (state, action) => {
@@ -8,7 +16,11 @@ const fulfilledReducer = (state, action) => {
   state[param] = Object.values(action.payload).join()
 }
 
-const fulfilledWorkdaysReducer = (state, action) => {
+const fulfilledGetWorkDays = (state, action) => {
+  state.dates = action.payload.map(day => new Date(day.date).toISOString())
+}
+
+const fulfilledSetWorkDays = (state, action) => {
   state.dates = action.payload.dates
   state.dayOff = true
 }
@@ -16,12 +28,19 @@ const fulfilledWorkdaysReducer = (state, action) => {
 const userSlice = createSlice({
   name         : 'user',
   initialState : {
-    profile: {},
-    workdays: {dates: []}
+    profile : {},
+    workdays: { dates: [] }
   },
   reducers     : {
     cleanUser(state) {
       state.profile = {}
+    },
+    addFreeDays(state, action) {
+      if (action.payload.type === 'remove') {
+        state.workdays.dates = state.workdays.dates.filter(date => date !== addHours(trimTime(action.payload.day), 2).toISOString())
+      } else {
+        state.workdays.dates.push(addHours(trimTime(action.payload.day), 2).toISOString())
+      }
     }
   },
   extraReducers: {
@@ -29,7 +48,8 @@ const userSlice = createSlice({
     ...loadExtraReducers(authenticateUser, { context: 'profile' }),
     ...loadExtraReducers(getTokenAfterOauth, { context: 'profile' }),
     ...loadExtraReducers(userProfileUpdate, { context: 'profile', fulfilledReducer }),
-    ...loadExtraReducers(setDaysOff, { context: 'workdays', fulfilledReducer: fulfilledWorkdaysReducer }),
+    ...loadExtraReducers(setDaysOff, { context: 'workdays', fulfilledReducer: fulfilledSetWorkDays }),
+    ...loadExtraReducers(getDaysOff, { context: 'workdays', fulfilledReducer: fulfilledGetWorkDays }),
   }
 })
 
@@ -37,4 +57,5 @@ export default userSlice.reducer
 
 export const selectUser = state => state.user
 export const selectProfile = state => state.user.profile
-export const { cleanUser } = userSlice.actions
+export const selectWorkDays = state => state.user.workdays.dates
+export const { cleanUser, addFreeDays } = userSlice.actions

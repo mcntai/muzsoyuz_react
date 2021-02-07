@@ -1,8 +1,10 @@
-import React from 'react'
-import DayPicker, { DateUtils } from 'react-day-picker'
-import { MuzSoyuzRequest } from '../../muzsoyuz-request'
-import * as swalAlert from '../../components/common/alerts'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import DayPicker from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
+import { getDaysOff, setDaysOff } from '../../actions/user'
+import { useDispatch, useSelector } from 'react-redux'
+import { addFreeDays, selectWorkDays } from '../../slice/user'
+import { debounce } from 'lodash'
 import s from './CalendarProfile.module.css'
 
 
@@ -31,72 +33,54 @@ const FIRST_DAY_OF_WEEK = {
   ua: 1,
 }
 
-class CalendarProfile extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleDayClick = this.handleDayClick.bind(this)
-    this.state = {
-      selectedDays: [],
-    }
+const CalendarProfile = () => {
+  let workdays = useSelector(selectWorkDays)
+  const [dateChosen, setDateChosen] = useState(false)
+  const dispatch = useDispatch()
+
+  const makeDispatch = days => {
+    dispatch(setDaysOff({ dates: [...days], dayOff: true }))
   }
 
-  async componentDidMount() {
-    try {
-      const response = await MuzSoyuzRequest.getDaysOff()
+  const debouncedDispatch = useCallback(debounce(days => makeDispatch(days), 5000), [])
 
-      this.setState({ selectedDays: response.map(day => new Date(day.date)) })
-    }
-    catch (e) {
-      swalAlert.error(e.message, 'Упс!')
-    }
-  }
+  useEffect(() => {
+    dispatch(getDaysOff())
+  }, [])
 
-  async setDaysOff(day, dayOff) {
-    try {
-      await MuzSoyuzRequest.setDaysOff({
-        dates: [day],
-        dayOff,
-      })
+  useEffect(() => {
+    if (dateChosen) {
+      debouncedDispatch(workdays)
+      setDateChosen(false)
     }
-    catch (e) {
-      swalAlert.error(e.message, 'Упс!')
-    }
-  }
+  }, [dateChosen])
 
-  async handleDayClick(day, { selected }) {
-    let dayOff = false
-    let { selectedDays } = this.state
 
-    if (selected) {
-      selectedDays = selectedDays.filter(selectedDay =>
-        !DateUtils.isSameDay(selectedDay, day)
-      )
+  const handleDayClick = (day, { selected }) => {
+    if(selected) {
+      dispatch(addFreeDays({ day, type: 'remove' }))
     } else {
-      selectedDays.push(day)
-      dayOff = true
+      dispatch(addFreeDays({ day}))
     }
 
-    this.setState({ selectedDays })
-
-    await this.setDaysOff(day, dayOff)
+    // debouncedDispatch(workdays)
+    setDateChosen(true)
   }
 
-
-  render() {
-    return (
-      <div className={s.calendarWrapper}>
-        <DayPicker
-          selectedDays={this.state.selectedDays}
-          onDayClick={this.handleDayClick}
-          months={MONTHS['ua']}
-          weekdaysShort={WEEKDAYS_SHORT['ua']}
-          firstDayOfWeek={FIRST_DAY_OF_WEEK['ua']}
-          className={s.calendarContainer}
-        />
-      </div>
-    )
-  }
+  return (
+    <div className={s.calendarWrapper}>
+      <DayPicker
+        selectedDays={workdays.map(day => new Date(day))}
+        onDayClick={handleDayClick}
+        months={MONTHS.ua}
+        weekdaysShort={WEEKDAYS_SHORT.ua}
+        firstDayOfWeek={FIRST_DAY_OF_WEEK.ua}
+        className={s.calendarContainer}
+      />
+    </div>
+  )
 }
+
 
 export default CalendarProfile
 

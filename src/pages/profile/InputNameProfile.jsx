@@ -1,38 +1,23 @@
-import React, { useState, useEffect } from 'react'
-import { MuzSoyuzRequest } from '../../muzsoyuz-request'
-import * as swalAlert from '../../components/common/alerts'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { userProfileUpdate } from '../../actions/user'
 import s from './InputNameProfile.module.css'
 
 
 const InputNameProfile = ({ data }) => {
-  const [name, setName] = useState({})
-  const [finishedUpdatingName, setFinishedUpdatingName] = useState(false)
+  const [name, setName] = useState('')
+  const dispatch = useDispatch()
 
   useEffect(() => {
     setName(data)
   }, [data])
 
-  useEffect(() => {
-    async function submitChanges() {
-      if (finishedUpdatingName) {
-        try {
-          await MuzSoyuzRequest.makeProfileUpdate({ name })
-        }
-        catch (e) {
-          swalAlert.error(e.message, 'Сталася помилка при оновленні профілю')
-        }
-      }
-    }
-
-    submitChanges()
-  }, [finishedUpdatingName])
-
   const changeName = (e) => {
     setName(e.target.value)
   }
 
-  const disableNameEdit = () => {
-    setFinishedUpdatingName(true)
+  const finishChangeName = () => {
+    dispatch(userProfileUpdate({ name }))
   }
 
   return (
@@ -45,11 +30,10 @@ const InputNameProfile = ({ data }) => {
         placeholder="Твоє ім'я"
         contentEditable={true}
         onChange={changeName}
-        onBlur={disableNameEdit}
+        onBlur={finishChangeName}
       />
     </div>
   )
 }
-
 
 export default InputNameProfile

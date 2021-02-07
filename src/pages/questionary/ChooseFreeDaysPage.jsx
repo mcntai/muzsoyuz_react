@@ -1,4 +1,5 @@
 import React from 'react'
+import HandleRedirect from './HandleRedirect'
 import BackgroundImage from './BackgroundImage'
 import Text from './Text'
 import Calendar from './Calendar'

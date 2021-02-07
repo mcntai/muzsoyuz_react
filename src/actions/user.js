@@ -32,15 +32,20 @@ export const getTokenAfterOauth = createAsyncThunk(
 
 export const userProfileUpdate = createAsyncThunk(
   p.USER_PROFILE_UPDATE,
-  ({ role, yearCommercialExp }, thunkAPI) => {
-    return thunkAPI.extra.api.makeProfileUpdate({ role, yearCommercialExp })
+  ({ name, phone, role, yearCommercialExp }, thunkAPI) => {
+    return thunkAPI.extra.api.makeProfileUpdate({ name, phone, role, yearCommercialExp })
   }
 )
 
+export const getDaysOff = createAsyncThunk(
+  p.USER_GET_DAYS_OFF,
+  (_, thunkAPI) => thunkAPI.extra.api.getDaysOff(),
+)
+
 export const setDaysOff = createAsyncThunk(
-  p.USER_DAYS_OFF,
-  ({dates, dayOff}, thunkAPI) => {
-    return thunkAPI.extra.api.setDaysOff({dates, dayOff})
+  p.USER_SET_DAYS_OFF,
+  ({ dates, dayOff }, thunkAPI) => {
+    return thunkAPI.extra.api.setDaysOff({ dates, dayOff })
   }
 )
 

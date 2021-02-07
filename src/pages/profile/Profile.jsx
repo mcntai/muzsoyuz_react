@@ -8,40 +8,25 @@ import InstrumentProfile from './InstrumentProfile'
 import InputPhoneProfile from './InputPhoneProfile'
 import CalendarProfile from './CalendarProfile'
 import Logout from './Logout'
-import { MuzSoyuzRequest } from '../../muzsoyuz-request'
 import { pageRoute } from '../../actions/routingActions'
-import * as swalAlert from '../../components/common/alerts'
+import { selectProfile } from '../../slice/user'
+import { STAGES } from '../../slice/utils/constants'
 import avatar from '../../assets/img/avatar.svg'
 import settings from '../../assets/img/settings.svg'
 import s from './Profile.module.css'
-import { selectProfile } from '../../slice/user'
-import { STAGES } from '../../slice/utils/constants'
 
 
 const mapStateToProps = state => {
   return {
-    prevRoute : state.pageReducer.prevRoute
+    prevRoute: state.pageReducer.prevRoute
   }
 }
 
 const Profile = ({ prevRoute, dispatch }) => {
-  const [profileData, setProfileData] = useState({})
   const user = useSelector(selectProfile)
 
   useEffect(() => {
     dispatch(pageRoute('PROFILE', prevRoute))
-
-    async function fetchData() {
-      try {
-        const response = await MuzSoyuzRequest.getUserProfile()
-        setProfileData(response)
-      }
-      catch (e) {
-        swalAlert.error(e.message, 'Упс!')
-      }
-    }
-
-    fetchData()
   }, [])
 
 
@@ -52,9 +37,9 @@ const Profile = ({ prevRoute, dispatch }) => {
           <NavLink to={prevRoute} className={s.backBtn}/>
           <div className={s.topContentWrapper}>
             <div className={s.avatarWrapper}>
-            <img src={profileData.imageURL || avatar} alt="avatar" className={s.avatar}/>
+              <img src={user.imageURL || avatar} alt="avatar" className={s.avatar}/>
             </div>
-            <InputNameProfile data={profileData.name}/>
+            <InputNameProfile data={user.name}/>
           </div>
         </div>
         <div className={s.profileMiddleSection}>
@@ -66,9 +51,9 @@ const Profile = ({ prevRoute, dispatch }) => {
             title={'Твій інструмент'}
             btnWrapper={s.btnWrapperInstrument}
             filterName={s.filterName}
-            innerContent={<InstrumentProfile defaultInstrument={{ role: profileData.role }}/>}
+            innerContent={<InstrumentProfile defaultInstrument={user.role}/>}
           />
-          <InputPhoneProfile data={profileData.phone}/>
+          <InputPhoneProfile data={user.phone}/>
           <CollapseButton
             title={'Вільні дні'}
             btnWrapper={s.btnWrapperCalendar}
@@ -84,9 +69,10 @@ const Profile = ({ prevRoute, dispatch }) => {
   return (
     <>
       {
-        user?.status !== STAGES.SUCCESS
-        ? <Redirect to='/login'/>
-        : userAuthorized()
+        // user?.status !== STAGES.SUCCESS
+        // ? <Redirect to='/login'/>
+        // : userAuthorized()
+        userAuthorized()
       }
     </>
   )

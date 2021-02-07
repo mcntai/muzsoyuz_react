@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { MuzSoyuzRequest } from '../../muzsoyuz-request'
-import * as swalAlert from '../../components/common/alerts'
+import { useDispatch } from 'react-redux'
+import { userProfileUpdate } from '../../actions/user'
 import s from './InstrumentProfile.module.css'
 
 
@@ -17,40 +17,23 @@ const instruments = {
 }
 
 const InstrumentProfile = ({ defaultInstrument }) => {
-  const isMounted = useRef(true)
   const [instrument, setInstrument] = useState(defaultInstrument)
-  const [instrumentChanged, setInstrumentChanged] = useState(false)
-  const [checkedOption, setCheckedOption] = useState('')
-  const [defaultOption, setDefaultOption] = useState('')
+  const instrumentChosen = useRef(false)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    setDefaultOption(defaultInstrument.role)
-  }, [defaultInstrument.role])
+    setInstrument(defaultInstrument)
+  }, [defaultInstrument])
 
   useEffect(() => {
-    async function setInstrument() {
-      if (!isMounted.current) {
-        try {
-          await MuzSoyuzRequest.makeProfileUpdate(instrument)
-        }
-        catch (e) {
-          swalAlert.error(e.message, 'Сталася помилка при оновленні профілю')
-        }
-      } else {
-        isMounted.current = false
-      }
-    }
-
-    setInstrument()
-  }, [instrument, instrumentChanged])
+    if(!instrumentChosen.current) return
+      dispatch(userProfileUpdate({role: instrument}))
+  }, [instrument])
 
   const chooseInstrument = (e) => {
     if (e.target.checked) {
-      setInstrument({ ...instrument, role: e.target.value })
-      setInstrumentChanged(!instrumentChanged)
-
-      setCheckedOption(e.target.value)
-      setDefaultOption('')
+      setInstrument(e.target.value)
+      instrumentChosen.current = true
     }
   }
 
@@ -67,7 +50,7 @@ const InstrumentProfile = ({ defaultInstrument }) => {
                   type="radio"
                   id={item}
                   value={item}
-                  checked={item === defaultOption || checkedOption === item}
+                  checked={item === defaultInstrument}
                   className={s.instrument}
                   onChange={chooseInstrument}
                 />
