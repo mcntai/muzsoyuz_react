@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import { userProfileUpdate } from '../../actions/user'
 import s from './InstrumentProfile.module.css'
@@ -21,9 +21,11 @@ const InstrumentProfile = ({ defaultInstrument }) => {
   const instrumentChosen = useRef(false)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    setInstrument(defaultInstrument)
-  }, [defaultInstrument])
+  console.log('main render')
+
+  // useEffect(() => {
+  //   setInstrument(defaultInstrument)
+  // }, [])
 
   useEffect(() => {
     if(!instrumentChosen.current) return

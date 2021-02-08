@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DayPicker from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 import { getDaysOff, setDaysOff } from '../../actions/user'
 import { useDispatch, useSelector } from 'react-redux'
-import { addFreeDays, selectWorkDays } from '../../slice/user'
-import { debounce } from 'lodash'
+import { selectWorkDays } from '../../slice/user'
+import { addHours, trimTime } from '../../utils/date'
 import s from './CalendarProfile.module.css'
 
 
@@ -35,42 +35,36 @@ const FIRST_DAY_OF_WEEK = {
 
 const CalendarProfile = () => {
   let workdays = useSelector(selectWorkDays)
-  const [dateChosen, setDateChosen] = useState(false)
+  const [selectedDays, setSelectedDays] = useState([])
   const dispatch = useDispatch()
-
-  const makeDispatch = days => {
-    dispatch(setDaysOff({ dates: [...days], dayOff: true }))
-  }
-
-  const debouncedDispatch = useCallback(debounce(days => makeDispatch(days), 5000), [])
 
   useEffect(() => {
     dispatch(getDaysOff())
   }, [])
 
   useEffect(() => {
-    if (dateChosen) {
-      debouncedDispatch(workdays)
-      setDateChosen(false)
-    }
-  }, [dateChosen])
+    workdays?.status === 'success' && setSelectedDays(workdays.dates)
+  }, [workdays])
 
+  const makeDispatch = (day, type) => {
+    dispatch(setDaysOff({ dates: day, dayOff: type }))
+  }
 
   const handleDayClick = (day, { selected }) => {
-    if(selected) {
-      dispatch(addFreeDays({ day, type: 'remove' }))
+    day = addHours(trimTime(day), 2).toISOString()
+    if (selected) {
+      setSelectedDays(selectedDays.filter(selectedDay => selectedDay !== day))
+      makeDispatch([day], false)
     } else {
-      dispatch(addFreeDays({ day}))
+      setSelectedDays([...selectedDays, day])
+      makeDispatch([day], true)
     }
-
-    // debouncedDispatch(workdays)
-    setDateChosen(true)
   }
 
   return (
     <div className={s.calendarWrapper}>
       <DayPicker
-        selectedDays={workdays.map(day => new Date(day))}
+        selectedDays={selectedDays.map(day => new Date(day))}
         onDayClick={handleDayClick}
         months={MONTHS.ua}
         weekdaysShort={WEEKDAYS_SHORT.ua}

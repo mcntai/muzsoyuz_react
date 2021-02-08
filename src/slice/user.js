@@ -17,12 +17,13 @@ const fulfilledReducer = (state, action) => {
 }
 
 const fulfilledGetWorkDays = (state, action) => {
-  state.dates = action.payload.map(day => new Date(day.date).toISOString())
+  state.dates = action.payload.map(day => day.date)
 }
 
 const fulfilledSetWorkDays = (state, action) => {
-  state.dates = action.payload.dates
-  state.dayOff = true
+  action.payload.dayOff === true
+  ? state.dates = [...state.dates, action.payload.dates]
+  : state.dates = state.dates.filter(date => date !== addHours(trimTime(action.payload.dates), 2).toISOString())
 }
 
 const userSlice = createSlice({
@@ -57,5 +58,5 @@ export default userSlice.reducer
 
 export const selectUser = state => state.user
 export const selectProfile = state => state.user.profile
-export const selectWorkDays = state => state.user.workdays.dates
+export const selectWorkDays = state => state.user.workdays
 export const { cleanUser, addFreeDays } = userSlice.actions
