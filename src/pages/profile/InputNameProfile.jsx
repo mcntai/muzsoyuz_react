@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { userProfileUpdate } from '../../actions/user'
+import { selectUserName } from '../../slice/user'
 import s from './InputNameProfile.module.css'
 
 
-const InputNameProfile = ({ data }) => {
-  const [name, setName] = useState('')
+const InputNameProfile = () => {
+  const userName = useSelector(selectUserName)
+  const [name, setName] = useState(userName)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    setName(data)
-  }, [data])
+    setName(userName)
+  }, [userName])
 
   const changeName = (e) => {
     setName(e.target.value)
@@ -26,7 +28,7 @@ const InputNameProfile = ({ data }) => {
         type='text'
         name='name'
         className={s.name}
-        value={name || ''}
+        value={name}
         placeholder="Твоє ім'я"
         contentEditable={true}
         onChange={changeName}

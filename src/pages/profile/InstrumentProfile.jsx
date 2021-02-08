@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { userProfileUpdate } from '../../actions/user'
 import s from './InstrumentProfile.module.css'
+import { selectUserRole } from '../../slice/user'
 
 
 const instruments = {
@@ -16,26 +17,13 @@ const instruments = {
   piano  : 'Клавішні'
 }
 
-const InstrumentProfile = ({ defaultInstrument }) => {
-  const [instrument, setInstrument] = useState(defaultInstrument)
-  const instrumentChosen = useRef(false)
+const InstrumentProfile = () => {
+  const userRole = useSelector(selectUserRole)
   const dispatch = useDispatch()
-
-  console.log('main render')
-
-  // useEffect(() => {
-  //   setInstrument(defaultInstrument)
-  // }, [])
-
-  useEffect(() => {
-    if(!instrumentChosen.current) return
-      dispatch(userProfileUpdate({role: instrument}))
-  }, [instrument])
 
   const chooseInstrument = (e) => {
     if (e.target.checked) {
-      setInstrument(e.target.value)
-      instrumentChosen.current = true
+      dispatch(userProfileUpdate({role: e.target.value}))
     }
   }
 
@@ -52,7 +40,7 @@ const InstrumentProfile = ({ defaultInstrument }) => {
                   type="radio"
                   id={item}
                   value={item}
-                  checked={item === defaultInstrument}
+                  checked={item === userRole}
                   className={s.instrument}
                   onChange={chooseInstrument}
                 />

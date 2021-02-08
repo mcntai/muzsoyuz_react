@@ -1,21 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { jobOfferValidator } from '../../validators'
 import * as swalAlert from '../../components/common/alerts'
-import s from './InputPhoneProfile.module.css'
 import { userProfileUpdate } from '../../actions/user'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectUserPhone } from '../../slice/user'
+import s from './InputPhoneProfile.module.css'
 
 
-const InputPhoneProfile = ({ data }) => {
-  const [phone, setPhone] = useState(data)
+const InputPhoneProfile = () => {
+  const userPhone = useSelector(selectUserPhone)
+  const [phone, setPhone] = useState(userPhone)
   const [lastNumber, setLastNumber] = useState('')
   const [finishedUpdatingPhone, setFinishedUpdatingPhone] = useState(false)
   const ref = useRef(false)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    setPhone(data)
-  }, [data])
+    setPhone(userPhone)
+  }, [userPhone])
 
   useEffect(() => {
     if (ref.current === false) return

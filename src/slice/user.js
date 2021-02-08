@@ -57,6 +57,10 @@ const userSlice = createSlice({
 export default userSlice.reducer
 
 export const selectUser = state => state.user
+export const selectUserImage = state => state.user.profile.imageURL
+export const selectUserName = state => state.user.profile.name
+export const selectUserRole = state => state.user.profile.role
+export const selectUserPhone = state => state.user.profile.phone
 export const selectProfile = state => state.user.profile
 export const selectWorkDays = state => state.user.workdays
 export const { cleanUser, addFreeDays } = userSlice.actions

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { connect, useSelector } from 'react-redux'
 import { Redirect } from 'react-router'
 import { NavLink } from 'react-router-dom'
@@ -9,7 +9,7 @@ import InputPhoneProfile from './InputPhoneProfile'
 import CalendarProfile from './CalendarProfile'
 import Logout from './Logout'
 import { pageRoute } from '../../actions/routingActions'
-import { selectProfile } from '../../slice/user'
+import { selectUser, selectUserImage } from '../../slice/user'
 import { STAGES } from '../../slice/utils/constants'
 import avatar from '../../assets/img/avatar.svg'
 import settings from '../../assets/img/settings.svg'
@@ -23,7 +23,8 @@ const mapStateToProps = state => {
 }
 
 const Profile = ({ prevRoute, dispatch }) => {
-  const user = useSelector(selectProfile)
+  const user = useSelector(selectUser)
+  const userImage = useSelector(selectUserImage)
 
   useEffect(() => {
     dispatch(pageRoute('PROFILE', prevRoute))
@@ -37,9 +38,9 @@ const Profile = ({ prevRoute, dispatch }) => {
           <NavLink to={prevRoute} className={s.backBtn}/>
           <div className={s.topContentWrapper}>
             <div className={s.avatarWrapper}>
-              <img src={user.imageURL || avatar} alt="avatar" className={s.avatar}/>
+              <img src={userImage || avatar} alt="avatar" className={s.avatar}/>
             </div>
-            <InputNameProfile data={user.name}/>
+            <InputNameProfile />
           </div>
         </div>
         <div className={s.profileMiddleSection}>
@@ -51,9 +52,9 @@ const Profile = ({ prevRoute, dispatch }) => {
             title={'Твій інструмент'}
             btnWrapper={s.btnWrapperInstrument}
             filterName={s.filterName}
-            innerContent={<InstrumentProfile defaultInstrument={user.role}/>}
+            innerContent={<InstrumentProfile />}
           />
-          <InputPhoneProfile data={user.phone}/>
+          <InputPhoneProfile data={'user.phone'}/>
           <CollapseButton
             title={'Вільні дні'}
             btnWrapper={s.btnWrapperCalendar}
@@ -69,10 +70,9 @@ const Profile = ({ prevRoute, dispatch }) => {
   return (
     <>
       {
-        // user?.status !== STAGES.SUCCESS
-        // ? <Redirect to='/login'/>
-        // : userAuthorized()
-        userAuthorized()
+        user?.status !== STAGES.SUCCESS
+        ? <Redirect to='/login'/>
+        : userAuthorized()
       }
     </>
   )
