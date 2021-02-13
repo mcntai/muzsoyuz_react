@@ -11,7 +11,7 @@ import {
 } from '../actions/user'
 
 
-const fulfilledReducer = (state, action) => {
+const fulfilledProfileUpdateReducer = (state, action) => {
   const param = Object.keys(action.payload).join()
   state[param] = Object.values(action.payload).join()
 }
@@ -35,20 +35,13 @@ const userSlice = createSlice({
   reducers     : {
     cleanUser(state) {
       state.profile = {}
-    },
-    addFreeDays(state, action) {
-      if (action.payload.type === 'remove') {
-        state.workdays.dates = state.workdays.dates.filter(date => date !== addHours(trimTime(action.payload.day), 2).toISOString())
-      } else {
-        state.workdays.dates.push(addHours(trimTime(action.payload.day), 2).toISOString())
-      }
     }
   },
   extraReducers: {
     ...loadExtraReducers(fetchUser, { context: 'profile' }),
     ...loadExtraReducers(authenticateUser, { context: 'profile' }),
     ...loadExtraReducers(getTokenAfterOauth, { context: 'profile' }),
-    ...loadExtraReducers(userProfileUpdate, { context: 'profile', fulfilledReducer }),
+    ...loadExtraReducers(userProfileUpdate, { context: 'profile', fulfilledReducer: fulfilledProfileUpdateReducer }),
     ...loadExtraReducers(setDaysOff, { context: 'workdays', fulfilledReducer: fulfilledSetWorkDays }),
     ...loadExtraReducers(getDaysOff, { context: 'workdays', fulfilledReducer: fulfilledGetWorkDays }),
   }
@@ -63,4 +56,4 @@ export const selectUserRole = state => state.user.profile.role
 export const selectUserPhone = state => state.user.profile.phone
 export const selectProfile = state => state.user.profile
 export const selectWorkDays = state => state.user.workdays
-export const { cleanUser, addFreeDays } = userSlice.actions
+export const { cleanUser } = userSlice.actions

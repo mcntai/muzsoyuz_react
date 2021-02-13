@@ -1,34 +1,30 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { getTokenAfterOauth } from '../../actions/user'
-import BasicAuth from './BasicAuth'
-import * as swal from '../../components/common/alerts'
+import { selectUser } from '../../slice/user'
+import { handleRedirect } from './authRedirectHandler'
 
 
-const mapStateToProps = state => ({
-  user: state.user,
-})
+const SocialMediaOauth = ({ type }) => {
+  const user = useSelector(selectUser)
+  const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(oauthCallback(type))
+  })
 
-class SocialMediaOauth extends BasicAuth {
-  componentDidMount() {
-    this.props.dispatch(this.oauthCallback(this.props.type))
-  }
-
-  oauthCallback(provider) {
+  function oauthCallback(provider) {
     const url = new URL(window.location.href)
     const query = url.search
 
-    this.props.dispatch(getTokenAfterOauth({provider, query}))
+    dispatch(getTokenAfterOauth({ provider, query }))
   }
 
-  render() {
-    return (
-      <div>
-        {this.handleRedirect(this.props.user)}
-      </div>
-    )
-  }
+  return (
+    <>
+      {() => handleRedirect(user)}
+    </>
+  )
 }
 
-export default connect(mapStateToProps)(SocialMediaOauth)
+export default SocialMediaOauth

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { userProfileUpdate } from '../../actions/user'
 import s from './InstrumentProfile.module.css'

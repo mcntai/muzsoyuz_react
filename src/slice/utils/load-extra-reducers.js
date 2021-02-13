@@ -1,16 +1,12 @@
-import { identity } from "../../utils/array"
-import { STAGES } from "./constants"
+import { identity } from '../../utils/array'
+import { STAGES } from './constants'
 import get from 'lodash/get'
+import { store } from '../../index'
+
 
 const defaultFulfilledReducer = (state, action) => {
   Object.assign(state, action.payload)
 }
-
-// const defaultFulfilledReducer = (state, action) => {
-//   let newState = Object.keys(action.payload).map((item, index) => {
-//     return item
-//   })
-// }
 
 const contextWrapper = (context, reducer) => (state, action) => {
   return reducer(context ? get(state, context) : state, action)
@@ -44,9 +40,7 @@ export default function loadExtraReducers(reducer, extra) {
       state.loaded = true
       state.status = STAGES.FAILED
 
-      const e = action?.error
-
-      state.error = Array.isArray(e.message) ? e.message.join(', ') : e.message
+      state.error = action?.error?.message || action?.error
       rejectedReducer(state, action)
     }),
   }

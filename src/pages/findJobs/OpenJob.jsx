@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { selectProfile } from '../../slice/user'
-import { STAGES } from '../../slice/utils/constants'
 import * as swal from '../../components/common/alerts'
 import Header from '../../components/mainHeader/Header'
 import Footer from '../../components/mainFooter/Footer'
@@ -25,14 +22,9 @@ const role = {
 const OpenJob = () => {
   let location = useLocation()
   const [data] = useState([location.state.data])
-  const user = useSelector(selectProfile)
 
   const handleChat = () => {
-    if (user?.status !== STAGES.SUCCESS) {
-      swal.warning('Чат буде доступний в наступному релізі...', 'Пардонч...')
-    } else {
-      swal.warning('Чат буде доступний в наступному релізі...', 'Пардон...')
-    }
+    swal.warning('Чат буде доступний в наступному релізі...', 'Пардон...')
   }
 
   return (

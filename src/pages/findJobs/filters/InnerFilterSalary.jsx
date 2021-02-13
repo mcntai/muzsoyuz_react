@@ -19,7 +19,7 @@ const InnerFilterSalary = () => {
 
   const enterSalary = (e) => {
     let value = e.target.value
-    let range = e.target.getAttribute('datafld')
+    let range = e.target.getAttribute('data-range')
 
     range === 'from'
     ? setInputFromValue(value)
@@ -37,7 +37,7 @@ const InnerFilterSalary = () => {
           <input
             type="number"
             pattern="\d*"
-            datafld='from'
+            data-range='from'
             value={inputFromValue || salary.from}
             className={s.input}
             onChange={enterSalary}
@@ -48,7 +48,7 @@ const InnerFilterSalary = () => {
           <input
             type="number"
             pattern="\d*"
-            datafld='to'
+            data-range='to'
             value={inputToValue || salary.to}
             className={s.input}
             onChange={enterSalary}

@@ -8,7 +8,7 @@ const YearsOfExperience = () => {
   const dispatch = useDispatch()
 
   const chooseExperience = (e) => {
-    const exp = Number(e.target.getAttribute('datafld'))
+    const exp = Number(e.target.getAttribute('data-year'))
 
     dispatch(userProfileUpdate({ yearCommercialExp: exp }))
   }
@@ -20,7 +20,7 @@ const YearsOfExperience = () => {
           return (
             <div
               key={el}
-              datafld={el}
+              data-year={el}
               tabIndex={1}
               className={s.expBtn}
               onClick={chooseExperience}

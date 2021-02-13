@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import loadExtraReducers from './utils/load-extra-reducers'
 import { fetchOffers, makeOffer } from '../actions/offers'
-import moment from 'moment'
+import { addDays } from '../utils/date'
 
 
 const fulfilledReducer = (state, action) => {
@@ -18,7 +18,7 @@ const offersSlice = createSlice({
       'instrument.name': [],
       date             : {
         from: new Date(),
-        to  : moment().add(365, 'days')
+        to  : addDays(Date.now(), 365)
       },
       salary           : {
         from: '',
@@ -37,8 +37,8 @@ const offersSlice = createSlice({
       state.fetchOffersBody.offset = action.payload
     },
     sortOffers(state, action) {
-      let type = action.payload.sortType
-      let param = action.payload.param
+      const type = action.payload.sortType
+      const param = action.payload.param
 
       state.fetchedOffers.data = []
       state.fetchOffersBody.offset = 0
@@ -48,7 +48,7 @@ const offersSlice = createSlice({
       state.fetchedOffers.data = []
       state.fetchOffersBody.offset = 0
 
-      if (action.payload.add) {
+      if (action.payload.filter === 'add') {
         state.fetchOffersBody['instrument.name'].push(action.payload.instrument)
       } else {
         state.fetchOffersBody['instrument.name'] = state.fetchOffersBody['instrument.name'].filter(instrument => instrument !== action.payload.instrument)
@@ -76,10 +76,12 @@ const offersSlice = createSlice({
 
 export default offersSlice.reducer
 
+export const selectMadeOffer = state => state.offers.madeOffer
 export const selectOfferBody = state => state.offers.fetchOffersBody
 export const selectSalary = state => state.offers.fetchOffersBody.salary
 export const selectInstrumentsList = state => state.offers.fetchOffersBody['instrument.name']
-export const selectFetchedOffers = state => state.offers.fetchedOffers
+export const selectOffers = state => state.offers.fetchedOffers
+export const selectFetchedData = state => state.offers.fetchedOffers.data
 export const {
   incrementOffSet,
   sortOffers,

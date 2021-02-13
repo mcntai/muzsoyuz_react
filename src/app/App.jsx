@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchUser } from "../actions/user"
+import { fetchUser } from '../actions/user'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Auth from '../pages/auth/Auth'
 import Main from '../pages/main/Main'

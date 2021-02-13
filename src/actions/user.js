@@ -12,7 +12,7 @@ export const fetchUser = createAsyncThunk(
 
 export const authenticateUser = createAsyncThunk(
   p.USER_AUTH,
-  async({ route, body }, thunkAPI) => {
+  async ({ route, body }, thunkAPI) => {
     const response = await thunkAPI.extra.api.makeAuthentication(route, body)
 
     await setDataToLocalStorage(response)
@@ -23,8 +23,8 @@ export const authenticateUser = createAsyncThunk(
 
 export const getTokenAfterOauth = createAsyncThunk(
   p.USER_OAUTH,
-  async({ provider, query }, thunkAPI) => {
-    thunkAPI.extra.api.getTokenAfterSocialOauth(provider, query)
+  async ({ provider, query }, thunkAPI) => {
+    await thunkAPI.extra.api.getTokenAfterSocialOauth(provider, query)
 
     await thunkAPI.dispatch(fetchUser())
   }

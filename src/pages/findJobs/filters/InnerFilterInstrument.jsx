@@ -18,14 +18,10 @@ const instruments = {
 
 const InnerFilterInstrument = () => {
   const dispatch = useDispatch()
-  const checkedInstrument = useSelector( selectInstrumentsList)
+  const checkedInstrument = useSelector(selectInstrumentsList)
 
   const chooseInstrument = (e, instrument) => {
-    if (e.target.checked) {
-      dispatch(filterInstruments({ instrument, add: 'add' }))
-    } else if (!e.target.checked) {
-      dispatch(filterInstruments({ instrument, delete: 'delete' }))
-    }
+    dispatch(filterInstruments({ instrument, filter: e.target.checked ? 'add' : 'delete' }))
   }
 
   return (

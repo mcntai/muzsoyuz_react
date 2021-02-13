@@ -1,119 +1,110 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import AuthNavLinks from './AuthNavLinks'
 import { authValidator } from '../../validators'
 import { authenticateUser } from '../../actions/user'
-import BasicAuth from './BasicAuth'
+import { handleRedirect } from './authRedirectHandler'
 import { authPageRoute } from '../../actions/routingActions'
-import * as swal from '../../components/common/alerts'
+import { selectUser } from '../../slice/user'
 import s from './AuthForm.module.css'
 
 
-const mapStateToProps = state => {
-  return {
-    user: state.user,
-  }
+const initialInputStates = {
+  email          : '',
+  password       : '',
+  confirmPassword: '',
+  emailErr       : '',
+  passwordErr    : '',
+  confirmErr     : '',
 }
 
-class AuthForm extends BasicAuth {
-  constructor(props) {
-    super(props)
-    this.state = {
-      email          : '',
-      password       : '',
-      confirmPassword: '',
-      emailErr       : '',
-      passwordErr    : '',
-      confirmErr     : '',
-      gender         : '',
-    }
+const AuthForm = ({ type }) => {
+  const [inputs, setInputs] = useState(initialInputStates)
+  const [gender, setGender] = useState('')
+  const user = useSelector(selectUser)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(authPageRoute(type))
+  }, [type])
+
+
+  function handleChange(e) {
+    const { name, value } = e.target
+    setInputs({ ...inputs, [name]: value })
   }
 
-  componentDidMount() {
-    this.props.dispatch(authPageRoute(this.props.type))
+  function handleGender(e) {
+    const gender = e.target.getAttribute('data-gender')
+    setGender(gender)
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.type !== prevProps.type) {
-      this.props.dispatch(authPageRoute(this.props.type))
-    }
-  }
-
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value })
-  }
-
-  handleGender(e) {
-    let gender = e.target.getAttribute('datafld')
-    this.setState({ gender })
-  }
-
-  validateInput(e, name, prevValue) {
-    let value = e.target.value
+  function validateInput(e, name, prevValue) {
+    const value = e.target.value
 
     try {
       authValidator(name, value, prevValue)
-      this.setState({ [name]: '' })
+      setInputs({ ...inputs, [name]: '' })
     }
     catch (e) {
-      this.setState({ [name]: e.message })
+      setInputs({ ...inputs, [name]: e.message })
     }
   }
 
-  handleAuthSubmit(e, route) {
+  function handleAuthSubmit(e, route) {
     e.preventDefault()
 
-    this.props.dispatch(authenticateUser({
+    dispatch(authenticateUser({
       route,
       body: {
-        email   : this.state.email,
-        password: this.state.password,
+        email   : inputs.email,
+        password: inputs.password,
       }
     }))
   }
 
-  drawRegForm() {
+  function drawRegForm() {
     return (
       <div className={s.authFormReg}>
         <AuthNavLinks/>
         <form action="" className={s.form}>
 
           <div className={s.inputWrapper}>
-            <span className={s.textErr}>{this.state.emailErr}</span>
+            <span className={s.textErr}>{inputs.emailErr}</span>
             <input
               type="email"
               name="email"
               placeholder="Імейл"
               className={s.input}
-              value={this.state.email}
-              onChange={this.handleChange.bind(this)}
-              onBlur={(e) => this.validateInput(e, 'emailErr')}
+              value={inputs.email}
+              onChange={handleChange}
+              onBlur={(e) => validateInput(e, 'emailErr')}
             />
           </div>
 
           <div className={s.inputWrapper}>
-            <span className={s.textErr}>{this.state.passwordErr}</span>
+            <span className={s.textErr}>{inputs.passwordErr}</span>
             <input
               type="password"
               name="password"
               placeholder="Пароль"
               className={s.input}
-              value={this.state.password}
-              onChange={this.handleChange.bind(this)}
-              onBlur={(e) => this.validateInput(e, 'passwordErr')}
+              value={inputs.password}
+              onChange={handleChange}
+              onBlur={(e) => validateInput(e, 'passwordErr')}
             />
           </div>
 
           <div className={s.inputWrapper}>
-            <span className={s.textErr}>{this.state.confirmErr}</span>
+            <span className={s.textErr}>{inputs.confirmErr}</span>
             <input
               type="password"
               name="confirmPassword"
               placeholder="Повторити пароль"
               className={s.input}
-              value={this.state.confirmPassword}
-              onChange={this.handleChange.bind(this)}
-              onBlur={(e) => this.validateInput(e, 'confirmErr', this.state.password)}
+              value={inputs.confirmPassword}
+              onChange={handleChange}
+              onBlur={(e) => validateInput(e, 'confirmErr', inputs.password)}
             />
           </div>
 
@@ -121,17 +112,17 @@ class AuthForm extends BasicAuth {
             <span className={s.genderTitle}>Стать</span>
             <div
               tabIndex={1}
-              datafld='жін'
+              data-gender='жін'
               className={s.genderInput}
-              onClick={this.handleGender.bind(this)}
+              onClick={handleGender}
             >
               жін
             </div>
             <div
               tabIndex={1}
-              datafld='чол'
+              data-gender='чол'
               className={s.genderInput}
-              onClick={this.handleGender.bind(this)}
+              onClick={handleGender}
             >
               чол
             </div>
@@ -139,7 +130,7 @@ class AuthForm extends BasicAuth {
 
           <button
             className={s.inputSubmit}
-            onClick={(e) => this.handleAuthSubmit.call(this, e, 'register')}
+            onClick={(e) => handleAuthSubmit(e, 'register')}
           >
             Зареєструватися
           </button>
@@ -148,8 +139,8 @@ class AuthForm extends BasicAuth {
     )
   }
 
-  drawLoginForm() {
-    const submit = this.props.type === 'login' ? s.inputSubmitLogin : s.inputSubmit
+  function drawLoginForm() {
+    const submit = type === 'login' ? s.inputSubmitLogin : s.inputSubmit
 
     return (
       <div className={s.authFormLog}>
@@ -157,34 +148,34 @@ class AuthForm extends BasicAuth {
         <form action="" className={s.form}>
 
           <div className={s.inputWrapper}>
-            <span className={s.textErr}>{this.state.emailErr}</span>
+            <span className={s.textErr}>{inputs.emailErr}</span>
             <input
               type="email"
               name="email"
               placeholder="Імейл"
               className={s.input}
-              value={this.state.email}
-              onChange={this.handleChange.bind(this)}
-              onBlur={(e) => this.validateInput(e, 'emailErr')}
+              value={inputs.email}
+              onChange={handleChange}
+              onBlur={(e) => validateInput(e, 'emailErr')}
             />
           </div>
 
           <div className={s.inputWrapper}>
-            <span className={s.textErr}>{this.state.passwordErr}</span>
+            <span className={s.textErr}>{inputs.passwordErr}</span>
             <input
               type="password"
               name="password"
               placeholder="Пароль"
               className={s.input}
-              value={this.state.password}
-              onChange={this.handleChange.bind(this)}
-              onBlur={(e) => this.validateInput(e, 'passwordErr')}
+              value={inputs.password}
+              onChange={handleChange}
+              onBlur={(e) => validateInput(e, 'passwordErr')}
             />
           </div>
 
           <button
             className={submit}
-            onClick={(e) => this.handleAuthSubmit.call(this, e, 'login')}
+            onClick={(e) => handleAuthSubmit(e, 'login')}
           >
             Увійти
           </button>
@@ -193,20 +184,18 @@ class AuthForm extends BasicAuth {
     )
   }
 
-  render() {
-    return (
-      <div>
-        {
-          this.props.type === 'register'
-          ? this.drawRegForm()
-          : this.drawLoginForm()
-        }
-        {
-          this.handleRedirect(this.props?.user?.profile)
-        }
-      </div>
-    )
-  }
+  return (
+    <div>
+      {
+        type === 'register'
+        ? drawRegForm()
+        : drawLoginForm()
+      }
+      {
+        handleRedirect(user?.profile)
+      }
+    </div>
+  )
 }
 
-export default connect(mapStateToProps)(AuthForm)
+export default AuthForm

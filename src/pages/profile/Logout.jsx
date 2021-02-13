@@ -9,15 +9,10 @@ const Logout = ({ btnWrapper }) => {
   const dispatch = useDispatch()
 
   const handleLogOut = () => {
-    try {
-      localStorage.removeItem('token')
-      localStorage.removeItem('userId')
+    localStorage.removeItem('token')
+    localStorage.removeItem('userId')
 
-      dispatch(cleanUser())
-    }
-    catch (error) {
-      console.log(error.message)
-    }
+    dispatch(cleanUser())
   }
 
   const LogoutButton = () => {
@@ -25,7 +20,7 @@ const Logout = ({ btnWrapper }) => {
       <NavLink
         to=""
         className={s.btn}
-        onClick={() => handleLogOut()}
+        onClick={handleLogOut}
       >
         Вийти
       </NavLink>

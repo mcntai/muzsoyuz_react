@@ -1,22 +1,26 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useInfiniteScroll from '../../components/common/useInfniteScroll'
 import { useSelector, useDispatch } from 'react-redux'
-import { incrementOffSet, selectFetchedOffers, selectOfferBody } from '../../slice/offers'
+import { incrementOffSet, selectFetchedData, selectOfferBody, selectOffers } from '../../slice/offers'
 import { fetchOffers } from '../../actions/offers'
 import { omitBy, predicates } from '../../utils/object'
 import { pageRoute } from '../../actions/routingActions'
 import { NavLink } from 'react-router-dom'
+import { OFFSET_PERIOD } from '../../constants/offers'
 import Header from '../../components/mainHeader/Header'
 import SortingFilterButtons from './SortingFilterButtons'
 import Footer from '../../components/mainFooter/Footer'
-// import preloader from '../../assets/img/preloader.gif'
+import { STAGES } from '../../slice/utils/constants'
 import s from './FindJob.module.css'
 
 
 const FindJob = () => {
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreOffers)
   const body = useSelector(selectOfferBody)
-  const { data: fetchedOffers, isFetchedAll } = useSelector(selectFetchedOffers)
+  const [noOfferToShow, setNoOffersToShow] = useState(s.hide)
+  const { isFetchedAll } = useSelector(selectOffers)
+  const offers = useSelector(selectOffers)
+  const fetchedOffers = useSelector(selectFetchedData)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -26,6 +30,12 @@ const FindJob = () => {
 
     dispatch(pageRoute('FIND_JOB', 'find-job'))
   }, [])
+
+  useEffect(() => {
+    const display = !fetchedOffers.length && offers.status === STAGES.SUCCESS ? s.show : s.hide
+
+    setNoOffersToShow(display)
+  }, [fetchedOffers])
 
   const composition = (...fns) => value => fns.some(fn => fn(value))
 
@@ -39,7 +49,7 @@ const FindJob = () => {
 
   function fetchMoreOffers() {
     if (!isFetchedAll) {
-      const newOffSet = body.offset + 30
+      const newOffSet = body.offset + OFFSET_PERIOD
       getAllJobOffers(newOffSet)
 
       setIsFetching(false)
@@ -75,19 +85,9 @@ const FindJob = () => {
             </li>
           })
         }
-        {/*{*/}
-        {/*  loadingNewOffers()*/}
-        {/*}*/}
       </div>
     )
   }
-
-  // function loadingNewOffers() {
-  //   const hide = infiniteScrollFinished ? s.hide : ''
-  //   return (
-  //     <p className={[s.loadingNewOffers, hide].join(' ')}>Завантажую нові оголошення</p>
-  //   )
-  // }
 
   const renderPage = () => {
     return (
@@ -103,6 +103,7 @@ const FindJob = () => {
           secondRoute='/find-job-filter'
           btnClass={s.btnClass}
         />
+        <p className={noOfferToShow}>Оголошень немає. Змініть фільтри або оновіть сторінку</p>
         {
           renderJobOffers(fetchedOffers)
         }
@@ -116,12 +117,9 @@ const FindJob = () => {
 
   return (
     <div>
-      {/*{*/}
-      {/*  loading*/}
-      {/*  ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>*/}
-      {/*  : renderPage()*/}
-      {/*}*/}
-      {renderPage()}
+      {
+        renderPage()
+      }
     </div>
   )
 }

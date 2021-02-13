@@ -11,7 +11,7 @@ const SortingFrom = ({ param, display, btnTextFirst, btnTextSecond }) => {
   let visible = display ? s.visible : s.hidden
 
   const handleSorting = (e) => {
-    const sortType = e.target.getAttribute('datafld')
+    const sortType = e.target.getAttribute('data-sort')
     dispatch(sortOffers({ param, sortType }))
 
     setRedirect(true)
@@ -21,14 +21,14 @@ const SortingFrom = ({ param, display, btnTextFirst, btnTextSecond }) => {
     <div className={[s.sortingModalWrapper, visible, s.defaultPosition].join(' ')}>
       <div className={s.sortingBtnWrapper}>
         <button
-          datafld='DESC'
+          data-sort='DESC'
           onMouseDown={handleSorting}
           className={s.btn}
         >
           {btnTextFirst}
         </button>
         <button
-          datafld='ASC'
+          data-sort='ASC'
           onMouseDown={handleSorting}
           className={s.btn}
         >

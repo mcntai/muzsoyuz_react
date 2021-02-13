@@ -1,100 +1,111 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router'
-import moment from 'moment'
 import { makeOffer } from '../../actions/offers'
 import { pageRoute } from '../../actions/routingActions'
 import { jobOfferValidator } from '../../validators'
-import * as swal from '../../components/common/alerts'
 import Header from '../../components/mainHeader/Header'
 import Footer from '../../components/mainFooter/Footer'
-import preloader from '../../assets/img/preloader.gif'
-import s from './OfferJob.module.css'
 import { STAGES } from '../../slice/utils/constants'
+import { selectProfile } from '../../slice/user'
+import PopUp from '../../components/common/popUp'
+import { clearError } from '../../actions/errors'
+import s from './OfferJob.module.css'
+import { selectError } from '../../reducers/errorsReducer'
+import { selectMadeOffer } from '../../slice/offers'
 
 
-const mapStateToProps = state => {
-  return {
-    // loading   : state.authReducer.loading,
-    prevRoute : state.pageReducer.prevRoute,
-    user      : state.user.profile,
-    // offer     : state.offers,
-  }
+const initialInputState = {
+  title    : '',
+  role     : '',
+  date     : '',
+  address  : '',
+  sets     : '',
+  salary   : '',
+  phone    : '',
+  extraInfo: '',
 }
 
-class OfferJob extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      title     : '',
-      role      : '',
-      date      : '',
-      address   : '',
-      sets      : '',
-      salary    : '',
-      phone     : '',
-      extraInfo : '',
-      titleErr  : '',
-      dateErr   : '',
-      addressErr: '',
-      setsErr   : '',
-      salaryErr : '',
-      phoneErr  : '',
-    }
+const initialErrorsState = {
+  titleErr  : '',
+  dateErr   : '',
+  addressErr: '',
+  setsErr   : '',
+  salaryErr : '',
+  phoneErr  : '',
+}
+
+const OfferJob = () => {
+  const [inputs, setInputs] = useState(initialInputState)
+  const [errors, setErrors] = useState(initialErrorsState)
+  const [successMsg, setSuccessMsg] = useState(null)
+  const user = useSelector(selectProfile)
+  const offer = useSelector(selectMadeOffer)
+  const serverError = useSelector(selectError)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(pageRoute('OFFER_JOB', 'offer-job'))
+  }, [])
+
+  function handleChangeStr(e) {
+    const { name, value } = e.target
+    setInputs({ ...inputs, [name]: name === 'date' ? new Date(value) : value })
   }
 
-  componentDidMount() {
-    this.props.dispatch(pageRoute('OFFER_JOB', 'offer-job'))
-    this.setState({ date: moment().format('YYYY-MM-DD') })
+  function handleChangeNum(e) {
+    const { name, value } = e.target
+    setInputs({ ...inputs, [name]: Number(value) })
   }
 
-  handleChangeStr(e) {
-    this.setState({ [e.target.name]: e.target.value })
-  }
-
-  handleChangeNum(e) {
-    this.setState({ [e.target.name]: parseInt(e.target.value) })
-  }
-
-  validateInput(e, name) {
-    let value = e.target.value
+  function validateInput(e, name) {
+    const { value } = e.target
 
     try {
-      jobOfferValidator(name, value)
-      this.setState({ [name]: '' })
+      jobOfferValidator(name, name === 'dateErr' ? new Date(value) : value)
+      setErrors({ ...errors, [name]: '' })
     }
     catch (e) {
-      return this.setState({ [name]: e.message })
+      setErrors({ ...errors, [name]: e.message })
     }
   }
 
-
-  handleSubmit(e) {
+  function validateBeforeSubmit(e) {
     e.preventDefault()
-    // const offer = this.props.offer
-
-    this.props.dispatch(makeOffer({
-      body: {
-        jobType  : 'musicalReplacement',
-        date     : this.state.date,
-        address  : this.state.address,
-        salary   : this.state.salary,
-        sets     : this.state.sets,
-        title    : this.state.title,
-        role     : this.state.role,
-        phone    : this.state.phone,
-        extraInfo: this.state.extraInfo,
-      }
-    }))
-
-    // if (offer?.status === STAGES.SUCCESS) {
-    //   swal.success('Оголошення створено', 'Ура!')
-    // } else if (offer?.status === STAGES.FAILED) {
-    //   swal.error(offer.status, 'Хммм')
-    // }
+    const emptyInputs = Object.keys(inputs).slice(0, -1).filter(inp => inputs[inp] === '')
+    let temp = {}
+    if (emptyInputs.length) {
+      emptyInputs.forEach(inp => temp[inp + 'Err'] = 'Поле є обов\'язковим')
+      setErrors({ ...errors, ...temp })
+    } else {
+      handleSubmit()
+      setSuccessMsg('Оголошення створено')
+    }
   }
 
-  renderPage() {
+  function handleSubmit() {
+    dispatch(makeOffer({
+      body: {
+        jobType  : 'musicalReplacement',
+        date     : inputs.date,
+        address  : inputs.address,
+        salary   : inputs.salary,
+        sets     : inputs.sets,
+        title    : inputs.title,
+        role     : inputs.role,
+        phone    : inputs.phone,
+        extraInfo: inputs.extraInfo,
+      }
+    }))
+  }
+
+  function handleRedirectToPublishedOffer() {
+    if (offer) {
+      setSuccessMsg('')
+    }
+  }
+
+  function renderPage() {
     return (
       <div>
         <div className={s.headerWrapper}>
@@ -103,6 +114,11 @@ class OfferJob extends React.Component {
         <div className={s.jobCreateWrapper}>
           <p className={s.jobCreate}>Запропонуй роботу</p>
         </div>
+        <PopUp
+          text={serverError ? serverError : successMsg}
+          type={serverError ? 'fail' : 'success'}
+          callback={() => serverError ? dispatch(clearError()) : handleRedirectToPublishedOffer()}
+        />
         <form action="" className={s.form}>
           <p>Заголовок оголошення</p>
           <div className={s.inputWrapper}>
@@ -111,19 +127,19 @@ class OfferJob extends React.Component {
               name='title'
               placeholder='введіть заголовок'
               className={s.input}
-              value={this.state.title}
-              onChange={this.handleChangeStr.bind(this)}
-              onBlur={(e) => this.validateInput(e, 'titleErr')}
+              value={inputs.title}
+              onChange={handleChangeStr}
+              onBlur={(e) => validateInput(e, 'titleErr')}
             />
           </div>
-          <span className={s.textErr}>{this.state.titleErr}</span>
+          <span className={s.textErr}>{errors.titleErr}</span>
 
           <p>Роль</p>
           <select
             required name='role'
             className={s.role}
             defaultValue='default'
-            onChange={this.handleChangeStr.bind(this)}
+            onChange={handleChangeStr}
           >
             <option value=''>хто вам потрібен?</option>
             <option value='drums'>Барабанщик</option>
@@ -143,10 +159,11 @@ class OfferJob extends React.Component {
               type='date'
               name='date'
               className={[s.inpDate, s.input].join(' ')}
-              onChange={this.handleChangeStr.bind(this)}
+              onChange={handleChangeStr}
+              onBlur={(e) => validateInput(e, 'dateErr')}
             />
           </div>
-          <span className={s.textErr}>{this.state.dateErr}</span>
+          <span className={s.textErr}>{errors.dateErr}</span>
 
           <p>Адреса</p>
           <div className={s.inputWrapper}>
@@ -155,12 +172,12 @@ class OfferJob extends React.Component {
               name='address'
               placeholder='введіть адресу'
               className={s.input}
-              value={this.state.address}
-              onChange={this.handleChangeStr.bind(this)}
-              onBlur={(e) => this.validateInput(e, 'addressErr')}
+              value={inputs.address}
+              onChange={handleChangeStr}
+              onBlur={(e) => validateInput(e, 'addressErr')}
             />
           </div>
-          <span className={s.textErr}>{this.state.addressErr}</span>
+          <span className={s.textErr}>{errors.addressErr}</span>
 
           <p>Кількість сетів</p>
           <div className={s.inputWrapper}>
@@ -170,12 +187,12 @@ class OfferJob extends React.Component {
               name='sets'
               placeholder='наприклад, 3'
               className={s.input}
-              value={this.state.sets}
-              onChange={this.handleChangeNum.bind(this)}
-              onBlur={(e) => this.validateInput(e, 'setsErr')}
+              value={inputs.sets}
+              onChange={handleChangeNum}
+              onBlur={(e) => validateInput(e, 'setsErr')}
             />
           </div>
-          <span className={s.textErr}>{this.state.setsErr}</span>
+          <span className={s.textErr}>{errors.setsErr}</span>
 
           <p>Гонорар, грн</p>
           <div className={s.inputWrapper}>
@@ -185,12 +202,12 @@ class OfferJob extends React.Component {
               name='salary'
               placeholder='гонорар за роботу'
               className={s.input}
-              value={this.state.salary}
-              onChange={this.handleChangeNum.bind(this)}
-              onBlur={(e) => this.validateInput(e, 'salaryErr')}
+              value={inputs.salary}
+              onChange={handleChangeNum}
+              onBlur={(e) => validateInput(e, 'salaryErr')}
             />
           </div>
-          <span className={s.textErr}>{this.state.salaryErr}</span>
+          <span className={s.textErr}>{errors.salaryErr}</span>
 
           <p>Ваш телефон</p>
           <div className={s.inputWrapper}>
@@ -200,12 +217,12 @@ class OfferJob extends React.Component {
               name='phone'
               placeholder='0 93 111 22 33'
               className={s.input}
-              value={this.state.phone}
-              onChange={this.handleChangeNum.bind(this)}
-              onBlur={(e) => this.validateInput(e, 'phoneErr')}
+              value={inputs.phone}
+              onChange={handleChangeNum}
+              onBlur={(e) => validateInput(e, 'phoneErr')}
             />
           </div>
-          <span className={s.textErr}>{this.state.phoneErr}</span>
+          <span className={s.textErr}>{errors.phoneErr}</span>
 
           <p>Додаткові деталі</p>
           <div className={s.inputWrapper}>
@@ -213,11 +230,11 @@ class OfferJob extends React.Component {
               name='extraInfo'
               placeholder='будь яка додаткова інформація'
               className={s.textArea}
-              value={this.state.extraInfo}
-              onChange={this.handleChangeStr.bind(this)}
+              value={inputs.extraInfo}
+              onChange={handleChangeStr}
             />
           </div>
-          <button className={s.submit} onClick={this.handleSubmit.bind(this)}>Опублікувати</button>
+          <button className={s.submit} onClick={validateBeforeSubmit}>Опублікувати</button>
         </form>
 
         <div className={s.footerWrapper}>
@@ -227,23 +244,25 @@ class OfferJob extends React.Component {
     )
   }
 
-  render() {
-    return (
-      <div>
-        {
-          this.props.user?.status !== STAGES.SUCCESS && <Redirect to='/login'/>
-        }
-        {/*{*/}
-        {/*  this.props.loading*/}
-        {/*  ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>*/}
-        {/*  : this.renderPage()*/}
-        {/*}*/}
-        {
-          this.renderPage()
-        }
-      </div>
-    )
-  }
+  return (
+    <div>
+      {
+        user?.status !== STAGES.SUCCESS && <Redirect to='/login'/>
+      }
+      {
+        renderPage()
+      }
+      {
+        successMsg === ''
+        ? <Redirect to={{
+          pathname: '/open-job',
+          state   : { data: offer }
+        }}/>
+        : null
+      }
+    </div>
+  )
 }
 
-export default connect(mapStateToProps)(OfferJob)
+
+export default OfferJob

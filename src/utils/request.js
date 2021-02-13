@@ -4,7 +4,7 @@ class ResponseError extends Error {
 
     this.error = error
     this.status = this.error?.status
-    this.message = this.error?.message
+    this.message = Array.isArray(this.error.message) ? this.error.message.join(', ') : this.error.message
   }
 }
 

@@ -9,7 +9,7 @@ import InputPhoneProfile from './InputPhoneProfile'
 import CalendarProfile from './CalendarProfile'
 import Logout from './Logout'
 import { pageRoute } from '../../actions/routingActions'
-import { selectUser, selectUserImage } from '../../slice/user'
+import { selectProfile, selectUserImage } from '../../slice/user'
 import { STAGES } from '../../slice/utils/constants'
 import avatar from '../../assets/img/avatar.svg'
 import settings from '../../assets/img/settings.svg'
@@ -23,7 +23,7 @@ const mapStateToProps = state => {
 }
 
 const Profile = ({ prevRoute, dispatch }) => {
-  const user = useSelector(selectUser)
+  const user = useSelector(selectProfile)
   const userImage = useSelector(selectUserImage)
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const Profile = ({ prevRoute, dispatch }) => {
             <div className={s.avatarWrapper}>
               <img src={userImage || avatar} alt="avatar" className={s.avatar}/>
             </div>
-            <InputNameProfile />
+            <InputNameProfile/>
           </div>
         </div>
         <div className={s.profileMiddleSection}>
@@ -52,9 +52,9 @@ const Profile = ({ prevRoute, dispatch }) => {
             title={'Твій інструмент'}
             btnWrapper={s.btnWrapperInstrument}
             filterName={s.filterName}
-            innerContent={<InstrumentProfile />}
+            innerContent={<InstrumentProfile/>}
           />
-          <InputPhoneProfile data={'user.phone'}/>
+          <InputPhoneProfile/>
           <CollapseButton
             title={'Вільні дні'}
             btnWrapper={s.btnWrapperCalendar}
