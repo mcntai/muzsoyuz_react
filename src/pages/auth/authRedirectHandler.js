@@ -1,12 +1,13 @@
 import React from 'react'
 import { Redirect } from 'react-router'
-import { STAGES } from '../../slice/utils/constants'
 
 
 export const handleRedirect = user => {
-  if (user?.status === STAGES.SUCCESS && !user.role) {
+  const { profile } = user
+
+  if (profile.loaded && !profile.role) {
     return <Redirect to='/quest-start'/>
-  } else if (user?.status === STAGES.SUCCESS) {
+  } else if (user.loaded && user.token) {
     return <Redirect to='/'/>
   }
 }

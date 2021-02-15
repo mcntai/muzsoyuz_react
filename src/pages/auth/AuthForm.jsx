@@ -191,9 +191,9 @@ const AuthForm = ({ type }) => {
         ? drawRegForm()
         : drawLoginForm()
       }
-      {
-        handleRedirect(user?.profile)
-      }
+      {/*{*/}
+      {/*  handleRedirect(user)*/}
+      {/*}*/}
     </div>
   )
 }

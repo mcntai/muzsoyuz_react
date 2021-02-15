@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import DayPicker from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 import { getDaysOff, setDaysOff } from '../../actions/user'
@@ -37,9 +37,12 @@ const CalendarProfile = () => {
   let workdays = useSelector(selectWorkDays)
   const [selectedDays, setSelectedDays] = useState([])
   const dispatch = useDispatch()
+  const ref = useRef(workdays)
 
   useEffect(() => {
-    dispatch(getDaysOff())
+    if (!ref.current.dates.length) {
+      dispatch(getDaysOff())
+    }
   }, [])
 
   useEffect(() => {

@@ -1,0 +1,11 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 64px;
+  height: 64px;
+}

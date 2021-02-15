@@ -1,48 +1,70 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ACTION_PREFIXES as p } from '../constants/action-types'
-import { setDataToLocalStorage } from '../utils/muzsoyuz/setDataToLS'
+import { ACTION_PREFIXES as p, TYPES as t } from '../constants/action-types'
+import apiAction from './api-action'
+import {handleHistoryRedirect} from '../history/historyHandler'
 
 
-export const fetchUser = createAsyncThunk(
+const ROOT_PATH = '/'
+
+export const logout = error => dispatch => {
+  dispatch({ type: authenticateUser.rejected.type, error })
+}
+
+export const navigateToNextLocation = () => (dispatch, getState) => {
+  const nextLocation = getState().user.nextLocation || ROOT_PATH
+
+  // TODO: Тут має відбуватися редірект після логіну на той роут який ми запамятали
+  handleHistoryRedirect(nextLocation)
+}
+
+export const setAuthNextLocation = (nextLocation = ROOT_PATH) => ({
+  type: t.AUTH_SET_NEXT_LOCATION,
+  nextLocation,
+})
+
+export const fetchUser = apiAction(
   p.USER_FETCH,
-  (_, thunkAPI) => {
-    return thunkAPI.extra.api.getUserProfile()
-  }
+  (_, thunkAPI) => thunkAPI.extra.api.getUserProfile()
 )
 
-export const authenticateUser = createAsyncThunk(
+export const authenticateUser = apiAction(
   p.USER_AUTH,
-  async ({ route, body }, thunkAPI) => {
+  async({ route, body }, thunkAPI) => {
     const response = await thunkAPI.extra.api.makeAuthentication(route, body)
 
-    await setDataToLocalStorage(response)
+    localStorage.setItem('token', response.token)
 
-    await thunkAPI.dispatch(fetchUser())
+    thunkAPI.dispatch(navigateToNextLocation())
+
+    return response
   }
 )
 
-export const getTokenAfterOauth = createAsyncThunk(
+export const getTokenAfterOauth = apiAction(
   p.USER_OAUTH,
-  async ({ provider, query }, thunkAPI) => {
-    await thunkAPI.extra.api.getTokenAfterSocialOauth(provider, query)
+  async({ provider, query }, thunkAPI) => {
+    const response = await thunkAPI.extra.api.getTokenAfterSocialOauth(provider, query)
 
-    await thunkAPI.dispatch(fetchUser())
+    localStorage.setItem('token', response.token)
+
+    thunkAPI.dispatch(navigateToNextLocation())
+
+    return response
   }
 )
 
-export const userProfileUpdate = createAsyncThunk(
+export const userProfileUpdate = apiAction(
   p.USER_PROFILE_UPDATE,
   ({ name, phone, role, yearCommercialExp }, thunkAPI) => {
     return thunkAPI.extra.api.makeProfileUpdate({ name, phone, role, yearCommercialExp })
   }
 )
 
-export const getDaysOff = createAsyncThunk(
+export const getDaysOff = apiAction(
   p.USER_GET_DAYS_OFF,
   (_, thunkAPI) => thunkAPI.extra.api.getDaysOff(),
 )
 
-export const setDaysOff = createAsyncThunk(
+export const setDaysOff = apiAction(
   p.USER_SET_DAYS_OFF,
   ({ dates, dayOff }, thunkAPI) => {
     return thunkAPI.extra.api.setDaysOff({ dates, dayOff })

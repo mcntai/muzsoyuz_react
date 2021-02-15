@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { connect, useSelector } from 'react-redux'
-import { Redirect } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import CollapseButton from '../findJobs/filters/CollapseButton'
 import InputNameProfile from './InputNameProfile'
@@ -9,8 +8,7 @@ import InputPhoneProfile from './InputPhoneProfile'
 import CalendarProfile from './CalendarProfile'
 import Logout from './Logout'
 import { pageRoute } from '../../actions/routingActions'
-import { selectProfile, selectUserImage } from '../../slice/user'
-import { STAGES } from '../../slice/utils/constants'
+import { selectUserImage } from '../../slice/user'
 import avatar from '../../assets/img/avatar.svg'
 import settings from '../../assets/img/settings.svg'
 import s from './Profile.module.css'
@@ -23,7 +21,6 @@ const mapStateToProps = state => {
 }
 
 const Profile = ({ prevRoute, dispatch }) => {
-  const user = useSelector(selectProfile)
   const userImage = useSelector(selectUserImage)
 
   useEffect(() => {
@@ -31,8 +28,8 @@ const Profile = ({ prevRoute, dispatch }) => {
   }, [])
 
 
-  const userAuthorized = () => {
-    return (
+  return (
+    (
       <div className={s.profileWrapper}>
         <div className={s.profileTopSection}>
           <NavLink to={prevRoute} className={s.backBtn}/>
@@ -65,16 +62,6 @@ const Profile = ({ prevRoute, dispatch }) => {
         <Logout btnWrapper={s.logoutBtnWrapper}/>
       </div>
     )
-  }
-
-  return (
-    <>
-      {
-        user?.status !== STAGES.SUCCESS
-        ? <Redirect to='/login'/>
-        : userAuthorized()
-      }
-    </>
   )
 }
 

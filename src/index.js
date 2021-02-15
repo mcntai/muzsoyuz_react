@@ -8,7 +8,6 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
 import { MuzSoyuzRequest } from './muzsoyuz-request'
 
-
 export const store = configureStore({
   reducer       : rootReducer,
   preloadedState: {},
@@ -17,8 +16,10 @@ export const store = configureStore({
 })
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App/>
-  </Provider>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <App/>
+    </Provider>
+  </React.StrictMode>,
   document.getElementById('root'),
 )

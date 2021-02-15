@@ -9,7 +9,13 @@ import {
   setDaysOff,
   getDaysOff
 } from '../actions/user'
+import { TYPES as t } from "../constants/action-types"
 
+const INITIAL_STATE = {
+  profile : {},
+  workdays: { dates: [] },
+  token   : localStorage.getItem('token'),
+}
 
 const fulfilledProfileUpdateReducer = (state, action) => {
   const param = Object.keys(action.payload).join()
@@ -26,24 +32,30 @@ const fulfilledSetWorkDays = (state, action) => {
   : state.dates = state.dates.filter(date => date !== addHours(trimTime(action.payload.dates), 2).toISOString())
 }
 
+const logout = state => {
+  localStorage.removeItem('token')
+
+  state.token = null
+  state.workdays = INITIAL_STATE.workdays
+  state.profile = INITIAL_STATE.profile
+}
+
+const setNextLocation = (state, action) => {
+  state.nextLocation = action.nextLocation
+}
+
 const userSlice = createSlice({
   name         : 'user',
-  initialState : {
-    profile : {},
-    workdays: { dates: [] }
-  },
-  reducers     : {
-    cleanUser(state) {
-      state.profile = {}
-    }
-  },
+  initialState : INITIAL_STATE,
+  reducers     : {},
   extraReducers: {
     ...loadExtraReducers(fetchUser, { context: 'profile' }),
-    ...loadExtraReducers(authenticateUser, { context: 'profile' }),
+    ...loadExtraReducers(authenticateUser, { rejectedReducer: logout }),
     ...loadExtraReducers(getTokenAfterOauth, { context: 'profile' }),
     ...loadExtraReducers(userProfileUpdate, { context: 'profile', fulfilledReducer: fulfilledProfileUpdateReducer }),
     ...loadExtraReducers(setDaysOff, { context: 'workdays', fulfilledReducer: fulfilledSetWorkDays }),
     ...loadExtraReducers(getDaysOff, { context: 'workdays', fulfilledReducer: fulfilledGetWorkDays }),
+    [t.AUTH_SET_NEXT_LOCATION]: setNextLocation,
   }
 })
 
@@ -56,4 +68,3 @@ export const selectUserRole = state => state.user.profile.role
 export const selectUserPhone = state => state.user.profile.phone
 export const selectProfile = state => state.user.profile
 export const selectWorkDays = state => state.user.workdays
-export const { cleanUser } = userSlice.actions

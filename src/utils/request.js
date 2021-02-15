@@ -124,8 +124,6 @@ export class Request {
   }
 
   async execute() {
-    console.log(this.url)
-
     const requestOptions = {
       method : this.method,
       headers: this.headers,
@@ -136,8 +134,21 @@ export class Request {
       requestOptions.headers['Content-Type'] = 'application/json'
     }
 
+    // console.log({
+    //   url: this.url,
+    //   ...requestOptions,
+    // })
+
     return fetch(this.url, requestOptions)
       .then(this.checkStatus.bind(this))
       .then(response => response.json())
   }
 }
+
+Request.methods = [
+  'get',
+  'post',
+  'put',
+  'patch',
+  'delete',
+]
