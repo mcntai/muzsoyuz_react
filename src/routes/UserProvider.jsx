@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-import { fetchUser, setAuthNextLocation } from '../actions/user'
+import { fetchUser, goToLogin, setAuthNextLocation } from '../actions/user'
 import Loader from '../components/common/Loader'
 import { selectUser } from '../slice/user'
 
 
-const AuthProvider = ({ children, history }) => {
+const AuthProvider = ({ children }) => {
   const dispatch = useDispatch()
   const location = useLocation()
 
@@ -20,11 +20,9 @@ const AuthProvider = ({ children, history }) => {
     }
   }, [dispatch, user.loaded, user.loading, location.pathname])
 
-  useEffect(() => {
-    if (!user.loaded && !user.token && !isMainPage) {
-      history.push('/login')
-    }
-  }, [user.loaded, user.token, isMainPage])
+  if (!user.loaded && !user.token && !isMainPage) {
+    dispatch(goToLogin())
+  }
 
   return children
 }
@@ -53,9 +51,9 @@ const ProfileProvider = ({ children }) => {
   )
 }
 
-const UserProvider = ({ children, history }) => {
+const UserProvider = ({ children }) => {
   return (
-    <AuthProvider history={history}>
+    <AuthProvider>
       <ProfileProvider>{children}</ProfileProvider>
     </AuthProvider>
   )

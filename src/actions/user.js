@@ -8,10 +8,13 @@ export const logout = error => dispatch => {
   dispatch({ type: authenticateUser.rejected.type, error })
 }
 
+export const goToLogin = () => () => {
+  history.push('/login')
+}
+
 export const navigateToNextLocation = () => (dispatch, getState) => {
   const nextLocation = getState().user.nextLocation || ROOT_PATH
 
-  // TODO: Тут має відбуватися редірект після логіну на той роут який ми запамятали
   history.push(nextLocation)
 }
 
@@ -32,9 +35,12 @@ export const authenticateUser = apiAction(
 
     localStorage.setItem('token', response.token)
 
-    thunkAPI.dispatch(navigateToNextLocation())
+    thunkAPI.dispatch({
+      type: authenticateUser.fulfilled.type,
+      payload: response,
+    })
 
-    return response
+    thunkAPI.dispatch(navigateToNextLocation())
   }
 )
 

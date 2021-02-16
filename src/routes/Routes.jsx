@@ -42,7 +42,7 @@ export default function Routes() {
         <Route path="/find-job" component={FindJob}/>
         <Route path="/open-job" component={OpenJob}/>
 
-        <UserProvider history={history}>
+        <UserProvider>
           <Route exact path="/" component={Main}/>
           <Route path="/offer-job" component={OfferJob}/>
           <Route path="/profile" component={Profile}/>
