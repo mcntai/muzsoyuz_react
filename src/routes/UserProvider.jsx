@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useLocation, Redirect } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { fetchUser, setAuthNextLocation } from '../actions/user'
 import Loader from '../components/common/Loader'
 import { selectUser } from '../slice/user'
 
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children, history }) => {
   const dispatch = useDispatch()
   const location = useLocation()
 
@@ -18,11 +18,13 @@ const AuthProvider = ({ children }) => {
     if (!user.loaded && !user.loading) {
       dispatch(setAuthNextLocation(location.pathname))
     }
-  }, [dispatch, user.loaded, user.loading])
+  }, [dispatch, user.loaded, user.loading, location.pathname])
 
-  if (!user.loaded && !user.token && !isMainPage) {
-    return <Redirect to="/login"/>
-  }
+  useEffect(() => {
+    if (!user.loaded && !user.token && !isMainPage) {
+      history.push('/login')
+    }
+  }, [user.loaded, user.token, isMainPage])
 
   return children
 }
@@ -51,9 +53,9 @@ const ProfileProvider = ({ children }) => {
   )
 }
 
-const UserProvider = ({ children }) => {
+const UserProvider = ({ children, history }) => {
   return (
-    <AuthProvider>
+    <AuthProvider history={history}>
       <ProfileProvider>{children}</ProfileProvider>
     </AuthProvider>
   )

@@ -35,6 +35,7 @@ const fulfilledSetWorkDays = (state, action) => {
 const logout = state => {
   localStorage.removeItem('token')
 
+  state.loaded = false
   state.token = null
   state.workdays = INITIAL_STATE.workdays
   state.profile = INITIAL_STATE.profile

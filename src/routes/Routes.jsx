@@ -13,9 +13,9 @@ import ChooseInstrumentPage from '../pages/questionary/ChooseInstrumentPage'
 import ChooseExperiencePage from '../pages/questionary/ChooseExperiencePage'
 import ChooseFreeDaysPage from '../pages/questionary/ChooseFreeDaysPage'
 import UserProvider from './UserProvider'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { Router } from 'react-router';
-import {history} from '../history/historyHandler'
+import { Router, Switch, Route } from 'react-router-dom'
+import history from '../history/history'
+
 
 export default function Routes() {
   return (
@@ -42,7 +42,7 @@ export default function Routes() {
         <Route path="/find-job" component={FindJob}/>
         <Route path="/open-job" component={OpenJob}/>
 
-        <UserProvider>
+        <UserProvider history={history}>
           <Route exact path="/" component={Main}/>
           <Route path="/offer-job" component={OfferJob}/>
           <Route path="/profile" component={Profile}/>

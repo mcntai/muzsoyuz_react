@@ -1,7 +1,6 @@
 import { ACTION_PREFIXES as p, TYPES as t } from '../constants/action-types'
 import apiAction from './api-action'
-import {handleHistoryRedirect} from '../history/historyHandler'
-
+import history from '../history/history'
 
 const ROOT_PATH = '/'
 
@@ -13,10 +12,10 @@ export const navigateToNextLocation = () => (dispatch, getState) => {
   const nextLocation = getState().user.nextLocation || ROOT_PATH
 
   // TODO: Тут має відбуватися редірект після логіну на той роут який ми запамятали
-  handleHistoryRedirect(nextLocation)
+  history.push(nextLocation)
 }
 
-export const setAuthNextLocation = (nextLocation = ROOT_PATH) => ({
+export const setAuthNextLocation = (nextLocation) => ({
   type: t.AUTH_SET_NEXT_LOCATION,
   nextLocation,
 })
