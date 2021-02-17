@@ -13,4 +13,5 @@ export const ACTION_PREFIXES = {
 export const TYPES = {
   LOGOUT                : 'LOGOUT',
   AUTH_SET_NEXT_LOCATION: 'AUTH_SET_NEXT_LOCATION',
+  RESET_NEXT_LOCATION   : 'RESET_NEXT_LOCATION',
 }

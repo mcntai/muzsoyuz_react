@@ -1,7 +1,5 @@
 import React from 'react'
 import Select from 'react-select'
-import { useDispatch } from 'react-redux'
-import { userProfileUpdate } from '../../actions/user'
 import s from './ChooseInstrumentPage.module.css'
 
 
@@ -44,11 +42,10 @@ const customStyles = {
   })
 }
 
-const SelectInstrument = () => {
-  const dispatch = useDispatch()
+const SelectInstrument = ({saveInstrumentToLocalState}) => {
 
-  const handleChange = e => {
-    dispatch(userProfileUpdate({ role: e.value }))
+  function handleChange(e) {
+    saveInstrumentToLocalState(e.value)
   }
 
   return (

@@ -4,13 +4,11 @@ import { useDispatch } from 'react-redux'
 import { userProfileUpdate } from '../../actions/user'
 
 
-const YearsOfExperience = () => {
-  const dispatch = useDispatch()
+const YearsOfExperience = ({sendYearForUpdate}) => {
 
   const chooseExperience = (e) => {
     const exp = Number(e.target.getAttribute('data-year'))
-
-    dispatch(userProfileUpdate({ yearCommercialExp: exp }))
+    sendYearForUpdate(exp)
   }
 
   return (

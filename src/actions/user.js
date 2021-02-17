@@ -1,6 +1,8 @@
 import { ACTION_PREFIXES as p, TYPES as t } from '../constants/action-types'
 import apiAction from './api-action'
 import history from '../history/history'
+import { START_ROUTE } from '../constants/routes'
+
 
 const ROOT_PATH = '/'
 
@@ -12,10 +14,29 @@ export const goToLogin = () => () => {
   history.push('/login')
 }
 
+export const goToHomePage = () => dispatch => {
+  history.push('/')
+  dispatch({ type: t.RESET_NEXT_LOCATION })
+}
+
+export const goTo = routeName => () => {
+  history.push(routeName)
+}
+
+export const goBack = () => () => {
+  history.goBack()
+}
+
 export const navigateToNextLocation = () => (dispatch, getState) => {
   const nextLocation = getState().user.nextLocation || ROOT_PATH
 
-  history.push(nextLocation)
+  const userProfile = getState().user.profile
+
+  if (userProfile.role === null) {
+    history.push(START_ROUTE)
+  } else {
+    history.push(nextLocation)
+  }
 }
 
 export const setAuthNextLocation = (nextLocation) => ({
@@ -36,7 +57,7 @@ export const authenticateUser = apiAction(
     localStorage.setItem('token', response.token)
 
     thunkAPI.dispatch({
-      type: authenticateUser.fulfilled.type,
+      type   : authenticateUser.fulfilled.type,
       payload: response,
     })
 

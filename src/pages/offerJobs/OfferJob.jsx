@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { makeOffer } from '../../actions/offers'
-import { pageRoute } from '../../actions/routingActions'
 import { jobOfferValidator } from '../../validators'
 import Header from '../../components/mainHeader/Header'
 import Footer from '../../components/mainFooter/Footer'
@@ -40,10 +39,6 @@ const OfferJob = () => {
   const offer = useSelector(selectMadeOffer)
   const serverError = useSelector(selectError)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(pageRoute('OFFER_JOB', 'offer-job'))
-  }, [])
 
   useEffect(() => {
     if (successMsg === '') {

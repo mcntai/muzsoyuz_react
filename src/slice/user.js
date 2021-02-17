@@ -9,7 +9,8 @@ import {
   setDaysOff,
   getDaysOff
 } from '../actions/user'
-import { TYPES as t } from "../constants/action-types"
+import { TYPES as t } from '../constants/action-types'
+
 
 const INITIAL_STATE = {
   profile : {},
@@ -37,12 +38,17 @@ const logout = state => {
 
   state.loaded = false
   state.token = null
+  state.nextLocation = null
   state.workdays = INITIAL_STATE.workdays
   state.profile = INITIAL_STATE.profile
 }
 
 const setNextLocation = (state, action) => {
   state.nextLocation = action.nextLocation
+}
+
+const resetNextLocation = (state) => {
+  state.nextLocation = null
 }
 
 const userSlice = createSlice({
@@ -57,6 +63,7 @@ const userSlice = createSlice({
     ...loadExtraReducers(setDaysOff, { context: 'workdays', fulfilledReducer: fulfilledSetWorkDays }),
     ...loadExtraReducers(getDaysOff, { context: 'workdays', fulfilledReducer: fulfilledGetWorkDays }),
     [t.AUTH_SET_NEXT_LOCATION]: setNextLocation,
+    [t.RESET_NEXT_LOCATION]   : resetNextLocation,
   }
 })
 

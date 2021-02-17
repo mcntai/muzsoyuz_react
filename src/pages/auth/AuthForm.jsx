@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import AuthNavLinks from './AuthNavLinks'
 import { authValidator } from '../../validators'
 import { authenticateUser } from '../../actions/user'
-import { authPageRoute } from '../../actions/routingActions'
 import { selectUser } from '../../slice/user'
 import s from './AuthForm.module.css'
 
@@ -22,11 +21,6 @@ const AuthForm = ({ type }) => {
   const [gender, setGender] = useState('')
   const user = useSelector(selectUser)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(authPageRoute(type))
-  }, [type])
-
 
   function handleChange(e) {
     const { name, value } = e.target
@@ -190,9 +184,6 @@ const AuthForm = ({ type }) => {
         ? drawRegForm()
         : drawLoginForm()
       }
-      {/*{*/}
-      {/*  handleRedirect(user)*/}
-      {/*}*/}
     </div>
   )
 }

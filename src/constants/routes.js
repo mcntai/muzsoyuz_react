@@ -1,0 +1,6 @@
+export const START_ROUTE = '/quest-start'
+export const INSTRUMENT_ROUTE = '/quest-instrument'
+export const YEAR_EXPERIENCE_ROUTE = '/quest-experience'
+export const FREE_DAYS_ROUTE = '/quest-free-days'
+export const HOME = '/'
+export const FIND_JOB = '/find-job'

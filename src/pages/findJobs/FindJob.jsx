@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { incrementOffSet, selectFetchedData, selectOfferBody, selectOffers } from '../../slice/offers'
 import { fetchOffers } from '../../actions/offers'
 import { omitBy, predicates } from '../../utils/object'
-import { pageRoute } from '../../actions/routingActions'
 import { NavLink } from 'react-router-dom'
 import { OFFSET_PERIOD } from '../../constants/offers'
 import Header from '../../components/mainHeader/Header'
@@ -12,6 +11,7 @@ import SortingFilterButtons from './SortingFilterButtons'
 import Footer from '../../components/mainFooter/Footer'
 import { STAGES } from '../../slice/utils/constants'
 import s from './FindJob.module.css'
+import Loader from '../../components/common/Loader'
 
 
 const FindJob = () => {
@@ -19,7 +19,7 @@ const FindJob = () => {
   const body = useSelector(selectOfferBody)
   const [noOfferToShow, setNoOffersToShow] = useState(s.hide)
   const { isFetchedAll } = useSelector(selectOffers)
-  const offers = useSelector(selectOffers)
+  const { loading, error, status } = useSelector(selectOffers)
   const fetchedOffers = useSelector(selectFetchedData)
   const dispatch = useDispatch()
 
@@ -27,12 +27,10 @@ const FindJob = () => {
     if (!fetchedOffers.length) {
       getAllJobOffers()
     }
-
-    dispatch(pageRoute('FIND_JOB', 'find-job'))
   }, [])
 
   useEffect(() => {
-    const display = !fetchedOffers.length && offers.status === STAGES.SUCCESS ? s.show : s.hide
+    const display = !fetchedOffers.length && status === STAGES.SUCCESS ? s.show : s.hide
 
     setNoOffersToShow(display)
   }, [fetchedOffers])
@@ -89,9 +87,12 @@ const FindJob = () => {
     )
   }
 
-  const renderPage = () => {
-    return (
-      <div>
+  return (
+    <div>
+      <Loader
+        loading={loading}
+        error={error}
+      >
         <div className={s.headerWrapper}>
           <Header/>
         </div>
@@ -110,16 +111,7 @@ const FindJob = () => {
         <div className={s.footerWrapper}>
           <Footer/>
         </div>
-      </div>
-    )
-  }
-
-
-  return (
-    <div>
-      {
-        renderPage()
-      }
+      </Loader>
     </div>
   )
 }

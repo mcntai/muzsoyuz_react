@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import DayPicker from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 import { getDaysOff, setDaysOff } from '../../actions/user'
-import { useDispatch, useSelector } from 'react-redux'
 import { selectWorkDays } from '../../slice/user'
 import { addHours, trimTime } from '../../utils/date'
-import s from './CalendarProfile.module.css'
 
 
 const WEEKDAYS_SHORT = {
@@ -33,8 +32,8 @@ const FIRST_DAY_OF_WEEK = {
   ua: 1,
 }
 
-const CalendarProfile = () => {
-  let workdays = useSelector(selectWorkDays)
+const SinglePickCalendar = ({ s }) => {
+  const workdays = useSelector(selectWorkDays)
   const [selectedDays, setSelectedDays] = useState([])
   const dispatch = useDispatch()
   const ref = useRef(workdays)
@@ -47,7 +46,7 @@ const CalendarProfile = () => {
 
   useEffect(() => {
     workdays?.status === 'success' && setSelectedDays(workdays.dates)
-  }, [workdays])
+  }, [selectedDays, workdays])
 
   const makeDispatch = (day, type) => {
     dispatch(setDaysOff({ dates: day, dayOff: type }))
@@ -78,6 +77,5 @@ const CalendarProfile = () => {
   )
 }
 
-
-export default CalendarProfile
+export default SinglePickCalendar
 

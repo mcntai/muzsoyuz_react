@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router'
 import s from './SortingFrom.module.css'
 import { sortOffers } from '../../../slice/offers'
+import history from '../../../history/history'
 
 
 const SortingFrom = ({ param, display, btnTextFirst, btnTextSecond }) => {
   const dispatch = useDispatch()
   const [redirect, setRedirect] = useState(false)
   let visible = display ? s.visible : s.hidden
+
+  useEffect(() => {
+    if (redirect) {
+      history.push('/find-job')
+    }
+  }, [redirect])
 
   const handleSorting = (e) => {
     const sortType = e.target.getAttribute('data-sort')
@@ -40,9 +46,6 @@ const SortingFrom = ({ param, display, btnTextFirst, btnTextSecond }) => {
       >
         Відмінити
       </button>
-      {
-        redirect && <Redirect to="/find-job"/>
-      }
     </div>
   )
 }

@@ -15,14 +15,11 @@ const AuthProvider = ({ children }) => {
   const user = useSelector(selectUser)
 
   useEffect(() => {
-    if (!user.loaded && !user.loading) {
+    if (!user.loaded && !user.token && !isMainPage) {
       dispatch(setAuthNextLocation(location.pathname))
+      dispatch(goToLogin())
     }
   }, [dispatch, user.loaded, user.loading, location.pathname])
-
-  if (!user.loaded && !user.token && !isMainPage) {
-    dispatch(goToLogin())
-  }
 
   return children
 }
@@ -34,6 +31,7 @@ const ProfileProvider = ({ children }) => {
   const location = useLocation()
 
   const isMainPage = location.pathname === '/'
+  const isProfilePage = location.pathname === '/profile'
 
   useEffect(() => {
     if (!loaded && !error && !loading && token) {
@@ -44,7 +42,7 @@ const ProfileProvider = ({ children }) => {
   return (
     <Loader
       error={isMainPage ? null : error}
-      loading={loading}
+      loading={isProfilePage ? null : loading}
     >
       {children}
     </Loader>

@@ -28,7 +28,7 @@ const InputNameProfile = () => {
         type='text'
         name='name'
         className={s.name}
-        value={name}
+        value={name === null ? '' : name}
         placeholder="Твоє ім'я"
         contentEditable={true}
         onChange={changeName}

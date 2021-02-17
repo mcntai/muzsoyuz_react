@@ -23,4 +23,5 @@ const generalSlice = createSlice({
 export default generalSlice.reducer
 export const selectShowText = state => state.general.showText
 export const selectShowButton = state => state.general.finishBtn
+export const selectShowCalendar = state => state.general.showCalendar
 export const { toggleElement, moveFinishBtnCalendarQuest } = generalSlice.actions
