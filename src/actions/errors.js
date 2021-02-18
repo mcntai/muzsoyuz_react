@@ -1,3 +1,6 @@
+import { TYPES as t } from '../constants/action-types'
+
+
 export const clearError = () => ({
-  type: 'CLEAR_ERROR'
+  type: t.CLEAR_ERROR
 })

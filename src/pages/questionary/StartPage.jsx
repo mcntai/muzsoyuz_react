@@ -4,7 +4,7 @@ import Text from './Text'
 import Button from './Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectProfile } from '../../slice/user'
-import { HOME } from '../../constants/routes'
+import { ROUTES as r } from '../../constants/routes'
 import { goTo } from '../../actions/user'
 import img from '../../assets/img/start-page-background.svg'
 import s from './StartPage.module.css'
@@ -16,7 +16,7 @@ const StartPage = () => {
 
   useEffect(() => {
     if (userProfile.role) {
-      dispatch(goTo(HOME))
+      dispatch(goTo(r.HOME))
     }
   }, [])
 

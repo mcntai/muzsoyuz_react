@@ -5,11 +5,9 @@ import Routes from '../routes/Routes'
 
 function App() {
   return (
-    <>
-      <div className={s.wrapper}>
-        <Routes/>
-      </div>
-    </>
+    <div className={s.wrapper}>
+      <Routes/>
+    </div>
   )
 }
 

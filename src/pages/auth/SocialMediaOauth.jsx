@@ -11,7 +11,7 @@ const SocialMediaOauth = ({ type }) => {
 
   useEffect(() => {
     dispatch(oauthCallback(type))
-  })
+  }, [])
 
   function oauthCallback(provider) {
     const url = new URL(window.location.href)

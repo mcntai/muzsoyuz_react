@@ -6,7 +6,7 @@ import Footer from '../../components/mainFooter/Footer'
 import avatar from '../../assets/img/avatar.svg'
 import { useDispatch } from 'react-redux'
 import { goTo } from '../../actions/user'
-import { FIND_JOB } from '../../constants/routes'
+import { ROUTES as r } from '../../constants/routes'
 import s from './OpenJob.module.css'
 
 
@@ -32,7 +32,7 @@ const OpenJob = () => {
       setData([location.state.data])
     }
     catch (e) {
-      dispatch(goTo(FIND_JOB))
+      dispatch(goTo(r.FIND_JOB))
     }
   }, [])
 

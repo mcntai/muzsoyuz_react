@@ -1,7 +1,7 @@
 import { ACTION_PREFIXES as p, TYPES as t } from '../constants/action-types'
 import apiAction from './api-action'
 import history from '../history/history'
-import { START_ROUTE } from '../constants/routes'
+import { ROUTES as r } from '../constants/routes'
 
 
 const ROOT_PATH = '/'
@@ -32,11 +32,7 @@ export const navigateToNextLocation = () => (dispatch, getState) => {
 
   const userProfile = getState().user.profile
 
-  if (userProfile.role === null) {
-    history.push(START_ROUTE)
-  } else {
-    history.push(nextLocation)
-  }
+  history.push(userProfile.role === null ? r.START_ROUTE : nextLocation)
 }
 
 export const setAuthNextLocation = (nextLocation) => ({

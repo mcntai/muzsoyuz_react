@@ -6,7 +6,7 @@ import Button from './Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectProfile } from '../../slice/user'
 import { goTo, userProfileUpdate } from '../../actions/user'
-import { HOME } from '../../constants/routes'
+import { ROUTES as r } from '../../constants/routes'
 import img from '../../assets/img/start-choose-instrument-background.svg'
 import s from './ChooseInstrumentPage.module.css'
 
@@ -18,7 +18,7 @@ const ChooseInstrumentPage = () => {
 
   useEffect(() => {
     if (userProfile.role) {
-      dispatch(goTo(HOME))
+      dispatch(goTo(r.HOME))
     }
   }, [])
 

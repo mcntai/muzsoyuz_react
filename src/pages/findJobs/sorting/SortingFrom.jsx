@@ -8,7 +8,7 @@ import history from '../../../history/history'
 const SortingFrom = ({ param, display, btnTextFirst, btnTextSecond }) => {
   const dispatch = useDispatch()
   const [redirect, setRedirect] = useState(false)
-  let visible = display ? s.visible : s.hidden
+  const visible = display ? s.visible : s.hidden
 
   useEffect(() => {
     if (redirect) {

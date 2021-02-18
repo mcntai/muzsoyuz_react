@@ -6,7 +6,7 @@ import Button from './Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectWorkDays } from '../../slice/user'
 import { moveFinishBtnCalendarQuest, selectShowCalendar, toggleElement } from '../../slice/general'
-import { HOME } from '../../constants/routes'
+import { ROUTES as r } from '../../constants/routes'
 import { goTo } from '../../actions/user'
 import img from '../../assets/img/start-choose-days-background.svg'
 import s from './ChooseFreeDaysPage.module.css'
@@ -20,7 +20,7 @@ const ChooseFreeDaysPage = () => {
 
   useEffect(() => {
     if (workdays.length) {
-      dispatch(goTo(HOME))
+      dispatch(goTo(r.HOME))
     }
   }, [])
 

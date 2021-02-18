@@ -9,7 +9,6 @@ import { OFFSET_PERIOD } from '../../constants/offers'
 import Header from '../../components/mainHeader/Header'
 import SortingFilterButtons from './SortingFilterButtons'
 import Footer from '../../components/mainFooter/Footer'
-import { STAGES } from '../../slice/utils/constants'
 import s from './FindJob.module.css'
 import Loader from '../../components/common/Loader'
 
@@ -19,7 +18,7 @@ const FindJob = () => {
   const body = useSelector(selectOfferBody)
   const [noOfferToShow, setNoOffersToShow] = useState(s.hide)
   const { isFetchedAll } = useSelector(selectOffers)
-  const { loading, error, status } = useSelector(selectOffers)
+  const { loaded, loading, error } = useSelector(selectOffers)
   const fetchedOffers = useSelector(selectFetchedData)
   const dispatch = useDispatch()
 
@@ -30,7 +29,7 @@ const FindJob = () => {
   }, [])
 
   useEffect(() => {
-    const display = !fetchedOffers.length && status === STAGES.SUCCESS ? s.show : s.hide
+    const display = !fetchedOffers.length && loaded ? s.show : s.hide
 
     setNoOffersToShow(display)
   }, [fetchedOffers])

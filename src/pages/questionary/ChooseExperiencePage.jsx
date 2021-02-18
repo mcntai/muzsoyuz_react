@@ -6,7 +6,7 @@ import Button from './Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectProfile } from '../../slice/user'
 import { goTo, userProfileUpdate } from '../../actions/user'
-import { HOME } from '../../constants/routes'
+import { ROUTES as r } from '../../constants/routes'
 import img from '../../assets/img/start-choose-exp-background.svg'
 import s from './ChooseExperiencePage.module.css'
 
@@ -18,7 +18,7 @@ const ChooseExperiencePage = () => {
 
   useEffect(() => {
     if (userProfile.yearCommercialExp) {
-      dispatch(goTo(HOME))
+      dispatch(goTo(r.HOME))
     }
   }, [])
 

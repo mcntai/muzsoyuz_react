@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import DayPicker from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
@@ -33,20 +33,19 @@ const FIRST_DAY_OF_WEEK = {
 }
 
 const SinglePickCalendar = ({ s }) => {
-  const workdays = useSelector(selectWorkDays)
+  const { loaded, dates } = useSelector(selectWorkDays)
   const [selectedDays, setSelectedDays] = useState([])
   const dispatch = useDispatch()
-  const ref = useRef(workdays)
 
   useEffect(() => {
-    if (!ref.current.dates.length) {
+    if (!loaded) {
       dispatch(getDaysOff())
     }
   }, [])
 
   useEffect(() => {
-    workdays?.status === 'success' && setSelectedDays(workdays.dates)
-  }, [selectedDays, workdays])
+    loaded && setSelectedDays(dates)
+  }, [selectedDays, dates, loaded])
 
   const makeDispatch = (day, type) => {
     dispatch(setDaysOff({ dates: day, dayOff: type }))
