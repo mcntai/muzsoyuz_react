@@ -18,11 +18,6 @@ const INITIAL_STATE = {
   token   : localStorage.getItem('token'),
 }
 
-const fulfilledProfileUpdateReducer = (state, action) => {
-  const param = Object.keys(action.payload).join()
-  state[param] = Object.values(action.payload).join()
-}
-
 const fulfilledGetWorkDays = (state, action) => {
   state.dates = action.payload.map(day => day.date)
 }
@@ -59,7 +54,7 @@ const userSlice = createSlice({
     ...loadExtraReducers(fetchUser, { context: 'profile' }),
     ...loadExtraReducers(authenticateUser, { rejectedReducer: logout }),
     ...loadExtraReducers(authenticateAfterOauth, { context: 'profile' }),
-    ...loadExtraReducers(userProfileUpdate, { context: 'profile', fulfilledReducer: fulfilledProfileUpdateReducer }),
+    ...loadExtraReducers(userProfileUpdate, { context: 'profile' }),
     ...loadExtraReducers(setDaysOff, { context: 'workdays', fulfilledReducer: fulfilledSetWorkDays }),
     ...loadExtraReducers(getDaysOff, { context: 'workdays', fulfilledReducer: fulfilledGetWorkDays }),
     [t.AUTH_SET_NEXT_LOCATION]: setNextLocation,
