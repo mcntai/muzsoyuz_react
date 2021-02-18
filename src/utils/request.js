@@ -105,8 +105,8 @@ export class Request {
     }
 
     return response instanceof Response
-      ? response.json()
-      : response
+           ? response.json()
+           : response
   }
 
   isSucceededStatus(response) {
@@ -133,11 +133,6 @@ export class Request {
       requestOptions.body = JSON.stringify(this.body)
       requestOptions.headers['Content-Type'] = 'application/json'
     }
-
-    // console.log({
-    //   url: this.url,
-    //   ...requestOptions,
-    // })
 
     return fetch(this.url, requestOptions)
       .then(this.checkStatus.bind(this))

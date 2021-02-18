@@ -32,7 +32,7 @@ const FIRST_DAY_OF_WEEK = {
   ua: 1,
 }
 
-const SinglePickCalendar = ({ s }) => {
+const SinglePickCalendar = ({ styles }) => {
   const { loaded, dates } = useSelector(selectWorkDays)
   const [selectedDays, setSelectedDays] = useState([])
   const dispatch = useDispatch()
@@ -63,14 +63,14 @@ const SinglePickCalendar = ({ s }) => {
   }
 
   return (
-    <div className={s.calendarWrapper}>
+    <div className={styles.calendarWrapper}>
       <DayPicker
         selectedDays={selectedDays.map(day => new Date(day))}
         onDayClick={handleDayClick}
         months={MONTHS.ua}
         weekdaysShort={WEEKDAYS_SHORT.ua}
         firstDayOfWeek={FIRST_DAY_OF_WEEK.ua}
-        className={s.calendarContainer}
+        className={styles.calendarContainer}
       />
     </div>
   )

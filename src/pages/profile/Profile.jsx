@@ -47,7 +47,7 @@ const Profile = () => {
             title={'Вільні дні'}
             btnWrapper={s.btnWrapperCalendar}
             filterName={s.filterName}
-            innerContent={<SinglePickCalendar s={styles}/>}
+            innerContent={<SinglePickCalendar styles={styles}/>}
           />
         </div>
         <Logout btnWrapper={s.logoutBtnWrapper}/>

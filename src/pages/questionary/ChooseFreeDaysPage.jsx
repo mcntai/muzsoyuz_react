@@ -50,7 +50,7 @@ const ChooseFreeDaysPage = () => {
       </button>
       {
         showCal
-        ? <SinglePickCalendar s={s}/>
+        ? <SinglePickCalendar styles={s}/>
         : null
       }
       <Button

@@ -28,10 +28,9 @@ const OpenJob = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    try {
+    if (location?.state?.data) {
       setData([location.state.data])
-    }
-    catch (e) {
+    } else {
       dispatch(goTo(r.FIND_JOB))
     }
   }, [])
