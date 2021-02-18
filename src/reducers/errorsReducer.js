@@ -13,4 +13,5 @@ const errorsReducer = (state = null, action) => {
 }
 
 export const selectError = state => state.errors
+
 export default errorsReducer

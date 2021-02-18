@@ -4,7 +4,7 @@ import { addHours, trimTime } from '../utils/date'
 import {
   fetchUser,
   authenticateUser,
-  getTokenAfterOauth,
+  authenticateAfterOauth,
   userProfileUpdate,
   setDaysOff,
   getDaysOff
@@ -29,8 +29,8 @@ const fulfilledGetWorkDays = (state, action) => {
 
 const fulfilledSetWorkDays = (state, action) => {
   action.payload.dayOff === true
-  ? state.dates = [...state.dates, action.payload.dates]
-  : state.dates = state.dates.filter(date => date !== addHours(trimTime(action.payload.dates), 2).toISOString())
+    ? state.dates = [...state.dates, action.payload.dates]
+    : state.dates = state.dates.filter(date => date !== addHours(trimTime(action.payload.dates), 2).toISOString())
 }
 
 const logout = state => {
@@ -58,7 +58,7 @@ const userSlice = createSlice({
   extraReducers: {
     ...loadExtraReducers(fetchUser, { context: 'profile' }),
     ...loadExtraReducers(authenticateUser, { rejectedReducer: logout }),
-    ...loadExtraReducers(getTokenAfterOauth, { context: 'profile' }),
+    ...loadExtraReducers(authenticateAfterOauth, { context: 'profile' }),
     ...loadExtraReducers(userProfileUpdate, { context: 'profile', fulfilledReducer: fulfilledProfileUpdateReducer }),
     ...loadExtraReducers(setDaysOff, { context: 'workdays', fulfilledReducer: fulfilledSetWorkDays }),
     ...loadExtraReducers(getDaysOff, { context: 'workdays', fulfilledReducer: fulfilledGetWorkDays }),

@@ -3,7 +3,6 @@ import apiAction from './api-action'
 import history from '../history/history'
 import { ROUTES as r } from '../constants/routes'
 
-
 const ROOT_PATH = '/'
 
 export const logout = error => dispatch => {
@@ -40,6 +39,14 @@ export const setAuthNextLocation = (nextLocation) => ({
   nextLocation,
 })
 
+const finalizeAuthentication = response => dispatch => {
+  localStorage.setItem('token', response.token)
+
+  dispatch({ ...authenticateUser.fulfilled, payload: response })
+
+  dispatch(navigateToNextLocation())
+}
+
 export const fetchUser = apiAction(
   p.USER_FETCH,
   (_, thunkAPI) => thunkAPI.extra.api.getUserProfile()
@@ -47,30 +54,19 @@ export const fetchUser = apiAction(
 
 export const authenticateUser = apiAction(
   p.USER_AUTH,
-  async({ route, body }, thunkAPI) => {
+  async ({ route, body }, thunkAPI) => {
     const response = await thunkAPI.extra.api.makeAuthentication(route, body)
 
-    localStorage.setItem('token', response.token)
-
-    thunkAPI.dispatch({
-      type   : authenticateUser.fulfilled.type,
-      payload: response,
-    })
-
-    thunkAPI.dispatch(navigateToNextLocation())
+    thunkAPI.dispatch(finalizeAuthentication(response))
   }
 )
 
-export const getTokenAfterOauth = apiAction(
+export const authenticateAfterOauth = apiAction(
   p.USER_OAUTH,
-  async({ provider, query }, thunkAPI) => {
+  async ({ provider, query }, thunkAPI) => {
     const response = await thunkAPI.extra.api.getTokenAfterSocialOauth(provider, query)
 
-    localStorage.setItem('token', response.token)
-
-    thunkAPI.dispatch(navigateToNextLocation())
-
-    return response
+    thunkAPI.dispatch(finalizeAuthentication(response))
   }
 )
 

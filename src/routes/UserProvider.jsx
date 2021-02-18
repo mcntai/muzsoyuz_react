@@ -31,7 +31,6 @@ const ProfileProvider = ({ children }) => {
   const location = useLocation()
 
   const isMainPage = location.pathname === '/'
-  const isProfilePage = location.pathname === '/profile'
 
   useEffect(() => {
     if (!loaded && !error && !loading && token) {
@@ -42,7 +41,7 @@ const ProfileProvider = ({ children }) => {
   return (
     <Loader
       error={isMainPage ? null : error}
-      loading={isProfilePage ? null : loading}
+      loading={loading}
     >
       {children}
     </Loader>

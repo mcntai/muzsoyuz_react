@@ -3,7 +3,6 @@ import Auth from '../pages/auth/Auth'
 import FilterPage from '../pages/findJobs/filters/FilterPage'
 import SortingPage from '../pages/findJobs/sorting/SortingPage'
 import Main from '../pages/main/Main'
-import SocialMediaOauth from '../pages/auth/SocialMediaOauth'
 import FindJob from '../pages/findJobs/FindJob'
 import OpenJob from '../pages/findJobs/OpenJob'
 import OfferJob from '../pages/offerJobs/OfferJob'
@@ -15,6 +14,7 @@ import ChooseFreeDaysPage from '../pages/questionary/ChooseFreeDaysPage'
 import UserProvider from './UserProvider'
 import { Router, Switch, Route } from 'react-router-dom'
 import history from '../history/history'
+import OauthCallBackListener from "./OauthCallBackListener"
 
 
 export default function Routes() {
@@ -32,13 +32,8 @@ export default function Routes() {
         <Route path="/find-job-filter" component={FilterPage}/>
         <Route path="/find-job-sort" component={SortingPage}/>
 
-        <Route path="/oauth/facebook/callback">
-          <SocialMediaOauth type="facebook"/>
-        </Route>
-
-        <Route path="/oauth/google/callback">
-          <SocialMediaOauth type="google"/>
-        </Route>
+        <Route path="/oauth/facebook/callback" component={OauthCallBackListener}/>
+        <Route path="/oauth/google/callback" component={OauthCallBackListener}/>
 
         <Route path="/find-job" component={FindJob}/>
         <Route path="/open-job" component={OpenJob}/>

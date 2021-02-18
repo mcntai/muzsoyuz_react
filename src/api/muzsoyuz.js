@@ -1,7 +1,7 @@
-import { Request } from './utils/request'
-import { config } from './config'
+import { Request } from '../utils/request'
+import { config } from '../config'
 
-export class MuzSoyuzRequest extends Request {
+export class MuzSoyuz extends Request {
   setToken(token) {
     this.setHeaders({
       Authorization: `Bearer ${token}`,

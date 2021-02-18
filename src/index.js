@@ -6,12 +6,12 @@ import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
-import { MuzSoyuzRequest } from './muzsoyuz-request'
+import { MuzSoyuz } from './api/muzsoyuz'
 
 export const store = configureStore({
   reducer       : rootReducer,
   preloadedState: {},
-  middleware    : [thunk.withExtraArgument({ api: MuzSoyuzRequest })],
+  middleware    : [thunk.withExtraArgument({ api: MuzSoyuz })],
   devTools      : true,
 })
 

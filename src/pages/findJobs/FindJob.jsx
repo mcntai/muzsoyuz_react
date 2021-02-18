@@ -12,33 +12,40 @@ import Footer from '../../components/mainFooter/Footer'
 import s from './FindJob.module.css'
 import Loader from '../../components/common/Loader'
 
+const or = (...fns) => value => fns.some(fn => fn(value))
 
 const FindJob = () => {
-  const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreOffers)
+  const { setIsFetching } = useInfiniteScroll(fetchMoreOffers)
+
+  const { loaded, loading, error, isFetchedAll } = useSelector(selectOffers)
   const body = useSelector(selectOfferBody)
-  const [noOfferToShow, setNoOffersToShow] = useState(s.hide)
-  const { isFetchedAll } = useSelector(selectOffers)
-  const { loaded, loading, error } = useSelector(selectOffers)
   const fetchedOffers = useSelector(selectFetchedData)
+
+  const [noOfferToShow, setNoOffersToShow] = useState(s.hide)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (!fetchedOffers.length) {
-      getAllJobOffers()
+    if (!loaded) {
+      fetchJobOffers()
     }
   }, [])
 
   useEffect(() => {
-    const display = !fetchedOffers.length && loaded ? s.show : s.hide
+    const display = !fetchedOffers.length && loaded
+      ? s.show
+      : s.hide
 
     setNoOffersToShow(display)
   }, [fetchedOffers])
 
-  const composition = (...fns) => value => fns.some(fn => fn(value))
-
-  function getAllJobOffers(newOffSet) {
-    const transformedBody = omitBy(body,
-      composition(predicates.isEmptyString, predicates.isEmptyRange, predicates.isEmptyArray, predicates.isNilRange))
+  function fetchJobOffers(newOffSet) {
+    const transformedBody = omitBy(body, or(
+      predicates.isEmptyString,
+      predicates.isEmptyRange,
+      predicates.isEmptyArray,
+      predicates.isNilRange,
+      ),
+    )
 
     transformedBody.offset = newOffSet
     dispatch(fetchOffers({ body: transformedBody }))
@@ -47,25 +54,27 @@ const FindJob = () => {
   function fetchMoreOffers() {
     if (!isFetchedAll) {
       const newOffSet = body.offset + OFFSET_PERIOD
-      getAllJobOffers(newOffSet)
+
+      fetchJobOffers(newOffSet)
 
       setIsFetching(false)
+
       dispatch(incrementOffSet(newOffSet))
     }
   }
 
-  const renderJobOffers = data => {
-    return (
-      <div className={s.jobsWrapper}>
-        {
-          data && Object.keys(data).map(item => {
-            const date = new Date(data[item].date)
+  const renderJobOffers = data => (
+    <div className={s.jobsWrapper}>
+      {
+        Object.keys(data || {}).map(item => {
+          const date = new Date(data[item].date)
 
-            let month = date.toLocaleString('uk-UA', { month: 'short' })
+          let month = date.toLocaleString('uk-UA', { month: 'short' })
 
-            const salary = Number(data[item].salary)
+          const salary = Number(data[item].salary)
 
-            return <li key={data[item].id} className={s.jobOfferItem}>
+          return (
+            <li key={data[item].id} className={s.jobOfferItem}>
               <NavLink className={s.navLinkWrapper} to={{
                 pathname: '/open-job',
                 state   : { data: data[item] }
@@ -80,11 +89,11 @@ const FindJob = () => {
                 </div>
               </NavLink>
             </li>
-          })
-        }
-      </div>
-    )
-  }
+          )
+        })
+      }
+    </div>
+  )
 
   return (
     <div>

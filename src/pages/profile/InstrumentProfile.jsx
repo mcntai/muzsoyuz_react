@@ -23,7 +23,7 @@ const InstrumentProfile = () => {
 
   const chooseInstrument = (e) => {
     if (e.target.checked) {
-      dispatch(userProfileUpdate({role: e.target.value}))
+      dispatch(userProfileUpdate({ role: e.target.value }))
     }
   }
 
