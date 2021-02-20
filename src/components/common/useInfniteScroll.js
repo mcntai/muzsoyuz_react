@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { inRange } from '../../utils/number'
 
 
 function isScrollReachedBottom() {
@@ -7,7 +6,7 @@ function isScrollReachedBottom() {
   const scrolledFromTopOfPage = document.documentElement.scrollTop
   const contentHeight = document.documentElement.offsetHeight
 
-  return inRange(contentHeight, windowHeight + scrolledFromTopOfPage, 10)
+  return Math.round(windowHeight + scrolledFromTopOfPage) === contentHeight
 }
 
 const useInfiniteScroll = (callback) => {
