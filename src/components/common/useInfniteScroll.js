@@ -1,4 +1,14 @@
 import { useEffect, useState } from 'react'
+import { inRange } from '../../utils/number'
+
+
+function isScrollReachedBottom() {
+  const windowHeight = window.innerHeight
+  const scrolledFromTopOfPage = document.documentElement.scrollTop
+  const contentHeight = document.documentElement.offsetHeight
+
+  return inRange(contentHeight, windowHeight + scrolledFromTopOfPage, 10)
+}
 
 const useInfiniteScroll = (callback) => {
   const [isFetching, setIsFetching] = useState(false)
@@ -10,20 +20,13 @@ const useInfiniteScroll = (callback) => {
   }, [])
 
   useEffect(() => {
-    if (!isFetching) return
-    callback()
+    if (isFetching) {
+      callback()
+    }
   }, [isFetching])
 
-  function isScrollEqualsContentHeight() {
-    const windowHeight = window.innerHeight
-    const scrolledFromTopOfPage = document.documentElement.scrollTop
-    const contentHeight = document.documentElement.offsetHeight
-
-    return (Math.ceil(windowHeight + scrolledFromTopOfPage) === contentHeight)
-  }
-
   function handleScroll() {
-    isScrollEqualsContentHeight() && setIsFetching(true)
+    isScrollReachedBottom() && setIsFetching(true)
   }
 
   return { setIsFetching }

@@ -6,7 +6,7 @@ import { ROUTES as r } from '../constants/routes'
 const ROOT_PATH = '/'
 
 export const logout = error => dispatch => {
-  dispatch({ type: authenticateUser.rejected.type, error })
+  dispatch({ ...authenticateUser.rejected, error })
 }
 
 export const goToLogin = () => () => {

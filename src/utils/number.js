@@ -1,0 +1,1 @@
+export const inRange = (a, b, n) => (a - b) <= n
