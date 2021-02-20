@@ -33,10 +33,10 @@ const ProfileProvider = ({ children }) => {
   const isMainPage = location.pathname === '/'
 
   useEffect(() => {
-    if (!loaded && !error && !loading && token) {
+    if (!loaded && !loading && !error && token) {
       dispatch(fetchUser())
     }
-  }, [dispatch, loaded, loading, error, token])
+  }, [])
 
   return (
     <Loader

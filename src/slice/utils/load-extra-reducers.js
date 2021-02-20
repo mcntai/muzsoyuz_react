@@ -20,10 +20,8 @@ export default function loadExtraReducers(reducer, extra) {
 
   return {
     [reducer.pending]  : contextWrapper(context, (state, action) => {
-      const isUpdate = /update/i.test(action.type)
-
-      state.loading = isUpdate ? state.loading : true
-      state.loaded = isUpdate ? state.loaded : false
+      state.loading = state.loaded ? state.loading : true
+      state.loaded = false
       state.error = null
 
       pendingReducer(state, action)

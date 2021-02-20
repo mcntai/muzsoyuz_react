@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import useInfiniteScroll from '../../components/common/useInfniteScroll'
 import { useSelector, useDispatch } from 'react-redux'
-import { incrementOffSet, selectFetchedData, selectOfferBody, selectOffers } from '../../slice/offers'
+import {
+  fetchedOffersCleanUp,
+  incrementOffSet,
+  selectFetchedData,
+  selectOfferBody,
+  selectOffers
+} from '../../slice/offers'
 import { fetchOffers } from '../../actions/offers'
 import { omitBy, predicates } from '../../utils/object'
 import { NavLink } from 'react-router-dom'
@@ -11,6 +17,7 @@ import SortingFilterButtons from './SortingFilterButtons'
 import Footer from '../../components/mainFooter/Footer'
 import s from './FindJob.module.css'
 import Loader from '../../components/common/Loader'
+
 
 const or = (...fns) => value => fns.some(fn => fn(value))
 
@@ -111,6 +118,7 @@ const FindJob = () => {
           secondText="Фільтр"
           secondRoute='/find-job-filter'
           btnClass={s.btnClass}
+          callback={() => dispatch(fetchedOffersCleanUp())}
         />
         <p className={noOfferToShow}>Оголошень немає. Змініть фільтри або оновіть сторінку</p>
         {

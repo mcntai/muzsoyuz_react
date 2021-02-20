@@ -36,16 +36,20 @@ const offersSlice = createSlice({
     incrementOffSet(state, action) {
       state.fetchOffersBody.offset = action.payload
     },
+    fetchedOffersCleanUp(state) {
+      state.fetchedOffers.data = []
+      state.fetchedOffers.loading = true
+      state.fetchedOffers.loaded = false
+      state.fetchedOffers.error = null
+    },
     sortOffers(state, action) {
       const type = action.payload.sortType
       const param = action.payload.param
 
-      state.fetchedOffers.data = []
       state.fetchOffersBody.offset = 0
       state.fetchOffersBody.orderBy = `${param} ${type}`
     },
     filterInstruments(state, action) {
-      state.fetchedOffers.data = []
       state.fetchOffersBody.offset = 0
 
       if (action.payload.filter === 'add') {
@@ -55,16 +59,13 @@ const offersSlice = createSlice({
       }
     },
     filterDate(state, action) {
-      state.fetchedOffers.data = []
       state.fetchOffersBody.date.from = action.payload.from
       state.fetchOffersBody.date.to = action.payload.to
     },
     filterSalary(state, action) {
-      state.fetchedOffers.data = []
       state.fetchOffersBody.salary[action.payload.range] = action.payload.value
     },
     filterSets(state, action) {
-      state.fetchedOffers.data = []
       state.fetchOffersBody.sets = action.payload
     }
   },
@@ -84,6 +85,7 @@ export const selectOffers = state => state.offers.fetchedOffers
 export const selectFetchedData = state => state.offers.fetchedOffers.data
 export const {
   incrementOffSet,
+  fetchedOffersCleanUp,
   sortOffers,
   filterInstruments,
   filterSalary,
