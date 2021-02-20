@@ -1,59 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { goBack } from '../../actions/user'
 import CollapseButton from '../findJobs/filters/CollapseButton'
 import InputNameProfile from './InputNameProfile'
 import InstrumentProfile from './InstrumentProfile'
 import InputPhoneProfile from './InputPhoneProfile'
-import CalendarProfile from './CalendarProfile'
+import SinglePickCalendar from '../../components/common/SinglePickCalendar'
 import Logout from './Logout'
-import { MuzSoyuzRequest } from '../../muzsoyuz-request'
-import { pageRoute } from '../../actions/routingActions'
-import * as swalAlert from '../../components/common/alerts'
+import { selectUserImage } from '../../slice/user'
 import avatar from '../../assets/img/avatar.svg'
 import settings from '../../assets/img/settings.svg'
 import s from './Profile.module.css'
+import styles from './CalendarProfile.module.css'
 
 
-const mapStateToProps = state => {
-  return {
-    loading   : state.authReducer.loading,
-    authorized: state.authReducer.authorized,
-    prevRoute : state.pageReducer.prevRoute
-  }
-}
+const Profile = () => {
+  const userImage = useSelector(selectUserImage)
+  const dispatch = useDispatch()
 
-const Profile = ({ authorized, prevRoute, dispatch }) => {
-  const [profileData, setProfileData] = useState({})
-
-  useEffect(() => {
-    dispatch(pageRoute('PROFILE', prevRoute))
-
-    async function fetchData() {
-      try {
-        const response = await MuzSoyuzRequest.getUserProfile()
-        setProfileData(response)
-      }
-      catch (e) {
-        swalAlert.error(e.message, 'Упс!')
-      }
-    }
-
-    fetchData()
-  }, [])
-
-
-  const userAuthorized = () => {
-    return (
+  return (
+    (
       <div className={s.profileWrapper}>
         <div className={s.profileTopSection}>
-          <NavLink to={prevRoute} className={s.backBtn}/>
+          <span className={s.backBtn} onClick={() => dispatch(goBack())}/>
           <div className={s.topContentWrapper}>
             <div className={s.avatarWrapper}>
-            <img src={profileData.imageURL || avatar} alt="avatar" className={s.avatar}/>
+              <img src={userImage || avatar} alt="avatar" className={s.avatar}/>
             </div>
-            <InputNameProfile data={profileData.name}/>
+            <InputNameProfile/>
           </div>
         </div>
         <div className={s.profileMiddleSection}>
@@ -65,31 +40,21 @@ const Profile = ({ authorized, prevRoute, dispatch }) => {
             title={'Твій інструмент'}
             btnWrapper={s.btnWrapperInstrument}
             filterName={s.filterName}
-            innerContent={<InstrumentProfile defaultInstrument={{ role: profileData.role }}/>}
+            innerContent={<InstrumentProfile/>}
           />
-          <InputPhoneProfile data={profileData.phone}/>
+          <InputPhoneProfile/>
           <CollapseButton
             title={'Вільні дні'}
             btnWrapper={s.btnWrapperCalendar}
             filterName={s.filterName}
-            innerContent={<CalendarProfile/>}
+            innerContent={<SinglePickCalendar styles={styles}/>}
           />
         </div>
         <Logout btnWrapper={s.logoutBtnWrapper}/>
       </div>
     )
-  }
-
-  return (
-    <>
-      {
-        authorized === false
-        ? <Redirect to='/login'/>
-        : userAuthorized()
-      }
-    </>
   )
 }
 
 
-export default connect(mapStateToProps)(Profile)
+export default Profile

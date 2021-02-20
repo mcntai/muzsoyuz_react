@@ -1,40 +1,41 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
-import { sortDesc } from '../../../actions/filterActions'
-import { sortAsc } from '../../../actions/filterActions'
+import React, { useEffect, useState } from 'react'
+import { connect, useDispatch } from 'react-redux'
 import s from './SortingFrom.module.css'
+import { sortOffers } from '../../../slice/offers'
+import history from '../../../history/history'
 
 
-const SortingFrom = ({ btnName, trigger, btnTextFirst, btnTextSecond, dispatch }) => {
+const SortingFrom = ({ param, display, btnTextFirst, btnTextSecond }) => {
+  const dispatch = useDispatch()
   const [redirect, setRedirect] = useState(false)
-  const visible = trigger ? s.visible : s.hidden
+  const visible = display ? s.visible : s.hidden
 
-  const sortingDescending = () => {
-    dispatch(sortDesc(btnName))
+  useEffect(() => {
+    if (redirect) {
+      history.push('/find-job')
+    }
+  }, [redirect])
 
-    setRedirect(!redirect)
-  }
+  const handleSorting = (e) => {
+    const sortType = e.target.getAttribute('data-sort')
+    dispatch(sortOffers({ param, sortType }))
 
-  const sortingAscending = () => {
-    dispatch(sortAsc(btnName))
-
-    setRedirect(!redirect)
+    setRedirect(true)
   }
 
   return (
     <div className={[s.sortingModalWrapper, visible, s.defaultPosition].join(' ')}>
       <div className={s.sortingBtnWrapper}>
         <button
-          name={btnName}
-          onClick={sortingDescending}
+          data-sort='DESC'
+          onMouseDown={handleSorting}
           className={s.btn}
         >
           {btnTextFirst}
         </button>
         <button
-          name={btnName}
-          onClick={sortingAscending}
+          data-sort='ASC'
+          onMouseDown={handleSorting}
           className={s.btn}
         >
           {btnTextSecond}
@@ -45,11 +46,6 @@ const SortingFrom = ({ btnName, trigger, btnTextFirst, btnTextSecond, dispatch }
       >
         Відмінити
       </button>
-      {
-        redirect
-        ? <Redirect to="/find-job"/>
-        : null
-      }
     </div>
   )
 }

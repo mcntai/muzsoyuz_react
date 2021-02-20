@@ -1,25 +1,35 @@
 import { useEffect, useState } from 'react'
+import { inRange } from '../../utils/number'
 
+
+function isScrollReachedBottom() {
+  const windowHeight = window.innerHeight
+  const scrolledFromTopOfPage = document.documentElement.scrollTop
+  const contentHeight = document.documentElement.offsetHeight
+
+  return inRange(contentHeight, windowHeight + scrolledFromTopOfPage, 10)
+}
 
 const useInfiniteScroll = (callback) => {
   const [isFetching, setIsFetching] = useState(false)
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
+
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect( () => {
-    if (!isFetching) return
-    callback()
+  useEffect(() => {
+    if (isFetching) {
+      callback()
+    }
   }, [isFetching])
 
   function handleScroll() {
-    if (Math.ceil(window.innerHeight + document.documentElement.scrollTop) < document.documentElement.offsetHeight || isFetching) return
-    setIsFetching(true)
+    isScrollReachedBottom() && setIsFetching(true)
   }
 
-  return [isFetching, setIsFetching]
+  return { setIsFetching }
 }
 
 export default useInfiniteScroll

@@ -121,7 +121,16 @@
 }
 
 .hide {
-  opacity: 0;
+  display: none;
+}
+
+.show {
+  composes: montserrat;
+  font-size: 14px;
+  display: block;
+  margin: 50px auto;
+  padding: 0 15px;
+  text-align: center;
 }
 
 /* iPhone 5/5s/SE*/

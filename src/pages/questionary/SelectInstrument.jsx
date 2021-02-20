@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Select from 'react-select'
-import { connect } from 'react-redux'
 import s from './ChooseInstrumentPage.module.css'
 
 
@@ -43,22 +42,11 @@ const customStyles = {
   })
 }
 
-const saveSelectedInst = (selectedInst) => ({
-  type: 'SAVE_SELECTED_INSTRUMENT',
-  selectedInst
-})
-
-const SelectInstrument = (props) => {
-  const [selectedOption, setSelectedOption] = useState('')
+const SelectInstrument = ({saveInstrumentToLocalState}) => {
 
   function handleChange(e) {
-    setSelectedOption(e.value)
+    saveInstrumentToLocalState(e.value)
   }
-
-  useEffect(() => {
-    props.dispatch(saveSelectedInst(selectedOption))
-  })
-
 
   return (
     <div>
@@ -75,4 +63,4 @@ const SelectInstrument = (props) => {
   )
 }
 
-export default connect(undefined)(SelectInstrument)
+export default SelectInstrument

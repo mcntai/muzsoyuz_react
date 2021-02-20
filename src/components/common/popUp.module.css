@@ -1,0 +1,64 @@
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #262D33;
+}
+
+.modalWrapper {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 100vw;
+  height: 65px;
+}
+
+.modalWrapper:focus {
+  outline: none;
+}
+
+.backgroundGreen {
+  background-color: #A7FFCA;
+}
+
+.backgroundRed {
+  background-color: #FC9191;
+}
+
+.text {
+  composes: montserrat;
+  padding: 10px 5px;
+}
+
+.textColorGreen {
+  color: #04700F;
+}
+
+.textColorRed {
+  color: #770303;
+}
+
+.defaultPosition {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: -65px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.visible {
+  transform: translateY(65px);
+  transition: transform ease-in 0.5s;
+}
+
+.hidden {
+  transform: translateY(-65px);
+  transition: transform ease-in 0.5s;
+}
+
+

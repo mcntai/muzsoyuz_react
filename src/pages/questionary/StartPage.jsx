@@ -1,50 +1,43 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { handleRedirect } from './handleRedirect'
+import React, { useEffect } from 'react'
 import BackgroundImage from './BackgroundImage'
 import Text from './Text'
 import Button from './Button'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectProfile } from '../../slice/user'
+import { ROUTES as r } from '../../constants/routes'
+import { goTo } from '../../actions/user'
 import img from '../../assets/img/start-page-background.svg'
 import s from './StartPage.module.css'
 
 
-const mapStateToProps = state => {
-  return {
-    authorized: state.authReducer.authorized,
-    role      : state.authReducer.role,
-  }
-}
+const StartPage = () => {
+  const userProfile = useSelector(selectProfile)
+  const dispatch = useDispatch()
 
-const StartPage = ({ authorized, role }) => {
-
-  function renderContent() {
-    return (
-      <>
-        <BackgroundImage
-          img={img}
-          imgClass={s.startImgBackground}
-        />
-        <Text
-          text="Сервіс пошуку музикантів"
-          textWrapperClass={s.startTextWrapper}
-          textClass={s.startText}
-        />
-        <Button
-          btnText="почати"
-          nextRoute="/quest-instrument"
-          btnClass={s.startBtn}
-        />
-      </>
-    )
-  }
+  useEffect(() => {
+    if (userProfile.role) {
+      dispatch(goTo(r.HOME))
+    }
+  }, [])
 
   return (
     <div className={s.startPageWrapper}>
-      {
-        handleRedirect(authorized, role, renderContent)
-      }
+      <BackgroundImage
+        img={img}
+        imgClass={s.startImgBackground}
+      />
+      <Text
+        text="Сервіс пошуку музикантів"
+        textWrapperClass={s.startTextWrapper}
+        textClass={s.startText}
+      />
+      <Button
+        btnText="почати"
+        nextRoute="/quest-instrument"
+        btnClass={s.startBtn}
+      />
     </div>
   )
 }
 
-export default connect(mapStateToProps)(StartPage)
+export default StartPage

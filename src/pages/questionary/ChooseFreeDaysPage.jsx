@@ -1,68 +1,65 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { MuzSoyuzRequest } from '../../muzsoyuz-request'
-import { handleRedirect } from './handleRedirect'
+import React, { useEffect, useState } from 'react'
 import BackgroundImage from './BackgroundImage'
 import Text from './Text'
-import Calendar from './Calendar'
+import SinglePickCalendar from '../../components/common/SinglePickCalendar'
 import Button from './Button'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectWorkDays } from '../../slice/user'
+import { moveFinishBtnCalendarQuest, selectShowCalendar, toggleElement } from '../../slice/general'
+import { ROUTES as r } from '../../constants/routes'
+import { goTo } from '../../actions/user'
 import img from '../../assets/img/start-choose-days-background.svg'
 import s from './ChooseFreeDaysPage.module.css'
 
 
-const mapStateToProps = state => {
-  return {
-    selectedDays: state.questReducer.selectedDays,
-    authorized  : state.authReducer.authorized,
-    role        : state.authReducer.role,
-  }
-}
+const ChooseFreeDaysPage = () => {
+  const showCal = useSelector(selectShowCalendar)
+  const workdays = useSelector(selectWorkDays)
+  const [showBtn, setShowBtn] = useState(null)
+  const dispatch = useDispatch()
 
-const ChooseFreeDaysPage = ({ selectedDays, authorized, role }) => {
-
-  async function handleSubmit() {
-    try {
-      await MuzSoyuzRequest.setDaysOff({
-        dates : selectedDays,
-        dayOff: true
-      })
+  useEffect(() => {
+    if (workdays.length) {
+      dispatch(goTo(r.HOME))
     }
-    catch (e) {
-      console.log(e.message)
-    }
-  }
+  }, [])
 
-  function renderContent() {
-    return (
-      <>
-        <BackgroundImage
-          img={img}
-          imgClass={s.chooseDaysBackground}
-        />
-        <Text
-          text="Відзнач найближчі вільні дні, щоб тебе побачили роботодавці"
-          textWrapperClass={s.chooseDaysTextWrapper}
-          textClass={s.chooseDaysText}
-        />
-        <Calendar/>
-        <Button
-          btnText="завершити"
-          nextRoute="/"
-          btnClass={s.chooseDaysFinishBtn}
-          handleSubmit={handleSubmit}
-        />
-      </>
-    )
+  function handleShowCalendar() {
+    const button = showBtn === null ? s.showBtn : null
+    setShowBtn(button)
+
+    dispatch(toggleElement())
+    dispatch(moveFinishBtnCalendarQuest())
   }
 
   return (
     <div className={s.chooseDaysWrapper}>
+      <BackgroundImage
+        img={img}
+        imgClass={s.chooseDaysBackground}
+      />
+      <Text
+        text="Відзнач найближчі вільні дні, щоб тебе побачили роботодавці"
+        textWrapperClass={s.chooseDaysTextWrapper}
+        textClass={s.chooseDaysText}
+      />
+      <button
+        className={[showBtn, s.calendarBtn].join(' ')}
+        onClick={handleShowCalendar}>
+        Календар
+      </button>
       {
-        // handleRedirect(authorized, role, renderContent)
-        renderContent()
+        showCal
+        ? <SinglePickCalendar styles={s}/>
+        : null
       }
+      <Button
+        btnText="завершити"
+        nextRoute="/"
+        btnClass={s.chooseDaysFinishBtn}
+      />
     </div>
   )
 }
 
-export default connect(mapStateToProps)(ChooseFreeDaysPage)
+export default ChooseFreeDaysPage

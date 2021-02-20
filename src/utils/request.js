@@ -4,7 +4,7 @@ class ResponseError extends Error {
 
     this.error = error
     this.status = this.error?.status
-    this.message = this.error?.message
+    this.message = Array.isArray(this.error.message) ? this.error.message.join(', ') : this.error.message
   }
 }
 
@@ -105,8 +105,8 @@ export class Request {
     }
 
     return response instanceof Response
-      ? response.json()
-      : response
+           ? response.json()
+           : response
   }
 
   isSucceededStatus(response) {
@@ -124,8 +124,6 @@ export class Request {
   }
 
   async execute() {
-    console.log(this.url)
-
     const requestOptions = {
       method : this.method,
       headers: this.headers,
@@ -141,3 +139,11 @@ export class Request {
       .then(response => response.json())
   }
 }
+
+Request.methods = [
+  'get',
+  'post',
+  'put',
+  'patch',
+  'delete',
+]

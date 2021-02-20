@@ -1,16 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { selectShowButton } from '../../slice/general'
 import s from './Questionary.module.css'
 
 
-const mapStateToProps = state => {
-  return {
-    finishBtn: state.questReducer.finishBtn,
-  }
-}
-
-const Button = ({ btnText, nextRoute, btnClass, finishBtn, handleSubmit }) => {
+const Button = ({ btnText, nextRoute, btnClass, callback }) => {
+  const finishBtn = useSelector(selectShowButton)
   const btn = finishBtn === true ? s.finishBtn : ''
 
   return (
@@ -18,7 +14,7 @@ const Button = ({ btnText, nextRoute, btnClass, finishBtn, handleSubmit }) => {
       <NavLink
         to={nextRoute}
         className={[btnClass, btn].join(' ')}
-        onClick={handleSubmit}
+        onClick={callback}
       >
         {btnText}
       </NavLink>
@@ -26,4 +22,4 @@ const Button = ({ btnText, nextRoute, btnClass, finishBtn, handleSubmit }) => {
   )
 }
 
-export default connect(mapStateToProps)(Button)
+export default Button

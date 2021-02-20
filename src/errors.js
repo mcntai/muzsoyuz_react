@@ -1,4 +1,3 @@
-
 export class ArgumentsError extends Error {
   constructor(message) {
     super(message)
@@ -12,3 +11,4 @@ export const argumentAssert = (condition, message) => {
     throw new ArgumentsError(message)
   }
 }
+

@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { connect } from 'react-redux'
-import { filterInstruments } from '../../../actions/filterActions'
+import React from 'react'
+import { filterInstruments, selectInstrumentsList } from '../../../slice/offers'
+import { useDispatch, useSelector } from 'react-redux'
 import s from './InnerFilterInstrument.module.css'
 
 
@@ -16,25 +16,13 @@ const instruments = {
   piano  : 'Клавішні'
 }
 
-const InnerFilterInstrument = ({ dispatch }) => {
-  const [instrument, setInstrument] = useState([])
-  const isMounted = useRef(false)
+const InnerFilterInstrument = () => {
+  const dispatch = useDispatch()
+  const checkedInstrument = useSelector(selectInstrumentsList)
 
-  const chooseInstrument = (e, newInst) => {
-    if (e.target.checked) {
-      setInstrument(prevArray => [...prevArray, newInst])
-    } else if (!e.target.checked) {
-      setInstrument(instrument.filter(inst => inst !== newInst))
-    }
+  const chooseInstrument = (e, instrument) => {
+    dispatch(filterInstruments({ instrument, filter: e.target.checked ? 'add' : 'delete' }))
   }
-
-  useEffect(() => {
-    if (isMounted.current) {
-      dispatch(filterInstruments(instrument))
-    } else {
-      isMounted.current = true
-    }
-  }, [dispatch, instrument])
 
   return (
     <div className={s.instrumentsWrapper}>
@@ -45,8 +33,9 @@ const InnerFilterInstrument = ({ dispatch }) => {
                 <input
                   type="checkbox"
                   id={item}
+                  checked={checkedInstrument.filter(el => el === item).join()}
                   className={s.instrumentCheckbox}
-                  onClick={(e) => chooseInstrument(e, item)}
+                  onChange={(e) => chooseInstrument(e, item)}
                 />
                 <label
                   htmlFor={item}
@@ -63,4 +52,4 @@ const InnerFilterInstrument = ({ dispatch }) => {
   )
 }
 
-export default connect(undefined)(InnerFilterInstrument)
+export default InnerFilterInstrument

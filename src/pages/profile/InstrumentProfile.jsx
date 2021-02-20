@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { MuzSoyuzRequest } from '../../muzsoyuz-request'
-import * as swalAlert from '../../components/common/alerts'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { userProfileUpdate } from '../../actions/user'
 import s from './InstrumentProfile.module.css'
+import { selectUserRole } from '../../slice/user'
 
 
 const instruments = {
@@ -16,41 +17,13 @@ const instruments = {
   piano  : 'Клавішні'
 }
 
-const InstrumentProfile = ({ defaultInstrument }) => {
-  const isMounted = useRef(true)
-  const [instrument, setInstrument] = useState(defaultInstrument)
-  const [instrumentChanged, setInstrumentChanged] = useState(false)
-  const [checkedOption, setCheckedOption] = useState('')
-  const [defaultOption, setDefaultOption] = useState('')
-
-  useEffect(() => {
-    setDefaultOption(defaultInstrument.role)
-  }, [defaultInstrument.role])
-
-  useEffect(() => {
-    async function setInstrument() {
-      if (!isMounted.current) {
-        try {
-          await MuzSoyuzRequest.makeProfileUpdate(instrument)
-        }
-        catch (e) {
-          swalAlert.error(e.message, 'Сталася помилка при оновленні профілю')
-        }
-      } else {
-        isMounted.current = false
-      }
-    }
-
-    setInstrument()
-  }, [instrument, instrumentChanged])
+const InstrumentProfile = () => {
+  const userRole = useSelector(selectUserRole)
+  const dispatch = useDispatch()
 
   const chooseInstrument = (e) => {
     if (e.target.checked) {
-      setInstrument({ ...instrument, role: e.target.value })
-      setInstrumentChanged(!instrumentChanged)
-
-      setCheckedOption(e.target.value)
-      setDefaultOption('')
+      dispatch(userProfileUpdate({ role: e.target.value }))
     }
   }
 
@@ -67,7 +40,7 @@ const InstrumentProfile = ({ defaultInstrument }) => {
                   type="radio"
                   id={item}
                   value={item}
-                  checked={item === defaultOption || checkedOption === item}
+                  checked={item === userRole}
                   className={s.instrument}
                   onChange={chooseInstrument}
                 />

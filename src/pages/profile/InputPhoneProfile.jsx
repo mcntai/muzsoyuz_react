@@ -1,35 +1,31 @@
-import React, { useState, useEffect } from 'react'
-import { MuzSoyuzRequest } from '../../muzsoyuz-request'
+import React, { useState, useEffect, useRef } from 'react'
 import { jobOfferValidator } from '../../validators'
 import * as swalAlert from '../../components/common/alerts'
+import { userProfileUpdate } from '../../actions/user'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectUserPhone } from '../../slice/user'
 import s from './InputPhoneProfile.module.css'
 
 
-const InputPhoneProfile = ({ data }) => {
-  const [phone, setPhone] = useState({})
-  const [lastNumber, setLastNumber] = useState({phone: ''})
+const InputPhoneProfile = () => {
+  const userPhone = useSelector(selectUserPhone)
+  const [phone, setPhone] = useState(userPhone)
+  const [lastNumber, setLastNumber] = useState('')
   const [finishedUpdatingPhone, setFinishedUpdatingPhone] = useState(false)
+  const ref = useRef(false)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    setPhone(data)
-  }, [data])
+    setPhone(userPhone)
+  }, [userPhone])
 
   useEffect(() => {
-    async function submitChanges() {
-      if (finishedUpdatingPhone) {
-        try {
-          await MuzSoyuzRequest.makeProfileUpdate({ phone })
-        }
-        catch (e) {
-          swalAlert.error(e.message, 'Сталася помилка при оновленні профілю')
-        }
-      }
-    }
+    if (ref.current === false) return
 
-    submitChanges()
+    dispatch(userProfileUpdate({ phone }))
   }, [finishedUpdatingPhone])
 
-  const backUpLastNumber= (e) => {
+  const backUpLastNumber = (e) => {
     setLastNumber(e.target.value)
   }
 
@@ -42,6 +38,7 @@ const InputPhoneProfile = ({ data }) => {
 
     try {
       jobOfferValidator('phoneErr', value)
+      ref.current = true
       setFinishedUpdatingPhone(true)
     }
     catch (e) {

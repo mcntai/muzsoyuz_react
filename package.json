@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "history": "^4.10.1",
     "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@typescript-eslint/parser": "^2.10.0",
     "babel-eslint": "10.1.0",
@@ -35,6 +36,7 @@
     "html-webpack-plugin": "4.0.0-beta.11",
     "identity-obj-proxy": "3.0.0",
     "immer": "^7.0.9",
+    "lodash": "^4.17.20",
     "jest": "24.9.0",
     "jest-environment-jsdom-fourteen": "1.0.1",
     "jest-resolve": "24.9.0",
@@ -53,13 +55,11 @@
     "react-day-picker": "^7.4.8",
     "react-dev-utils": "^10.2.1",
     "react-dom": "^16.13.1",
-    "react-helmet": "^6.1.0",
+    "react-helmet-async": "^1.0.7",
     "react-redux": "^7.2.1",
-    "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-select": "^3.1.1",
     "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
     "redux-first-router": "^2.1.5",
     "redux-thunk": "^2.3.0",
     "resolve": "1.15.0",
@@ -98,6 +98,7 @@
     ]
   },
   "devDependencies": {
+    "@reduxjs/toolkit": "^1.5.0",
     "react-use": "^15.3.4"
   },
   "jest": {

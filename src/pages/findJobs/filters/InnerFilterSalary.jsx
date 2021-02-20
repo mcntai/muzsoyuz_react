@@ -1,57 +1,62 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { filterSalary } from '../../../actions/filterActions'
+import React, { useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import s from './InnerFilterSalary.module.css'
+import { filterSalary, selectSalary } from '../../../slice/offers'
+import { debounce } from 'lodash'
 
 
-const InnerFilterSalary = (props) => {
-  const [minSalary, setMinSalary] = useState(0)
-  const [maxSalary, setMaxSalary] = useState(60000)
+const InnerFilterSalary = () => {
+  const [inputFromValue, setInputFromValue] = useState(null);
+  const [inputToValue, setInputToValue] = useState(null);
+  const dispatch = useDispatch()
+  const salary = useSelector(selectSalary)
 
-  const enterMinSalary = (e) => {
-    setMinSalary(e.target.value)
+  const makeDispatch = (value, range) => {
+    dispatch(filterSalary({ value, range }))
   }
-  const enterMaxSalary = (e) => {
-    setMaxSalary(e.target.value)
+
+  const makeDispatchDebounced = useRef(debounce(makeDispatch, 500));
+
+  const enterSalary = (e) => {
+    let value = e.target.value
+    let range = e.target.getAttribute('data-range')
+
+    range === 'from'
+    ? setInputFromValue(value)
+    : setInputToValue(value)
+
+    makeDispatchDebounced.current(value, range)
   }
 
-  const fixSalary = () => {
-    if(minSalary > 0) {
-      props.dispatch(filterSalary(minSalary, maxSalary))
-    }
-    else if(maxSalary < 60000) {
-      props.dispatch(filterSalary(minSalary, maxSalary))
-    }
-  }
 
   return (
     <div className={s.salaryWrapper}>
       <div className={s.salaryInputWrapper}>
         <label className={s.label}>
           від
-        <input
-          type="number"
-          pattern="\d*"
-          className={s.input}
-          value={minSalary}
-          onChange={enterMinSalary}
-          onBlur={fixSalary}
-        />
-      </label>
+          <input
+            type="number"
+            pattern="\d*"
+            data-range='from'
+            value={inputFromValue || salary.from}
+            className={s.input}
+            onChange={enterSalary}
+          />
+        </label>
         <label className={s.label}>
           до
-        <input
-          type="number"
-          pattern="\d*"
-          className={s.input}
-          value={maxSalary}
-          onChange={enterMaxSalary}
-          onBlur={fixSalary}
-        />
+          <input
+            type="number"
+            pattern="\d*"
+            data-range='to'
+            value={inputToValue || salary.to}
+            className={s.input}
+            onChange={enterSalary}
+          />
         </label>
       </div>
     </div>
   )
 }
 
-export default connect(undefined)(InnerFilterSalary)
+export default InnerFilterSalary

@@ -3,13 +3,14 @@ import { NavLink } from 'react-router-dom'
 import s from './SortingFilterButtons.module.css'
 
 
-const SortingFilterButtons = ({ firstText, firstRoute, secondText, secondRoute, btnClass, active }) => {
+const SortingFilterButtons = ({ firstText, firstRoute, secondText, secondRoute, btnClass, active, callback }) => {
   return (
     <div className={s.sortFilterButtons}>
       <NavLink
         to={firstRoute}
         className={btnClass}
         activeClassName={active}
+        onClick={callback}
       >
         {firstText}
       </NavLink>
@@ -17,6 +18,7 @@ const SortingFilterButtons = ({ firstText, firstRoute, secondText, secondRoute, 
         to={secondRoute}
         className={btnClass}
         activeClassName={active}
+        onClick={callback}
       >
         {secondText}
       </NavLink>

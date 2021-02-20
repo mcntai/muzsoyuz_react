@@ -1,130 +1,113 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useInfiniteScroll from '../../components/common/useInfniteScroll'
-import { connect } from 'react-redux'
-import { MuzSoyuzRequest } from '../../muzsoyuz-request'
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  fetchedOffersCleanUp,
+  incrementOffSet,
+  selectFetchedData,
+  selectOfferBody,
+  selectOffers
+} from '../../slice/offers'
+import { fetchOffers } from '../../actions/offers'
 import { omitBy, predicates } from '../../utils/object'
-import { pageRoute } from '../../actions/routingActions'
+import { NavLink } from 'react-router-dom'
+import { OFFSET_PERIOD } from '../../constants/offers'
 import Header from '../../components/mainHeader/Header'
 import SortingFilterButtons from './SortingFilterButtons'
 import Footer from '../../components/mainFooter/Footer'
-import preloader from '../../assets/img/preloader.gif'
 import s from './FindJob.module.css'
-import { NavLink } from 'react-router-dom'
+import Loader from '../../components/common/Loader'
 
 
-const mapStateToProps = state => {
-  return {
-    loading  : state.authReducer.loading,
-    prevRoute: state.pageReducer.prevRoute,
-    body     : state.filterReducer
-  }
-}
+const or = (...fns) => value => fns.some(fn => fn(value))
 
+const FindJob = () => {
+  const { setIsFetching } = useInfiniteScroll(fetchMoreOffers)
 
-const FindJob = ({ loading, body, dispatch }) => {
-  const [fetchedData, setFetchedData] = useState([])
-  const [fetchFinished, setFetchFinished] = useState(false)
-  const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreOffers)
-  const [offSet, setOffSet] = useState(0)
-  const [infiniteScrollFinished, setInfiniteScrollFinished] = useState(false)
+  const { loaded, loading, error, isFetchedAll } = useSelector(selectOffers)
+  const body = useSelector(selectOfferBody)
+  const fetchedOffers = useSelector(selectFetchedData)
+
+  const [noOfferToShow, setNoOffersToShow] = useState(s.hide)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    let isCancelled = false
-
-    getAllJobOffers().catch()
-
-    dispatch(pageRoute('FIND_JOB', 'find-job'))
-
-    return () => {
-      isCancelled = true
+    if (!loaded) {
+      fetchJobOffers()
     }
   }, [])
 
-  async function getAllJobOffers(count) {
-    const transformedBody = omitBy(body,
-      value => predicates.isEmptyString(value) || predicates.isEmptyRange(value) || predicates.isEmptyArray(value))
-    transformedBody.offset = count * 30
+  useEffect(() => {
+    const display = !fetchedOffers.length && loaded
+      ? s.show
+      : s.hide
 
-    const response = await MuzSoyuzRequest.getJobOffers(transformedBody)
-      .props([
-        'id',
-        'title',
-        'date',
-        'salary',
-        'address',
-        'sets',
-        'phone',
-        'extraInfo',
-      ])
+    setNoOffersToShow(display)
+  }, [fetchedOffers])
 
-    if (count > 0) {
-      return response
-    } else if (response) {
-      setFetchFinished(true)
-      setFetchedData(response)
+  function fetchJobOffers(newOffSet) {
+    const transformedBody = omitBy(body, or(
+      predicates.isEmptyString,
+      predicates.isEmptyRange,
+      predicates.isEmptyArray,
+      predicates.isNilRange,
+      ),
+    )
 
-      return response
-    }
+    transformedBody.offset = newOffSet
+    dispatch(fetchOffers({ body: transformedBody }))
   }
 
-  async function fetchMoreOffers() {
-    let count = offSet + 1
-    const response = await getAllJobOffers(count)
+  function fetchMoreOffers() {
+    if (!isFetchedAll) {
+      const newOffSet = body.offset + OFFSET_PERIOD
 
-    if (response && response.length < 1) {
-      setInfiniteScrollFinished(true)
-    } else if (response) {
-      setFetchedData(prevState => ([...prevState, ...response]))
+      fetchJobOffers(newOffSet)
+
       setIsFetching(false)
-      setOffSet(offSet + 1)
+
+      dispatch(incrementOffSet(newOffSet))
     }
   }
 
-  const renderJobOffers = data => {
-    return (
-      <div className={s.jobsWrapper}>
-        {
-          data && fetchedData.map(item => {
-            const date = new Date(item.date)
+  const renderJobOffers = data => (
+    <div className={s.jobsWrapper}>
+      {
+        Object.keys(data || {}).map(item => {
+          const date = new Date(data[item].date)
 
-            let month = date.toLocaleString('uk-UA', { month: 'short' })
+          let month = date.toLocaleString('uk-UA', { month: 'short' })
 
-            const salary = Number(item.salary)
+          const salary = Number(data[item].salary)
 
-            return <li key={item.id} className={s.jobOfferItem}>
+          return (
+            <li key={data[item].id} className={s.jobOfferItem}>
               <NavLink className={s.navLinkWrapper} to={{
                 pathname: '/open-job',
-                state   : { data: item }
+                state   : { data: data[item] }
               }}>
                 <div className={s.jobOfferContentWrapper}>
-                  <img src={item.instrument.imageURL} alt='Instrument' className={s.instrumentIcon}/>
+                  <img src={data[item].instrument.imageURL} alt='Instrument' className={s.instrumentIcon}/>
                   <div className={s.jobTextWrapper}>
-                    <p className={s.jobTitle}>{item.title}</p>
+                    <p className={s.jobTitle}>{data[item].title}</p>
                     <p className={s.jobSalary}>{salary} грн</p>
                   </div>
                   <p className={s.jobDate}>{date.getDate()} {month}</p>
                 </div>
               </NavLink>
             </li>
-          })
-        }
-        {
-          isFetching && loadingNewOffers()
-        }
-      </div>
-    )
-  }
+          )
+        })
+      }
+    </div>
+  )
 
-  function loadingNewOffers() {
-    const hide = infiniteScrollFinished ? s.hide : ''
-    return (
-      <p className={[s.loadingNewOffers, hide].join(' ')}>Завантажую нові оголошення</p>
-    )
-  }
-
-  const renderPage = () => {
-    return (
-      <div>
+  return (
+    <div>
+      <Loader
+        loading={loading}
+        error={error}
+      >
         <div className={s.headerWrapper}>
           <Header/>
         </div>
@@ -135,27 +118,18 @@ const FindJob = ({ loading, body, dispatch }) => {
           secondText="Фільтр"
           secondRoute='/find-job-filter'
           btnClass={s.btnClass}
+          callback={() => dispatch(fetchedOffersCleanUp())}
         />
+        <p className={noOfferToShow}>Оголошень немає. Змініть фільтри або оновіть сторінку</p>
         {
-          fetchFinished && renderJobOffers(fetchedData)
+          renderJobOffers(fetchedOffers)
         }
         <div className={s.footerWrapper}>
           <Footer/>
         </div>
-      </div>
-    )
-  }
-
-
-  return (
-    <div>
-      {
-        loading
-        ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>
-        : renderPage()
-      }
+      </Loader>
     </div>
   )
 }
 
-export default connect(mapStateToProps)(FindJob)
+export default FindJob

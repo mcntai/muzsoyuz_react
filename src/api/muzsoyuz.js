@@ -1,12 +1,10 @@
-import { Request } from './utils/request'
-import { config } from './config'
-import * as swal from './components/common/alerts'
+import { Request } from '../utils/request'
+import { config } from '../config'
 
-
-export class MuzSoyuzRequest extends Request {
-  sendToken() {
+export class MuzSoyuz extends Request {
+  setToken(token) {
     this.setHeaders({
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
+      Authorization: `Bearer ${token}`,
     })
 
     return this
@@ -14,7 +12,6 @@ export class MuzSoyuzRequest extends Request {
 
   static getUserProfile() {
     return this.get('/user/profile')
-      .sendToken()
   }
 
   static makeAuthentication(route, body) {
@@ -27,7 +24,6 @@ export class MuzSoyuzRequest extends Request {
 
   static makeJobOffer(body) {
     return this.post('/job', body)
-      .sendToken()
   }
 
   static getJobOffers(params) {
@@ -36,17 +32,14 @@ export class MuzSoyuzRequest extends Request {
 
   static makeProfileUpdate(changes) {
     return this.patch('/user/profile', changes)
-      .sendToken()
   }
 
   static getDaysOff(days) {
     return this.get('/user/workdays', days)
-      .sendToken()
   }
 
   static setDaysOff(days) {
     return this.post('/user/workdays', days)
-      .sendToken()
   }
 
   props(array) {
@@ -62,17 +55,6 @@ export class MuzSoyuzRequest extends Request {
   async execute() {
     this.url = config.getApiPath() + this.url
 
-    return super.execute()
-      .then(this.checkStatus.bind(this))
-      .catch(e => {
-        e.message = Array.isArray(e.message) ? e.message.join(', ') : e.message
-
-        if (e.message === 'Bad Request Exception') {
-          console.error(e.message)
-          swal.error('Повідомте адміна, якщо можете', 'Щось пішло не так...')
-        } else {
-          throw e
-        }
-      })
+    return super.execute().then(this.checkStatus.bind(this))
   }
 }

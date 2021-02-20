@@ -1,0 +1,1 @@
+export const OFFSET_PERIOD = 30

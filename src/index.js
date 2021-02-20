@@ -3,22 +3,23 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './app/App'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
+import { configureStore } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
+import { MuzSoyuz } from './api/muzsoyuz'
 
-
-const composeEnhancers = composeWithDevTools({
-  trace     : true,
-  traceLimit: 25
+export const store = configureStore({
+  reducer       : rootReducer,
+  preloadedState: {},
+  middleware    : [thunk.withExtraArgument({ api: MuzSoyuz })],
+  devTools      : true,
 })
 
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
-
 ReactDOM.render(
-  <Provider store={store}>
-    <App/>
-  </Provider>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <App/>
+    </Provider>
+  </React.StrictMode>,
   document.getElementById('root'),
 )

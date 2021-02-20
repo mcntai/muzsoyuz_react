@@ -1,18 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import {connect} from 'react-redux'
 import * as swal from '../../components/common/alerts'
 import Header from '../../components/mainHeader/Header'
 import Footer from '../../components/mainFooter/Footer'
 import avatar from '../../assets/img/avatar.svg'
+import { useDispatch } from 'react-redux'
+import { goTo } from '../../actions/user'
+import { ROUTES as r } from '../../constants/routes'
 import s from './OpenJob.module.css'
 
-
-const mapStateToProps = state => {
-  return {
-    authorized: state.authReducer.authorized,
-  }
-}
 
 const role = {
   drums  : 'Барабанщик',
@@ -26,16 +22,21 @@ const role = {
   piano  : 'Клавішні'
 }
 
-const OpenJob = ({authorized}) => {
+const OpenJob = () => {
   let location = useLocation()
-  const [data] = useState([location.state.data])
+  const [data, setData] = useState([])
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (location?.state?.data) {
+      setData([location.state.data])
+    } else {
+      dispatch(goTo(r.FIND_JOB))
+    }
+  }, [])
 
   const handleChat = () => {
-   if (!authorized) {
-     swal.warning('Чат буде доступний в наступному релізі...', 'Пардон...')
-   } else {
-     swal.warning('Чат буде доступний в наступному релізі...', 'Пардон...')
-   }
+    swal.warning('Чат буде доступний в наступному релізі...', 'Пардон...')
   }
 
   return (
@@ -80,4 +81,4 @@ const OpenJob = ({authorized}) => {
   )
 }
 
-export default connect(mapStateToProps)(OpenJob)
+export default OpenJob

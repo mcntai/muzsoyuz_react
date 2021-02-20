@@ -1,9 +1,9 @@
 import React from 'react'
-import Helmet from 'react-helmet'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { connect } from 'react-redux'
-import { filterDate } from '../../../actions/filterActions'
 import DayPicker, { DateUtils } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
+import { filterDate } from '../../../slice/offers'
 
 
 const WEEKDAYS_SHORT = {
@@ -56,7 +56,7 @@ class InnerFilterCalendar extends React.Component {
   }
 
   componentDidUpdate() {
-    this.props.dispatch(filterDate(this.state.from, this.state.to))
+    this.props.dispatch(filterDate({ from: this.state.from, to: this.state.to }))
   }
 
   render() {
@@ -73,8 +73,9 @@ class InnerFilterCalendar extends React.Component {
           firstDayOfWeek={FIRST_DAY_OF_WEEK['ua']}
           onDayClick={this.handleDayClick}
         />
-        <Helmet>
-          <style>{`
+        <HelmetProvider>
+          <Helmet>
+            <style>{`
           .RangeExample {
             display: flex;
             justify-content: center;
@@ -105,7 +106,8 @@ class InnerFilterCalendar extends React.Component {
               font-size: 17px;
           }
           `}</style>
-        </Helmet>
+          </Helmet>
+        </HelmetProvider>
       </div>
     )
   }
