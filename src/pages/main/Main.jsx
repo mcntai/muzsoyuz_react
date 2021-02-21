@@ -5,6 +5,7 @@ import logo from '../../assets/img/logo.svg'
 import background from '../../assets/img/background_main.svg'
 import s from './Main.module.css'
 
+
 const Main = () => (
   <div className={s.wrapper}>
     <div className={s.headerWrapper}>

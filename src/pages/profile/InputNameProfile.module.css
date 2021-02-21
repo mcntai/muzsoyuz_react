@@ -40,6 +40,7 @@
 .nameWrapper:after {
   content: url("../../assets/img/edit-icon.svg");
   vertical-align: -15%;
+  position: absolute;
 }
 
 .name:disabled {
@@ -67,9 +68,9 @@
     margin-top: 13px;
   }
 
-  .name {
-    padding-right: 10px;
-  }
+  /*.name {*/
+  /*  padding-right: 10px;*/
+  /*}*/
 }
 
 /*Androids...*/
