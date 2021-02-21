@@ -30,6 +30,7 @@ export default function loadExtraReducers(reducer, extra) {
       state.loading = false
       state.loaded = true
       state.error = null
+
       fulfilledReducer(state, action)
     }),
     [reducer.rejected] : contextWrapper(context, (state, action) => {

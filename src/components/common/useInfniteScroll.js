@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-
 function isScrollReachedBottom() {
   const windowHeight = window.innerHeight
   const scrolledFromTopOfPage = document.documentElement.scrollTop

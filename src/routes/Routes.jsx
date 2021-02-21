@@ -1,19 +1,19 @@
-import React from 'react'
-import Auth from '../pages/auth/Auth'
-import FilterPage from '../pages/findJobs/filters/FilterPage'
-import SortingPage from '../pages/findJobs/sorting/SortingPage'
-import Main from '../pages/main/Main'
-import FindJob from '../pages/findJobs/FindJob'
-import OpenJob from '../pages/findJobs/OpenJob'
-import OfferJob from '../pages/offerJobs/OfferJob'
-import Profile from '../pages/profile/Profile'
-import StartPage from '../pages/questionary/StartPage'
-import ChooseInstrumentPage from '../pages/questionary/ChooseInstrumentPage'
-import ChooseExperiencePage from '../pages/questionary/ChooseExperiencePage'
-import ChooseFreeDaysPage from '../pages/questionary/ChooseFreeDaysPage'
-import UserProvider from './UserProvider'
-import { Router, Switch, Route } from 'react-router-dom'
-import history from '../history/history'
+import React from "react"
+import Auth from "../pages/auth/Auth"
+import FilterPage from "../pages/findJobs/filters/FilterPage"
+import SortingPage from "../pages/findJobs/sorting/SortingPage"
+import Main from "../pages/main/Main"
+import FindJob from "../pages/findJobs/FindJob"
+import OpenJob from "../pages/findJobs/OpenJob"
+import OfferJob from "../pages/offerJobs/OfferJob"
+import Profile from "../pages/profile/Profile"
+import StartPage from "../pages/questionary/StartPage"
+import ChooseInstrumentPage from "../pages/questionary/ChooseInstrumentPage"
+import ChooseExperiencePage from "../pages/questionary/ChooseExperiencePage"
+import ChooseFreeDaysPage from "../pages/questionary/ChooseFreeDaysPage"
+import UserProvider from "./UserProvider"
+import { Router, Switch, Route } from "react-router-dom"
+import history from "../history/history"
 import OauthCallBackListener from "./OauthCallBackListener"
 
 

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{muzsoyuz_react/node_modules}" />
-    <file url="PROJECT" libraries="{@types/react, @types/react-router, @types/react-router-dom, muzsoyuz_react/node_modules}" />
-  </component>
-</project>

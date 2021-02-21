@@ -1,12 +1,25 @@
-.wrapper {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.loaderWrapper {
+    background: #a0dee8;
+    width: 100%;
+    height: 3px;
+    position: absolute;
 }
 
-.spinner {
-    width: 64px;
-    height: 64px;
+.loaderLine {
+    background: #12dbff;
+    border-radius: 3px;
     position: absolute;
+    left: 0;
+    z-index: 1;
+    width: 100px;
+    height: 3px;
+    animation: line-bounce 1.6s infinite;
+}
+
+@keyframes line-bounce {
+
+    50% {
+        left: 300px;
+    }
+
 }

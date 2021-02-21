@@ -18,7 +18,6 @@ import Footer from '../../components/mainFooter/Footer'
 import s from './FindJob.module.css'
 import Loader from '../../components/common/Loader'
 
-
 const or = (...fns) => value => fns.some(fn => fn(value))
 
 const FindJob = () => {
@@ -107,6 +106,7 @@ const FindJob = () => {
       <Loader
         loading={loading}
         error={error}
+        styles={s.loader}
       >
         <div className={s.headerWrapper}>
           <Header/>
