@@ -66,8 +66,7 @@ const OfferJob = () => {
     try {
       jobOfferValidator(name, name === 'dateErr' ? new Date(value) : value)
       setErrors({ ...errors, [name]: '' })
-    }
-    catch (e) {
+    } catch (e) {
       setErrors({ ...errors, [name]: e.message })
     }
   }

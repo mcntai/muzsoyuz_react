@@ -32,15 +32,14 @@
 
   border: none;
   text-overflow: ellipsis;
-  background: none;
+
+  background-image: url("../../assets/img/edit-icon.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: transparent;
 
   width: 200px;
-}
-
-.nameWrapper:after {
-  content: url("../../assets/img/edit-icon.svg");
-  vertical-align: -15%;
-  position: absolute;
+  padding: 1px 0;
 }
 
 .name:disabled {
