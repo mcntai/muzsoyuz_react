@@ -82,10 +82,17 @@ export const getDaysOff = apiAction(
   (_, thunkAPI) => thunkAPI.extra.api.getDaysOff(),
 )
 
-export const setDaysOff = apiAction(
-  p.USER_SET_DAYS_OFF,
-  ({ dates, dayOff }, thunkAPI) => {
-    return thunkAPI.extra.api.setDaysOff({ dates, dayOff })
+export const setDayOff = apiAction(
+  p.USER_SET_DAY_OFF,
+  (day, thunkAPI) => {
+    return thunkAPI.extra.api.setDayOff(day)
+  }
+)
+
+export const deleteDayOff = apiAction(
+  p.USER_DELETE_DAY_OFF,
+  (id, thunkAPI) => {
+    return thunkAPI.extra.api.deleteDayOff(id)
   }
 )
 

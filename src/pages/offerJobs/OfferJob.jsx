@@ -218,7 +218,7 @@ const OfferJob = () => {
             placeholder='0 93 111 22 33'
             className={s.input}
             value={inputs.phone}
-            onChange={handleChangeNum}
+            onChange={handleChangeStr}
             onBlur={(e) => validateInput(e, 'phoneErr')}
           />
         </div>

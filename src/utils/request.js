@@ -123,6 +123,12 @@ export class Request {
     return Promise.reject(new ResponseError(error))
   }
 
+  parseJson(response) {
+    if (response.status !== 204) {
+      return response.json()
+    }
+  }
+
   async execute() {
     const requestOptions = {
       method : this.method,
@@ -136,7 +142,7 @@ export class Request {
 
     return fetch(this.url, requestOptions)
       .then(this.checkStatus.bind(this))
-      .then(response => response.json())
+      .then(this.parseJson.bind(this))
   }
 }
 

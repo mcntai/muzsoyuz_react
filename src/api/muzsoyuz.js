@@ -11,7 +11,7 @@ export class MuzSoyuz extends Request {
   }
 
   static getUserProfile() {
-    return this.get('/user/profile')
+    return this.get('/user')
   }
 
   static makeAuthentication(route, body) {
@@ -19,15 +19,19 @@ export class MuzSoyuz extends Request {
   }
 
   static getTokenAfterSocialOauth(provider, query) {
-    return this.get(`/auth/oauth/${provider}/callback/${query}`)
+    return this.get(`/oauth/callback/${provider}${query}`)
+  }
+
+  static getRoles() {
+    return this.get('/meta/roles')
   }
 
   static makeJobOffer(body) {
-    return this.post('/job', body)
+    return this.post('/user/offers', body)
   }
 
   static getJobOffers(params) {
-    return this.post('/job/find', params)
+    return this.post('/user/offers/find', params)
   }
 
   static makeProfileUpdate(changes) {
@@ -35,11 +39,15 @@ export class MuzSoyuz extends Request {
   }
 
   static getDaysOff(days) {
-    return this.get('/user/workdays', days)
+    return this.get('/user/daysOff', days)
   }
 
-  static setDaysOff(days) {
-    return this.post('/user/workdays', days)
+  static setDayOff(day) {
+    return this.post('/user/daysOff', day)
+  }
+
+  static deleteDayOff(id) {
+    return this.delete(`/user/daysOff/${id}`)
   }
 
   props(array) {
@@ -55,6 +63,12 @@ export class MuzSoyuz extends Request {
   async execute() {
     this.url = config.getApiPath() + this.url
 
-    return super.execute().then(this.checkStatus.bind(this))
+    console.log({
+      method: this.method,
+      url   : this.url,
+      body  : this.body
+    })
+
+    return super.execute()
   }
 }

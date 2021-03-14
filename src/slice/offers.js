@@ -13,21 +13,22 @@ const offersSlice = createSlice({
   name         : 'offers',
   initialState : {
     fetchOffersBody: {
-      jobType          : 'musicalReplacement',
-      relations        : ['instrument', 'user'],
-      'instrument.name': [],
-      date             : {
-        from: new Date(),
-        to  : addDays(Date.now(), 365)
+      where  : {
+        jobType: 'musicalReplacement',
+        role   : [],
+        date   : {
+          from: new Date().setHours(20, 0, 0),
+          to  : Number(addDays(Date.now(), 365))
+        },
+        salary : {
+          from: 0,
+          to  : 30000,
+        },
+        sets   : '',
       },
-      salary           : {
-        from: '',
-        to  : '',
-      },
-      sets             : '',
-      limit            : 30,
-      offset           : 0,
-      orderBy          : '',
+      limit  : 30,
+      offset : 0,
+      orderBy: undefined,
     },
     fetchedOffers  : { data: [] },
     madeOffer      : {},
@@ -53,20 +54,20 @@ const offersSlice = createSlice({
       state.fetchOffersBody.offset = 0
 
       if (action.payload.filter === 'add') {
-        state.fetchOffersBody['instrument.name'].push(action.payload.instrument)
+        state.fetchOffersBody.where.role.push(action.payload.instrument)
       } else {
-        state.fetchOffersBody['instrument.name'] = state.fetchOffersBody['instrument.name'].filter(instrument => instrument !== action.payload.instrument)
+        state.fetchOffersBody.where.role = state.fetchOffersBody.where.role.filter(instrument => instrument !== action.payload.instrument)
       }
     },
     filterDate(state, action) {
-      state.fetchOffersBody.date.from = action.payload.from
-      state.fetchOffersBody.date.to = action.payload.to
+      state.fetchOffersBody.where.date.from = action.payload.from
+      state.fetchOffersBody.where.date.to = action.payload.to
     },
     filterSalary(state, action) {
-      state.fetchOffersBody.salary[action.payload.range] = action.payload.value
+      state.fetchOffersBody.where.salary[action.payload.range] = action.payload.value
     },
     filterSets(state, action) {
-      state.fetchOffersBody.sets = action.payload
+      state.fetchOffersBody.where.sets = action.payload
     }
   },
   extraReducers: {
@@ -79,8 +80,8 @@ export default offersSlice.reducer
 
 export const selectMadeOffer = state => state.offers.madeOffer
 export const selectOfferBody = state => state.offers.fetchOffersBody
-export const selectSalary = state => state.offers.fetchOffersBody.salary
-export const selectInstrumentsList = state => state.offers.fetchOffersBody['instrument.name']
+export const selectSalary = state => state.offers.fetchOffersBody.where.salary
+export const selectInstrumentsList = state => state.offers.fetchOffersBody.where.role
 export const selectOffers = state => state.offers.fetchedOffers
 export const selectFetchedData = state => state.offers.fetchedOffers.data
 export const {

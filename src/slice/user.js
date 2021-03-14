@@ -1,12 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import loadExtraReducers from './utils/load-extra-reducers'
-import { addHours, trimTime } from '../utils/date'
 import {
   fetchUser,
   authenticateUser,
   authenticateAfterOauth,
   userProfileUpdate,
-  setDaysOff,
+  setDayOff,
   getDaysOff
 } from '../actions/user'
 import { TYPES as t } from '../constants/action-types'
@@ -19,13 +18,11 @@ const INITIAL_STATE = {
 }
 
 const fulfilledGetWorkDays = (state, action) => {
-  state.dates = action.payload.map(day => day.date)
+  state.dates = [...state.dates, ...action.payload]
 }
 
 const fulfilledSetWorkDays = (state, action) => {
-  action.payload.dayOff === true
-    ? state.dates = [...state.dates, action.payload.dates]
-    : state.dates = state.dates.filter(date => date !== addHours(trimTime(action.payload.dates), 2).toISOString())
+  state.dates = [...state.dates, action.payload]
 }
 
 const logout = state => {
@@ -55,7 +52,7 @@ const userSlice = createSlice({
     ...loadExtraReducers(authenticateUser, { rejectedReducer: logout }),
     ...loadExtraReducers(authenticateAfterOauth, { context: 'profile' }),
     ...loadExtraReducers(userProfileUpdate, { context: 'profile' }),
-    ...loadExtraReducers(setDaysOff, { context: 'workdays', fulfilledReducer: fulfilledSetWorkDays }),
+    ...loadExtraReducers(setDayOff, { context: 'workdays', fulfilledReducer: fulfilledSetWorkDays }),
     ...loadExtraReducers(getDaysOff, { context: 'workdays', fulfilledReducer: fulfilledGetWorkDays }),
     [t.AUTH_SET_NEXT_LOCATION]: setNextLocation,
     [t.RESET_NEXT_LOCATION]   : resetNextLocation,

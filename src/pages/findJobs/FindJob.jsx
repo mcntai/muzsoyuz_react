@@ -17,6 +17,7 @@ import SortingFilterButtons from './SortingFilterButtons'
 import Footer from '../../components/mainFooter/Footer'
 import s from './FindJob.module.css'
 import Loader from '../../components/common/Loader'
+import { selectRoles } from "../../slice/meta"
 
 const or = (...fns) => value => fns.some(fn => fn(value))
 
@@ -26,6 +27,7 @@ const FindJob = () => {
   const { loaded, loading, error, isFetchedAll } = useSelector(selectOffers)
   const body = useSelector(selectOfferBody)
   const fetchedOffers = useSelector(selectFetchedData)
+  const { data: roles } = useSelector(selectRoles)
 
   const [noOfferToShow, setNoOffersToShow] = useState(s.hide)
   const dispatch = useDispatch()
@@ -45,13 +47,14 @@ const FindJob = () => {
   }, [fetchedOffers])
 
   function fetchJobOffers(newOffSet) {
-    const transformedBody = omitBy(body, or(
+    const where = omitBy(body.where, or(
       predicates.isEmptyString,
       predicates.isEmptyRange,
       predicates.isEmptyArray,
       predicates.isNilRange,
       ),
     )
+    const transformedBody = {...body, where}
 
     transformedBody.offset = newOffSet
     dispatch(fetchOffers({ body: transformedBody }))
@@ -72,24 +75,22 @@ const FindJob = () => {
   const renderJobOffers = data => (
     <div className={s.jobsWrapper}>
       {
-        Object.keys(data || {}).map(item => {
-          const date = new Date(data[item].date)
+        data.map(item => {
+          const date = new Date(item.date)
 
           let month = date.toLocaleString('uk-UA', { month: 'short' })
 
-          const salary = Number(data[item].salary)
-
           return (
-            <li key={data[item].id} className={s.jobOfferItem}>
+            <li key={item._id} className={s.jobOfferItem}>
               <NavLink className={s.navLinkWrapper} to={{
                 pathname: '/open-job',
-                state   : { data: data[item] }
+                state   : { data: item }
               }}>
                 <div className={s.jobOfferContentWrapper}>
-                  <img src={data[item].instrument.imageURL} alt='Instrument' className={s.instrumentIcon}/>
+                  <img src={roles[item.role].imageURL} alt='Instrument' className={s.instrumentIcon}/>
                   <div className={s.jobTextWrapper}>
-                    <p className={s.jobTitle}>{data[item].title}</p>
-                    <p className={s.jobSalary}>{salary} грн</p>
+                    <p className={s.jobTitle}>{item.title}</p>
+                    <p className={s.jobSalary}>{item.salary} грн</p>
                   </div>
                   <p className={s.jobDate}>{date.getDate()} {month}</p>
                 </div>

@@ -4,10 +4,11 @@ import * as swal from '../../components/common/alerts'
 import Header from '../../components/mainHeader/Header'
 import Footer from '../../components/mainFooter/Footer'
 import avatar from '../../assets/img/avatar.svg'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { goTo } from '../../actions/user'
 import { ROUTES as r } from '../../constants/routes'
 import s from './OpenJob.module.css'
+import { selectRoles } from "../../slice/meta"
 
 
 const role = {
@@ -23,9 +24,10 @@ const role = {
 }
 
 const OpenJob = () => {
-  let location = useLocation()
+  const location = useLocation()
   const [data, setData] = useState([])
   const dispatch = useDispatch()
+  const { data: roles } = useSelector(selectRoles)
 
   useEffect(() => {
     if (location?.state?.data) {
@@ -47,13 +49,13 @@ const OpenJob = () => {
           const date = new Date(el.date).toLocaleDateString('uk-UA')
           const salary = Number(el.salary)
 
-          return <div key={el.id} className={s.container}>
+          return <div key={el._id} className={s.container}>
             <div className={s.jobWrapper}>
               <span className={s.title}>{el.title}</span>
               <span className={s.salary}>{salary} грн</span>
               <span className={s.description}>Опис</span>
               <div className={s.descriptionWrapper}>
-                <span>Потрібен: {role[el.instrument.name]}</span>
+                <span>Потрібен: {role[el.role]}</span>
                 <span>Кількість сетів: {el.sets}</span>
                 <span>Адреса: {el.address}</span>
                 <span>{el.extraInfo && `Деталі: ${el.extraInfo}`}</span>
@@ -62,11 +64,11 @@ const OpenJob = () => {
               <span className={s.date}>{date}</span>
               <div className={s.jobCreatorWrapper}>
                 <div className={s.nameAndPhoneWrapper}>
-                  <span className={s.userName}>{el.user.name || 'Анонімус'}</span>
-                  <a href={`tel:${el.user.phone}`} className={s.userPhone}>{el.phone}</a>
+                  <span className={s.userName}>{el.user?.name || 'Анонімус'}</span>
+                  <a href={`tel:${el.user?.phone}`} className={s.userPhone}>{el.phone}</a>
                 </div>
                 <div>
-                  <img src={el.user.imageURL || avatar} className={s.userImage} alt="avatar"/>
+                  <img src={el.user?.imageURL || avatar} className={s.userImage} alt="avatar"/>
                 </div>
               </div>
               <button className={s.chatBtn} onClick={handleChat}>Перейти в чат</button>

@@ -123,7 +123,7 @@ const AuthForm = ({ type }) => {
 
           <button
             className={s.inputSubmit}
-            onClick={(e) => handleAuthSubmit(e, 'register')}
+            onClick={(e) => handleAuthSubmit(e, 'signUp')}
           >
             Зареєструватися
           </button>
@@ -168,7 +168,7 @@ const AuthForm = ({ type }) => {
 
           <button
             className={submit}
-            onClick={(e) => handleAuthSubmit(e, 'login')}
+            onClick={(e) => handleAuthSubmit(e, 'signIn')}
           >
             Увійти
           </button>
