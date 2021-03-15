@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import DayPicker from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 import { deleteDayOff, getDaysOff, setDayOff } from '../../actions/user'
-import { selectWorkDays } from '../../slice/user'
+import { selectDaysOff } from '../../slice/user'
 
 
 const WEEKDAYS_SHORT = {
@@ -32,7 +32,7 @@ const FIRST_DAY_OF_WEEK = {
 }
 
 const SinglePickCalendar = ({ styles }) => {
-  const { loaded, dates } = useSelector(selectWorkDays)
+  const { loaded, map, list } = useSelector(selectDaysOff)
   const [selectedDays, setSelectedDays] = useState([])
   const dispatch = useDispatch()
 
@@ -44,27 +44,28 @@ const SinglePickCalendar = ({ styles }) => {
 
 
   useEffect(() => {
-    const daysOff = dates.map(item => item.date)
+    const filteredDays = Object.keys(map)
+      .filter(id => list.includes(id))
+      .map(id => map[id].date)
 
-    loaded && setSelectedDays(daysOff)
-  }, [dates, loaded])
+    setSelectedDays(filteredDays)
+  }, [map, list])
 
   const dispatchSetDayOff = day => {
     dispatch(setDayOff({ date: day }))
   }
 
   const dispatchDeleteDayOff = day => {
-    const { _id } = dates.find(item => item.date === day)
-    dispatch(deleteDayOff(_id))
+    const id = Object.keys(map).find(id => map[id].date === day)
+
+    dispatch(deleteDayOff(id))
   }
 
   const handleDayClick = (day, { selected }) => {
     day = day.toISOString()
     if (selected) {
-      setSelectedDays(selectedDays.filter(selectedDay => selectedDay !== day))
       dispatchDeleteDayOff(day)
     } else {
-      setSelectedDays([...selectedDays, day])
       dispatchSetDayOff(day)
     }
   }

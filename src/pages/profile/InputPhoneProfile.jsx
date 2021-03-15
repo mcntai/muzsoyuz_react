@@ -3,12 +3,12 @@ import { jobOfferValidator } from '../../validators'
 import * as swalAlert from '../../components/common/alerts'
 import { userProfileUpdate } from '../../actions/user'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectUserPhone } from '../../slice/user'
+import { selectProfile } from '../../slice/user'
 import s from './InputPhoneProfile.module.css'
 
 
 const InputPhoneProfile = () => {
-  const userPhone = useSelector(selectUserPhone)
+  const { phone: userPhone } = useSelector(selectProfile)
   const [phone, setPhone] = useState(userPhone)
   const [lastNumber, setLastNumber] = useState('')
   const [finishedUpdatingPhone, setFinishedUpdatingPhone] = useState(false)

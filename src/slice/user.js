@@ -6,23 +6,42 @@ import {
   authenticateAfterOauth,
   userProfileUpdate,
   setDayOff,
-  getDaysOff
+  getDaysOff, deleteDayOff
 } from '../actions/user'
 import { TYPES as t } from '../constants/action-types'
+import keyBy from 'lodash/keyBy'
 
 
 const INITIAL_STATE = {
-  profile : {},
-  workdays: { dates: [] },
-  token   : localStorage.getItem('token'),
+  profile: {},
+  daysOff: {
+    map : {},
+    list: [],
+  },
+  token  : localStorage.getItem('token'),
 }
 
-const fulfilledGetWorkDays = (state, action) => {
-  state.dates = [...state.dates, ...action.payload]
+const fulfilledGetDaysOff = (state, action) => {
+  state.map = keyBy(action.payload, '_id')
+  state.list = action.payload.map(item => item._id)
 }
 
-const fulfilledSetWorkDays = (state, action) => {
-  state.dates = [...state.dates, action.payload]
+const fulfilledSetDayOff = (state, action) => {
+  Object.assign(state.map, { [action.payload._id]: action.payload })
+  state.list = [...state.list, action.payload._id]
+}
+
+const pendingDeleteDayOff = (state, action) => {
+  const index = state.list.indexOf(action.meta.arg)
+  state.list.splice(index, 1)
+}
+
+const fulfilledDeleteDayOff = (state, action) => {
+  delete state.map[action.meta.arg]
+}
+
+const rejectedDeleteDayOff = (state, action) => {
+  state.list = [...state.list, action.meta.arg]
 }
 
 const logout = state => {
@@ -31,7 +50,7 @@ const logout = state => {
   state.loaded = false
   state.token = null
   state.nextLocation = null
-  state.workdays = INITIAL_STATE.workdays
+  state.daysOff = INITIAL_STATE.daysOff
   state.profile = INITIAL_STATE.profile
 }
 
@@ -52,8 +71,14 @@ const userSlice = createSlice({
     ...loadExtraReducers(authenticateUser, { rejectedReducer: logout }),
     ...loadExtraReducers(authenticateAfterOauth, { context: 'profile' }),
     ...loadExtraReducers(userProfileUpdate, { context: 'profile' }),
-    ...loadExtraReducers(setDayOff, { context: 'workdays', fulfilledReducer: fulfilledSetWorkDays }),
-    ...loadExtraReducers(getDaysOff, { context: 'workdays', fulfilledReducer: fulfilledGetWorkDays }),
+    ...loadExtraReducers(setDayOff, { context: 'daysOff', fulfilledReducer: fulfilledSetDayOff }),
+    ...loadExtraReducers(getDaysOff, { context: 'daysOff', fulfilledReducer: fulfilledGetDaysOff }),
+    ...loadExtraReducers(deleteDayOff, {
+      context         : 'daysOff',
+      pendingReducer  : pendingDeleteDayOff,
+      fulfilledReducer: fulfilledDeleteDayOff,
+      rejectedReducer : rejectedDeleteDayOff
+    }),
     [t.AUTH_SET_NEXT_LOCATION]: setNextLocation,
     [t.RESET_NEXT_LOCATION]   : resetNextLocation,
   }
@@ -62,9 +87,5 @@ const userSlice = createSlice({
 export default userSlice.reducer
 
 export const selectUser = state => state.user
-export const selectUserImage = state => state.user.profile.imageURL
-export const selectUserName = state => state.user.profile.name
-export const selectUserRole = state => state.user.profile.role
-export const selectUserPhone = state => state.user.profile.phone
 export const selectProfile = state => state.user.profile
-export const selectWorkDays = state => state.user.workdays
+export const selectDaysOff = state => state.user.daysOff

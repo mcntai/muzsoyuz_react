@@ -4,7 +4,7 @@ import Text from './Text'
 import SinglePickCalendar from '../../components/common/SinglePickCalendar'
 import Button from './Button'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectWorkDays } from '../../slice/user'
+import { selectDaysOff } from '../../slice/user'
 import { moveFinishBtnCalendarQuest, selectShowCalendar, toggleElement } from '../../slice/general'
 import { ROUTES as r } from '../../constants/routes'
 import { goTo } from '../../actions/user'
@@ -14,12 +14,12 @@ import s from './ChooseFreeDaysPage.module.css'
 
 const ChooseFreeDaysPage = () => {
   const showCal = useSelector(selectShowCalendar)
-  const workdays = useSelector(selectWorkDays)
+  const daysOff = useSelector(selectDaysOff)
   const [showBtn, setShowBtn] = useState(null)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (workdays.length) {
+    if (daysOff.length) {
       dispatch(goTo(r.HOME))
     }
   }, [])

@@ -8,7 +8,7 @@ import InstrumentProfile from './InstrumentProfile'
 import InputPhoneProfile from './InputPhoneProfile'
 import SinglePickCalendar from '../../components/common/SinglePickCalendar'
 import Logout from './Logout'
-import { selectUserImage } from '../../slice/user'
+import { selectProfile } from '../../slice/user'
 import avatar from '../../assets/img/avatar.svg'
 import settings from '../../assets/img/settings.svg'
 import s from './Profile.module.css'
@@ -16,7 +16,7 @@ import styles from './CalendarProfile.module.css'
 
 
 const Profile = () => {
-  const userImage = useSelector(selectUserImage)
+  const { imageURL: userImage } = useSelector(selectProfile)
   const dispatch = useDispatch()
 
   return (

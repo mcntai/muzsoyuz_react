@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { userProfileUpdate } from '../../actions/user'
-import { selectUserName } from '../../slice/user'
+import { selectProfile } from '../../slice/user'
 import s from './InputNameProfile.module.css'
 
 
 const InputNameProfile = () => {
-  const userName = useSelector(selectUserName)
+  const { name: userName } = useSelector(selectProfile)
   const [name, setName] = useState(userName)
   const dispatch = useDispatch()
 

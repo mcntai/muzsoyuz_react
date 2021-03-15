@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { userProfileUpdate } from '../../actions/user'
 import s from './InstrumentProfile.module.css'
-import { selectUserRole } from '../../slice/user'
+import { selectProfile } from '../../slice/user'
 
 
 const instruments = {
@@ -18,7 +18,7 @@ const instruments = {
 }
 
 const InstrumentProfile = () => {
-  const userRole = useSelector(selectUserRole)
+  const { role: userRole } = useSelector(selectProfile)
   const dispatch = useDispatch()
 
   const chooseInstrument = (e) => {

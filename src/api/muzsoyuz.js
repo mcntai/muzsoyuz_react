@@ -35,7 +35,7 @@ export class MuzSoyuz extends Request {
   }
 
   static makeProfileUpdate(changes) {
-    return this.patch('/user/profile', changes)
+    return this.put('/user', changes)
   }
 
   static getDaysOff(days) {
