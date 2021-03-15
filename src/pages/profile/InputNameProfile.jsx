@@ -6,7 +6,7 @@ import s from './InputNameProfile.module.css'
 
 
 const InputNameProfile = () => {
-  const { name: userName } = useSelector(selectProfile)
+  const userName = useSelector(selectProfile('name'))
   const [name, setName] = useState(userName)
   const dispatch = useDispatch()
 

@@ -32,8 +32,7 @@ const fulfilledSetDayOff = (state, action) => {
 }
 
 const pendingDeleteDayOff = (state, action) => {
-  const index = state.list.indexOf(action.meta.arg)
-  state.list.splice(index, 1)
+  state.list = state.list.filter(id => id !== action.meta.arg)
 }
 
 const fulfilledDeleteDayOff = (state, action) => {
@@ -67,12 +66,26 @@ const userSlice = createSlice({
   initialState : INITIAL_STATE,
   reducers     : {},
   extraReducers: {
-    ...loadExtraReducers(fetchUser, { context: 'profile' }),
-    ...loadExtraReducers(authenticateUser, { rejectedReducer: logout }),
-    ...loadExtraReducers(authenticateAfterOauth, { context: 'profile' }),
-    ...loadExtraReducers(userProfileUpdate, { context: 'profile' }),
-    ...loadExtraReducers(setDayOff, { context: 'daysOff', fulfilledReducer: fulfilledSetDayOff }),
-    ...loadExtraReducers(getDaysOff, { context: 'daysOff', fulfilledReducer: fulfilledGetDaysOff }),
+    ...loadExtraReducers(fetchUser, {
+      context: 'profile'
+    }),
+    ...loadExtraReducers(authenticateUser, {
+      rejectedReducer: logout
+    }),
+    ...loadExtraReducers(authenticateAfterOauth, {
+      context: 'profile'
+    }),
+    ...loadExtraReducers(userProfileUpdate, {
+      context: 'profile'
+    }),
+    ...loadExtraReducers(setDayOff, {
+      context         : 'daysOff',
+      fulfilledReducer: fulfilledSetDayOff
+    }),
+    ...loadExtraReducers(getDaysOff, {
+      context         : 'daysOff',
+      fulfilledReducer: fulfilledGetDaysOff
+    }),
     ...loadExtraReducers(deleteDayOff, {
       context         : 'daysOff',
       pendingReducer  : pendingDeleteDayOff,
@@ -87,5 +100,5 @@ const userSlice = createSlice({
 export default userSlice.reducer
 
 export const selectUser = state => state.user
-export const selectProfile = state => state.user.profile
+export const selectProfile = arg => state => state.user.profile[arg]
 export const selectDaysOff = state => state.user.daysOff

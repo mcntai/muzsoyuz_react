@@ -16,7 +16,7 @@ import styles from './CalendarProfile.module.css'
 
 
 const Profile = () => {
-  const { imageURL: userImage } = useSelector(selectProfile)
+  const userImage = useSelector(selectProfile('imageURL'))
   const dispatch = useDispatch()
 
   return (

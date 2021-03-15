@@ -18,7 +18,7 @@ const instruments = {
 }
 
 const InstrumentProfile = () => {
-  const { role: userRole } = useSelector(selectProfile)
+  const userRole = useSelector(selectProfile('role'))
   const dispatch = useDispatch()
 
   const chooseInstrument = (e) => {

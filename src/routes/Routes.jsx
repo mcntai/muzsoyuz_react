@@ -35,8 +35,8 @@ export default function Routes() {
           <Route path="/find-job-filter" component={FilterPage}/>
           <Route path="/find-job-sort" component={SortingPage}/>
 
-          <Route path="/oauth/facebook/callback" component={OauthCallBackListener}/>
-          <Route path="/oauth/google/callback" component={OauthCallBackListener}/>
+          <Route path="/oauth/callback/facebook" component={OauthCallBackListener}/>
+          <Route path="/oauth/callback/google" component={OauthCallBackListener}/>
 
           <Route path="/find-job" component={FindJob}/>
           <Route path="/open-job" component={OpenJob}/>

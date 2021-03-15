@@ -8,7 +8,7 @@ import s from './InputPhoneProfile.module.css'
 
 
 const InputPhoneProfile = () => {
-  const { phone: userPhone } = useSelector(selectProfile)
+  const userPhone = useSelector(selectProfile('phone'))
   const [phone, setPhone] = useState(userPhone)
   const [lastNumber, setLastNumber] = useState('')
   const [finishedUpdatingPhone, setFinishedUpdatingPhone] = useState(false)

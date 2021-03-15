@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import AuthNavLinks from './AuthNavLinks'
 import { authValidator } from '../../validators'
 import { authenticateUser } from '../../actions/user'
-import { selectUser } from '../../slice/user'
 import s from './AuthForm.module.css'
 
 
@@ -19,7 +18,6 @@ const initialInputStates = {
 const AuthForm = ({ type }) => {
   const [inputs, setInputs] = useState(initialInputStates)
   const [gender, setGender] = useState('')
-  const user = useSelector(selectUser)
   const dispatch = useDispatch()
 
   function handleChange(e) {
@@ -67,6 +65,7 @@ const AuthForm = ({ type }) => {
             <input
               type="email"
               name="email"
+              autoComplete="on"
               placeholder="Імейл"
               className={s.input}
               value={inputs.email}
@@ -80,6 +79,7 @@ const AuthForm = ({ type }) => {
             <input
               type="password"
               name="password"
+              autoComplete="on"
               placeholder="Пароль"
               className={s.input}
               value={inputs.password}
@@ -93,6 +93,7 @@ const AuthForm = ({ type }) => {
             <input
               type="password"
               name="confirmPassword"
+              autoComplete="on"
               placeholder="Повторити пароль"
               className={s.input}
               value={inputs.confirmPassword}
@@ -145,6 +146,7 @@ const AuthForm = ({ type }) => {
             <input
               type="email"
               name="email"
+              autoComplete="on"
               placeholder="Імейл"
               className={s.input}
               value={inputs.email}
@@ -158,6 +160,7 @@ const AuthForm = ({ type }) => {
             <input
               type="password"
               name="password"
+              autoComplete="on"
               placeholder="Пароль"
               className={s.input}
               value={inputs.password}
