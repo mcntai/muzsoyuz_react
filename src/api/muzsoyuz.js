@@ -19,7 +19,7 @@ export class MuzSoyuz extends Request {
   }
 
   static getTokenAfterSocialOauth(provider, query) {
-    return this.get(`/oauth/callback/${provider}${query}`)
+    return this.get(`/oauth/${provider}/callback${query}`)
   }
 
   static getRoles() {

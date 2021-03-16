@@ -38,14 +38,14 @@ class SocialMedias extends React.Component {
   getLinks() {
     return (
       <div className={this.state.socialIcons}>
-        <a href={appPath + '/oauth/link/facebook'}>
+        <a href={appPath + '/oauth/facebook/link'}>
           <input
             type="button"
             className={s.facebookIcon}
             value="Facebook"
           />
         </a>
-        <a href={appPath + '/oauth/link/google'}>
+        <a href={appPath + '/oauth/google/link'}>
           <input
             type="button"
             className={s.googleIcon}
