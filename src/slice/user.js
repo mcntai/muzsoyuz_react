@@ -72,9 +72,6 @@ const userSlice = createSlice({
     ...loadExtraReducers(authenticateUser, {
       rejectedReducer: logout
     }),
-    ...loadExtraReducers(authenticateAfterOauth, {
-      context: 'profile'
-    }),
     ...loadExtraReducers(userProfileUpdate, {
       context: 'profile'
     }),

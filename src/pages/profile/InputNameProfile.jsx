@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { userProfileUpdate } from '../../actions/user'
 import { selectProfile } from '../../slice/user'
+import isEmpty from 'lodash/isEmpty'
 import s from './InputNameProfile.module.css'
 
 
@@ -19,6 +20,8 @@ const InputNameProfile = () => {
   }
 
   const finishChangeName = () => {
+    if (!name) return
+
     dispatch(userProfileUpdate({ name }))
   }
 
