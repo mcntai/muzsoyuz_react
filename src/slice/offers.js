@@ -17,7 +17,7 @@ const offersSlice = createSlice({
         jobType: 'musicalReplacement',
         role   : [],
         date   : {
-          from: new Date().setHours(20, 0, 0),
+          from: Number(new Date().setHours(20, 0, 0)),
           to  : Number(addDays(Date.now(), 365))
         },
         salary : {
@@ -60,8 +60,8 @@ const offersSlice = createSlice({
       }
     },
     filterDate(state, action) {
-      state.fetchOffersBody.where.date.from = action.payload.from
-      state.fetchOffersBody.where.date.to = action.payload.to
+      state.fetchOffersBody.where.date.from = Number(action.payload.from)
+      state.fetchOffersBody.where.date.to = Number(action.payload.to)
     },
     filterSalary(state, action) {
       state.fetchOffersBody.where.salary[action.payload.range] = action.payload.value
