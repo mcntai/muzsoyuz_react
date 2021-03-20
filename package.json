@@ -80,7 +80,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "start:prod": "npm install && npm build && serve -s build -l 3000"
+    "start:prod": "npm install && npm run build && serve -s build -l 3000"
   },
   "eslintConfig": {
     "extends": "react-app"
