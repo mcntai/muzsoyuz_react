@@ -5,7 +5,6 @@ export class MuzSoyuz extends Request {
   setToken(token) {
     this.setHeaders({
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'multipart/form-data'
     })
 
     return this

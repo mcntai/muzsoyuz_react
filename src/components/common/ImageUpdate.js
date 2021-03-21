@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import s from './ImageUpdate.module.css'
 
 const ImageUpdate = ({ uploadImageCallback, children }) => {
-  const [selectedFile, setSelectedFile] = useState(null)
+  const [selectedFile, setSelectedFile] = useState()
   const [isFileSelected, setIsFileSelected] = useState(false)
   const submitButtonClass = isFileSelected ? s.showSubmitButton : s.hideSubmitButton
   const dispatch = useDispatch()
@@ -38,7 +38,7 @@ const ImageUpdate = ({ uploadImageCallback, children }) => {
       }
     }
 
-    // dispatch(uploadImageCallback({ formData, fileType }))
+    dispatch(uploadImageCallback({ formData, fileType }))
   }
 
   return (

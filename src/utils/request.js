@@ -21,7 +21,7 @@ export class Request {
     this.method = method
     this.url = url
     this.headers = headers || {}
-    this.body = body || {}
+    this.body = body
   }
 
   setHeaders(headers) {
@@ -105,8 +105,8 @@ export class Request {
     }
 
     return response instanceof Response
-           ? response.json()
-           : response
+      ? response.json()
+      : response
   }
 
   isSucceededStatus(response) {
@@ -133,9 +133,10 @@ export class Request {
     const requestOptions = {
       method : this.method,
       headers: this.headers,
+      body   : this.body
     }
 
-    if (Object.keys(this.body).length) {
+    if (Object.keys(requestOptions.body || {}).length) {
       requestOptions.body = JSON.stringify(this.body)
       requestOptions.headers['Content-Type'] = 'application/json'
     }
