@@ -96,3 +96,12 @@ export const deleteDayOff = apiAction(
   }
 )
 
+export const updateImage = apiAction(
+  p.USER_UPDATE_IMAGE,
+  ({ formData, fileType }, thunkAPI) => {
+    return thunkAPI.extra.api.updateImage(formData, fileType)
+  }
+)
+
+
+

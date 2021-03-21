@@ -5,6 +5,7 @@ export class MuzSoyuz extends Request {
   setToken(token) {
     this.setHeaders({
       Authorization: `Bearer ${token}`,
+      'Content-Type': 'multipart/form-data'
     })
 
     return this
@@ -48,6 +49,10 @@ export class MuzSoyuz extends Request {
 
   static deleteDayOff(id) {
     return this.delete(`/user/daysOff/${id}`)
+  }
+
+  static updateImage(body, fileType) {
+    return this.post(`/user/uploadImage?type=${fileType}`, body)
   }
 
   props(array) {

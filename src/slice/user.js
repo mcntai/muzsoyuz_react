@@ -6,7 +6,7 @@ import {
   authenticateAfterOauth,
   userProfileUpdate,
   setDayOff,
-  getDaysOff, deleteDayOff
+  getDaysOff, deleteDayOff, updateImage
 } from '../actions/user'
 import { TYPES as t } from '../constants/action-types'
 import keyBy from 'lodash/keyBy'
@@ -73,6 +73,9 @@ const userSlice = createSlice({
       rejectedReducer: logout
     }),
     ...loadExtraReducers(userProfileUpdate, {
+      context: 'profile'
+    }),
+    ...loadExtraReducers(updateImage, {
       context: 'profile'
     }),
     ...loadExtraReducers(setDayOff, {

@@ -30,6 +30,10 @@
   position: absolute;
 }
 
+.avatarWrapper {
+  position: relative;
+}
+
 .topContentWrapper {
   composes: flex;
   justify-content: center;
@@ -101,6 +105,7 @@
   .avatar {
     width: 68px;
     height: 68px;
+    object-fit: cover;
     border-radius: 50%;
   }
 
@@ -170,7 +175,6 @@
   .avatar {
     width: 111px;
     height: 111px;
-    border-radius: 50%;
   }
 
   .profileMiddleSection {
@@ -239,7 +243,6 @@
   .avatar {
     width: 111px;
     height: 111px;
-    border-radius: 50%;
   }
 
   .profileMiddleSection {
@@ -308,7 +311,6 @@
   .avatar {
     width: 111px;
     height: 111px;
-    border-radius: 50%;
   }
 
   .profileMiddleSection {
@@ -377,7 +379,6 @@
   .avatar {
     width: 111px;
     height: 111px;
-    border-radius: 50%;
   }
 
   .profileMiddleSection {

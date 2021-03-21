@@ -1,0 +1,17 @@
+.fileInput {
+    -webkit-appearance: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    outline: none;
+    opacity: 0;
+}
+
+.showSubmitButton {
+    display: block;
+}
+
+.hideSubmitButton {
+    display: none;
+}

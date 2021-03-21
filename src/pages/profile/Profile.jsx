@@ -1,13 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { goBack } from '../../actions/user'
+import { goBack, updateImage } from '../../actions/user'
 import CollapseButton from '../findJobs/filters/CollapseButton'
 import InputNameProfile from './InputNameProfile'
 import InstrumentProfile from './InstrumentProfile'
 import InputPhoneProfile from './InputPhoneProfile'
 import SinglePickCalendar from '../../components/common/SinglePickCalendar'
 import Logout from './Logout'
+import ImageUpdate from "../../components/common/ImageUpdate"
 import { selectProfile } from '../../slice/user'
 import avatar from '../../assets/img/avatar.svg'
 import settings from '../../assets/img/settings.svg'
@@ -26,7 +27,9 @@ const Profile = () => {
           <span className={s.backBtn} onClick={() => dispatch(goBack())}/>
           <div className={s.topContentWrapper}>
             <div className={s.avatarWrapper}>
-              <img src={userImage || avatar} alt="avatar" className={s.avatar}/>
+              <ImageUpdate uploadImageCallback={updateImage}>
+                <img src={userImage || avatar} alt="avatar" className={s.avatar}/>
+              </ImageUpdate>
             </div>
             <InputNameProfile/>
           </div>

@@ -6,6 +6,7 @@ export const ACTION_PREFIXES = {
   USER_GET_DAYS_OFF  : 'user/get/days/off',
   USER_SET_DAY_OFF   : 'user/set/day/off',
   USER_DELETE_DAY_OFF: 'user/delete/day/off',
+  USER_UPDATE_IMAGE  : 'user/update/image',
   OFFER_MAKE         : 'offer/make',
   OFFER_FETCH        : 'offer/fetch',
   OFFER_FETCH_MORE   : 'offer/fetch/more',
