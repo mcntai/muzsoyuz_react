@@ -8,12 +8,13 @@ import InstrumentProfile from './InstrumentProfile'
 import InputPhoneProfile from './InputPhoneProfile'
 import SinglePickCalendar from '../../components/common/SinglePickCalendar'
 import Logout from './Logout'
-import ImageUpdate from "../../components/common/ImageUpdate"
 import { selectProfile } from '../../slice/user'
 import avatar from '../../assets/img/avatar.svg'
+import plus from '../../assets/img/plus.svg'
 import settings from '../../assets/img/settings.svg'
 import s from './Profile.module.css'
 import styles from './CalendarProfile.module.css'
+import ImageCropUpload from "../../components/common/ImageCropUpload"
 
 
 const Profile = () => {
@@ -23,13 +24,14 @@ const Profile = () => {
   return (
     (
       <div className={s.profileWrapper}>
+
         <div className={s.profileTopSection}>
           <span className={s.backBtn} onClick={() => dispatch(goBack())}/>
           <div className={s.topContentWrapper}>
             <div className={s.avatarWrapper}>
-              <ImageUpdate uploadImageCallback={updateImage}>
-                <img src={userImage || avatar} alt="avatar" className={s.avatar}/>
-              </ImageUpdate>
+              <img src={userImage || avatar} alt="avatar" className={s.avatar}/>
+              <img src={plus} alt="plus" className={s.changeAvatar}/>
+              <ImageCropUpload uploadImageCallback={updateImage}/>
             </div>
             <InputNameProfile/>
           </div>

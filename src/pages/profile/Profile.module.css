@@ -34,6 +34,14 @@
   position: relative;
 }
 
+.changeAvatar {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 75%;
+  right: 5%;
+}
+
 .topContentWrapper {
   composes: flex;
   justify-content: center;

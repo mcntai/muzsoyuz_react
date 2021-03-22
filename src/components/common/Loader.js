@@ -15,7 +15,7 @@ function Loader({ children, loading, error }) {
       {children}
       {
         error
-          ? errorAlert(error)
+          ? console.log(error)
           : null
       }
     </>
