@@ -31,9 +31,7 @@ const ImageEasyCrop = ({ uploadImageCallback, file }) => {
   }, [file, uploadedImage])
 
   useEffect(() => {
-    if (!completedCrop || !imgRef.current) {
-      return
-    }
+    if (!completedCrop || !imgRef.current) return
 
     const image = imgRef.current
     const canvas = canvasRef.current
@@ -62,15 +60,15 @@ const ImageEasyCrop = ({ uploadImageCallback, file }) => {
       crop.height
     )
 
-    canvas.toBlob(blob => setImageBlob(blob), "image/png")
+    canvas.toBlob(blob => setImageBlob(blob), "image/jpeg")
 
   }, [completedCrop])
 
   const fileUploadHandler = () => {
-    const fileType = 'png'
+    const fileType = 'jpeg'
 
     const formData = new FormData()
-    formData.append('image', imageBlob, "image.png")
+    formData.append('image', imageBlob, "image.jpeg")
 
     dispatch(uploadImageCallback({ formData, fileType }))
     dispatch(profileImageUploaded(false))
