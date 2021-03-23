@@ -16,7 +16,7 @@ import { Router, Switch, Route } from "react-router-dom"
 import history from "../history/history"
 import OauthCallBackListener from "./OauthCallBackListener"
 import Preloader from "./providers/Preloader"
-import ImageCropUpload from "../components/common/ImageCropUpload"
+import ImageEasyCrop from "../components/common/ImageEasyCrop"
 
 
 export default function Routes() {
@@ -42,7 +42,7 @@ export default function Routes() {
           <Route path="/find-job" component={FindJob}/>
           <Route path="/open-job" component={OpenJob}/>
 
-          <Route path="/image" component={ImageCropUpload}/>
+          <Route path="/image" component={ImageEasyCrop}/>
 
           <UserProvider>
             <Route exact path="/" component={Main}/>

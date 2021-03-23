@@ -14,6 +14,10 @@
   align-items: center;
 }
 
+.hide {
+  display: none;
+}
+
 /* Main Styles */
 .profileTopSection {
   composes: flex;
@@ -28,6 +32,7 @@
   height: 20px;
 
   position: absolute;
+  z-index: 100;
 }
 
 .avatarWrapper {
@@ -40,6 +45,19 @@
   position: absolute;
   top: 75%;
   right: 5%;
+}
+
+.fileInput {
+  -webkit-appearance: none;
+  border-radius: 50%;
+  outline: none;
+  opacity: 0;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 75%;
+  right: 5%;
+  z-index: 200;
 }
 
 .topContentWrapper {
@@ -125,7 +143,7 @@
     padding-bottom: 10px;
   }
 
-  .profileTitleSettingsWrapper {
+  .profileTitleWrapper {
     margin-top: 15px;
   }
 
@@ -193,7 +211,7 @@
     padding-bottom: 10px;
   }
 
-  .profileTitleSettingsWrapper {
+  .profileTitleWrapper {
     margin-top: 15px;
   }
 
@@ -261,7 +279,7 @@
     padding-bottom: 10px;
   }
 
-  .profileTitleSettingsWrapper {
+  .profileTitleWrapper {
     margin-top: 15px;
   }
 
@@ -329,7 +347,7 @@
     padding-bottom: 10px;
   }
 
-  .profileTitleSettingsWrapper {
+  .profileTitleWrapper {
     margin-top: 20px;
   }
 
@@ -402,7 +420,7 @@
     line-height: 18px;
   }
 
-  .profileTitleSettingsWrapper {
+  .profileTitleWrapper {
     margin-top: 20px;
   }
 

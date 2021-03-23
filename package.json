@@ -55,6 +55,7 @@
     "react-day-picker": "^7.4.8",
     "react-dev-utils": "^10.2.1",
     "react-dom": "^16.13.1",
+    "react-easy-crop": "^3.3.2",
     "react-helmet-async": "^1.0.7",
     "react-image-crop": "^8.6.6",
     "react-redux": "^7.2.1",
