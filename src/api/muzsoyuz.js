@@ -50,8 +50,8 @@ export class MuzSoyuz extends Request {
     return this.delete(`/user/daysOff/${id}`)
   }
 
-  static updateImage(body, fileType) {
-    return this.post(`/user/uploadImage?type=${fileType}`, body)
+  static updateImage(body, fileType, width, height, x, y) {
+    return this.post(`/user/uploadImage?type=${fileType}&width=${width}&height=${height}&x=${x}&y=${y}`, body)
   }
 
   props(array) {

@@ -17,10 +17,14 @@ import styles from './CalendarProfile.module.css'
 
 
 const Profile = () => {
+  const [imageUrl, setImageUrl] = useState()
   const [file, setFile] = useState()
+
   const userImage = useSelector(selectProfile('imageURL'))
   const isProfileImageUploaded = useSelector(selectProfileImage)
+
   const dispatch = useDispatch()
+
   const avatarWrapper = !isProfileImageUploaded ? s.avatarWrapper : s.hide
   const fileInput = !isProfileImageUploaded ? s.fileInput : s.hide
   const backBtn = !isProfileImageUploaded ? s.backBtn : s.hide
@@ -32,9 +36,10 @@ const Profile = () => {
   const fileSelectedHandler = (e) => {
     if (e.target.files?.length) {
       const reader = new FileReader()
-      reader.addEventListener("load", () => setFile(reader.result))
+      reader.addEventListener("load", () => setImageUrl(reader.result))
       reader.readAsDataURL(e.target.files[0])
 
+      setFile(e.target.files[0])
       dispatch(profileImageUploaded(true))
     }
     e.target.value = ''
@@ -45,7 +50,7 @@ const Profile = () => {
       <div className={s.profileWrapper}>
         {
           isProfileImageUploaded
-            ? <ImageEasyCrop uploadImageCallback={updateImage} file={file}/>
+            ? <ImageEasyCrop uploadImageCallback={updateImage} base64={imageUrl} file={file}/>
             : null
         }
         <div className={s.profileTopSection}>
