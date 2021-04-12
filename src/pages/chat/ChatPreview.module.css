@@ -1,0 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.chatPreviewWrapper {
+    margin-top: 18px;
+    padding: 0 17px;
+}

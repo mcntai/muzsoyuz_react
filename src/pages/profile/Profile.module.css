@@ -42,9 +42,12 @@
 .changeAvatar {
   width: 15px;
   height: 15px;
+  border-radius: 50%;
   position: absolute;
   top: 75%;
   right: 5%;
+  background: url("../../assets/img/camera.svg") no-repeat #CBF6FF center;
+  background-size: 9px;
 }
 
 .fileInput {

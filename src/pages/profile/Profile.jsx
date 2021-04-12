@@ -11,7 +11,6 @@ import InputPhoneProfile from './InputPhoneProfile'
 import SinglePickCalendar from '../../components/common/SinglePickCalendar'
 import Logout from './Logout'
 import avatar from '../../assets/img/avatar.svg'
-import plus from '../../assets/img/plus.svg'
 import s from './Profile.module.css'
 import styles from './CalendarProfile.module.css'
 
@@ -58,7 +57,7 @@ const Profile = () => {
           <div className={s.topContentWrapper}>
             <div className={avatarWrapper}>
               <img src={userImage || avatar} alt="avatar" className={s.avatar}/>
-              <img src={plus} alt="plus" className={s.changeAvatar}/>
+              <div className={s.changeAvatar} />
               <input type="file" accept="image/*" className={fileInput} onChange={fileSelectedHandler}/>
             </div>
             <InputNameProfile/>

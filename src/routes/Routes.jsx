@@ -17,6 +17,7 @@ import history from "../history/history"
 import OauthCallBackListener from "./OauthCallBackListener"
 import Preloader from "./providers/Preloader"
 import ImageEasyCrop from "../components/common/ImageEasyCrop"
+import Chats from "../pages/chat/Chats"
 
 
 export default function Routes() {
@@ -32,7 +33,6 @@ export default function Routes() {
             <Auth type="register"/>
           </Route>
 
-
           <Route path="/find-job-filter" component={FilterPage}/>
           <Route path="/find-job-sort" component={SortingPage}/>
 
@@ -43,6 +43,8 @@ export default function Routes() {
           <Route path="/open-job" component={OpenJob}/>
 
           <Route path="/image" component={ImageEasyCrop}/>
+
+          <Route path="/chat" component={Chats}/>
 
           <UserProvider>
             <Route exact path="/" component={Main}/>
