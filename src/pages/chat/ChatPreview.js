@@ -8,20 +8,22 @@ import { Space } from "antd"
 import { Row, Col } from "antd"
 import s from './ChatPreview.module.css'
 
-function ChatPreview() {
+const ChatPreview = ({ chat }) => {
+  const { _id, imageURL, name, isActive, lastSeen } = chat.user
+
   return (
     <div className={s.chatPreviewWrapper}>
       <Row align="middle">
         <Col span={5}>
-          <AvatarWithBadge/>
+          <AvatarWithBadge isActive={isActive} imageURL={imageURL}/>
         </Col>
         <Col
           span={16}
           style={{ padding: "0 12px" }}
         >
           <Space direction="vertical">
-            <PersonName/>
-            <LastMessagePreview/>
+            <PersonName name={name}/>
+            <LastMessagePreview messages={chat.messages}/>
           </Space>
         </Col>
         <Col

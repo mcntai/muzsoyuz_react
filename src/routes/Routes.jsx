@@ -17,7 +17,7 @@ import history from "../history/history"
 import OauthCallBackListener from "./OauthCallBackListener"
 import Preloader from "./providers/Preloader"
 import ImageEasyCrop from "../components/common/ImageEasyCrop"
-import Chats from "../pages/chat/Chats"
+import ChatsList from "../pages/chat/ChatsList"
 import OpenedChat from "../pages/chat/OpenedChat"
 
 
@@ -45,7 +45,7 @@ export default function Routes() {
 
           <Route path="/image" component={ImageEasyCrop}/>
 
-          <Route path="/chat" component={Chats}/>
+          <Route path="/chat" component={ChatsList}/>
           <Route path="/opened-chat" component={OpenedChat}/>
 
           <UserProvider>
