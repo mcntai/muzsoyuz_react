@@ -18,6 +18,7 @@ import OauthCallBackListener from "./OauthCallBackListener"
 import Preloader from "./providers/Preloader"
 import ImageEasyCrop from "../components/common/ImageEasyCrop"
 import Chats from "../pages/chat/Chats"
+import OpenedChat from "../pages/chat/OpenedChat"
 
 
 export default function Routes() {
@@ -45,6 +46,7 @@ export default function Routes() {
           <Route path="/image" component={ImageEasyCrop}/>
 
           <Route path="/chat" component={Chats}/>
+          <Route path="/opened-chat" component={OpenedChat}/>
 
           <UserProvider>
             <Route exact path="/" component={Main}/>
