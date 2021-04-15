@@ -8,10 +8,9 @@ const AvatarWithBadge = ({ isActive, imageURL }) => {
   return (
     <>
       <Badge
-        status ={isActive ? "success" : "default"}
         offset={["-15%", "85%"]}
-        style={{ width: "14px", height: "14px", boxShadow: "0 0 0 5px #fff" }}
-        color="#6384EB"
+        style={{ width: "14px", height: "14px", boxShadow: "0 0 0 5px #fff", backgroundColor: '#6384EB' }}
+        dot={isActive}
       >
         <Avatar
           src={imageURL}

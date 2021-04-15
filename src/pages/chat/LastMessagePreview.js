@@ -6,15 +6,21 @@ import { selectProfile } from "../../slice/user"
 
 const { Text } = Typography
 
-const LastMessagePreview = ({ messages, opponentId }) => {
+const LastMessagePreview = ({ messages }) => {
   // const myId = useSelector(selectProfile('_id'))
   const myId = '604cf51a6341ff5448f6abe1'
   const isMeLastSender = messages[messages.length-1]?.senderId === myId
 
   return (
     <>
-      {console.log(isMeLastSender)}
-      <Text secondary="true">
+      <Text
+        secondary="true"
+        style={{
+          fontFamily: 'Montserrat',
+          fontSize: '16px',
+          fontHeight: '19px',
+          fontWeight: '500'
+        }}>
         {
           isMeLastSender
           ? "Я: " + messages[messages.length-1]?.text

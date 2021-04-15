@@ -7,7 +7,7 @@ import EnterTextField from "./EnterTextField"
 import Messages from "./Messages"
 
 
-const OpenedChat = () => {
+const OpenedChat = ({ chat }) => {
 
   return (
     <>

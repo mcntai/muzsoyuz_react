@@ -9,7 +9,7 @@ import { Row, Col } from "antd"
 import s from './ChatPreview.module.css'
 
 const ChatPreview = ({ chat }) => {
-  const { _id, imageURL, name, isActive, lastSeen } = chat.user
+  const { imageURL, name, isActive, lastSeen } = chat.user
 
   return (
     <div className={s.chatPreviewWrapper}>
@@ -28,11 +28,11 @@ const ChatPreview = ({ chat }) => {
         </Col>
         <Col
           span={3}
-          style={{ display: "flex", justifyContent: "center" }}
+          style={{ display: "flex", justifyContent: "center", textAlign: 'center' }}
         >
           <Space direction="vertical">
-            <LastMessageTime/>
-            <UnreadMessageCount/>
+            <LastMessageTime messages={chat.messages}/>
+            <UnreadMessageCount messages={chat.messages}/>
           </Space>
         </Col>
       </Row>
