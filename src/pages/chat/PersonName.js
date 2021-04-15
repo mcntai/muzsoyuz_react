@@ -4,14 +4,14 @@ import { Typography } from "antd"
 
 const { Text } = Typography
 
-const PersonName = ({ name }) => {
+const PersonName = ({ name, fontSize }) => {
   return (
     <>
       <Text
         style={{
           fontFamily: 'Montserrat',
           color: "#262D33",
-          fontSize: "20px",
+          fontSize: fontSize,
           fontWeight: "600",
           lineHeight: "24px"
         }}

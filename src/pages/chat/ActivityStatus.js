@@ -4,12 +4,23 @@ import { Typography } from "antd"
 
 const { Text } = Typography
 
-function ActivityStatus(isActive) {
+const ActivityStatus = ({ isActive, lastSeen }) => {
+
   return (
     <>
       {
         isActive
-          ? <Text secondary="true">Онлайн</Text>
+          ? <Text
+            style={{
+              color: "#6384EB",
+              fontFamily: 'Montserrat',
+              fontSize: '12px',
+              fontHeight: '15px',
+              fontWeight: '500',
+            }}
+          >
+            Онлайн
+          </Text>
           : <Text secondary="true">53 хв тому</Text>
       }
     </>

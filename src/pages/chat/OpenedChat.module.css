@@ -1,0 +1,16 @@
+.openedChatWrapper {
+  width: calc(100vw - 30px);
+  margin: 0 auto;
+}
+
+.nameAndStatusWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.backBtn {
+  content: url("../../assets/img/arrow-left.svg");
+  width: 20px;
+  height: 20px;
+}

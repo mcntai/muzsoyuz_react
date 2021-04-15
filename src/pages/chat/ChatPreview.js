@@ -22,7 +22,7 @@ const ChatPreview = ({ chat }) => {
           style={{ padding: "0 12px" }}
         >
           <Space direction="vertical">
-            <PersonName name={name}/>
+            <PersonName name={name} fontSize={"20px"}/>
             <LastMessagePreview messages={chat.messages}/>
           </Space>
         </Col>
