@@ -3,48 +3,15 @@ import ChatPreview from "./ChatPreview"
 import { io } from "socket.io-client"
 import { NavLink } from 'react-router-dom'
 import s from './ChatList.module.css'
+import useChat from './useChat'
 
-const socket = io('https://muzsoyuz.com/', {
-  path: '/api/v2/chat',
-  query: {
-    token: localStorage.getItem("token"),
-  },
-})
-
-socket.on('chatError', (err) => {
-  console.log(err)
-})
-
-// socket.on('connect', () => {
-//   socket.emit('connected')
-//
-//   // connected.current = socket.connected
-// })
-//
-// socket.emit('getConversations', (chats) => {
-//   // setConversations(chats)
-//   console.log(chats)
-// })
 
 function ChatsList() {
-  const [connected, setConnected] = useState(false)
-  const [conversations, setConversations] = useState()
+  const { socketConnect, conversations } = useChat()
 
   useEffect(() => {
-    socket.on('connect', () => {
-      socket.emit('connected')
-
-      setConnected(socket.connected)
-    })
+    socketConnect()
   }, [])
-
-  useEffect(() => {
-    if (connected) {
-      socket.emit('getConversations', (chats) => {
-        setConversations(chats)
-      })
-    }
-  }, [connected])
 
 
   return (
