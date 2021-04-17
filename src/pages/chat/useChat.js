@@ -1,65 +1,57 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { io } from "socket.io-client"
 
 
-const socket = io('https://muzsoyuz.com/', {
-  path: '/api/v2/chat',
-  query: {
-    token: localStorage.getItem("token"),
-  },
-})
-
-
 function useChat() {
-  const [connected, setConnected] = useState(false)
+  const socket = useRef(io())
   const [conversations, setConversations] = useState()
-  const [conversationCreated, setConversationCreated] = useState(false)
   const [chatId, setChatId] = useState()
 
-
   useEffect(() => {
-    if (conversationCreated) {
-      socket.on('createdConversation', (id) => {
-        socket.emit('joinTheCreatedConversation', id)
-        setChatId(id)
-      })
-    }
-  }, [conversationCreated])
+    socket.current = io('https://muzsoyuz.com/', {
+      path : '/api/v2/chat',
+      query: {
+        token: localStorage.getItem("token"),
+      },
+    })
 
+    socket.current.on('connect', () => {
+      socket.current.emit('connected')
 
-  const socketConnect = () => {
-    socket.on('connect', () => {
-      socket.emit('connected')
+      fetchConversations()
+    })
 
-      setConnected(socket.connected)
+    return () => socket.current.emit('disconnect')
+  }, [])
 
-      socket.emit('getUsers', (data) => {
-        console.log(data)
-      })
+  socket.current.on('createdConversation', (id) => {
+    socket.current.emit('joinTheCreatedConversation', id, (conversation) => {
 
-      // socket.emit('getMessages', (data) => {
-      //   console.log(data)
-      // })
+    })
+    //  need to add conversation to all conversations array
+    setChatId(id)
+  })
+
+  const fetchConversations = () => {
+    socket.current.emit('getConversations', (convs) => {
+      setConversations(convs)
+      console.log(convs)
     })
   }
 
-  const getConversations = () => {
-    socket.emit('getConversations', (chats) => {
-      setConversations(chats)
-    })
-  }
+  const getConversations = () => conversations
 
   const createConversation = () => {
-    socket.emit('createConversation', "60505857380b5441f62e584b")
-
-    setConversationCreated(true)
+    socket.current.emit('createConversation', "604ce62a8bbf395d1b7fbd94")
   }
 
+  socket.current.on('chatError', (error) => {
+    console.log(error)
+  })
+
   return {
-    connected,
     conversations,
     chatId,
-    socketConnect,
     getConversations,
     createConversation,
   }

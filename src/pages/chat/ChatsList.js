@@ -6,16 +6,11 @@ import useChat from './useChat'
 
 
 function ChatsList() {
-  const { connected, conversations, chatId, getConversations, createConversation } = useChat()
-
-  useEffect(() => {
-    getConversations()
-  }, [connected, chatId])
+  const { conversations, createConversation } = useChat()
 
   const addChat = () => {
     createConversation()
   }
-
 
   return (
     <div className={s.chatListWrapper}>
@@ -24,7 +19,7 @@ function ChatsList() {
           <li key={chat._id}>
             <NavLink className={s.navLinkWrapper} to={{
               pathname: '/opened-chat',
-              state: { data: chat },
+              state   : { data: chat },
             }}>
               <ChatPreview chat={chat}/>
             </NavLink>

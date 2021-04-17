@@ -15,12 +15,12 @@ const LastMessageTime = ({ messages }) => {
         secondary="true"
         style={{
           fontFamily: 'Montserrat',
-          fontSize: '17px',
+          fontSize  : '17px',
           fontHeight: '20px',
           fontWeight: '500'
         }}
       >
-        {time}
+        {isNaN(time) ? '' : time}
       </Text>
     </>
   )

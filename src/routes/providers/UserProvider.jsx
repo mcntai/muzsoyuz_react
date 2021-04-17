@@ -26,9 +26,10 @@ const AuthProvider = ({ children }) => {
 }
 
 const ProfileProvider = ({ children }) => {
-  const { socketConnect } = useChat()
   const dispatch = useDispatch()
   const { profile: { loaded, error, loading }, token } = useSelector(selectUser)
+
+  const { getConversations } = useChat()
 
   const location = useLocation()
 
@@ -38,7 +39,7 @@ const ProfileProvider = ({ children }) => {
     if (!loaded && !loading && !error && token) {
       dispatch(fetchUser())
 
-      socketConnect()
+      getConversations()
     }
   }, [])
 
