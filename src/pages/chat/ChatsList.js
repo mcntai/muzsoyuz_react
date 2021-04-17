@@ -1,22 +1,24 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect } from "react"
 import ChatPreview from "./ChatPreview"
-import { io } from "socket.io-client"
 import { NavLink } from 'react-router-dom'
 import s from './ChatList.module.css'
 import useChat from './useChat'
 
 
 function ChatsList() {
-  const { socketConnect, conversations } = useChat()
+  const { connected, conversations, chatId, getConversations, createConversation } = useChat()
 
   useEffect(() => {
-    socketConnect()
-  }, [])
+    getConversations()
+  }, [connected, chatId])
+
+  const addChat = () => {
+    createConversation()
+  }
 
 
   return (
     <div className={s.chatListWrapper}>
-      {console.log(conversations)}
       {
         conversations?.map(chat => (
           <li key={chat._id}>
@@ -29,6 +31,7 @@ function ChatsList() {
           </li>
         ))
       }
+      <button onClick={addChat}>Create Chat</button>
     </div>
   )
 }

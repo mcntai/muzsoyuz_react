@@ -45,13 +45,12 @@ export default function Routes() {
 
           <Route path="/image" component={ImageEasyCrop}/>
 
-          <Route path="/chat" component={ChatsList}/>
-          <Route path="/opened-chat" component={OpenedChat}/>
-
           <UserProvider>
             <Route exact path="/" component={Main}/>
             <Route path="/offer-job" component={OfferJob}/>
             <Route path="/profile" component={Profile}/>
+            <Route path="/chat" component={ChatsList}/>
+            <Route path="/opened-chat" component={OpenedChat}/>
             <Route path="/quest-start" component={StartPage}/>
             <Route path="/quest-instrument" component={ChooseInstrumentPage}/>
             <Route path="/quest-experience" component={ChooseExperiencePage}/>

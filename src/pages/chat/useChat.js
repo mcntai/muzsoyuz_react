@@ -1,8 +1,5 @@
-import React, { useEffect, useState, useRef } from "react"
-import ChatPreview from "./ChatPreview"
+import { useEffect, useState } from "react"
 import { io } from "socket.io-client"
-import { NavLink } from 'react-router-dom'
-import s from './ChatList.module.css'
 
 
 const socket = io('https://muzsoyuz.com/', {
@@ -16,6 +13,18 @@ const socket = io('https://muzsoyuz.com/', {
 function useChat() {
   const [connected, setConnected] = useState(false)
   const [conversations, setConversations] = useState()
+  const [conversationCreated, setConversationCreated] = useState(false)
+  const [chatId, setChatId] = useState()
+
+
+  useEffect(() => {
+    if (conversationCreated) {
+      socket.on('createdConversation', (id) => {
+        socket.emit('joinTheCreatedConversation', id)
+        setChatId(id)
+      })
+    }
+  }, [conversationCreated])
 
 
   const socketConnect = () => {
@@ -23,19 +32,37 @@ function useChat() {
       socket.emit('connected')
 
       setConnected(socket.connected)
+
+      socket.emit('getUsers', (data) => {
+        console.log(data)
+      })
+
+      // socket.emit('getMessages', (data) => {
+      //   console.log(data)
+      // })
     })
   }
 
-  useEffect(() => {
-    if (connected) {
-      socket.emit('getConversations', (chats) => {
-        setConversations(chats)
-      })
-    }
-  }, [connected])
+  const getConversations = () => {
+    socket.emit('getConversations', (chats) => {
+      setConversations(chats)
+    })
+  }
 
+  const createConversation = () => {
+    socket.emit('createConversation', "60505857380b5441f62e584b")
 
-  return { conversations, socketConnect }
+    setConversationCreated(true)
+  }
+
+  return {
+    connected,
+    conversations,
+    chatId,
+    socketConnect,
+    getConversations,
+    createConversation,
+  }
 }
 
 export default useChat
