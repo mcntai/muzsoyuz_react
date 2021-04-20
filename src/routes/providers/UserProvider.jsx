@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom'
 import { fetchUser, goToLogin, setAuthNextLocation } from '../../actions/user'
 import Loader from '../../components/common/Loader'
 import { selectUser } from '../../slice/user'
-import useChat from "../../pages/chat/useChat"
 
 
 const AuthProvider = ({ children }) => {
@@ -29,8 +28,6 @@ const ProfileProvider = ({ children }) => {
   const dispatch = useDispatch()
   const { profile: { loaded, error, loading }, token } = useSelector(selectUser)
 
-  const { getConversations } = useChat()
-
   const location = useLocation()
 
   const isMainPage = location.pathname === '/'
@@ -38,8 +35,6 @@ const ProfileProvider = ({ children }) => {
   useEffect(() => {
     if (!loaded && !loading && !error && token) {
       dispatch(fetchUser())
-
-      getConversations()
     }
   }, [])
 

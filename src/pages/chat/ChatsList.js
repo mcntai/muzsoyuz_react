@@ -2,11 +2,9 @@ import React, { useEffect } from "react"
 import ChatPreview from "./ChatPreview"
 import { NavLink } from 'react-router-dom'
 import s from './ChatList.module.css'
-import useChat from './useChat'
 
 
-function ChatsList() {
-  const { conversations, createConversation } = useChat()
+function ChatsList({conversationsMap, createConversation}) {
 
   const addChat = () => {
     createConversation()
@@ -15,13 +13,13 @@ function ChatsList() {
   return (
     <div className={s.chatListWrapper}>
       {
-        conversations?.map(chat => (
-          <li key={chat._id}>
+        Object.keys(conversationsMap)?.map(chatId => (
+          <li key={chatId}>
             <NavLink className={s.navLinkWrapper} to={{
               pathname: '/opened-chat',
-              state   : { data: chat },
+              state   : { data: chatId },
             }}>
-              <ChatPreview chat={chat}/>
+              <ChatPreview chat={conversationsMap[chatId]}/>
             </NavLink>
           </li>
         ))

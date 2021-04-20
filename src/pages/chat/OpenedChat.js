@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import "antd/dist/antd.css"
 import AvatarOnly from "./Avatar"
 import PersonName from "./PersonName"
@@ -12,11 +12,11 @@ import s from './OpenedChat.module.css'
 import { useLocation } from "react-router-dom"
 
 
-const OpenedChat = () => {
+const OpenedChat = ({ conversationsMap, sendMessage }) => {
   const location = useLocation()
   const dispatch = useDispatch()
-  const { imageURL, name, isActive, lastSeen } = location.state.data.user
-  const { messages } = location.state.data
+  const chatId = location.state.data
+  const chat = conversationsMap[chatId]
 
   return (
     <div className={s.openedChatWrapper}>
@@ -24,29 +24,29 @@ const OpenedChat = () => {
         align="middle"
         gutter={20}
         style={{
-          position: "fixed",
-          top: "0",
-          background: "#FFFFFF",
-          paddingTop: "15px",
+          position     : "fixed",
+          top          : "0",
+          background   : "#FFFFFF",
+          paddingTop   : "15px",
           paddingBottom: "10px",
-          width: "100%"
+          width        : "100%"
         }}
       >
-          <Col span={2}>
-            <span className={s.backBtn} onClick={() => dispatch(goBack())}/>
-          </Col>
-          <Col span={6}>
-            <AvatarOnly imageURL={imageURL}/>
-          </Col>
-          <Col span={14}>
-            <div className={s.nameAndStatusWrapper}>
-              <PersonName name={name} fontSize={"16px"}/>
-              <ActivityStatus isActive={isActive} lastSeen={lastSeen}/>
-            </div>
-          </Col>
+        <Col span={2}>
+          <span className={s.backBtn} onClick={() => dispatch(goBack())}/>
+        </Col>
+        <Col span={6}>
+          <AvatarOnly imageURL={chat?.user.imageURL}/>
+        </Col>
+        <Col span={14}>
+          <div className={s.nameAndStatusWrapper}>
+            <PersonName name={chat?.user.name} fontSize={"16px"}/>
+            <ActivityStatus isActive={chat?.user.isActive} lastSeen={chat?.user.lastSeen}/>
+          </div>
+        </Col>
       </Row>
-        <Messages messages={messages}/>
-        <EnterTextField/>
+      <Messages messages={chat?.messages}/>
+      <EnterTextField chatId={chatId} sendMessage={sendMessage}/>
     </div>
   )
 }

@@ -4,11 +4,11 @@ import { Button } from 'antd';
 
 const { TextArea } = Input
 
-const EnterTextField = () => {
+const EnterTextField = ({chatId, sendMessage}) => {
   const [text, setText] = useState('')
 
   function handleSubmitMessage() {
-    console.log(text)
+    sendMessage(text, chatId)
     setText('')
   }
 
