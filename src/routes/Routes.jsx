@@ -19,11 +19,9 @@ import Preloader from "./providers/Preloader"
 import ImageEasyCrop from "../components/common/ImageEasyCrop"
 import ChatsList from "../pages/chat/ChatsList"
 import OpenedChat from "../pages/chat/OpenedChat"
-import useChat from "../pages/chat/useChat"
 
 
 export default function Routes() {
-  const { conversationsMap, createConversation, sendMessage } = useChat()
 
   return (
     <Preloader>
@@ -51,8 +49,8 @@ export default function Routes() {
             <Route exact path="/" component={Main}/>
             <Route path="/offer-job" component={OfferJob}/>
             <Route path="/profile" component={Profile}/>
-            <Route path="/chat" render={() => <ChatsList conversationsMap={conversationsMap} createConversation={createConversation}/>}/>
-            <Route path="/opened-chat" render={() => <OpenedChat conversationsMap={conversationsMap} sendMessage={sendMessage}/>}/>
+            <Route path="/chat" component={ChatsList}/>
+            <Route path="/opened-chat" component={OpenedChat}/>
             <Route path="/quest-start" component={StartPage}/>
             <Route path="/quest-instrument" component={ChooseInstrumentPage}/>
             <Route path="/quest-experience" component={ChooseExperiencePage}/>

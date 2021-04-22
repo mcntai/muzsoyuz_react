@@ -1,10 +1,13 @@
 import React from "react"
 import "antd/dist/antd.css"
 import { Typography } from "antd"
+import { useSelector } from "react-redux"
+import { selectChat } from "../../reducers/chatReducer"
 
 const { Text } = Typography
 
-const LastMessageTime = ({ messages }) => {
+const LastMessageTime = ({ chatId }) => {
+  const { messages } = useSelector(selectChat(chatId))
   const date = new Date(messages[messages.length - 1]?.createdAt)
   const minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
   const time = `${date.getHours()}:${minutes}`
@@ -20,7 +23,7 @@ const LastMessageTime = ({ messages }) => {
           fontWeight: '500'
         }}
       >
-        {isNaN(time) ? '' : time}
+        {time}
       </Text>
     </>
   )

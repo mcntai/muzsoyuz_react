@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import "antd/dist/antd.css"
 import { Typography } from "antd"
 import { useSelector } from "react-redux"
 import { selectProfile } from "../../slice/user"
+import { selectChat } from "../../reducers/chatReducer"
 
 const { Text } = Typography
 
-const LastMessagePreview = ({ messages }) => {
-  // const myId = useSelector(selectProfile('_id'))
-  const myId = '604cf51a6341ff5448f6abe1'
-  const isMeLastSender = messages[messages.length-1]?.senderId === myId
+const LastMessagePreview = ({ chatId }) => {
+  const { messages } = useSelector(selectChat(chatId))
+  const myId = useSelector(selectProfile('_id'))
+  const isMeLastSender = messages[messages.length - 1]?.senderId === myId
 
   return (
     <>
@@ -17,14 +18,14 @@ const LastMessagePreview = ({ messages }) => {
         secondary="true"
         style={{
           fontFamily: 'Montserrat',
-          fontSize: '16px',
+          fontSize  : '16px',
           fontHeight: '19px',
           fontWeight: '500'
         }}>
         {
           isMeLastSender
-          ? "Я: " + messages[messages.length-1]?.text
-          : messages[messages.length-1]?.text
+            ? "Я: " + messages[messages.length - 1]?.text
+            : messages[messages.length - 1]?.text
         }
       </Text>
     </>

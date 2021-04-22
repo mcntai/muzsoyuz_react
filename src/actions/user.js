@@ -1,4 +1,4 @@
-import { ACTION_PREFIXES as p, TYPES as t } from '../constants/action-types'
+import { ACTIONS as p, ACTIONS as t } from '../constants/action-types'
 import apiAction from './api-action'
 import history from '../history/history'
 import { ROUTES as r } from '../constants/routes'

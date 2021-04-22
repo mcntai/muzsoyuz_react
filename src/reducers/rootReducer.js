@@ -4,6 +4,7 @@ import offersReducer from '../slice/offers'
 import generalReducer from '../slice/general'
 import metaReducer from '../slice/meta'
 import errorsReducer from './errorsReducer'
+import chatReducer from "./chatReducer"
 
 
 export default combineReducers({
@@ -12,4 +13,5 @@ export default combineReducers({
   general: generalReducer,
   meta   : metaReducer,
   errors : errorsReducer,
+  chat   : chatReducer,
 })

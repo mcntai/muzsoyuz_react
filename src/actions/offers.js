@@ -1,4 +1,4 @@
-import { ACTION_PREFIXES as p } from '../constants/action-types'
+import { ACTIONS as p } from '../constants/action-types'
 import apiAction from "./api-action"
 
 

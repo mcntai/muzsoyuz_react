@@ -12,11 +12,10 @@ import s from './OpenedChat.module.css'
 import { useLocation } from "react-router-dom"
 
 
-const OpenedChat = ({ conversationsMap, sendMessage }) => {
+const OpenedChat = () => {
   const location = useLocation()
   const dispatch = useDispatch()
   const chatId = location.state.data
-  const chat = conversationsMap[chatId]
 
   return (
     <div className={s.openedChatWrapper}>
@@ -36,17 +35,17 @@ const OpenedChat = ({ conversationsMap, sendMessage }) => {
           <span className={s.backBtn} onClick={() => dispatch(goBack())}/>
         </Col>
         <Col span={6}>
-          <AvatarOnly imageURL={chat?.user.imageURL}/>
+          <AvatarOnly chatId={chatId}/>
         </Col>
         <Col span={14}>
           <div className={s.nameAndStatusWrapper}>
-            <PersonName name={chat?.user.name} fontSize={"16px"}/>
-            <ActivityStatus isActive={chat?.user.isActive} lastSeen={chat?.user.lastSeen}/>
+            <PersonName chatId={chatId} fontSize={"16px"}/>
+            <ActivityStatus chatId={chatId}/>
           </div>
         </Col>
       </Row>
-      <Messages messages={chat?.messages}/>
-      <EnterTextField chatId={chatId} sendMessage={sendMessage}/>
+      <Messages chatId={chatId}/>
+      <EnterTextField chatId={chatId}/>
     </div>
   )
 }

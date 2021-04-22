@@ -1,14 +1,19 @@
 import React, { useState } from 'react'
 import { Input } from 'antd'
-import { Button } from 'antd';
+import { Button } from 'antd'
+import { useDispatch } from "react-redux"
+import { ACTIONS as t } from '../../constants/action-types'
 
 const { TextArea } = Input
 
-const EnterTextField = ({chatId, sendMessage}) => {
+const EnterTextField = ({ chatId }) => {
   const [text, setText] = useState('')
+  const dispatch = useDispatch()
 
   function handleSubmitMessage() {
-    sendMessage(text, chatId)
+    const message = {text, chatId}
+
+    dispatch({ type: t.SEND_MESSAGE, message })
     setText('')
   }
 
@@ -19,10 +24,10 @@ const EnterTextField = ({chatId, sendMessage}) => {
   return (
     <div style={{
       background: "#FFFFFF",
-      width: "calc(100vw - 30px)",
-      position: "fixed",
-      bottom: "0",
-      display: "flex",
+      width     : "calc(100vw - 30px)",
+      position  : "fixed",
+      bottom    : "0",
+      display   : "flex",
       alignItems: "flex-end",
     }}>
       <
@@ -31,10 +36,10 @@ const EnterTextField = ({chatId, sendMessage}) => {
         placeholder="Введіть повідомлення..."
         autoSize={{ minRows: 1, maxRows: 12 }}
         style={{
-          background: "#FAFAFA",
-          padding: "24px 15px",
+          background  : "#FAFAFA",
+          padding     : "24px 15px",
           borderRadius: "22px",
-          fontSize: "16px",
+          fontSize    : "16px",
           marginBottom: "20px"
         }}
         onChange={handleChangeInput}

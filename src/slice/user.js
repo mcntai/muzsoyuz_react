@@ -8,7 +8,7 @@ import {
   setDayOff,
   getDaysOff, deleteDayOff, updateImage
 } from '../actions/user'
-import { TYPES as t } from '../constants/action-types'
+import { ACTIONS as t } from '../constants/action-types'
 import keyBy from 'lodash/keyBy'
 
 

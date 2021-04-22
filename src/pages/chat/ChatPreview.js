@@ -8,22 +8,21 @@ import { Space } from "antd"
 import { Row, Col } from "antd"
 import s from './ChatPreview.module.css'
 
-const ChatPreview = ({ chat }) => {
-  const { imageURL, name, isActive, lastSeen } = chat.user
+const ChatPreview = ({chatId}) => {
 
   return (
     <div className={s.chatPreviewWrapper}>
       <Row align="middle">
         <Col span={5}>
-          <AvatarWithBadge isActive={isActive} imageURL={imageURL}/>
+          <AvatarWithBadge chatId={chatId}/>
         </Col>
         <Col
           span={16}
           style={{ padding: "0 12px" }}
         >
           <Space direction="vertical">
-            <PersonName name={name} fontSize={"20px"}/>
-            <LastMessagePreview messages={chat.messages}/>
+            <PersonName chatId={chatId} fontSize={"20px"}/>
+            <LastMessagePreview chatId={chatId}/>
           </Space>
         </Col>
         <Col
@@ -31,8 +30,8 @@ const ChatPreview = ({ chat }) => {
           style={{ display: "flex", justifyContent: "center", textAlign: 'center' }}
         >
           <Space direction="vertical">
-            <LastMessageTime messages={chat.messages}/>
-            <UnreadMessageCount messages={chat.messages}/>
+            <LastMessageTime chatId={chatId}/>
+            <UnreadMessageCount chatId={chatId}/>
           </Space>
         </Col>
       </Row>

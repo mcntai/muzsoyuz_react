@@ -1,4 +1,4 @@
-import { TYPES as t } from '../constants/action-types'
+import { ACTIONS as t } from '../constants/action-types'
 
 
 const errorsReducer = (state = null, action) => {

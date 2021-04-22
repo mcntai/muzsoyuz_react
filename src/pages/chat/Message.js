@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import "antd/dist/antd.css"
 import { Typography } from "antd"
 import { useSelector } from "react-redux"
@@ -8,8 +8,7 @@ import s from './Messages.module.css'
 const { Paragraph } = Typography
 
 const Message = ({ message }) => {
-  // const myId = useSelector(selectProfile('_id'))
-  const myId = '604cf51a6341ff5448f6abe1'
+  const myId = useSelector(selectProfile('_id'))
 
   return (
     <>
@@ -38,4 +37,5 @@ const Message = ({ message }) => {
   )
 }
 
-export default Message
+// export default Message
+export default memo(Message)
