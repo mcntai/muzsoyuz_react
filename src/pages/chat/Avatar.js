@@ -5,8 +5,8 @@ import { UserOutlined } from "@ant-design/icons"
 import { useSelector } from "react-redux"
 import { selectChat } from "../../reducers/chatReducer"
 
-const AvatarOnly = ({ chatId }) => {
-  const { user: { imageURL } } = useSelector(selectChat(chatId))
+const AvatarOnly = ({ id }) => {
+  const { user: { imageURL } } = useSelector(selectChat(id))
 
   return (
     <>

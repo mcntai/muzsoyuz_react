@@ -5,8 +5,8 @@ import { useSelector } from "react-redux"
 import { selectProfile } from "../../slice/user"
 import { selectChat } from "../../reducers/chatReducer"
 
-const UnreadMessageCount = ({ chatId }) => {
-  const { messages } = useSelector(selectChat(chatId))
+const UnreadMessageCount = ({ id }) => {
+  const { messages } = useSelector(selectChat(id))
   const myId = useSelector(selectProfile('_id'))
   const myUnreadMessages = messages.filter(msg => msg.senderId !== myId && !msg.viewed)
 

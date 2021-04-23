@@ -6,8 +6,8 @@ import { selectChat } from "../../reducers/chatReducer"
 
 const { Text } = Typography
 
-const LastMessageTime = ({ chatId }) => {
-  const { messages } = useSelector(selectChat(chatId))
+const LastMessageTime = ({ id }) => {
+  const { messages } = useSelector(selectChat(id))
   const date = new Date(messages[messages.length - 1]?.createdAt)
   const minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
   const time = `${date.getHours()}:${minutes}`

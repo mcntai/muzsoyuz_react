@@ -20,7 +20,7 @@ const Message = ({ message }) => {
             style={{
               color       : message.senderId === myId ? "#FFFFFF" : "#000000",
               background  : message.senderId === myId ? "#6384EB" : "#F6F6F6",
-              textAlign   : message.senderId === myId ? "right" : "left",
+              textAlign   : "left",
               padding     : "20px 25px",
               borderRadius: message.senderId === myId ? "30px 8px 30px 30px" : "30px 30px 30px 8px",
               fontFamily  : 'Montserrat',
@@ -37,5 +37,4 @@ const Message = ({ message }) => {
   )
 }
 
-// export default Message
 export default memo(Message)

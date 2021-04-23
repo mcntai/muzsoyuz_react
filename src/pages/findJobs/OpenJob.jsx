@@ -4,11 +4,11 @@ import * as swal from '../../components/common/alerts'
 import Header from '../../components/mainHeader/Header'
 import Footer from '../../components/mainFooter/Footer'
 import avatar from '../../assets/img/avatar.svg'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { goTo } from '../../actions/user'
 import { ROUTES as r } from '../../constants/routes'
 import s from './OpenJob.module.css'
-import { selectRoles } from "../../slice/meta"
+import history from "../../history/history"
 
 
 const role = {
@@ -27,9 +27,9 @@ const OpenJob = () => {
   const location = useLocation()
   const [data, setData] = useState([])
   const dispatch = useDispatch()
-  const { data: roles } = useSelector(selectRoles)
 
   useEffect(() => {
+    {console.log({usefect: data})}
     if (location?.state?.data) {
       setData([location.state.data])
     } else {
@@ -37,12 +37,17 @@ const OpenJob = () => {
     }
   }, [])
 
-  const handleChat = () => {
-    swal.warning('Чат буде доступний в наступному релізі...', 'Пардон...')
+  const handleChat = (e) => {
+    const id = e.target.getAttribute('id')
+    history.push({
+      pathname: '/opened-chat',
+      state   : { participantId: id }
+    })
   }
 
   return (
     <div>
+      {console.log({render: data})}
       <Header/>
       {
         data.map(el => {
@@ -71,7 +76,7 @@ const OpenJob = () => {
                   <img src={el.user?.imageURL || avatar} className={s.userImage} alt="avatar"/>
                 </div>
               </div>
-              <button className={s.chatBtn} onClick={handleChat}>Перейти в чат</button>
+              <button className={s.chatBtn} id={el.user?._id} onClick={handleChat}>Перейти в чат</button>
             </div>
             <div className={s.footerWrapper}>
               <Footer/>

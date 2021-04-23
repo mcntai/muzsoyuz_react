@@ -6,8 +6,8 @@ import { selectChat } from "../../reducers/chatReducer"
 
 const { Text } = Typography
 
-const ActivityStatus = ({ chatId }) => {
-  const { user: { isActive, lastSeen } } = useSelector(selectChat(chatId))
+const ActivityStatus = ({ id }) => {
+  const { user: { isActive, lastSeen } } = useSelector(selectChat(id))
 
   return (
     <>

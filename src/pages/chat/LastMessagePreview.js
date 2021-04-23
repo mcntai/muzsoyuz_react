@@ -7,8 +7,8 @@ import { selectChat } from "../../reducers/chatReducer"
 
 const { Text } = Typography
 
-const LastMessagePreview = ({ chatId }) => {
-  const { messages } = useSelector(selectChat(chatId))
+const LastMessagePreview = ({ id }) => {
+  const { messages } = useSelector(selectChat(id))
   const myId = useSelector(selectProfile('_id'))
   const isMeLastSender = messages[messages.length - 1]?.senderId === myId
 

@@ -6,18 +6,18 @@ import { ACTIONS as t } from '../../constants/action-types'
 
 const { TextArea } = Input
 
-const EnterTextField = ({ chatId }) => {
+const EnterTextField = ({ id }) => {
   const [text, setText] = useState('')
   const dispatch = useDispatch()
 
-  function handleSubmitMessage() {
-    const message = {text, chatId}
+  const handleSubmitMessage = () => {
+    const message = { text, chatId: id }
 
     dispatch({ type: t.SEND_MESSAGE, message })
     setText('')
   }
 
-  function handleChangeInput(e) {
+  const handleChangeInput = e => {
     setText(e.target.value)
   }
 
@@ -35,6 +35,7 @@ const EnterTextField = ({ chatId }) => {
         value={text}
         placeholder="Введіть повідомлення..."
         autoSize={{ minRows: 1, maxRows: 12 }}
+        onChange={handleChangeInput}
         style={{
           background  : "#FAFAFA",
           padding     : "24px 15px",
@@ -42,16 +43,15 @@ const EnterTextField = ({ chatId }) => {
           fontSize    : "16px",
           marginBottom: "20px"
         }}
-        onChange={handleChangeInput}
       />
       <Button
         type="primary"
         shape="circle"
         size="large"
+        onClick={handleSubmitMessage}
         style={{
           marginBottom: "20px"
         }}
-        onClick={handleSubmitMessage}
       >
         Send
       </Button>

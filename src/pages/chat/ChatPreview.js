@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import AvatarWithBadge from "./AvatarWithBadge"
 import PersonName from "./PersonName"
 import LastMessagePreview from "./LastMessagePreview"
@@ -8,21 +8,21 @@ import { Space } from "antd"
 import { Row, Col } from "antd"
 import s from './ChatPreview.module.css'
 
-const ChatPreview = ({chatId}) => {
+const ChatPreview = ({ id }) => {
 
   return (
     <div className={s.chatPreviewWrapper}>
       <Row align="middle">
         <Col span={5}>
-          <AvatarWithBadge chatId={chatId}/>
+          <AvatarWithBadge id={id}/>
         </Col>
         <Col
           span={16}
           style={{ padding: "0 12px" }}
         >
           <Space direction="vertical">
-            <PersonName chatId={chatId} fontSize={"20px"}/>
-            <LastMessagePreview chatId={chatId}/>
+            <PersonName id={id} fontSize={"20px"}/>
+            <LastMessagePreview id={id}/>
           </Space>
         </Col>
         <Col
@@ -30,8 +30,8 @@ const ChatPreview = ({chatId}) => {
           style={{ display: "flex", justifyContent: "center", textAlign: 'center' }}
         >
           <Space direction="vertical">
-            <LastMessageTime chatId={chatId}/>
-            <UnreadMessageCount chatId={chatId}/>
+            <LastMessageTime id={id}/>
+            <UnreadMessageCount id={id}/>
           </Space>
         </Col>
       </Row>
@@ -39,4 +39,4 @@ const ChatPreview = ({chatId}) => {
   )
 }
 
-export default ChatPreview
+export default memo(ChatPreview)

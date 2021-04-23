@@ -6,8 +6,8 @@ import { selectChat } from "../../reducers/chatReducer"
 
 const { Text } = Typography
 
-const PersonName = ({ chatId, fontSize }) => {
-  const { user: { name } } = useSelector(selectChat(chatId))
+const PersonName = ({ id, fontSize }) => {
+  const { user: { name } } = useSelector(selectChat(id))
 
   return (
     <>

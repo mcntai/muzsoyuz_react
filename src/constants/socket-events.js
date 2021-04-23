@@ -13,7 +13,7 @@ const SERVER_EVENTS = {
   TYPING_STARTED      : 'typingStarted',
   NEW_MESSAGE         : 'newMessage',
   CHAT_ERROR          : 'chatError',
-  CREATED_CONVERSATION: 'createdConversation',
+  CONVERSATION_CREATED: 'createdConversation',
   CONNECT             : 'connect',
   USER_ACTIVE         : 'userActive',
   CHAT_VIEWED         : 'chatViewed',

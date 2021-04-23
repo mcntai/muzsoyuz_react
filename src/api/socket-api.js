@@ -7,4 +7,7 @@ const socket = io('https://muzsoyuz.com/', {
   }
 })
 
+
+console.log(socket)
+
 export default socket
