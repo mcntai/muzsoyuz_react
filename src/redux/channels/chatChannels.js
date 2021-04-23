@@ -51,11 +51,11 @@ export const createNewConversationChannel = socket => {
       emit({ type: t.CONVERSATION_CREATED, payload: conversation })
     }
 
-    const createConversation = participantId => {
+    const joinTheConversation = participantId => {
       socket.emit(e.JOIN_THE_CREATED_CONVERSATION, participantId, onResponse)
     }
 
-    socket.on(e.CONVERSATION_CREATED, createConversation)
+    socket.on(e.CONVERSATION_CREATED, joinTheConversation)
 
     const unsubscribe = () => {
       // emit(END)

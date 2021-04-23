@@ -16,11 +16,12 @@ const getInitialData = (state, action) => {
 
 const newMessageReceived = (state, action) => {
   state.chats[action.payload.chatId].messages.push(action.payload)
+  // state.users[action.payload._id] = action.payload.chatId
 }
 
 const newConversationCreated = (state, action) => {
   state.chats[action.payload._id] = action.payload
-  state.users = mapValues(keyBy(action.payload, 'user._id'), x => x._id)
+  state.users[action.payload.user._id] = action.payload._id
 }
 
 export default reducersMap({
@@ -31,5 +32,4 @@ export default reducersMap({
 
 export const selectChats = state => state.chat.chats
 export const selectChat = id => state => state.chat.chats[id]
-export const selectMessages = id => state => state.chat.chats[id].messages
 export const selectUser = id => state => state.chat.users[id]

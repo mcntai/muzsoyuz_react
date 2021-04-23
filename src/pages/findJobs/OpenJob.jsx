@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import * as swal from '../../components/common/alerts'
 import Header from '../../components/mainHeader/Header'
 import Footer from '../../components/mainFooter/Footer'
 import avatar from '../../assets/img/avatar.svg'
@@ -8,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { goTo } from '../../actions/user'
 import { ROUTES as r } from '../../constants/routes'
 import s from './OpenJob.module.css'
-import history from "../../history/history"
+import { goToConcreteChat } from "../../actions/chat"
 
 
 const role = {
@@ -29,7 +28,6 @@ const OpenJob = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    {console.log({usefect: data})}
     if (location?.state?.data) {
       setData([location.state.data])
     } else {
@@ -39,15 +37,12 @@ const OpenJob = () => {
 
   const handleChat = (e) => {
     const id = e.target.getAttribute('id')
-    history.push({
-      pathname: '/opened-chat',
-      state   : { participantId: id }
-    })
+
+    dispatch(goToConcreteChat(id))
   }
 
   return (
     <div>
-      {console.log({render: data})}
       <Header/>
       {
         data.map(el => {

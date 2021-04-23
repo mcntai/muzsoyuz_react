@@ -4,5 +4,8 @@ export const ROUTES = {
   YEAR_EXPERIENCE_ROUTE: '/quest-experience',
   FREE_DAYS_ROUTE      : '/quest-free-days',
   HOME                 : '/',
+  LOGIN                : '/login',
   FIND_JOB             : '/find-job',
+  CHAT                 : '/chat',
+  OPENED_CHAT          : '/opened-chat'
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import "antd/dist/antd.css"
 import AvatarOnly from "./Avatar"
 import PersonName from "./PersonName"
@@ -11,37 +11,34 @@ import { useDispatch, useSelector } from 'react-redux'
 import s from './OpenedChat.module.css'
 import { useLocation } from "react-router-dom"
 import { selectUser } from "../../reducers/chatReducer"
-import { createConversation } from '../../actions/chat'
-import history from "../../history/history"
+import { createConversation, goToAllChats } from '../../actions/chat'
 
 
 const OpenedChat = () => {
   const location = useLocation()
   const dispatch = useDispatch()
-  const [chatId, setChatId] = useState(null)
-  const [participantId, setParticipantId] = useState(null)
-  // const { participantId, chatId } = location.state
-  let id = useRef(null)
+
+  const participantId = location.state?.participantId
+  const chatId = location.state?.chatId
+
+  let id = useRef()
   const existingChat = useSelector(selectUser(participantId))
   id.current = existingChat ? existingChat : chatId
 
-  useEffect(() => {
-    if (location?.state?.data) {
-      setChatId(location.state.chatId)
-      setParticipantId(location.state.participantId)
-      console.log('if')
-    } else {
-      console.log('else')
-      // dispatch(createConversation(participantId))
-      // history.push({
-      //   pathname: '/chat'
-      // })
-    }
-  }, [])
 
+  useEffect(() => {
+    if (!existingChat) {
+      dispatch(createConversation(participantId))
+    }
+  }, [existingChat])
+
+  const redirect = () => {
+    dispatch(goToAllChats())
+  }
 
   return (
     <div className={s.openedChatWrapper}>
+      {!location.state && redirect()}
       <Row
         align="middle"
         gutter={20}
@@ -58,17 +55,17 @@ const OpenedChat = () => {
           <span className={s.backBtn} onClick={() => dispatch(goBack())}/>
         </Col>
         <Col span={6}>
-          <AvatarOnly id={id?.current}/>
+          <AvatarOnly id={id.current}/>
         </Col>
         <Col span={14}>
           <div className={s.nameAndStatusWrapper}>
-            <PersonName id={id?.current} fontSize={"16px"}/>
-            <ActivityStatus id={id?.current}/>
+            <PersonName id={id.current} fontSize={"16px"}/>
+            <ActivityStatus id={id.current}/>
           </div>
         </Col>
       </Row>
-      <Messages id={id?.current}/>
-      <EnterTextField id={id?.current}/>
+      <Messages id={id.current}/>
+      <EnterTextField id={id.current}/>
     </div>
   )
 }

@@ -10,11 +10,11 @@ export const logout = error => dispatch => {
 }
 
 export const goToLogin = () => () => {
-  history.push('/login')
+  history.push(r.LOGIN)
 }
 
 export const goToHomePage = () => dispatch => {
-  history.push('/')
+  history.push(r.HOME)
   dispatch({ type: t.RESET_NEXT_LOCATION })
 }
 
