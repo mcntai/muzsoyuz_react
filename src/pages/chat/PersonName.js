@@ -7,7 +7,7 @@ import { selectChat } from "../../reducers/chatReducer"
 const { Text } = Typography
 
 const PersonName = ({ id, fontSize }) => {
-  const user = useSelector(selectChat(id))
+  const chat = useSelector(selectChat(id))
 
   return (
     <>
@@ -20,7 +20,7 @@ const PersonName = ({ id, fontSize }) => {
           lineHeight: "24px"
         }}
       >
-        {user?.name}
+        {chat?.user?.name}
       </Text>
     </>
   )

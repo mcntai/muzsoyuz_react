@@ -7,12 +7,12 @@ import { selectChat } from "../../reducers/chatReducer"
 const { Text } = Typography
 
 const ActivityStatus = ({ id }) => {
-  const user = useSelector(selectChat(id))
+  const chat = useSelector(selectChat(id))
 
   return (
     <>
       {
-        user?.isActive
+        chat?.user?.isActive
           ? <Text
             style={{
               color     : "#6384EB",
@@ -24,7 +24,7 @@ const ActivityStatus = ({ id }) => {
           >
             Онлайн
           </Text>
-          : <Text secondary="true">{user?.lastSeen}</Text>
+          : <Text secondary="true">{chat?.user?.lastSeen}</Text>
       }
     </>
   )
