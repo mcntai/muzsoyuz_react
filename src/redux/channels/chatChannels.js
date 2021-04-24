@@ -13,7 +13,7 @@ export const createConnectChannel = socket => {
       })
 
       socket.emit('getUsers', (users) => {
-        // console.log(users)
+        console.log(users)
       })
     }
 
@@ -58,7 +58,23 @@ export const createNewConversationChannel = socket => {
     socket.on(e.CONVERSATION_CREATED, joinTheConversation)
 
     const unsubscribe = () => {
-      // emit(END)
+      emit(END)
+    }
+    return unsubscribe
+  })
+}
+
+export const createUserIsActiveChannel = socket => {
+  return eventChannel(emit => {
+
+    const handleUserIsActiveStatus = user => {
+      emit({ type: t.USER_ACTIVE, payload: user })
+    }
+
+    socket.on(e.USER_ACTIVE, handleUserIsActiveStatus)
+
+    const unsubscribe = () => {
+      emit(END)
     }
     return unsubscribe
   })

@@ -6,12 +6,12 @@ import { useSelector } from "react-redux"
 import { selectChat } from "../../reducers/chatReducer"
 
 const AvatarOnly = ({ id }) => {
-  const user = useSelector(selectChat(id))
+  const chat = useSelector(selectChat(id))
 
   return (
     <>
       <Avatar
-        src={user?.imageURL}
+        src={chat?.user?.imageURL}
         size={72}
         shape="circle"
         icon={<UserOutlined/>}

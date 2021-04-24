@@ -16,7 +16,6 @@ const getInitialData = (state, action) => {
 
 const newMessageReceived = (state, action) => {
   state.chats[action.payload.chatId].messages.push(action.payload)
-  // state.users[action.payload._id] = action.payload.chatId
 }
 
 const newConversationCreated = (state, action) => {
@@ -24,10 +23,18 @@ const newConversationCreated = (state, action) => {
   state.users[action.payload.user._id] = action.payload._id
 }
 
+const userIsActiveStatusHandler = (state, action) => {
+  const chatId = state.users[action.payload._id]
+
+  state.chats[chatId].user.isActive = action.payload.isActive
+  state.chats[chatId].user.lastSeen = action.payload.lastSeen
+}
+
 export default reducersMap({
   [t.GET_CONVERSATIONS]   : getInitialData,
   [t.NEW_MESSAGE]         : newMessageReceived,
   [t.CONVERSATION_CREATED]: newConversationCreated,
+  [t.USER_ACTIVE]         : userIsActiveStatusHandler,
 }, INITIAL_STATE)
 
 export const selectChats = state => state.chat.chats

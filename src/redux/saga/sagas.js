@@ -1,6 +1,11 @@
 import { call, apply, take, takeEvery, put, all } from 'redux-saga/effects'
 import socket from '../../api/socket-api'
-import { createConnectChannel, createNewMessageChannel, createNewConversationChannel } from '../channels/chatChannels'
+import {
+  createConnectChannel,
+  createNewMessageChannel,
+  createNewConversationChannel,
+  createUserIsActiveChannel
+} from '../channels/chatChannels'
 import { ACTIONS as t } from '../../constants/action-types'
 import { EVENTS as e } from '../../constants/socket-events'
 
@@ -56,6 +61,16 @@ function* createNewConversation({ participantId }) {
   }
 }
 
+function* isUserActive() {
+  const channel = yield call(createUserIsActiveChannel, socket)
+  try {
+    const { type, payload } = yield take(channel)
+    yield put({ type, payload })
+  } catch (e) {
+    console.error('socket error:', e)
+  }
+}
+
 function* watcher() {
   yield takeEvery(t.SEND_MESSAGE, newMessageSendSaga)
   yield takeEvery(t.CREATE_CONVERSATION, createNewConversation)
@@ -66,6 +81,7 @@ export default function* rootSaga() {
     connectSaga(),
     newMessageReceivedSaga(),
     newConversationCreated(),
+    isUserActive(),
     watcher()
   ])
 }
