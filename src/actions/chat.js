@@ -20,4 +20,14 @@ export const goToAllChats = () => () => {
   })
 }
 
+export const typingStart = chatId => ({
+  type: t.TYPING_START,
+  chatId
+})
+
+export const typingEnd = chatId => ({
+  type: t.TYPING_END,
+  chatId
+})
+
 

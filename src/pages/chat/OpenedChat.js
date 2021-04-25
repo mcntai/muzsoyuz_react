@@ -27,10 +27,10 @@ const OpenedChat = () => {
 
 
   useEffect(() => {
-    if (!existingChat) {
+    if (participantId && !existingChat) {
       dispatch(createConversation(participantId))
     }
-  }, [existingChat])
+  }, [])
 
   const redirect = () => {
     dispatch(goToAllChats())

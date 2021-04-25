@@ -13,7 +13,7 @@ export const createConnectChannel = socket => {
       })
 
       socket.emit('getUsers', (users) => {
-        console.log(users)
+        // console.log(users)
       })
     }
 
@@ -72,6 +72,27 @@ export const createUserIsActiveChannel = socket => {
     }
 
     socket.on(e.USER_ACTIVE, handleUserIsActiveStatus)
+
+    const unsubscribe = () => {
+      emit(END)
+    }
+    return unsubscribe
+  })
+}
+
+export const typingStatusChannel = socket => {
+  return eventChannel(emit => {
+
+    const handleTypingStarted = chatId => {
+      emit({ type: t.TYPING_STARTED, payload: chatId })
+    }
+
+    const handleTypingEnded = chatId => {
+      emit({ type: t.TYPING_ENDED, payload: chatId })
+    }
+
+    socket.on(e.TYPING_STARTED, handleTypingStarted)
+    socket.on(e.TYPING_ENDED, handleTypingEnded)
 
     const unsubscribe = () => {
       emit(END)

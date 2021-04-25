@@ -22,6 +22,7 @@ const TYPES = {
 
 const CHAT_CLIENT_ACTIONS = {
   TYPING_START                 : 'TYPING_START',
+  TYPING_END                   : 'TYPING_END',
   SET_VIEWED                   : 'SET_VIEWED',
   JOIN_THE_CREATED_CONVERSATION: 'JOIN_THE_CREATED_CONVERSATION',
   SEND_MESSAGE                 : 'SEND_MESSAGE',
@@ -32,6 +33,7 @@ const CHAT_CLIENT_ACTIONS = {
 
 const CHAT_SERVER_ACTIONS = {
   TYPING_STARTED      : 'TYPING_STARTED',
+  TYPING_ENDED        : 'TYPING_ENDED',
   NEW_MESSAGE         : 'NEW_MESSAGE',
   CHAT_ERROR          : 'CHAT_ERROR',
   USER_ACTIVE         : 'USER_ACTIVE',

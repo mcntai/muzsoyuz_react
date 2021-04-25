@@ -11,6 +11,7 @@ const CLIENT_EVENTS = {
 
 const SERVER_EVENTS = {
   TYPING_STARTED      : 'typingStarted',
+  TYPING_ENDED        : 'typingEnded',
   NEW_MESSAGE         : 'newMessage',
   CHAT_ERROR          : 'chatError',
   CONVERSATION_CREATED: 'createdConversation',

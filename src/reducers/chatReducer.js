@@ -30,11 +30,21 @@ const userIsActiveStatusHandler = (state, action) => {
   state.chats[chatId].user.lastSeen = action.payload.lastSeen
 }
 
+const typingStartedHandler = (state, action) => {
+  state.chats[action.payload].typing = true
+}
+
+const typingEndedHandler = (state, action) => {
+  state.chats[action.payload].typing = false
+}
+
 export default reducersMap({
   [t.GET_CONVERSATIONS]   : getInitialData,
   [t.NEW_MESSAGE]         : newMessageReceived,
   [t.CONVERSATION_CREATED]: newConversationCreated,
   [t.USER_ACTIVE]         : userIsActiveStatusHandler,
+  [t.TYPING_STARTED]      : typingStartedHandler,
+  [t.TYPING_ENDED]        : typingEndedHandler,
 }, INITIAL_STATE)
 
 export const selectChats = state => state.chat.chats
