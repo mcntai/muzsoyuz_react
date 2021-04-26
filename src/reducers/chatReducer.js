@@ -38,6 +38,10 @@ const typingEndedHandler = (state, action) => {
   state.chats[action.payload].typing = false
 }
 
+const setMessagesAsViewed = (state, action) => {
+  return state.chats[action.chatId]?.messages.forEach(msg => msg.viewed = true)
+}
+
 export default reducersMap({
   [t.GET_CONVERSATIONS]   : getInitialData,
   [t.NEW_MESSAGE]         : newMessageReceived,
@@ -45,6 +49,7 @@ export default reducersMap({
   [t.USER_ACTIVE]         : userIsActiveStatusHandler,
   [t.TYPING_STARTED]      : typingStartedHandler,
   [t.TYPING_ENDED]        : typingEndedHandler,
+  [t.SET_VIEWED]          : setMessagesAsViewed,
 }, INITIAL_STATE)
 
 export const selectChats = state => state.chat.chats

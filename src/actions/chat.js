@@ -30,4 +30,9 @@ export const typingEnd = chatId => ({
   chatId
 })
 
+export const setMessagesViewed = chatId => ({
+  type: t.SET_VIEWED,
+  chatId
+})
+
 

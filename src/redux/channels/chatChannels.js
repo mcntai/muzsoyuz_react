@@ -9,6 +9,8 @@ export const createConnectChannel = socket => {
       socket.emit(e.CONNECTED)
 
       socket.emit(e.GET_CONVERSATIONS, (conversations) => {
+        console.log(conversations)
+
         emit({ type: t.GET_CONVERSATIONS, payload: conversations })
       })
 
@@ -20,8 +22,6 @@ export const createConnectChannel = socket => {
     socket.on(e.CONNECT, connectHandler)
 
     return () => {
-      socket.off('connect', connectHandler)
-      emit(END)
     }
   })
 }
@@ -36,10 +36,8 @@ export const createNewMessageChannel = socket => {
 
     socket.on(e.NEW_MESSAGE, newMessageHandler)
 
-    const unsubscribe = () => {
-      // emit(END)
+    return () => {
     }
-    return unsubscribe
   })
 }
 
@@ -57,10 +55,8 @@ export const createNewConversationChannel = socket => {
 
     socket.on(e.CONVERSATION_CREATED, joinTheConversation)
 
-    const unsubscribe = () => {
-      emit(END)
+    return () => {
     }
-    return unsubscribe
   })
 }
 
@@ -73,10 +69,8 @@ export const createUserIsActiveChannel = socket => {
 
     socket.on(e.USER_ACTIVE, handleUserIsActiveStatus)
 
-    const unsubscribe = () => {
-      emit(END)
+    return () => {
     }
-    return unsubscribe
   })
 }
 
@@ -94,9 +88,7 @@ export const typingStatusChannel = socket => {
     socket.on(e.TYPING_STARTED, handleTypingStarted)
     socket.on(e.TYPING_ENDED, handleTypingEnded)
 
-    const unsubscribe = () => {
-      emit(END)
+    return () => {
     }
-    return unsubscribe
   })
 }

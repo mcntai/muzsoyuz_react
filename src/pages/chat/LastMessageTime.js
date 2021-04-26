@@ -23,7 +23,7 @@ const LastMessageTime = ({ id }) => {
           fontWeight: '500'
         }}
       >
-        {time}
+        {isNaN(minutes) ? '' : time}
       </Text>
     </>
   )
