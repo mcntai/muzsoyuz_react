@@ -10,7 +10,7 @@ import { goBack } from "../../actions/user"
 import { useDispatch, useSelector } from 'react-redux'
 import s from './OpenedChat.module.css'
 import { useLocation } from "react-router-dom"
-import { selectUser } from "../../reducers/chatReducer"
+import { selectChat, selectUser } from "../../reducers/chatReducer"
 import { createConversation, goToAllChats } from '../../actions/chat'
 
 
@@ -21,10 +21,19 @@ const OpenedChat = () => {
   const participantId = location.state?.participantId
   const chatId = location.state?.chatId
 
+  const myRef = useRef(null)
   let id = useRef()
   const existingChat = useSelector(selectUser(participantId))
+  const chat = useSelector(selectChat(chatId))
   id.current = existingChat ? existingChat : chatId
 
+  const scrollToTheBottom = () => {
+    myRef.current.scrollIntoView(false)
+  }
+
+  useEffect(() => {
+    scrollToTheBottom()
+  }, [chat])
 
   useEffect(() => {
     if (participantId && !existingChat) {
@@ -66,6 +75,7 @@ const OpenedChat = () => {
       </Row>
       <Messages id={id.current}/>
       <EnterTextField id={id.current}/>
+      <div ref={myRef} style={{ marginTop: '100px' }}/>
     </div>
   )
 }
