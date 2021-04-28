@@ -22,7 +22,7 @@ const Logout = ({ btnWrapper }) => {
         className={s.btn}
         onClick={handleLogOut}
       >
-        Вийти
+        Вийти з системи
       </NavLink>
     </div>
   )

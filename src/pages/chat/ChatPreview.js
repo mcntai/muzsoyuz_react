@@ -18,9 +18,17 @@ const ChatPreview = ({ id }) => {
         </Col>
         <Col
           span={16}
-          style={{ padding: "0 12px" }}
+          style={{
+            padding : "0 12px",
+            width: '100%',
+          }}
         >
-          <Space direction="vertical">
+          <Space
+            direction="vertical"
+            style={{
+              width: '100%',
+            }}
+          >
             <PersonName id={id} fontSize={"20px"}/>
             <LastMessagePreview id={id}/>
           </Space>

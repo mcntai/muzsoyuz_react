@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import s from './Messages.module.css'
 import Message from './Message'
 import { useDispatch, useSelector } from "react-redux"
@@ -7,17 +7,15 @@ import { setMessagesViewed } from "../../actions/chat"
 
 const Messages = ({ id }) => {
   const chat = useSelector(selectChat(id))
-  const isChatOpened = useRef(true)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (isChatOpened.current) {
-      dispatch(setMessagesViewed(id))
-    }
+    dispatch(setMessagesViewed(id))
 
     return () => {
+      dispatch(setMessagesViewed(id))
     }
-  }, [chat])
+  }, [])
 
   return (
     <div className={s.messageWrapper}>

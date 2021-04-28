@@ -16,12 +16,16 @@ const LastMessagePreview = ({ id }) => {
     <>
       <Text
         secondary="true"
+        ellipsis="true"
         style={{
           fontFamily: 'Montserrat',
           fontSize  : '16px',
           fontHeight: '19px',
-          fontWeight: '500'
-        }}>
+          fontWeight: '500',
+          width: '100%'
+        }}
+      >
+
         {
           isMeLastSender
             ? "Я: " + messages[messages.length - 1]?.text

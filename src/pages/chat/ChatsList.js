@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ChatPreview from './ChatPreview'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -9,6 +9,10 @@ import s from './ChatList.module.css'
 
 function ChatsList() {
   const chats = useSelector(selectChats)
+
+  useEffect(() => {
+
+  }, [])
 
   return (
     <div className={s.chatListWrapper}>

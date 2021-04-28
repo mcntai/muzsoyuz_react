@@ -5,6 +5,7 @@ export const ROUTES = {
   FREE_DAYS_ROUTE      : '/quest-free-days',
   HOME                 : '/',
   LOGIN                : '/login',
+  PROFILE              : '/profile',
   FIND_JOB             : '/find-job',
   CHAT                 : '/chat',
   OPENED_CHAT          : '/opened-chat'

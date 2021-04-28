@@ -1,14 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
 import loadExtraReducers from './utils/load-extra-reducers'
 import {
-  fetchUser,
   authenticateUser,
-  authenticateAfterOauth,
-  userProfileUpdate,
+  deleteDayOff,
+  fetchUser,
+  getDaysOff,
   setDayOff,
-  getDaysOff, deleteDayOff, updateImage
+  updateImage,
+  userProfileUpdate
 } from '../actions/user'
 import { ACTIONS as t } from '../constants/action-types'
+import { ROUTES as r } from '../constants/routes'
 import keyBy from 'lodash/keyBy'
 
 
@@ -54,7 +56,7 @@ const logout = state => {
 }
 
 const setNextLocation = (state, action) => {
-  state.nextLocation = action.nextLocation
+  state.nextLocation = action.nextLocation === r.PROFILE ? r.HOME : action.nextLocation
 }
 
 const resetNextLocation = (state) => {

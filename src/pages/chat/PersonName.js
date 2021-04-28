@@ -17,7 +17,7 @@ const PersonName = ({ id, fontSize }) => {
           color     : "#262D33",
           fontSize  : fontSize,
           fontWeight: "600",
-          lineHeight: "24px"
+          lineHeight: "24px",
         }}
       >
         {chat?.user?.name}

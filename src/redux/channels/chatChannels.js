@@ -1,4 +1,4 @@
-import { eventChannel, END } from 'redux-saga'
+import { eventChannel } from 'redux-saga'
 import { EVENTS as e } from '../../constants/socket-events'
 import { ACTIONS as t } from '../../constants/action-types'
 
@@ -9,13 +9,7 @@ export const createConnectChannel = socket => {
       socket.emit(e.CONNECTED)
 
       socket.emit(e.GET_CONVERSATIONS, (conversations) => {
-        console.log(conversations)
-
         emit({ type: t.GET_CONVERSATIONS, payload: conversations })
-      })
-
-      socket.emit('getUsers', (users) => {
-        // console.log(users)
       })
     }
 
