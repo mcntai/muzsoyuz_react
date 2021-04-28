@@ -27,6 +27,12 @@ const OpenedChat = () => {
   const chat = useSelector(selectChat(chatId))
   id.current = existingChat ? existingChat : chatId
 
+  useEffect(() => {
+    if (participantId && !existingChat) {
+      dispatch(createConversation(participantId))
+    }
+  }, [])
+
   const scrollToTheBottom = () => {
     myRef.current.scrollIntoView(false)
   }
@@ -34,12 +40,6 @@ const OpenedChat = () => {
   useEffect(() => {
     scrollToTheBottom()
   }, [chat])
-
-  useEffect(() => {
-    if (participantId && !existingChat) {
-      dispatch(createConversation(participantId))
-    }
-  }, [])
 
   const redirect = () => {
     dispatch(goToAllChats())

@@ -53,7 +53,7 @@ const beforeYesterdayDateFormatter = date => {
 
 const isSameDate = date => trimTime(date).getTime() === trimTime(Date.now()).getTime()
 
-const isYesterdayDate = date => trimTime(date).getTime() === addDays(Date.now(), -1).getTime()
+const isYesterdayDate = date => trimTime(date).getTime() === trimTime(addDays(Date.now(), -1)).getTime()
 
 const isBeforeYesterdayDate = date => !isSameDate(date) && !isYesterdayDate(date)
 
