@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useRef } from 'react'
 import { Input } from 'antd'
 import { Button } from 'antd'
 import { useDispatch, useSelector } from "react-redux"
@@ -6,10 +6,12 @@ import { ACTIONS as t } from '../../constants/action-types'
 import { debounce } from 'lodash'
 import { typingEnd, typingStart } from "../../actions/chat"
 import { selectChat } from "../../reducers/chatReducer"
+import s from './EnterTextField.module.css'
 
 const { TextArea } = Input
 
 const EnterTextField = ({ id }) => {
+  const myRef = useRef(null)
   const [text, setText] = useState('')
   const [startedTyping, setStartedTyping] = useState(false)
   const chat = useSelector(selectChat(id))
@@ -33,6 +35,8 @@ const EnterTextField = ({ id }) => {
 
     dispatch({ type: t.SEND_MESSAGE, message })
     setText('')
+
+    myRef.current.focus()
   }
 
   const handleChangeInput = e => {
@@ -45,6 +49,17 @@ const EnterTextField = ({ id }) => {
     dispatch(typingStart(id))
   }
 
+  const handlePressEnter = e => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera
+
+    if (/iPad|iPhone|iPod|Android/.test(userAgent) && !window.MSStream) return
+
+    if (e.shiftKey || e.altKey || e.ctrlKey) return
+
+    e.preventDefault()
+    handleSubmitMessage()
+  }
+
   return (
     <div style={{
       background: "#FFFFFF",
@@ -54,7 +69,7 @@ const EnterTextField = ({ id }) => {
       display   : "flex",
       alignItems: "flex-end",
     }}>
-      <span style={{display: chat?.typing ? 'block': 'none'}}>typing...</span>
+      <span style={{ display: chat?.typing ? 'block' : 'none' }}>typing...</span>
       <
         TextArea
         value={text}
@@ -62,24 +77,30 @@ const EnterTextField = ({ id }) => {
         autoSize={{ minRows: 1, maxRows: 12 }}
         onChange={handleChangeInput}
         onKeyUp={handleTypingFinish}
+        onPressEnter={handlePressEnter}
+        ref={myRef}
         style={{
           background  : "#FAFAFA",
-          padding     : "24px 15px",
+          padding     : "6px 15px",
           borderRadius: "22px",
           fontSize    : "16px",
-          marginBottom: "20px"
+          marginTop   : "5px",
+          marginBottom: "10px"
         }}
       />
       <Button
+        className={s.btn}
         type="primary"
         shape="circle"
         size="large"
         onClick={handleSubmitMessage}
         style={{
-          marginBottom: "20px"
+          marginBottom: "10px",
+          width       : "40px",
+          height      : "40px"
         }}
       >
-        Send
+        <div className={s.send}/>
       </Button>
     </div>
   )

@@ -21,7 +21,7 @@ const Message = ({ message }) => {
               color       : message.senderId === myId ? "#FFFFFF" : "#000000",
               background  : message.senderId === myId ? "#6384EB" : "#F6F6F6",
               textAlign   : "left",
-              padding     : "20px 25px",
+              padding     : "10px 15px",
               borderRadius: message.senderId === myId ? "30px 8px 30px 30px" : "30px 30px 30px 8px",
               fontFamily  : 'Montserrat',
               fontSize    : '14px',
