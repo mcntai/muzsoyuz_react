@@ -5,7 +5,7 @@ import {
   createNewConversationChannel,
   createUserIsActiveChannel, typingStatusChannel,
 } from '../channels/chatChannels'
-import { ACTIONS as t, rejected } from '../../constants/action-types'
+import { ACTIONS as t, fulfilled, rejected } from '../../constants/action-types'
 import { EVENTS as e } from '../../constants/socket-events'
 import io from "socket.io-client"
 
@@ -49,7 +49,7 @@ function* watcher(socket) {
 }
 
 export default function* rootSaga() {
-  yield take("user/fetch/fulfilled")
+  yield take(fulfilled(t.USER_AUTH))
 
   const state = yield select()
 
