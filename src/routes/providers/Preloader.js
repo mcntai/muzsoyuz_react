@@ -19,6 +19,7 @@ const Preloader = ({ children }) => {
     <Loader
       error={error}
       loading={loading}
+      loaded={loaded}
     >
       {children}
     </Loader>

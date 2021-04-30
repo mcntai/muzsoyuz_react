@@ -87,7 +87,7 @@ const FindJob = () => {
                 state   : { data: item }
               }}>
                 <div className={s.jobOfferContentWrapper}>
-                  <img src={roles[item.role].imageURL} alt='Instrument' className={s.instrumentIcon}/>
+                  <img src={roles[item.role]?.imageURL} alt='Instrument' className={s.instrumentIcon}/>
                   <div className={s.jobTextWrapper}>
                     <p className={s.jobTitle}>{item.title}</p>
                     <p className={s.jobSalary}>{item.salary} грн</p>
