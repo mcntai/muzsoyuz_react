@@ -49,7 +49,7 @@ function* watcher(socket) {
 }
 
 export default function* rootSaga() {
-  yield take(fulfilled(t.USER_AUTH))
+  yield take(fulfilled(t.USER_FETCH))
 
   const state = yield select()
 
