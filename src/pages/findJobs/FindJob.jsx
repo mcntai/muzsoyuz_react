@@ -7,8 +7,8 @@ import {
   selectFetchedData,
   selectOfferBody,
   selectOffers
-} from '../../slice/offers'
-import { fetchOffers } from '../../actions/offers'
+} from '../../redux/slice/offers'
+import { fetchOffers } from '../../redux/actions/offers'
 import { omitBy, predicates } from '../../utils/object'
 import { NavLink } from 'react-router-dom'
 import { OFFSET_PERIOD } from '../../constants/offers'
@@ -17,7 +17,7 @@ import SortingFilterButtons from './SortingFilterButtons'
 import Footer from '../../components/mainFooter/Footer'
 import s from './FindJob.module.css'
 import Loader from '../../components/common/Loader'
-import { selectRoles } from "../../slice/meta"
+import { selectRoles } from "../../redux/slice/meta"
 
 const or = (...fns) => value => fns.some(fn => fn(value))
 

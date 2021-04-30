@@ -17,8 +17,8 @@ import history from "../history/history"
 import OauthCallBackListener from "./OauthCallBackListener"
 import Preloader from "./providers/Preloader"
 import ImageEasyCrop from "../components/common/ImageEasyCrop"
-import ChatsList from "../pages/chat/ChatsList"
-import OpenedChat from "../pages/chat/OpenedChat"
+import ChatsList from "../pages/chat/chatsList/ChatsList"
+import OpenedChat from "../pages/chat/openedChat/OpenedChat"
 
 
 export default function Routes() {

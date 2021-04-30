@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { goBack, updateImage } from '../../actions/user'
-import { profileImageUploaded, selectProfileImage } from "../../slice/general"
-import { selectProfile } from '../../slice/user'
+import { goBack, updateImage } from '../../redux/actions/user'
+import { profileImageUploaded, selectProfileImage } from "../../redux/slice/general"
+import { selectProfile } from '../../redux/slice/user'
 import ImageEasyCrop from "../../components/common/ImageEasyCrop"
 import CollapseButton from '../findJobs/filters/CollapseButton'
 import InputNameProfile from './InputNameProfile'

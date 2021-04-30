@@ -2,7 +2,7 @@ import React from "react"
 import "antd/dist/antd.css"
 import { Typography } from "antd"
 import { useSelector } from "react-redux"
-import { selectChat } from "../../reducers/chatReducer"
+import { selectChat } from "../../../redux/reducers/chatReducer"
 
 const { Text } = Typography
 
@@ -18,7 +18,7 @@ const LastMessageTime = ({ id }) => {
         secondary="true"
         style={{
           fontFamily: 'Montserrat',
-          fontSize  : '17px',
+          fontSize  : '14px',
           fontHeight: '20px',
           fontWeight: '500'
         }}

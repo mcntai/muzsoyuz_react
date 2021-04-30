@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import loadExtraReducers from './utils/load-extra-reducers'
 import { fetchOffers, makeOffer } from '../actions/offers'
-import { addDays } from '../utils/date'
+import { addDays } from '../../utils/date'
 
 
 const fulfilledReducer = (state, action) => {

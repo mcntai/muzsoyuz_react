@@ -10,7 +10,7 @@
 }
 
 .backBtn {
-  content: url("../../assets/img/arrow-left.svg");
+  content: url("../../../assets/img/arrow-left.svg");
   width: 20px;
   height: 20px;
 }

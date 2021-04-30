@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import DayPicker from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
-import { deleteDayOff, getDaysOff, setDayOff } from '../../actions/user'
-import { selectDaysOff } from '../../slice/user'
+import { deleteDayOff, getDaysOff, setDayOff } from '../../redux/actions/user'
+import { selectDaysOff } from '../../redux/slice/user'
 
 
 const WEEKDAYS_SHORT = {

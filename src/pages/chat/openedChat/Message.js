@@ -2,8 +2,7 @@ import React, { memo } from 'react'
 import "antd/dist/antd.css"
 import { Typography } from "antd"
 import { useSelector } from "react-redux"
-import { selectProfile } from "../../slice/user"
-import s from './Messages.module.css'
+import { selectProfile } from "../../../redux/slice/user"
 
 const { Paragraph } = Typography
 
@@ -15,7 +14,10 @@ const Message = ({ message }) => {
       <div style={{
         textAlign: message.senderId === myId ? "right" : "left",
       }}>
-        <div className={s.messageWidth}>
+        <div style={{
+          display : "inline-block",
+          maxWidth: "70%"
+        }}>
           <Paragraph
             style={{
               color       : message.senderId === myId ? "#FFFFFF" : "#000000",

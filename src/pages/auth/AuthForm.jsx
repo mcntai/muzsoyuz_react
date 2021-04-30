@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import AuthNavLinks from './AuthNavLinks'
 import { authValidator } from '../../validators'
-import { authenticateUser } from '../../actions/user'
+import { authenticateUser } from '../../redux/actions/user'
 import s from './AuthForm.module.css'
 
 

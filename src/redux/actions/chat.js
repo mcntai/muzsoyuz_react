@@ -1,6 +1,6 @@
-import { ACTIONS as t } from '../constants/action-types'
-import { ROUTES as r } from '../constants/routes'
-import history from "../history/history"
+import { ACTIONS as t } from '../../constants/action-types'
+import { ROUTES as r } from '../../constants/routes'
+import history from "../../history/history"
 
 export const createConversation = participantId => ({
   type: t.CREATE_CONVERSATION,

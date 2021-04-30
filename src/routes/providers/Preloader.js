@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../../components/common/Loader'
-import { selectRoles } from "../../slice/meta"
-import { fetchRoles } from "../../actions/meta"
+import { selectRoles } from "../../redux/slice/meta"
+import { fetchRoles } from "../../redux/actions/meta"
 
 
 const Preloader = ({ children }) => {

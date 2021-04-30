@@ -2,7 +2,7 @@ import React from "react"
 import "antd/dist/antd.css"
 import { Typography } from "antd"
 import { useSelector } from "react-redux"
-import { selectChat } from "../../reducers/chatReducer"
+import { selectChat } from "../../../redux/reducers/chatReducer"
 
 const { Text } = Typography
 
@@ -12,6 +12,7 @@ const PersonName = ({ id, fontSize }) => {
   return (
     <>
       <Text
+        ellipsis={true}
         style={{
           fontFamily: 'Montserrat',
           color     : "#262D33",

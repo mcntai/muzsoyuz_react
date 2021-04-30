@@ -1,5 +1,5 @@
 import apiAction from "./api-action"
-import { ACTIONS as p } from "../constants/action-types"
+import { ACTIONS as p } from "../../constants/action-types"
 
 
 export const fetchRoles = apiAction(

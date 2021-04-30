@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { makeOffer } from '../../actions/offers'
+import { makeOffer } from '../../redux/actions/offers'
 import { jobOfferValidator } from '../../validators'
 import Header from '../../components/mainHeader/Header'
 import Footer from '../../components/mainFooter/Footer'
 import PopUp from '../../components/common/popUp'
-import { clearError } from '../../actions/errors'
+import { clearError } from '../../redux/actions/errors'
 import s from './OfferJob.module.css'
-import { selectError } from '../../reducers/errorsReducer'
-import { selectMadeOffer } from '../../slice/offers'
+import { selectError } from '../../redux/reducers/errorsReducer'
+import { selectMadeOffer } from '../../redux/slice/offers'
 import history from '../../history/history'
 
 

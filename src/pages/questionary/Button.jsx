@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { selectShowButton } from '../../slice/general'
+import { selectShowButton } from '../../redux/slice/general'
 import s from './Questionary.module.css'
 
 

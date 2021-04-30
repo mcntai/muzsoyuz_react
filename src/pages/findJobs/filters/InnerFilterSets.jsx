@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import s from './InnerFilterSets.module.css'
-import { filterSets } from '../../../slice/offers'
+import { filterSets } from '../../../redux/slice/offers'
 
 
 const InnerFilterSets = () => {

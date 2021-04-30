@@ -3,7 +3,7 @@ import "antd/dist/antd.css"
 import { Avatar, Badge } from "antd"
 import { UserOutlined } from "@ant-design/icons"
 import { useSelector } from "react-redux"
-import { selectChat } from "../../reducers/chatReducer"
+import { selectChat } from "../../../redux/reducers/chatReducer"
 
 const AvatarWithBadge = ({ id }) => {
   const { user: { imageURL, isActive } } = useSelector(selectChat(id))
@@ -17,7 +17,7 @@ const AvatarWithBadge = ({ id }) => {
       >
         <Avatar
           src={imageURL}
-          size={72}
+          size={{ xs: 60, sm: 72, md: 72, lg: 72, xl: 72, xxl: 72 }}
           shape="circle"
           icon={<UserOutlined/>}
           style={{ borderRadius: "30px" }}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { selectShowText } from '../../slice/general'
+import { selectShowText } from '../../redux/slice/general'
 
 
 const Text = ({ text, textWrapperClass, textClass }) => {

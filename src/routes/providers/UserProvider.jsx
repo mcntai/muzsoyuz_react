@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-import { fetchUser, goToLogin, setAuthNextLocation } from '../../actions/user'
+import { fetchUser, goToLogin, setAuthNextLocation } from '../../redux/actions/user'
 import Loader from '../../components/common/Loader'
-import { selectUser } from '../../slice/user'
+import { selectUser } from '../../redux/slice/user'
 
 
 const AuthProvider = ({ children }) => {

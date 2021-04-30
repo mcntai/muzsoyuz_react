@@ -4,10 +4,10 @@ import Header from '../../components/mainHeader/Header'
 import Footer from '../../components/mainFooter/Footer'
 import avatar from '../../assets/img/avatar.svg'
 import { useDispatch } from 'react-redux'
-import { goTo } from '../../actions/user'
+import { goTo } from '../../redux/actions/user'
 import { ROUTES as r } from '../../constants/routes'
 import s from './OpenJob.module.css'
-import { goToConcreteChat } from "../../actions/chat"
+import { goToConcreteChat } from "../../redux/actions/chat"
 
 
 const role = {

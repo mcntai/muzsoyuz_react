@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
 import createSagaMiddleware from 'redux-saga'
-import rootReducer from './reducers/rootReducer'
+import rootReducer from './redux/reducers/rootReducer'
 import rootSaga from './redux/saga/sagas'
 import { MuzSoyuz } from './api/muzsoyuz'
 

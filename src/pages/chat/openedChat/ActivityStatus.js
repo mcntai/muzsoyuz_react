@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useState } from "react"
 import "antd/dist/antd.css"
 import { Typography } from "antd"
 import { useSelector } from "react-redux"
-import { selectChat, selectUserLastSeenTime } from "../../reducers/chatReducer"
-import { calculateLastSeenStatus, dateFormatter } from "../../utils/date"
+import { selectChat, selectUserLastSeenTime } from "../../../redux/reducers/chatReducer"
+import { dateFormatter } from "../../../utils/date"
 
 const { Text } = Typography
 
@@ -11,7 +11,6 @@ const ActivityStatus = ({ id }) => {
   const chat = useSelector(selectChat(id))
   const lastSeen = useSelector(selectUserLastSeenTime(id))
   const [lastActive, setLastActive] = useState('')
-  const myRef = useRef(null)
 
   useEffect(() => {
     setLastActive(dateFormatter(lastSeen))

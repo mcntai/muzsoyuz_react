@@ -1,4 +1,4 @@
-import { identity } from '../../utils/array'
+import { identity } from '../../../utils/array'
 import get from 'lodash/get'
 
 

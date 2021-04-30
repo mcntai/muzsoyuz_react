@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import s from './InnerFilterSalary.module.css'
-import { filterSalary, selectSalary } from '../../../slice/offers'
+import { filterSalary, selectSalary } from '../../../redux/slice/offers'
 import { debounce } from 'lodash'
 
 

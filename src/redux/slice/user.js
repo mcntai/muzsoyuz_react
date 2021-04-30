@@ -9,8 +9,8 @@ import {
   updateImage,
   userProfileUpdate
 } from '../actions/user'
-import { ACTIONS as t } from '../constants/action-types'
-import { ROUTES as r } from '../constants/routes'
+import { ACTIONS as t } from '../../constants/action-types'
+import { ROUTES as r } from '../../constants/routes'
 import keyBy from 'lodash/keyBy'
 
 

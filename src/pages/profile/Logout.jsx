@@ -1,8 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { logout } from '../../actions/user'
-import { clearError } from '../../actions/errors'
+import { logout } from '../../redux/actions/user'
+import { clearError } from '../../redux/actions/errors'
 import { ERRORS as e } from '../../constants/errors'
 import s from './Logout.module.css'
 

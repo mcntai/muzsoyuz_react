@@ -1,7 +1,7 @@
-import { ACTIONS as t } from '../constants/action-types'
+import { ACTIONS as t } from '../../constants/action-types'
 import keyBy from 'lodash/keyBy'
 import mapValues from 'lodash/mapValues'
-import reducersMap from "../redux/helpers/reducersMap"
+import reducersMap from "../helpers/reducersMap"
 
 
 const INITIAL_STATE = {

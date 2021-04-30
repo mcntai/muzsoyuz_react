@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { userProfileUpdate } from '../../actions/user'
+import { userProfileUpdate } from '../../redux/actions/user'
 import s from './InstrumentProfile.module.css'
-import { selectProfile } from '../../slice/user'
+import { selectProfile } from '../../redux/slice/user'
 
 
 const instruments = {

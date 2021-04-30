@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import Cropper from 'react-easy-crop'
 import { useDispatch } from "react-redux"
-import { profileImageUploaded } from "../../slice/general"
+import { profileImageUploaded } from "../../redux/slice/general"
 import s from "./ImageEasyCrop.module.css"
 import confirm from "../../assets/img/confirm.svg"
 import remove from "../../assets/img/remove.svg"

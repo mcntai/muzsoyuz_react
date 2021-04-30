@@ -1,10 +1,8 @@
 import React from 'react'
 import s from './ChooseExperiencePage.module.css'
-import { useDispatch } from 'react-redux'
-import { userProfileUpdate } from '../../actions/user'
 
 
-const YearsOfExperience = ({sendYearForUpdate}) => {
+const YearsOfExperience = ({ sendYearForUpdate }) => {
 
   const chooseExperience = (e) => {
     const exp = Number(e.target.getAttribute('data-year'))
@@ -25,8 +23,8 @@ const YearsOfExperience = ({sendYearForUpdate}) => {
             >
               {
                 el < 5
-                ? el
-                : `${el}+`
+                  ? el
+                  : `${el}+`
               }
             </div>
           )

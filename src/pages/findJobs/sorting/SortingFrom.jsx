@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import s from './SortingFrom.module.css'
-import { sortOffers } from '../../../slice/offers'
+import { sortOffers } from '../../../redux/slice/offers'
 import history from '../../../history/history'
 
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { filterInstruments, selectInstrumentsList } from '../../../slice/offers'
+import { filterInstruments, selectInstrumentsList } from '../../../redux/slice/offers'
 import { useDispatch, useSelector } from 'react-redux'
 import s from './InnerFilterInstrument.module.css'
 

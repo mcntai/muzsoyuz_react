@@ -1,25 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import ChatPreview from './ChatPreview'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { selectChats } from '../../reducers/chatReducer'
-import { ROUTES as r } from '../../constants/routes'
-import s from './ChatList.module.css'
+import { selectChats } from '../../../redux/reducers/chatReducer'
+import { ROUTES as r } from '../../../constants/routes'
 
 
 function ChatsList() {
   const chats = useSelector(selectChats)
 
-  useEffect(() => {
-
-  }, [])
-
   return (
-    <div className={s.chatListWrapper}>
+    <div style={{ listStyle: "none" }}>
       {
         Object.keys(chats)?.map(chatId => (
           <li key={chatId}>
-            <NavLink className={s.navLinkWrapper} to={{
+            <NavLink to={{
               pathname: r.OPENED_CHAT,
               state   : { chatId: chatId },
             }}>

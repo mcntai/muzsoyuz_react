@@ -6,5 +6,3 @@ export const socket = io('https://muzsoyuz.com/', {
     token: localStorage.getItem("token"),
   }
 })
-
-console.log(socket)

@@ -47,3 +47,7 @@ export const ACTIONS = {
   ...CHAT_CLIENT_ACTIONS,
   ...CHAT_SERVER_ACTIONS,
 }
+
+export const fulfilled = type => `${type}/fulfilled`
+
+export const rejected = type => `${type}/rejected`

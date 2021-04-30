@@ -1,4 +1,4 @@
-import { ACTIONS as t } from '../constants/action-types'
+import { ACTIONS as t } from '../../constants/action-types'
 
 
 export const clearError = () => ({

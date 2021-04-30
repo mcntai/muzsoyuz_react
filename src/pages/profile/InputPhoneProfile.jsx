@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { jobOfferValidator } from '../../validators'
 import * as swalAlert from '../../components/common/alerts'
-import { userProfileUpdate } from '../../actions/user'
+import { userProfileUpdate } from '../../redux/actions/user'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectProfile } from '../../slice/user'
+import { selectProfile } from '../../redux/slice/user'
 import s from './InputPhoneProfile.module.css'
 
 

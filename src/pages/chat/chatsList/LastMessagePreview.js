@@ -2,8 +2,8 @@ import React from "react"
 import "antd/dist/antd.css"
 import { Typography } from "antd"
 import { useSelector } from "react-redux"
-import { selectProfile } from "../../slice/user"
-import { selectChat } from "../../reducers/chatReducer"
+import { selectProfile } from "../../../redux/slice/user"
+import { selectChat } from "../../../redux/reducers/chatReducer"
 
 const { Text } = Typography
 

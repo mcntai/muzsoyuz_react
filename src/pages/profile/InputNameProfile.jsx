@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { userProfileUpdate } from '../../actions/user'
-import { selectProfile } from '../../slice/user'
-import isEmpty from 'lodash/isEmpty'
+import { userProfileUpdate } from '../../redux/actions/user'
+import { selectProfile } from '../../redux/slice/user'
 import s from './InputNameProfile.module.css'
 
 
