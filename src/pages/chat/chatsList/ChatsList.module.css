@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.footerWrapper {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+
+    margin: 0 auto;
+    background: #FFFFFF;
+}
+
+/* iPhone 5/5s/SE*/
+@media screen and (min-width: 320px) {
+    .footerWrapper {
+        padding: 4px 0 5px;
+    }
+}
+
+/*Androids...*/
+@media screen and (min-width: 360px) {
+    .footerWrapper {
+        padding: 4px 0 3px;
+    }
+}
+
+/* iPhone 6+/7+/8+ and Popular Androids */
+@media screen and (min-width: 412px) {
+    .footerWrapper {
+        padding: 4px 0 10px;
+    }
+}
+
+/* iPhone 11 Pro / X / XS */
+@media screen and (min-width: 375px) and (height: 812px) {
+    .footerWrapper {
+        padding: 4px 0 3px;
+    }
+}
+

@@ -7,6 +7,8 @@ const ROOT_PATH = '/'
 
 export const logout = error => dispatch => {
   dispatch({ ...authenticateUser.rejected, error })
+
+  document.location.reload()
 }
 
 export const goToLogin = () => () => {

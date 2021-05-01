@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logout } from '../../redux/actions/user'
 import { clearError } from '../../redux/actions/errors'
@@ -17,13 +16,12 @@ const Logout = ({ btnWrapper }) => {
 
   return (
     <div className={btnWrapper}>
-      <NavLink
-        to={'/'}
+      <button
         className={s.btn}
         onClick={handleLogOut}
       >
         Вийти з системи
-      </NavLink>
+      </button>
     </div>
   )
 }
