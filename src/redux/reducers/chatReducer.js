@@ -6,7 +6,7 @@ import reducersMap from "../helpers/reducersMap"
 
 const INITIAL_STATE = {
   chats: {},
-  users: {}
+  users: {},
 }
 
 const getInitialData = (state, action) => {

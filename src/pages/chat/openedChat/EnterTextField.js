@@ -23,7 +23,7 @@ const EnterTextField = ({ id }) => {
       setStartedTyping(false)
 
       dispatch(typingEnd(id))
-    }, 750),
+    }, 5000),
     [startedTyping]
   )
 
@@ -35,6 +35,7 @@ const EnterTextField = ({ id }) => {
     const message = { text, chatId: id }
 
     dispatch({ type: t.SEND_MESSAGE, message })
+    dispatch(typingEnd(id))
     setText('')
 
     myRef.current.focus()
@@ -107,7 +108,6 @@ const EnterTextField = ({ id }) => {
           />
           <Button
             className={s.btn}
-            type="primary"
             shape="circle"
             size="large"
             onClick={handleSubmitMessage}
@@ -116,6 +116,8 @@ const EnterTextField = ({ id }) => {
               marginLeft  : "5px",
               width       : "40px",
               height      : "40px",
+              background  : "#6384EB",
+              border      : "none",
             }}
           >
             <div className={s.send}/>
