@@ -10,7 +10,9 @@ const Messages = ({ id }) => {
 
 
   useEffect(() => {
-    dispatch(setMessagesViewed(id))
+    if (chat) {
+      dispatch(setMessagesViewed(id))
+    }
 
     return () => {
       dispatch(setMessagesViewed(id))
