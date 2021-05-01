@@ -22,7 +22,7 @@ const offersSlice = createSlice({
         },
         salary : {
           from: 0,
-          to  : 30000,
+          to  : 999999999,
         },
         sets   : '',
       },
@@ -64,7 +64,7 @@ const offersSlice = createSlice({
       state.fetchOffersBody.where.date.to = Number(action.payload.to)
     },
     filterSalary(state, action) {
-      state.fetchOffersBody.where.salary[action.payload.range] = action.payload.value
+      state.fetchOffersBody.where.salary[action.payload.range] = Number(action.payload.value)
     },
     filterSets(state, action) {
       state.fetchOffersBody.where.sets = action.payload
