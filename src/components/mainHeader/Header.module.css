@@ -1,58 +1,62 @@
 /* Common Styles */
-.profile {
+.headerWrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 13px;
 }
 
-.profile img {
+.headerWrapper img {
     width: 27px;
     height: 27px;
 }
 
 .chatImg {
-    margin: 13px 0 13px 10px;
+    margin-left: 10px;
 }
 
 .profileImg {
-    margin: 13px 10px 13px 0;
+    margin-right: 10px;
+}
+
+/* iPhone 11 Pro / X / XS */
+@media screen and (min-width: 375px) and (height: 812px) {
+    .headerWrapper img {
+        width: 32px;
+        height: 32px;
+    }
 }
 
 /* iPhone 6+/7+/8+ and Popular Androids */
 @media screen and (min-width: 412px) {
-    .profile img {
+    .headerWrapper {
+        margin-top: 20px;
+    }
+
+    .headerWrapper img {
         width: 32px;
         height: 32px;
     }
 
     .chatImg {
-        margin: 20px 0 15px 20px;
+        margin-left: 20px;
     }
 
     .profileImg {
-        margin: 20px 20px 15px 0;
+        margin-right: 20px;
     }
 }
 
 /* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
 @media screen and (min-width: 480px) {
-    .profile img {
+    .headerWrapper img {
         width: 36px;
         height: 36px;
     }
 }
 
-/* iPhone 11 Pro / X / XS */
-@media screen and (min-width: 375px) and (height: 812px) {
-    .profile img {
-        margin: 13px 20px 13px 0;
-        width: 32px;
-        height: 32px;
-    }
-}
-
 @media screen and (min-width: 1366px) {
-    .profile img {
+    .headerWrapper img {
         margin: 10px 10px 10px 0;
         width: 30px;
         height: 30px;
