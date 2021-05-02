@@ -1,18 +1,15 @@
 import React from 'react'
-import { error as errorAlert } from './alerts'
-import s from './Loader.module.css'
+import { BoxLoading } from 'react-loadingg'
 
-function Loader({ children, loading, error, loaded }) {
+
+const Loader = ({ children, loading, error, loaded }) => {
   return (
     <>
       {
-        (loading && !loaded)
-          ? <div className={s.loaderWrapper}>
-            <div className={s.loaderLine}/>
-          </div>
-          : null
+        (!loaded && loading)
+          ? <BoxLoading/>
+          : children
       }
-      {children}
       {
         error
           ? console.log(error)
