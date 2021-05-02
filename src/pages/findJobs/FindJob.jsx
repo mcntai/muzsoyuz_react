@@ -33,7 +33,7 @@ const FindJob = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (!loaded) {
+    if (!loaded && !loading) {
       fetchJobOffers()
     }
   }, [])
