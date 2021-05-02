@@ -54,5 +54,6 @@ export default reducersMap({
 
 export const selectChats = state => state.chat.chats
 export const selectChat = id => state => state.chat.chats[id]
+export const selectLastMessage = id => state => state.chat.chats[id]?.messages[state.chat.chats[id]?.messages.length-1]
 export const selectUser = id => state => state.chat.users[id]
 export const selectUserLastSeenTime = id => state => state.chat.chats[id]?.user.lastSeen

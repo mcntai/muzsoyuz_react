@@ -10,8 +10,9 @@ import { goBack } from "../../../redux/actions/user"
 import { useDispatch, useSelector } from 'react-redux'
 import s from './OpenedChat.module.css'
 import { useLocation } from "react-router-dom"
-import { selectChat, selectUser } from "../../../redux/reducers/chatReducer"
+import { selectLastMessage, selectUser } from "../../../redux/reducers/chatReducer"
 import { createConversation, goToAllChats } from '../../../redux/actions/chat'
+import { selectProfile } from "../../../redux/slice/user"
 
 
 const OpenedChat = () => {
@@ -23,8 +24,10 @@ const OpenedChat = () => {
 
   const myRef = useRef(null)
   let id = useRef()
+  const mounted = useRef(false)
   const existingChat = useSelector(selectUser(participantId))
-  const chat = useSelector(selectChat(chatId))
+  const lastMessage = useSelector(selectLastMessage(chatId))
+  const myId = useSelector(selectProfile('_id'))
   id.current = existingChat ? existingChat : chatId
 
   useEffect(() => {
@@ -38,8 +41,13 @@ const OpenedChat = () => {
   }
 
   useEffect(() => {
-    scrollToTheBottom()
-  }, [chat])
+    if (lastMessage?.senderId === myId) {
+      scrollToTheBottom()
+    } else if (!mounted.current) {
+      scrollToTheBottom()
+      mounted.current = true
+    }
+  }, [lastMessage])
 
   const redirect = () => {
     dispatch(goToAllChats())
