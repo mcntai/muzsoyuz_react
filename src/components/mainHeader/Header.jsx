@@ -8,12 +8,13 @@ import ChatWithCounter from './ChatWithCounter'
 
 
 const Header = () => {
-  const authorized = useSelector(selectProfile('_id'))
+  const isAuthorized = useSelector(selectProfile('_id'))
+  const authStatusWrapper = isAuthorized ? s.headerWrapper : s.headerWrapperUnauthorized
 
   return (
-    <div className={s.headerWrapper}>
+    <div className={authStatusWrapper}>
       {
-        authorized
+        isAuthorized
           ? <ChatWithCounter/>
           : null
       }

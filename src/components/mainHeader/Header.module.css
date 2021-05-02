@@ -6,7 +6,19 @@
     margin-top: 13px;
 }
 
+.headerWrapperUnauthorized {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 13px;
+}
+
 .headerWrapper img {
+    width: 27px;
+    height: 27px;
+}
+
+.headerWrapperUnauthorized img {
     width: 27px;
     height: 27px;
 }
@@ -25,6 +37,11 @@
         width: 32px;
         height: 32px;
     }
+
+    .headerWrapperUnauthorized img {
+        width: 32px;
+        height: 32px;
+    }
 }
 
 /* iPhone 6+/7+/8+ and Popular Androids */
@@ -33,7 +50,16 @@
         margin-top: 20px;
     }
 
+    .headerWrapperUnauthorized {
+        margin-top: 20px;
+    }
+
     .headerWrapper img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .headerWrapperUnauthorized img {
         width: 32px;
         height: 32px;
     }
@@ -53,10 +79,21 @@
         width: 36px;
         height: 36px;
     }
+
+    .headerWrapperUnauthorized img {
+        width: 36px;
+        height: 36px;
+    }
 }
 
 @media screen and (min-width: 1366px) {
     .headerWrapper img {
+        margin: 10px 10px 10px 0;
+        width: 30px;
+        height: 30px;
+    }
+
+    .headerWrapperUnauthorized img {
         margin: 10px 10px 10px 0;
         width: 30px;
         height: 30px;
