@@ -12,14 +12,15 @@ const UnreadMessageCount = () => {
   const myId = useSelector(selectProfile("_id"))
   const chats = useSelector(selectChats)
   const myUnreadMessages = Object.keys(chats)?.reduce((acc, cur) => {
-    return chats[cur]?.messages.filter(msg => msg.senderId !== myId && !msg.viewed)
+    const unreadMessages = chats[cur]?.messages.filter(msg => msg.senderId !== myId && !msg.viewed)
+    return acc + unreadMessages.length
   }, 0)
 
   return (
     <>
       <NavLink to="/chat">
         <Badge
-          count={myUnreadMessages?.length}
+          count={myUnreadMessages}
           style={{
             backgroundColor: "#6384EB",
             color          : "#FFFFFF",

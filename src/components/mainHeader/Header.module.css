@@ -88,23 +88,13 @@
 
 @media screen and (min-width: 1366px) {
     .headerWrapper img {
-        margin: 10px 10px 10px 0;
-        width: 30px;
-        height: 30px;
+        width: 36px;
+        height: 36px;
     }
 
     .headerWrapperUnauthorized img {
-        margin: 10px 10px 10px 0;
-        width: 30px;
-        height: 30px;
-    }
-
-    .chatImg {
-        margin: 10px 0 10px 10px;
-    }
-
-    .profileImg {
-        margin: 10px 10px 10px 0;
+        width: 36px;
+        height: 36px;
     }
 }
 
