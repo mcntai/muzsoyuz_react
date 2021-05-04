@@ -15,7 +15,7 @@ const OauthCallBackListener = () => {
 
   useEffect(() => {
     dispatch(authenticateAfterOauth({ provider, query }))
-  }, [location, dispatch])
+  }, [])
 
   return React.Fragment
 }
