@@ -1,4 +1,4 @@
-import { call, apply, takeEvery, put, all, take, select } from 'redux-saga/effects'
+import { call, apply, takeEvery, put, all, select } from 'redux-saga/effects'
 import {
   createConnectChannel,
   createNewMessageChannel,
@@ -49,23 +49,23 @@ function* watcher(socket) {
 }
 
 export default function* rootSaga() {
-  yield take(fulfilled(t.USER_FETCH))
+  yield takeEvery(fulfilled(t.USER_FETCH), function* () {
+    const state = yield select()
 
-  const state = yield select()
+    const socket = io(process.env.REACT_APP_PRODUCTION_HOST, {
+      path : `${process.env.REACT_APP_API_PREFIX}/chat`,
+      query: {
+        token: state.user.token
+      }
+    })
 
-  const socket = io('https://muzsoyuz.com/', {
-    path : '/api/v2/chat',
-    query: {
-      token: state.user.token
-    }
+    yield all([
+      mainSaga(createConnectChannel, socket),
+      mainSaga(createNewMessageChannel, socket),
+      mainSaga(createNewConversationChannel, socket),
+      mainSaga(createUserIsActiveChannel, socket),
+      mainSaga(typingStatusChannel, socket),
+      watcher(socket)
+    ])
   })
-
-  yield all([
-    mainSaga(createConnectChannel, socket),
-    mainSaga(createNewMessageChannel, socket),
-    mainSaga(createNewConversationChannel, socket),
-    mainSaga(createUserIsActiveChannel, socket),
-    mainSaga(typingStatusChannel, socket),
-    watcher(socket)
-  ])
 }

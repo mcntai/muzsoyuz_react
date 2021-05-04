@@ -16,8 +16,8 @@ import styles from './CalendarProfile.module.css'
 
 
 const Profile = () => {
-  const [imageUrl, setImageUrl] = useState()
-  const [file, setFile] = useState()
+  const [imageUrl, setImageUrl] = useState(null)
+  const [file, setFile] = useState(null)
 
   const userImage = useSelector(selectProfile('imageURL'))
   const isProfileImageUploaded = useSelector(selectProfileImage)
@@ -30,7 +30,7 @@ const Profile = () => {
 
   useEffect(() => {
     return () => dispatch(profileImageUploaded(false))
-  }, [])
+  }, [dispatch])
 
   const fileSelectedHandler = (e) => {
     if (e.target.files?.length) {
