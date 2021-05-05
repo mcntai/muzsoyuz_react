@@ -21,9 +21,6 @@ const INITIAL_STATE = {
     list: [],
   },
   token  : localStorage.getItem('token'),
-  loading: false,
-  loaded : false,
-  error  : null
 }
 
 const fulfilledGetDaysOff = (state, action) => {
