@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import loadExtraReducers from './utils/load-extra-reducers'
 import {
-  authenticateAfterOauth,
   authenticateUser,
   deleteDayOff,
   fetchUser,
@@ -22,6 +21,9 @@ const INITIAL_STATE = {
     list: [],
   },
   token  : localStorage.getItem('token'),
+  loading: false,
+  loaded : false,
+  error  : null
 }
 
 const fulfilledGetDaysOff = (state, action) => {
@@ -64,20 +66,11 @@ const resetNextLocation = (state) => {
   state.nextLocation = null
 }
 
-const pendingOauth = (state) => {
-  state.loading = true
-  state.loaded = false
-  state.error = null
-}
-
 const userSlice = createSlice({
   name         : 'user',
   initialState : INITIAL_STATE,
   reducers     : {},
   extraReducers: {
-    ...loadExtraReducers(authenticateAfterOauth, {
-      pendingReducer: pendingOauth
-    }),
     ...loadExtraReducers(fetchUser, {
       context: 'profile'
     }),
