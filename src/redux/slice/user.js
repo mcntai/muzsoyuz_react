@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import loadExtraReducers from './utils/load-extra-reducers'
 import {
+  authenticateAfterOauth,
   authenticateUser,
   deleteDayOff,
   fetchUser,
@@ -68,6 +69,7 @@ const userSlice = createSlice({
   initialState : INITIAL_STATE,
   reducers     : {},
   extraReducers: {
+    ...loadExtraReducers(authenticateAfterOauth),
     ...loadExtraReducers(fetchUser, {
       context: 'profile'
     }),
