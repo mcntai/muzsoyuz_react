@@ -3,11 +3,12 @@ import { useLocation } from 'react-router-dom'
 import Header from '../../components/mainHeader/Header'
 import Footer from '../../components/mainFooter/Footer'
 import avatar from '../../assets/img/avatar.svg'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { goTo } from '../../redux/actions/user'
 import { ROUTES as r } from '../../constants/routes'
 import s from './OpenJob.module.css'
 import { goToConcreteChat } from "../../redux/actions/chat"
+import { selectProfile } from "../../redux/slice/user"
 
 
 const role = {
@@ -25,6 +26,7 @@ const role = {
 const OpenJob = () => {
   const location = useLocation()
   const [data, setData] = useState([])
+  const myId = useSelector(selectProfile('_id'))
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -71,7 +73,11 @@ const OpenJob = () => {
                   <img src={el.user?.imageURL || avatar} className={s.userImage} alt="avatar"/>
                 </div>
               </div>
-              <button className={s.chatBtn} id={el.user?._id} onClick={handleChat}>Перейти в чат</button>
+              {
+                myId === el.user?._id
+                  ? null
+                  : <button className={s.chatBtn} id={el.user?._id} onClick={handleChat}>Перейти в чат</button>
+              }
             </div>
             <div className={s.footerWrapper}>
               <Footer/>

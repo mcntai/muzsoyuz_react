@@ -55,11 +55,6 @@ const OfferJob = () => {
     setInputs({ ...inputs, [name]: name === 'date' ? new Date(value) : value })
   }
 
-  function handleChangeNum(e) {
-    const { name, value } = e.target
-    setInputs({ ...inputs, [name]: Number(value) })
-  }
-
   function validateInput(e, name) {
     const { value } = e.target
 
@@ -90,8 +85,8 @@ const OfferJob = () => {
         jobType  : 'musicalReplacement',
         date     : inputs.date,
         address  : inputs.address,
-        salary   : inputs.salary,
-        sets     : inputs.sets,
+        salary   : Number(inputs.salary),
+        sets     : Number(inputs.sets),
         title    : inputs.title,
         role     : inputs.role,
         phone    : inputs.phone,
@@ -188,7 +183,7 @@ const OfferJob = () => {
             placeholder='наприклад, 3'
             className={s.input}
             value={inputs.sets}
-            onChange={handleChangeNum}
+            onChange={handleChangeStr}
             onBlur={(e) => validateInput(e, 'setsErr')}
           />
         </div>
@@ -203,7 +198,7 @@ const OfferJob = () => {
             placeholder='гонорар за роботу'
             className={s.input}
             value={inputs.salary}
-            onChange={handleChangeNum}
+            onChange={handleChangeStr}
             onBlur={(e) => validateInput(e, 'salaryErr')}
           />
         </div>
