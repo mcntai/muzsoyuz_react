@@ -64,6 +64,10 @@ const resetNextLocation = (state) => {
   state.nextLocation = null
 }
 
+const pendingUpdateImage = (state) => {
+  state.loading = true
+}
+
 const userSlice = createSlice({
   name         : 'user',
   initialState : INITIAL_STATE,
@@ -80,7 +84,8 @@ const userSlice = createSlice({
       context: 'profile'
     }),
     ...loadExtraReducers(updateImage, {
-      context: 'profile'
+      context       : 'profile',
+      pendingReducer: pendingUpdateImage,
     }),
     ...loadExtraReducers(setDayOff, {
       context         : 'daysOff',

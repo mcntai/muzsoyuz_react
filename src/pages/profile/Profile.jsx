@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { goBack, updateImage } from '../../redux/actions/user'
 import { profileImageUploaded, selectProfileImage } from "../../redux/slice/general"
@@ -21,6 +21,7 @@ const Profile = () => {
 
   const userImage = useSelector(selectProfile('imageURL'))
   const isProfileImageUploaded = useSelector(selectProfileImage)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -44,6 +45,10 @@ const Profile = () => {
     e.target.value = ''
   }
 
+  const handleImageLoad = () => {
+    setIsLoaded(true)
+  }
+
   return (
     (
       <div className={s.profileWrapper}>
@@ -56,8 +61,12 @@ const Profile = () => {
           <span className={backBtn} onClick={() => dispatch(goBack())}/>
           <div className={s.topContentWrapper}>
             <div className={avatarWrapper}>
-              <img src={userImage || avatar} alt="avatar" className={s.avatar}/>
-              <div className={s.changeAvatar} />
+              {
+                isLoaded
+                  ? <img src={userImage} alt="avatar" className={s.avatar} onLoad={handleImageLoad}/>
+                  : <img src={avatar} alt="avatar" className={s.avatar} onLoad={handleImageLoad}/>
+              }
+              <div className={s.changeAvatar}/>
               <input type="file" accept="image/*" className={fileInput} onChange={fileSelectedHandler}/>
             </div>
             <InputNameProfile/>
