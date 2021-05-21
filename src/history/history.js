@@ -8,7 +8,9 @@ history.listen((location) => {
   ReactGA.pageview(location.pathname)
 })
 
-if (window.performance && (performance.getEntriesByType("navigation") === performance.getEntriesByType("navigation").TYPE_NAVIGATE)) {
+const nav = performance.getEntriesByType("navigation")
+
+if (window.performance && (nav === nav.TYPE_NAVIGATE)) {
   ReactGA.pageview("/")
 }
 

@@ -6,8 +6,18 @@ import LastMessageTime from "./LastMessageTime"
 import UnreadMessageCount from "./UnreadMessageCount"
 import { Space } from "antd"
 import { Row, Col } from "antd"
+import { useSelector } from "react-redux"
+import { selectChat } from "../../../redux/reducers/chatReducer"
+import { selectProfile } from "../../../redux/slice/user"
+import {ReactComponent as ReadMsg} from '../../../assets/img/read-msg.svg'
+import {ReactComponent as UnreadMsg} from '../../../assets/img/unread-msg.svg'
+import s from './ChatPreview.module.css'
 
 const ChatPreview = ({ id }) => {
+  const { messages } = useSelector(selectChat(id))
+  const myId = useSelector(selectProfile('_id'))
+  const isMeLastSender = messages[messages.length - 1]?.senderId === myId
+  const lastMessage = messages[messages.length - 1]
 
   return (
     <div style={{
@@ -46,7 +56,13 @@ const ChatPreview = ({ id }) => {
         >
           <Space direction="vertical">
             <LastMessageTime id={id}/>
-            <UnreadMessageCount id={id}/>
+            {
+              isMeLastSender
+                ? lastMessage.viewed
+                ? <ReadMsg className={s.imgRed}/>
+                : <UnreadMsg className={s.imgUnread}/>
+                : <UnreadMessageCount id={id}/>
+            }
           </Space>
         </Col>
       </Row>

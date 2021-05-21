@@ -39,7 +39,11 @@ const typingEndedHandler = (state, action) => {
 }
 
 const setMessagesAsViewed = (state, action) => {
-  return state.chats[action.chatId]?.messages.forEach(msg => msg.viewed = true)
+  return state.chats[action.chatId]?.messages.forEach(msg => {
+    if (msg.senderId !== action.senderId) {
+      msg.viewed = true
+    }
+  })
 }
 
 export default reducersMap({
@@ -54,6 +58,6 @@ export default reducersMap({
 
 export const selectChats = state => state.chat.chats
 export const selectChat = id => state => state.chat.chats[id]
-export const selectLastMessage = id => state => state.chat.chats[id]?.messages[state.chat.chats[id]?.messages.length-1]
+export const selectLastMessage = id => state => state.chat.chats[id]?.messages[state.chat.chats[id]?.messages.length - 1]
 export const selectUser = id => state => state.chat.users[id]
 export const selectUserLastSeenTime = id => state => state.chat.chats[id]?.user.lastSeen

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { Input } from 'antd'
 import { Button } from 'antd'
 import { useDispatch, useSelector } from "react-redux"
@@ -12,17 +12,28 @@ const { TextArea } = Input
 
 const EnterTextField = ({ id }) => {
   const myRef = useRef(null)
+  const mounted = useRef(true)
   const [text, setText] = useState('')
   const [startedTyping, setStartedTyping] = useState(false)
   const chat = useSelector(selectChat(id))
   const userName = chat?.user?.name?.split(' ').slice(0, 1)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    return () => {
+      dispatch(typingEnd(id))
+      mounted.current = false
+    }
+  }, [])
+
   const debounced = useCallback(
     debounce(() => {
-      setStartedTyping(false)
+      if (mounted.current) {
 
-      dispatch(typingEnd(id))
+        setStartedTyping(false)
+
+        dispatch(typingEnd(id))
+      }
     }, 5000),
     [startedTyping]
   )

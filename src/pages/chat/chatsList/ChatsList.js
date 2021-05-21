@@ -13,7 +13,7 @@ function ChatsList() {
 
   return (
     <>
-      <div style={{ listStyle: "none" }}>
+      <div style={{ listStyle: "none", paddingBottom: "75px", }}>
         {
           Object.keys(chats)?.map(chatId => (
             <li key={chatId}>

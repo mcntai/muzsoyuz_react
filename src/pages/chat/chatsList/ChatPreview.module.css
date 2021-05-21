@@ -1,0 +1,17 @@
+.imgRed {
+    width: 25px;
+    height: 15px;
+}
+
+.imgRed path {
+    stroke: #6384EB;
+}
+
+.imgUnread {
+    width: 25px;
+    height: 15px;
+}
+
+.imgUnread path {
+    stroke: #6A6A6A;
+}
