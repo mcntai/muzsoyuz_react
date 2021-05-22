@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { goBack, updateImage } from '../../redux/actions/user'
 import { profileImageUploaded, selectProfileImage } from "../../redux/slice/general"
@@ -28,10 +28,6 @@ const Profile = () => {
   const avatarWrapper = !isProfileImageUploaded ? s.avatarWrapper : s.hide
   const fileInput = !isProfileImageUploaded ? s.fileInput : s.hide
   const backBtn = !isProfileImageUploaded ? s.backBtn : s.hide
-
-  useEffect(() => {
-    return () => dispatch(profileImageUploaded(false))
-  }, [dispatch])
 
   const fileSelectedHandler = (e) => {
     if (e.target.files?.length) {

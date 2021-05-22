@@ -1,153 +1,161 @@
 .roboto {
-  font-family: 'Roboto Medium', sans-serif;
-  font-style: normal;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-  color: #000000;
+    font-family: 'Roboto Medium', sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000000;
 }
 
 .footer {
-  display: flex;
-  justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 
 .navWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .nav {
-  composes: roboto;
+    composes: roboto;
 }
 
-.nav img {
-  display: block;
+.nav:hover {
+    color: #6384EB;
+}
+
+.nav:hover .image path {
+    fill: #6384EB;
+}
+
+.image {
+    display: block;
 }
 
 .active {
-  color: #6384EB;
+    color: #6384EB;
 }
 
-.active img {
-  filter: invert(53%) sepia(28%) saturate(5061%) hue-rotate(206deg) brightness(97%) contrast(89%);
+.active path {
+    fill: #6384EB;
 }
 
 /* iPhone 5/5s/SE */
 @media screen and (min-width: 320px) {
-  .navWrapper {
-    width: 93px;
-  }
+    .navWrapper {
+        width: 93px;
+    }
 
-  .nav img {
-    margin: 0 auto 4px;
-    width: 24px;
-    height: 24px;
-  }
+    .image {
+        margin: 0 auto 4px;
+        width: 24px;
+        height: 24px;
+    }
 }
 
- /*Androids...*/
+/*Androids...*/
 @media screen and (min-width: 360px) {
-  .navWrapper {
-    width: 125px;
-  }
+    .navWrapper {
+        width: 125px;
+    }
 
-  .nav img {
-    margin: 0 auto 8px;
-    width: 24px;
-    height: 24px;
-  }
+    .image {
+        margin: 0 auto 8px;
+        width: 24px;
+        height: 24px;
+    }
 }
 
 /* iPhone 6/7/8 */
 @media screen and (min-width: 375px) {
-  .navWrapper {
-    width: 125px;
-  }
+    .navWrapper {
+        width: 125px;
+    }
 
-  .nav {
-    font-size: 14px;
-    line-height: 17px;
-  }
+    .nav {
+        font-size: 14px;
+        line-height: 17px;
+    }
 
-  .nav img {
-    margin: 0 auto 8px;
-    width: 24px;
-    height: 24px;
-  }
+    .image {
+        margin: 0 auto 8px;
+        width: 24px;
+        height: 24px;
+    }
 }
 
 /* iPhone 6+/7+/8+ and Popular Androids */
 @media screen and (min-width: 412px) {
-  .navWrapper {
-    width: 138px;
-  }
+    .navWrapper {
+        width: 138px;
+    }
 
-  .nav {
-    font-size: 14px;
-    line-height: 17px;
-  }
+    .nav {
+        font-size: 14px;
+        line-height: 17px;
+    }
 
-  .nav img {
-    margin: 0 auto 8px;
-    width: 28px;
-    height: 28px;
-  }
+    .image {
+        margin: 0 auto 8px;
+        width: 28px;
+        height: 28px;
+    }
 }
 
 /* Samsung Galaxy Note 5 / LG G5 / One Plus 3 */
 @media screen and (min-width: 480px) {
-  .navWrapper {
-    width: 138px;
-  }
+    .navWrapper {
+        width: 138px;
+    }
 
-  .nav {
-    font-size: 16px;
-    line-height: 19px;
-  }
+    .nav {
+        font-size: 16px;
+        line-height: 19px;
+    }
 
-  .nav img {
-    margin: 0 auto 8px;
-    width: 36px;
-    height: 36px;
-  }
+    .image {
+        margin: 0 auto 8px;
+        width: 36px;
+        height: 36px;
+    }
 }
 
 /* iPhone 11 Pro / X / XS */
 @media screen and (min-width: 375px) and (height: 812px) {
-  .navWrapper {
-    width: 125px;
-  }
+    .navWrapper {
+        width: 125px;
+    }
 
-  .nav {
-    font-size: 14px;
-    line-height: 17px;
-  }
+    .nav {
+        font-size: 14px;
+        line-height: 17px;
+    }
 
-  .nav img {
-    margin: 0 auto 8px;
-    width: 28px;
-    height: 28px;
-  }
+    .image {
+        margin: 0 auto 8px;
+        width: 28px;
+        height: 28px;
+    }
 }
 
 @media screen and (min-width: 1366px) {
-  .navWrapper {
-    width: 300px;
-  }
+    .navWrapper {
+        width: 300px;
+    }
 
-  .nav {
-    font-size: 17px;
-    line-height: 19px;
-  }
+    .nav {
+        font-size: 17px;
+        line-height: 19px;
+    }
 
-  .nav img {
-    margin: 0 auto 8px;
-    width: 30px;
-    height: 30px;
-  }
+    .image {
+        margin: 0 auto 8px;
+        width: 30px;
+        height: 30px;
+    }
 }
 
 

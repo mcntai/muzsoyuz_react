@@ -68,6 +68,10 @@ const pendingUpdateImage = (state) => {
   state.loading = true
 }
 
+const pendingProfileUpdate = (state) => {
+  state.loading = true
+}
+
 const userSlice = createSlice({
   name         : 'user',
   initialState : INITIAL_STATE,
@@ -81,7 +85,8 @@ const userSlice = createSlice({
       rejectedReducer: logout
     }),
     ...loadExtraReducers(userProfileUpdate, {
-      context: 'profile'
+      context: 'profile',
+      pendingReducer: pendingProfileUpdate
     }),
     ...loadExtraReducers(updateImage, {
       context       : 'profile',

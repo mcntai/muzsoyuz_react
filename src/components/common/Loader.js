@@ -7,7 +7,7 @@ const Loader = ({ children, loading, error, loaded }) => {
     <>
       {
         (!loaded && loading)
-          ? <BoxLoading/>
+          ? <BoxLoading color={'#6384EB'}/>
           : children
       }
       {

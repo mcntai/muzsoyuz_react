@@ -21,8 +21,8 @@ const offersSlice = createSlice({
           to  : Number(addDays(Date.now(), 365))
         },
         salary : {
-          from: 0,
-          to  : 999999999,
+          from: 1,
+          to  : 99999999,
         },
         sets   : '',
       },
@@ -39,7 +39,7 @@ const offersSlice = createSlice({
     },
     fetchedOffersCleanUp(state) {
       state.fetchedOffers.data = []
-      state.fetchedOffers.loading = true
+      state.fetchedOffers.loading = false
       state.fetchedOffers.loaded = false
       state.fetchedOffers.error = null
     },

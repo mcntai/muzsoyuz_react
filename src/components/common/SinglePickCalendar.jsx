@@ -42,7 +42,6 @@ const SinglePickCalendar = ({ styles }) => {
     }
   }, [])
 
-
   useEffect(() => {
     const filteredDays = Object.keys(map)
       .filter(id => list.includes(id))

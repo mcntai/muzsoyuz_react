@@ -1,36 +1,34 @@
 import React, { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import s from './InnerFilterSalary.module.css'
 import { filterSalary, selectSalary } from '../../../redux/slice/offers'
 import { debounce } from 'lodash'
-
+import s from './InnerFilterSalary.module.css'
 
 const InnerFilterSalary = () => {
-  const [inputFromValue, setInputFromValue] = useState(null);
-  const [inputToValue, setInputToValue] = useState(null);
+  const [inputFromValue, setInputFromValue] = useState(null)
+  const [inputToValue, setInputToValue] = useState(null)
   const dispatch = useDispatch()
   const salary = useSelector(selectSalary)
 
-  const makeDispatch = (value, range) => {
-    dispatch(filterSalary({ value, range }))
-  }
+  const debounced = useRef(
+    debounce((value, range) => {
+      dispatch(filterSalary({ value, range }))
+    }, 1000)
+  )
 
-  const makeDispatchDebounced = useRef(debounce(makeDispatch, 500));
-
-  const enterSalary = (e) => {
-    let value = e.target.value
-    let range = e.target.getAttribute('data-range')
+  const enterSalary = e => {
+    const value = e.target.value
+    const range = e.target.getAttribute('data-range')
 
     range === 'from'
-    ? setInputFromValue(value)
-    : setInputToValue(value)
+      ? setInputFromValue(value)
+      : setInputToValue(value)
 
-    makeDispatchDebounced.current(value, range)
+    debounced.current(value, range)
   }
 
-
   return (
-    <div className={s.salaryWrapper}>
+    <div>
       <div className={s.salaryInputWrapper}>
         <label className={s.label}>
           від
@@ -38,7 +36,7 @@ const InnerFilterSalary = () => {
             type="number"
             pattern="\d*"
             data-range='from'
-            value={inputFromValue || salary.from}
+            defaultValue={!inputFromValue ? salary.from : inputFromValue}
             className={s.input}
             onChange={enterSalary}
           />
@@ -49,7 +47,7 @@ const InnerFilterSalary = () => {
             type="number"
             pattern="\d*"
             data-range='to'
-            value={inputToValue || salary.to}
+            defaultValue={!inputToValue ? salary.to : inputToValue}
             className={s.input}
             onChange={enterSalary}
           />
